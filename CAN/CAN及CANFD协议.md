@@ -65,31 +65,45 @@ CAN/CANFD存在标准帧和扩展帧两种帧格式。具体如下图所示：
 
 [插入图片]
 
-1. 帧起始
+**1. 帧起始**
+
    SOF (Start of Frame)，数据帧或远程帧起始标志，由1位显性位组成；
-2. 仲裁域
+   
+**2. 仲裁域**
 
    用于当多个节点同时向总线发送数据的情况时，识别报文的优先级并判定通信的顺序。
 
    - 标准帧仲裁域有12位，包括ID28-ID18和RTR(CAN)/RRS(CANFD)，禁止高7位都为隐性电平；
    - 扩展帧仲裁域有32位，包括ID28-ID18、SRR、IDE、ID17-ID0和RTR(CAN)/RRS(CANFD)，禁止高7位都为隐性电平；
-   - ID28-ID18：基本ID
-   - ID17-ID0：扩展ID
+   - ID28-ID18：基本ID；
+   - ID17-ID0：扩展ID；
    - RTR：Remote Transmission Request，远程传输请求位，由1位组成，隐性表示此时为数据帧，显性表示此时为远程帧（CANFD没有远程帧）；
    - RRS：Remote Request Substitution，CANFD帧替代RTR位；
    - SRR：Substitute Remote Request，CAN帧替代RTR位；
-   - IDE：Identifier Extension Flag，标识符选择位，判断标准帧或扩展帧，隐性表示此时为扩展帧，显性表示此时为标准帧
+   - IDE：Identifier Extension Flag，标识符选择位，判断标准帧或扩展帧，隐性表示此时为扩展帧，显性表示此时为标准帧。
 
-3. 控制域
-  - **CAN标准帧**控制域有6位，包括IDE、FDF和DLC;
-  - **CAN扩展帧**控制域有6位，包括FDF、r0和DLC；
-  - **CANFD标准帧**控制域有9位，包括IDE、FDF、res、BRS、ESI和DLC；
-  - **CANFD扩展帧**控制域有8位，包括FDF、res、BRS、ESI和DLC；
-  - 
-4. 
-   
-     
+**3. 控制域**
 
+  - CAN标准帧控制域有6位，包括IDE、FDF和DLC;
+  - CAN扩展帧控制域有6位，包括FDF、r0和DLC；
+  - CANFD标准帧控制域有9位，包括IDE、FDF、res、BRS、ESI和DLC；
+  - CANFD扩展帧控制域有8位，包括FDF、res、BRS、ESI和DLC；
+  - FDF：FD Format indicator，FD帧格式指示位，由1位组成，隐性表示此时为CANFD帧，显性表示此时为CAN帧；
+  - DLC：Data Length Code，数据长度码，由4位组成，与长度对应关系如下图所示：
+
+    
+  - r0：Reserved bit in Classical Extended Frame Format，CAN扩展帧保留位，由1位显性位组成；
+  - res：Reserved bit in FD Frames，CANFD帧保留位，由1位显性位组成；
+  - BRS：Bit Rate Switch，位速率切换位，由1位显性位组成，隐性表示切换位速率为数据速率，显性表示维持仲裁域速率；
+  - ESI：Error State Indicator，错误状态指示位，由1位显性位组成，隐性表示此时为被动错误状态，显性表示此时为主动错误状态。
+
+**4. 数据域**
+
+   报文数据内容，CAN帧由0~8个字节组成，CANFD帧由0~64字节组成。低字节先发送，高位先发送。
+
+**5. CRC域**
+
+   用于数据检错，
 
 
 # 帧类型
