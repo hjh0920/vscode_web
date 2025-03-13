@@ -1,9 +1,26 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0" version="26.0.16">
   <diagram name="第 1 页" id="1xXzg4hlqvbpY5tBiZtY">
-    <mxGraphModel dx="2137" dy="1426" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2469" dy="1602" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-181" value="" style="curved=1;endArrow=none;html=1;rounded=0;fillColor=#dae8fc;strokeColor=#A9C4EB;strokeWidth=3;startFill=0;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-340" y="300" as="sourcePoint" />
+            <mxPoint x="-340" y="300" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-630" y="310" />
+              <mxPoint x="-780" y="280" />
+              <mxPoint x="-810" y="150" />
+              <mxPoint x="-730" y="140" />
+              <mxPoint x="-736" y="54" />
+              <mxPoint x="-715" y="29" />
+              <mxPoint x="-340" y="30" />
+              <mxPoint x="-330" y="40" />
+              <mxPoint x="-310" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="h_VeKxa4T9KLT9ug-Xt3-11" value="Base ID" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="110" y="620" width="120" height="20" as="geometry" />
         </mxCell>
@@ -1426,8 +1443,8 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="-640" y="160" />
-              <mxPoint x="-640" y="230" />
-              <mxPoint x="-623" y="230" />
+              <mxPoint x="-640" y="240" />
+              <mxPoint x="-623" y="240" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -1492,7 +1509,7 @@
         <mxCell id="yupXMT0HzKtJhUk2Pbdu-138" value="被动错误标志" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#FF0000;" vertex="1" parent="1">
           <mxGeometry x="-875" y="34" width="60" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="yupXMT0HzKtJhUk2Pbdu-139" value="检测到错误" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#FF0000;" vertex="1" parent="1">
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-139" value="检测到错误" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
           <mxGeometry x="-779" y="20" width="50" height="20" as="geometry" />
         </mxCell>
         <mxCell id="yupXMT0HzKtJhUk2Pbdu-140" value="错误界定符" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#FF0000;" vertex="1" parent="1">
@@ -1539,6 +1556,69 @@
         </mxCell>
         <mxCell id="yupXMT0HzKtJhUk2Pbdu-154" value="&lt;span style=&quot;color: rgb(255, 0, 0); font-family: Helvetica; font-size: 6px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;CAN扩展帧R0保留位,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: light-dark(rgb(251, 251, 251), rgb(21, 21, 21)); color: light-dark(rgb(255, 0, 0), rgb(255, 144, 144)); font-size: 6px; text-wrap-mode: nowrap;&quot;&gt;固定为 &#39;1&#39;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-484" y="129" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-156" value="&lt;div&gt;发送节点错误状态&lt;/div&gt;&lt;div&gt;&#39;1&#39; 表示被动错误状态&lt;/div&gt;&lt;div&gt;&#39;0&#39; 表示主动错误状态&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#FF0000;" vertex="1" parent="1">
+          <mxGeometry x="-470" y="265" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-157" value="数据长度" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#FF0000;" vertex="1" parent="1">
+          <mxGeometry x="-550" y="267" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-158" value="ACK界定符" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#FF0000;" vertex="1" parent="1">
+          <mxGeometry x="-710" y="134" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-159" value="ACK Slot" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#FF0000;" vertex="1" parent="1">
+          <mxGeometry x="-690" y="185" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-160" value="CRC界定符" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#FF0000;" vertex="1" parent="1">
+          <mxGeometry x="-710" y="270" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-161" value="CRC校验&lt;div&gt;CAN报文: CRC15&lt;/div&gt;&lt;div&gt;CANFD报文长度0-16字节：CRC17&lt;/div&gt;&lt;div&gt;CANFD报文长度17-64字节：CRC21&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#FF0000;" vertex="1" parent="1">
+          <mxGeometry x="-640" y="265" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-162" value="填充计数位" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#FF0000;" vertex="1" parent="1">
+          <mxGeometry x="-631" y="134" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-163" value="&#39;0&#39; 表示CAN标准帧R0保留位&lt;div&gt;&#39;1&#39; 表示CANFD报文&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#FF0000;" vertex="1" parent="1">
+          <mxGeometry x="-570" y="120" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-164" value="扩展帧" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-430" y="58" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-165" value="标准帧" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-500" y="84" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-166" value="CAN&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(151, 208, 119), rgb(41, 90, 13));&quot;&gt;帧&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-420" y="144" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-167" value="CANFD&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(151, 208, 119), rgb(41, 90, 13));&quot;&gt;帧&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-375" y="172" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-170" value="CANFD&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(151, 208, 119), rgb(41, 90, 13));&quot;&gt;帧&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-518" y="172" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-171" value="CAN&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(151, 208, 119), rgb(41, 90, 13));&quot;&gt;帧&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-558" y="172" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-172" value="ISO CANFD&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(151, 208, 119), rgb(41, 90, 13));&quot;&gt;帧&lt;/span&gt;&lt;div&gt;且DLC为0&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-590" y="188" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-173" value="ISO CANFD&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(151, 208, 119), rgb(41, 90, 13));&quot;&gt;帧&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-636" y="180" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-174" value="DLC不为0" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-585" y="230" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-175" value="CAN&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(151, 208, 119), rgb(41, 90, 13));&quot;&gt;帧&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(151, 208, 119), rgb(41, 90, 13));&quot;&gt;或non-ISO CANFD帧&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-644" y="216" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-176" value="CAN远程&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(151, 208, 119), rgb(41, 90, 13));&quot;&gt;帧&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(151, 208, 119), rgb(41, 90, 13));&quot;&gt;或&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(151, 208, 119), rgb(41, 90, 13));&quot;&gt;CAN数据帧DLC为0&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-605" y="259" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-177" value="RX显性" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-717" y="178" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yupXMT0HzKtJhUk2Pbdu-178" value="RX隐性" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" vertex="1" parent="1">
+          <mxGeometry x="-745" y="193" width="40" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
