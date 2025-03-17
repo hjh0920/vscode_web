@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0" version="26.1.0">
   <diagram name="第 1 页" id="1xXzg4hlqvbpY5tBiZtY">
-    <mxGraphModel dx="2605" dy="1674" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2469" dy="1602" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1620,7 +1620,7 @@
         <mxCell id="yupXMT0HzKtJhUk2Pbdu-178" value="RX隐性" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=6;fontColor=#97D077;" parent="1" vertex="1">
           <mxGeometry x="-745" y="193" width="40" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="nFm0d8sPh_MPPRcVmUWC-1" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 0 0 0 1000 00&lt;u&gt;1&lt;/u&gt;00000&lt;u&gt;1&lt;/u&gt;0 00010001 00100010 00110011 01000100 01010101 01100110 01110111 01100000&lt;u&gt;1&lt;/u&gt;0101001 1 0 1 1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+        <mxCell id="nFm0d8sPh_MPPRcVmUWC-1" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 &lt;b&gt;0&lt;/b&gt; 0 0 1000 00&lt;u&gt;1&lt;/u&gt;00000&lt;u&gt;1&lt;/u&gt;0 00010001 00100010 00110011 01000100 01010101 01100110 01110111 01100000&lt;u&gt;1&lt;/u&gt;0101001 1 0 1 1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="70" y="318" width="820" height="30" as="geometry" />
         </mxCell>
         <mxCell id="nFm0d8sPh_MPPRcVmUWC-11" value="CAN标准数据帧" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
@@ -1633,25 +1633,19 @@
           <mxGeometry x="70" y="348" width="360" height="30" as="geometry" />
         </mxCell>
         <mxCell id="nFm0d8sPh_MPPRcVmUWC-14" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 1 1 000101101001011011 0 0 0 1000 00&lt;u&gt;1&lt;/u&gt;00000&lt;u&gt;1&lt;/u&gt;0 00010001 00100010 00110011 01000100 01010101 01100110 01110111 000100000&lt;u&gt;1&lt;/u&gt;110010 1 0 1&amp;nbsp;1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="70" y="378" width="960" height="30" as="geometry" />
+          <mxGeometry x="70" y="420" width="960" height="30" as="geometry" />
         </mxCell>
         <mxCell id="nFm0d8sPh_MPPRcVmUWC-15" value="CAN扩展数据帧" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="-40" y="378" width="100" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="nFm0d8sPh_MPPRcVmUWC-16" value="ID 0x101" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="-100" y="328" width="70" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="nFm0d8sPh_MPPRcVmUWC-17" value="ID 0x4045a5b" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="-130" y="398" width="100" height="30" as="geometry" />
+          <mxGeometry x="-40" y="420" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="nFm0d8sPh_MPPRcVmUWC-18" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 1 1 000101101001011011 &lt;b&gt;1&lt;/b&gt; 0 0 1000&amp;nbsp;00&lt;u&gt;1&lt;/u&gt;1110001101100&amp;nbsp;1 0 1&amp;nbsp;1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="70" y="408" width="500" height="30" as="geometry" />
+          <mxGeometry x="70" y="450" width="500" height="30" as="geometry" />
         </mxCell>
         <mxCell id="nFm0d8sPh_MPPRcVmUWC-19" value="CAN扩展远程帧" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="-40" y="408" width="100" height="30" as="geometry" />
+          <mxGeometry x="-40" y="450" width="100" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="nFm0d8sPh_MPPRcVmUWC-20" value="数据 0x00 11 22 33 44 55 66 77" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="-95" y="278" width="190" height="30" as="geometry" />
+        <mxCell id="nFm0d8sPh_MPPRcVmUWC-20" value="ID 0x101&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;数据 0x00 11 22 33 44 55 66 77&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;CRC 15&#39;h3029" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="55" y="290" width="400" height="30" as="geometry" />
         </mxCell>
         <mxCell id="nFm0d8sPh_MPPRcVmUWC-21" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 0 0 1 0 0 0 1000 00&lt;u&gt;1&lt;/u&gt;00000&lt;u&gt;1&lt;/u&gt;0 00010001 00100010 00110011 01000100 01010101 01100110 01110111 &lt;u&gt;0&lt;/u&gt;0101 0111&lt;u&gt;1&lt;/u&gt;0000&lt;u&gt;0&lt;/u&gt;1101&lt;u&gt;1&lt;/u&gt;0001&lt;u&gt;0&lt;/u&gt;10 1 0 1 1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="115" y="1129" width="920" height="30" as="geometry" />
@@ -1724,6 +1718,12 @@
         </mxCell>
         <mxCell id="JA_j1WbDyEbJ6JvtkIJN-20" value="数据 0x00 11 22 33 44 55 66 77 88 99 AA BB CC DD EE FF 00 11 22 33" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="95" y="1621" width="410" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JA_j1WbDyEbJ6JvtkIJN-21" value="&lt;span style=&quot;forced-color-adjust: none; color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: pre; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span style=&quot;white-space-collapse: collapse;&quot;&gt;ID 0x4045a5b&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;&amp;nbsp; 数据 0x00 11 22 33 44 55 66 77&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;text-align: center; text-wrap-mode: nowrap;&quot;&gt;CRC 15&#39;h3029&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="400" width="270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JA_j1WbDyEbJ6JvtkIJN-22" value="CRC 15&#39;h1DDB" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="400" y="348" width="110" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
