@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0" version="26.1.0">
   <diagram name="第 1 页" id="1xXzg4hlqvbpY5tBiZtY">
-    <mxGraphModel dx="3012" dy="1890" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2605" dy="1674" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1716,8 +1716,8 @@
         <mxCell id="JA_j1WbDyEbJ6JvtkIJN-17" value="Non-ISO-CANFD扩展数据帧&lt;div&gt;8Byte&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="-70" y="1556" width="165" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="JA_j1WbDyEbJ6JvtkIJN-18" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 1 1 000101101001011011 0 1 0 0 0 1011 00000&lt;u&gt;1&lt;/u&gt;000 00&lt;u&gt;1&lt;/u&gt;010001 00100010 00110011 01000100 01010101 01100110 01110111 10001000 10011001 10101010 10111011 11001100 11011101 11101110 11111&lt;u&gt;0&lt;/u&gt;111 00000&lt;u&gt;1&lt;/u&gt;000 00&lt;u&gt;1&lt;/u&gt;010001 00100010 00110011&amp;nbsp;&lt;u&gt;0&lt;/u&gt;1010 &lt;u&gt;1&lt;/u&gt;1010&lt;u&gt;1&lt;/u&gt;0111&lt;u&gt;0&lt;/u&gt;0010&lt;u&gt;1&lt;/u&gt;0111&lt;u&gt;0&lt;/u&gt;1101&lt;u&gt;0&lt;/u&gt;1&amp;nbsp;1 0 1&amp;nbsp;1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="105" y="1586" width="1770" height="30" as="geometry" />
+        <mxCell id="JA_j1WbDyEbJ6JvtkIJN-18" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 1 1 000101101001011011 0 1 0 0 0 1011 00000&lt;u&gt;1&lt;/u&gt;000 00&lt;u&gt;1&lt;/u&gt;010001 00100010 00110011 01000100 01010101 01100110 01110111 10001000 10011001 10101010 10111011 11001100 11011101 11101110 11111&lt;u&gt;0&lt;/u&gt;111 00000&lt;u&gt;1&lt;/u&gt;000 00&lt;u&gt;1&lt;/u&gt;010001 00100010 00110011&amp;nbsp;&lt;u&gt;0&lt;/u&gt;1001&lt;u&gt;0&lt;/u&gt;1110&lt;u&gt;1&lt;/u&gt;1001&lt;u&gt;0&lt;/u&gt;1110&lt;u&gt;1&lt;/u&gt;0100&lt;u&gt;1&lt;/u&gt;1&amp;nbsp;1 0 1&amp;nbsp;1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="105" y="1586" width="1730" height="30" as="geometry" />
         </mxCell>
         <mxCell id="JA_j1WbDyEbJ6JvtkIJN-19" value="Non-ISOCANFD扩展数据帧&lt;div&gt;20B&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="-70" y="1586" width="165" height="30" as="geometry" />
