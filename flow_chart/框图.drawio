@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0" version="26.1.0">
   <diagram name="第 1 页" id="1xXzg4hlqvbpY5tBiZtY">
-    <mxGraphModel dx="2202" dy="1460" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2317" dy="1521" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1674,8 +1674,8 @@
         <mxCell id="JA_j1WbDyEbJ6JvtkIJN-1" value="ID 0x4045a5b" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="-110" y="1280" width="100" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="JA_j1WbDyEbJ6JvtkIJN-2" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 0 0 1 0 0 0 1000 00&lt;u&gt;1&lt;/u&gt;00000&lt;u&gt;1&lt;/u&gt;0 00010001 00100010 00110011 01000100 01010101 01100110 01110111 &lt;u&gt;0&lt;/u&gt;0101 0111&lt;u&gt;1&lt;/u&gt;0000&lt;u&gt;0&lt;/u&gt;1101&lt;u&gt;1&lt;/u&gt;0001&lt;u&gt;0&lt;/u&gt;10 1 0 1 1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="115" y="1265" width="920" height="30" as="geometry" />
+        <mxCell id="JA_j1WbDyEbJ6JvtkIJN-2" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 1 1 000101101001011011 0 1 0 0 0 1000 00&lt;u&gt;1&lt;/u&gt;00000&lt;u&gt;1&lt;/u&gt;0 00010001 00100010 00110011 01000100 01010101 01100110 01110111&amp;nbsp;&lt;u&gt;0&lt;/u&gt;0101 &lt;u&gt;0&lt;/u&gt;1010&lt;u&gt;1&lt;/u&gt;1110&lt;u&gt;1&lt;/u&gt;1101&lt;u&gt;0&lt;/u&gt;1000&lt;u&gt;1&lt;/u&gt;0 1 0 1 1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="115" y="1265" width="1060" height="30" as="geometry" />
         </mxCell>
         <mxCell id="JA_j1WbDyEbJ6JvtkIJN-3" value="CANFD扩展数据帧&lt;div&gt;8Byte&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry y="1265" width="105" height="30" as="geometry" />
