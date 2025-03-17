@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0" version="26.1.0">
   <diagram name="第 1 页" id="1xXzg4hlqvbpY5tBiZtY">
-    <mxGraphModel dx="2317" dy="1521" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2795" dy="1775" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1656,35 +1656,38 @@
         <mxCell id="nFm0d8sPh_MPPRcVmUWC-21" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 0 0 1 0 0 0 1000 00&lt;u&gt;1&lt;/u&gt;00000&lt;u&gt;1&lt;/u&gt;0 00010001 00100010 00110011 01000100 01010101 01100110 01110111 &lt;u&gt;0&lt;/u&gt;0101 0111&lt;u&gt;1&lt;/u&gt;0000&lt;u&gt;0&lt;/u&gt;1101&lt;u&gt;1&lt;/u&gt;0001&lt;u&gt;0&lt;/u&gt;10 1 0 1 1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="115" y="1129" width="920" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="nFm0d8sPh_MPPRcVmUWC-22" value="CANFD标准数据帧&lt;div&gt;8Byte&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry y="1129" width="105" height="30" as="geometry" />
+        <mxCell id="nFm0d8sPh_MPPRcVmUWC-22" value="ISO-CANFD标准数据帧&lt;div&gt;8Byte&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="-30" y="1129" width="135" height="30" as="geometry" />
         </mxCell>
         <mxCell id="nFm0d8sPh_MPPRcVmUWC-23" value="ID 0x101" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="-75" y="1139" width="70" height="30" as="geometry" />
+          <mxGeometry y="1200" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="nFm0d8sPh_MPPRcVmUWC-24" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 0 0 1 0 0 0 1011 00000&lt;u&gt;1&lt;/u&gt;000 00&lt;u&gt;1&lt;/u&gt;010001 00100010 00110011 01000100 01010101 01100110 01110111 10001000 10011001 10101010 10111011 11001100 11011101 11101110 11111&lt;u&gt;0&lt;/u&gt;111 00000&lt;u&gt;1&lt;/u&gt;000 00&lt;u&gt;1&lt;/u&gt;010001 00100010 00110011&amp;nbsp;&lt;u&gt;0&lt;/u&gt;1010 &lt;u&gt;1&lt;/u&gt;0011&lt;u&gt;0&lt;/u&gt;101101011000110101010 1 0 1&amp;nbsp;1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="115" y="1159" width="1640" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="nFm0d8sPh_MPPRcVmUWC-25" value="CANFD标准数据帧20B" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry y="1159" width="105" height="30" as="geometry" />
+        <mxCell id="nFm0d8sPh_MPPRcVmUWC-25" value="ISO-CANFD标准数据帧&lt;div&gt;20B&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="-40" y="1169" width="155" height="30" as="geometry" />
         </mxCell>
         <mxCell id="nFm0d8sPh_MPPRcVmUWC-26" value="数据 0x00 11 22 33 44 55 66 77 88 99 AA BB CC DD EE FF 00 11 22 33" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="60" y="1200" width="410" height="30" as="geometry" />
         </mxCell>
         <mxCell id="JA_j1WbDyEbJ6JvtkIJN-1" value="ID 0x4045a5b" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="-110" y="1280" width="100" height="30" as="geometry" />
+          <mxGeometry x="-5" y="1330" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="JA_j1WbDyEbJ6JvtkIJN-2" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 1 1 000101101001011011 0 1 0 0 0 1000 00&lt;u&gt;1&lt;/u&gt;00000&lt;u&gt;1&lt;/u&gt;0 00010001 00100010 00110011 01000100 01010101 01100110 01110111&amp;nbsp;&lt;u&gt;0&lt;/u&gt;0101 &lt;u&gt;0&lt;/u&gt;1010&lt;u&gt;1&lt;/u&gt;1110&lt;u&gt;1&lt;/u&gt;1101&lt;u&gt;0&lt;/u&gt;1000&lt;u&gt;1&lt;/u&gt;0 1 0 1 1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="115" y="1265" width="1060" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="JA_j1WbDyEbJ6JvtkIJN-3" value="CANFD扩展数据帧&lt;div&gt;8Byte&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry y="1265" width="105" height="30" as="geometry" />
+        <mxCell id="JA_j1WbDyEbJ6JvtkIJN-3" value="ISO-CANFD扩展数据帧&lt;div&gt;8Byte&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-30" y="1265" width="135" height="30" as="geometry" />
         </mxCell>
         <mxCell id="JA_j1WbDyEbJ6JvtkIJN-5" value="0 00100000&lt;u&gt;1&lt;/u&gt;001 1 1 000101101001011011 0 1 0 0 0 1011 00000&lt;u&gt;1&lt;/u&gt;000 00&lt;u&gt;1&lt;/u&gt;010001 00100010 00110011 01000100 01010101 01100110 01110111 10001000 10011001 10101010 10111011 11001100 11011101 11101110 11111&lt;u&gt;0&lt;/u&gt;111 00000&lt;u&gt;1&lt;/u&gt;000 00&lt;u&gt;1&lt;/u&gt;010001 00100010 00110011&amp;nbsp;&lt;u&gt;0&lt;/u&gt;1010 &lt;u&gt;1&lt;/u&gt;1010&lt;u&gt;1&lt;/u&gt;0111&lt;u&gt;0&lt;/u&gt;0010&lt;u&gt;1&lt;/u&gt;0111&lt;u&gt;0&lt;/u&gt;1101&lt;u&gt;0&lt;/u&gt;1&amp;nbsp;1 0 1&amp;nbsp;1111111&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="115" y="1295" width="1770" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="JA_j1WbDyEbJ6JvtkIJN-6" value="CANFD扩展数据帧20B" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry y="1295" width="105" height="30" as="geometry" />
+        <mxCell id="JA_j1WbDyEbJ6JvtkIJN-6" value="ISO-CANFD扩展数据帧&lt;div&gt;20B&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-30" y="1295" width="135" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JA_j1WbDyEbJ6JvtkIJN-8" value="数据 0x00 11 22 33 44 55 66 77 88 99 AA BB CC DD EE FF 00 11 22 33" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="105" y="1330" width="410" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
