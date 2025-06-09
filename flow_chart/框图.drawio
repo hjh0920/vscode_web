@@ -2473,7 +2473,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="ShlDaVxMpU9MiOhmAkx2" name="USB">
-    <mxGraphModel dx="394" dy="212" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="473" dy="254" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2483,14 +2483,8 @@
         <mxCell id="4-envg3S7LUFroWNwOmx-3" value="axis_width_&lt;div&gt;converter&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="110" y="160" width="70" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="4-envg3S7LUFroWNwOmx-4" value="axis_clock_&lt;div&gt;converter&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="210" y="80" width="70" height="40" as="geometry" />
-        </mxCell>
         <mxCell id="4-envg3S7LUFroWNwOmx-5" value="axis_data_&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;fifo&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="310" y="80" width="60" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="4-envg3S7LUFroWNwOmx-6" value="axis_clock_&lt;div&gt;converter&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="210" y="160" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="4-envg3S7LUFroWNwOmx-7" value="axis_data_&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;fifo&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="310" y="160" width="60" height="40" as="geometry" />
@@ -2505,7 +2499,7 @@
           <mxGeometry x="20" y="80" width="50" height="120" as="geometry" />
         </mxCell>
         <mxCell id="4-envg3S7LUFroWNwOmx-19" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="210" y="230" width="90" height="40" as="geometry" />
+          <mxGeometry x="200" y="80" width="90" height="40" as="geometry" />
         </mxCell>
         <mxCell id="4-envg3S7LUFroWNwOmx-11" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="4-envg3S7LUFroWNwOmx-19">
           <mxGeometry x="10" width="35" height="40" as="geometry" />
@@ -2514,6 +2508,18 @@
           <mxGeometry x="45" width="35" height="40" as="geometry" />
         </mxCell>
         <mxCell id="4-envg3S7LUFroWNwOmx-16" value="&lt;span style=&quot;text-wrap-mode: wrap; float: none; display: inline !important;&quot;&gt;axis_clock_&lt;/span&gt;&lt;div style=&quot;text-wrap-mode: wrap;&quot;&gt;&lt;span style=&quot;&quot;&gt;converter&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=default;labelBackgroundColor=none;textShadow=0;" vertex="1" parent="4-envg3S7LUFroWNwOmx-19">
+          <mxGeometry width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4-envg3S7LUFroWNwOmx-20" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="200" y="160" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4-envg3S7LUFroWNwOmx-21" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="4-envg3S7LUFroWNwOmx-20">
+          <mxGeometry x="10" width="35" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4-envg3S7LUFroWNwOmx-22" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="4-envg3S7LUFroWNwOmx-20">
+          <mxGeometry x="45" width="35" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4-envg3S7LUFroWNwOmx-23" value="&lt;span style=&quot;text-wrap-mode: wrap; float: none; display: inline !important;&quot;&gt;axis_clock_&lt;/span&gt;&lt;div style=&quot;text-wrap-mode: wrap;&quot;&gt;&lt;span style=&quot;&quot;&gt;converter&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=default;labelBackgroundColor=none;textShadow=0;" vertex="1" parent="4-envg3S7LUFroWNwOmx-20">
           <mxGeometry width="90" height="40" as="geometry" />
         </mxCell>
       </root>
