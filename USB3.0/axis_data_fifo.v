@@ -1,4 +1,4 @@
-// 复位管理模块
+// 封装 xpm_fifo_axis
 
 module axis_data_fifo #(
   parameter interger CDC_SYNC_STAGES = 2, // 2-8
