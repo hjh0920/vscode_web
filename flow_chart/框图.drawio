@@ -2473,12 +2473,36 @@
     </mxGraphModel>
   </diagram>
   <diagram id="ShlDaVxMpU9MiOhmAkx2" name="USB">
-    <mxGraphModel dx="663" dy="305" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1143" dy="526" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="4-envg3S7LUFroWNwOmx-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="100" y="80" width="120" height="60" as="geometry" />
+        <mxCell id="4-envg3S7LUFroWNwOmx-1" value="axis_width_converter" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="80" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4-envg3S7LUFroWNwOmx-3" value="axis_width_converter" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="160" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4-envg3S7LUFroWNwOmx-4" value="axis_clock_converter" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="80" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4-envg3S7LUFroWNwOmx-5" value="axis_data_&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;fifo&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="80" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4-envg3S7LUFroWNwOmx-6" value="axis_clock_converter" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="160" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4-envg3S7LUFroWNwOmx-7" value="axis_data_&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;fifo&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="160" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4-envg3S7LUFroWNwOmx-8" value="rw_scheduler" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="80" width="80" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="4-envg3S7LUFroWNwOmx-9" value="ftdi_245fifo_fsm" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="80" width="90" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="4-envg3S7LUFroWNwOmx-10" value="user&#39;s logic" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="80" width="50" height="120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
