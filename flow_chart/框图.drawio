@@ -2480,10 +2480,10 @@
         <mxCell id="4-envg3S7LUFroWNwOmx-42" value="ftdi_245fifo_top" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=center;verticalAlign=bottom;fontSize=12;spacingTop=-5;" vertex="1" parent="1">
           <mxGeometry x="110" y="40" width="360" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="4-envg3S7LUFroWNwOmx-41" value="RX" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;align=center;verticalAlign=top;fontSize=12;spacingTop=-5;" vertex="1" parent="1">
+        <mxCell id="4-envg3S7LUFroWNwOmx-41" value="&lt;font style=&quot;color: rgb(108, 142, 191);&quot;&gt;RX&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;align=center;verticalAlign=top;fontSize=12;spacingTop=-5;strokeColor=#6C8EBF;" vertex="1" parent="1">
           <mxGeometry x="110" y="140" width="260" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="4-envg3S7LUFroWNwOmx-29" value="TX" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;align=center;verticalAlign=top;fontSize=12;spacingTop=-5;" vertex="1" parent="1">
+        <mxCell id="4-envg3S7LUFroWNwOmx-29" value="TX" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;align=center;verticalAlign=top;fontSize=12;spacingTop=-5;strokeColor=#82B366;fontColor=#82B366;" vertex="1" parent="1">
           <mxGeometry x="110" y="60" width="260" height="70" as="geometry" />
         </mxCell>
         <mxCell id="4-envg3S7LUFroWNwOmx-1" value="axis_width_&lt;div&gt;converter&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
