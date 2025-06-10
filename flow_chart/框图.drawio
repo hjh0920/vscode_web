@@ -2666,7 +2666,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="_Gof4h1bhJl3xlxFAKAL" name="多功能通信板&amp;采集板">
-    <mxGraphModel dx="2495" dy="896" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1805" dy="526" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -3143,8 +3143,8 @@
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-127" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 10px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;传统以太网*1&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;labelBackgroundColor=none;" parent="1" vertex="1">
           <mxGeometry x="-624.09" y="722" width="50" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-132" value="2.0测试平台&lt;font style=&quot;&quot;&gt;多功能通信板第一版&lt;/font&gt;优化点：&lt;div&gt;1、保留1.5测试平台继电器控制功能，替代致远电子的CAN盒、车载以太网转换器以及PWM信号发生器；&lt;/div&gt;&lt;div&gt;2、简化与上位机通信方式，使用1路USB3.0或者1路传统以太网与上位机进行通信；&lt;/div&gt;&lt;div&gt;3、添加SENT、PSI5电路，用于方案验证；&lt;/div&gt;&lt;div&gt;4、 FPGA采用模块化设计，后续可根据修改模块例化个数来实现通道数增减，提高后续开发效率。&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontColor=default;" parent="1" vertex="1">
-          <mxGeometry x="-614.48" y="420" width="580" height="90" as="geometry" />
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-132" value="2.0测试平台&lt;font style=&quot;&quot;&gt;多功能通信板第一版&lt;/font&gt;优化点：&lt;div&gt;1、保留1.5测试平台继电器控制功能，替代致远电子的CAN盒、车载以太网转换器以及PWM信号发生器；&lt;/div&gt;&lt;div&gt;2、简化与上位机通信方式，使用1路USB3.0或者1路传统以太网与上位机进行通信；&lt;/div&gt;&lt;div&gt;3、添加SENT、PSI5电路，用于方案验证；&lt;/div&gt;&lt;div&gt;4、预留板间通信IO，后续通过背板与其他板卡进行通信；&lt;/div&gt;&lt;div&gt;5、FPGA采用模块化设计，后续可根据修改模块例化个数来实现通道数增减，提高后续开发效率。&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="-614.48" y="415" width="580" height="100" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-133" value="2.0测试平台&lt;font style=&quot;&quot;&gt;多功能通信板第二版&lt;/font&gt;优化点：&lt;div&gt;1、取消继电器控制电路，根据所需通道数对应的资源重新进行FPGA选型；&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;2、取消购买核心板方式，自研FPGA核心板；&lt;/span&gt;&lt;/div&gt;&lt;div&gt;3、支持8路PSI5接口；&lt;/div&gt;&lt;div&gt;4、支持9路SENT接口。&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontColor=default;" parent="1" vertex="1">
           <mxGeometry x="-624.48" y="870" width="420" height="90" as="geometry" />
