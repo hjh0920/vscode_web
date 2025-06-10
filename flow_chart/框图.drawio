@@ -2666,7 +2666,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="_Gof4h1bhJl3xlxFAKAL" name="多功能通信板">
-    <mxGraphModel dx="1637" dy="435" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2245" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2770,13 +2770,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-30" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://alimg.szlcsc.com/upload/public/product/source/20230109/86257737B39ACEAE8372007504E0FA61.jpg;clipPath=inset(14.33% 11.67% 13.33% 15%);" vertex="1" parent="1">
-          <mxGeometry x="33.54" y="370" width="45.66" height="45.04" as="geometry" />
+          <mxGeometry x="36.35" y="366.24" width="38.04" height="37.52" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-31" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://alimg.szlcsc.com/upload/public/product/source/20230829/5A193A946D5E836ED1B8F23736B47A2B.jpg;clipPath=inset(17% 15.67% 19.67% 17%);" vertex="1" parent="1">
-          <mxGeometry x="30.119999999999997" y="310" width="50.5" height="47.5" as="geometry" />
+          <mxGeometry x="34.52" y="310" width="39.87" height="37.5" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-32" value="" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.pc;" vertex="1" parent="1">
-          <mxGeometry x="-90" y="350" width="70" height="50" as="geometry" />
+          <mxGeometry x="-93" y="322" width="90" height="90" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-33" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;产品&lt;/font&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.car;" vertex="1" parent="1">
           <mxGeometry x="827" y="325.0400000000001" width="114.96" height="114.96" as="geometry" />
@@ -2871,6 +2871,24 @@
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-66" value="车载以太网*8" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="727.25" y="445" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-67" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=-0.009;entryY=0.596;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="FQ7A9Pf7v7ba3PZDAM1t-2">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint y="340" as="sourcePoint" />
+            <mxPoint x="120" y="342" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-68" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=-0.009;entryY=0.596;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="2" y="394.8" as="sourcePoint" />
+            <mxPoint x="101" y="394.8" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-69" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 10px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;USB3.0*1&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="27.37" y="338" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-70" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 10px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;传统以太网*1&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20.389999999999997" y="402" width="50" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
