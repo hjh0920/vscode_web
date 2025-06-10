@@ -2666,7 +2666,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="_Gof4h1bhJl3xlxFAKAL" name="多功能通信板">
-    <mxGraphModel dx="2009" dy="635" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1805" dy="526" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2915,16 +2915,16 @@
           <mxGeometry x="490" y="490" width="110" height="30" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-77" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://alimg.szlcsc.com/upload/public/product/source/20230106/6DF3333F901450469028667F83FA6254.jpg;clipPath=inset(12.33% 9% 13.67% 8.67%);" vertex="1" parent="1">
-          <mxGeometry x="313.26" y="1000" width="44.51" height="40" as="geometry" />
+          <mxGeometry x="485.52" y="1110" width="44.51" height="40" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-78" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="95.52000000000001" y="680" width="640" height="320" as="geometry" />
+          <mxGeometry x="283.28" y="1190" width="514.48" height="320" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-79" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://alimg.szlcsc.com/upload/public/product/source/20230106/6DF3333F901450469028667F83FA6254.jpg;clipPath=inset(12.33% 9% 13.67% 8.67%);" vertex="1" parent="1">
-          <mxGeometry x="740.52" y="796" width="44.51" height="40" as="geometry" />
+          <mxGeometry x="830" y="640" width="44.51" height="40" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-80" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://www.te.com.cn/content/dam/te-com/catalog/part/023/749/003/2374900-3-t1.jpg/jcr:content/renditions/product-high-res.png?w=300;" vertex="1" parent="1">
-          <mxGeometry x="736.6999999999999" y="894" width="53.33" height="40" as="geometry" />
+          <mxGeometry x="960" y="720" width="53.33" height="40" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-81" value="FPGA核心板&lt;div&gt;（&lt;i&gt;根据资源重新选型&lt;/i&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;）&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="235.52" y="790" width="200" height="100" as="geometry" />
@@ -2935,22 +2935,22 @@
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-83" value="传统以太网收发器*1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="96.52000000000001" y="850" width="90" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-84" value="CANFD收发器*2" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-84" value="CANFD收发器*12" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="235.52" y="710" width="90" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-85" value="LIN收发器*2" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-85" value="LIN收发器*12" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="345.52" y="710" width="90" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-86" value="车载以太网PHY*1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-86" value="车载以太网PHY*8" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="485.52" y="790" width="90" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-87" value="PSI5驱动电路*1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-87" value="PSI5驱动电路*8" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="345.52" y="920" width="90" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-88" value="SENT电平转换电路*1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-88" value="SENT电平转换电路*9" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="235.52" y="920" width="90" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-89" value="PWM幅值调节电路*5" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-89" value="PWM幅值调节电路*40" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="485.52" y="850" width="90" height="50" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-90" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=-0.003;entryY=0.185;entryDx=0;entryDy=0;entryPerimeter=0;width=7.7852348993288585;startSize=4.0147651006711405;startWidth=8.799603621458493;endWidth=8.799603621458493;endSize=4.0147651006711405;" edge="1" parent="1">
@@ -3029,7 +3029,7 @@
           <mxGeometry x="-97.47999999999999" y="802" width="90" height="90" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-105" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;产品&lt;/font&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.car;" vertex="1" parent="1">
-          <mxGeometry x="822.52" y="805.04" width="114.96" height="114.96" as="geometry" />
+          <mxGeometry x="770" y="790" width="114.96" height="114.96" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-116" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;width=7.150837988826816;startSize=2.597765363128492;startWidth=8.799603621458493;endWidth=8.799603621458493;endSize=2.82122905027933;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
@@ -3053,23 +3053,8 @@
             <mxPoint x="14" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-120" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="715.52" y="820" as="sourcePoint" />
-            <mxPoint x="815.52" y="820" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-121" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="713.36" y="919.4300000000001" as="sourcePoint" />
-            <mxPoint x="813.3600000000001" y="919.4300000000001" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-122" value="CANFD*12&lt;div&gt;+LIN*12&lt;/div&gt;&lt;div&gt;+PWM*40&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="730.52" y="822" width="70" height="50" as="geometry" />
-        </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-123" value="车载以太网*8" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="722.77" y="925" width="80" height="30" as="geometry" />
+          <mxGeometry x="1000" y="1040" width="80" height="30" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-124" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=-0.009;entryY=0.596;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="FQ7A9Pf7v7ba3PZDAM1t-82">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
@@ -3089,29 +3074,14 @@
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-127" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 10px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;传统以太网*1&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
           <mxGeometry x="15.90999999999999" y="882" width="50" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-128" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="280.23" y="1040" as="sourcePoint" />
-            <mxPoint x="280.23" y="970" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-129" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="390.23" y="1040" as="sourcePoint" />
-            <mxPoint x="390.23" y="970" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-130" value="预留调试接口" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="295.52" y="970" width="80" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-131" value="多功能通信板" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="485.52" y="970" width="110" height="30" as="geometry" />
+          <mxGeometry x="580" y="1100" width="110" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-132" value="2.0测试平台多功能通信板第一版优化点：&lt;div&gt;1、保留1.5测试平台继电器控制功能，替代致远电子的CAN盒、车载以太网转换器以及PWM信号发生器；&lt;/div&gt;&lt;div&gt;2、简化与上位机通信方式，使用1路USB3.0或者1路传统以太网与上位机进行通信；&lt;/div&gt;&lt;div&gt;3、添加SENT、PSI5电路，用于方案验证。&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-132" value="2.0测试平台&lt;font style=&quot;color: rgb(255, 0, 0);&quot;&gt;多功能通信板第一版&lt;/font&gt;优化点：&lt;div&gt;1、保留1.5测试平台继电器控制功能，替代致远电子的CAN盒、车载以太网转换器以及PWM信号发生器；&lt;/div&gt;&lt;div&gt;2、简化与上位机通信方式，使用1路USB3.0或者1路传统以太网与上位机进行通信；&lt;/div&gt;&lt;div&gt;3、添加SENT、PSI5电路，用于方案验证。&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="105" y="555" width="580" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-133" value="2.0测试平台多功能通信板第二版优化点：&lt;div&gt;1、取消继电器控制电路，根据&lt;/div&gt;&lt;div&gt;2、简化与上位机通信方式，使用1路USB3.0或者1路传统以太网与上位机进行通信；&lt;/div&gt;&lt;div&gt;3、添加SENT、PSI5电路，用于方案验证。&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="105" y="1060" width="470" height="70" as="geometry" />
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-133" value="2.0测试平台&lt;font style=&quot;color: rgb(255, 0, 0);&quot;&gt;多功能通信板第二版&lt;/font&gt;优化点：&lt;div&gt;1、取消继电器控制电路，根据所需通道数对应的资源重新进行FPGA选型；&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;2、取消购买核心板方式，自研FPGA核心板；&lt;/span&gt;&lt;/div&gt;&lt;div&gt;3、支持8路PSI5接口；&lt;/div&gt;&lt;div&gt;4、支持9路SENT接口。&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="105" y="1050" width="420" height="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
