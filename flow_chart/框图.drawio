@@ -3178,7 +3178,7 @@
         </mxCell>
         <mxCell id="_Qyu2EAt_I4MBeYBOR1W-28" value="预留板间通信IO" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;fontStyle=0;labelBackgroundColor=none;horizontal=0;rotation=90;" vertex="1" connectable="0" parent="_Qyu2EAt_I4MBeYBOR1W-27">
           <mxGeometry x="-0.0163" y="1" relative="1" as="geometry">
-            <mxPoint x="-11" y="21" as="offset" />
+            <mxPoint x="-41" y="21" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="_Qyu2EAt_I4MBeYBOR1W-31" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;width=7.150837988826816;startSize=2.597765363128492;startWidth=8.799603621458493;endWidth=8.799603621458493;endSize=2.82122905027933;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1">
