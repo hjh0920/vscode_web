@@ -2670,6 +2670,12 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-72" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://alimg.szlcsc.com/upload/public/product/source/20230106/6DF3333F901450469028667F83FA6254.jpg;clipPath=inset(12.33% 9% 13.67% 8.67%);" vertex="1" parent="1">
+          <mxGeometry x="317.74" y="520" width="44.51" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-71" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="100" y="200" width="640" height="320" as="geometry" />
+        </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-35" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://alimg.szlcsc.com/upload/public/product/source/20230106/6DF3333F901450469028667F83FA6254.jpg;clipPath=inset(12.33% 9% 13.67% 8.67%);" vertex="1" parent="1">
           <mxGeometry x="745" y="316" width="44.51" height="40" as="geometry" />
         </mxCell>
@@ -2760,8 +2766,8 @@
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-25" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;width=7.150837988826816;startSize=2.597765363128492;startWidth=8.799603621458493;endWidth=8.799603621458493;endSize=2.82122905027933;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="390" y="410" as="sourcePoint" />
-            <mxPoint x="390" y="440" as="targetPoint" />
+            <mxPoint x="394.83" y="410" as="sourcePoint" />
+            <mxPoint x="394.83" y="440" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-26" value="GPIO" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=8;fontStyle=1;labelBackgroundColor=none;horizontal=0;rotation=90;" vertex="1" connectable="0" parent="FQ7A9Pf7v7ba3PZDAM1t-25">
@@ -2889,6 +2895,24 @@
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-70" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 10px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;传统以太网*1&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
           <mxGeometry x="20.389999999999997" y="402" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-73" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="284.71" y="560" as="sourcePoint" />
+            <mxPoint x="284.71" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-74" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="394.71" y="560" as="sourcePoint" />
+            <mxPoint x="394.71" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-75" value="预留调试接口" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="300" y="490" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-76" value="多功能通信板" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="490" y="490" width="110" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
