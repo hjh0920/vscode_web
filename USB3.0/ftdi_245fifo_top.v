@@ -288,6 +288,4 @@ ftdi_245fifo_fsm #(
     .m_axis_tuser          ()
   );
 
-
-
 endmodule
