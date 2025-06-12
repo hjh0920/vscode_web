@@ -1,11 +1,11 @@
-// æœ¬æ¨¡å—ä¸ºä»¥å¤ªç½‘RGMIIå‘é€æ¨¡å—, æ”¯æŒé€Ÿç‡è‡ªé€‚åº”
+// ±¾Ä£¿éÎªÒÔÌ«ÍøRGMII·¢ËÍÄ£¿é, Ö§³ÖËÙÂÊ×ÔÊÊÓ¦
 
 module rgmii_tx (
   input         clk_125mhz,
   input         clk90_125mhz,
   input         reset,
   input         reset90,
-  // PHY èŠ¯ç‰‡çŠ¶æ€æŒ‡ç¤º
+  // PHY Ğ¾Æ¬×´Ì¬Ö¸Ê¾
   input         phy_link_status, // up(1), down(0)
   input  [1:0]  phy_speed_status, // 10Mbps(0), 100Mbps(1), 1000Mbps(2)
   // RGMII_TX
@@ -23,27 +23,27 @@ module rgmii_tx (
 //------------------------------------
   wire          phy_link_status_txclk;
   wire [1:0]    phy_speed_status_txclk;
-  reg  [7:0]    tx_axis_rgmii_tdata_ff = 0; // å¯„å­˜ä¿¡å·
-  reg           tx_axis_rgmii_handshake = 0; // æ¡æ‰‹æˆåŠŸæŒ‡ç¤º
-  reg  [5:0]    clk_cnt = 0; // åˆ†é¢‘æ—¶é’Ÿè®¡æ•°å™¨
-  reg           clk_div5_50 = 1; // 10/100Mbpsä¸‹ 5/50å€åˆ†é¢‘ä¿¡å·
-  reg           clk90_div5_50 = 0; // 10/100Mbpsä¸‹ 5/50å€åˆ†é¢‘ä¿¡å·å¹¶ç›¸ç§»90åº¦ä¿¡å·
-  reg           tx_data_en = 0; // å‘é€æ•°æ®æœ‰æ•ˆæŒ‡ç¤º
-  reg           tx_data_error = 0; // å‘é€æ•°æ®é”™è¯¯æŒ‡ç¤º
-  reg           tx_axis_rgmii_tready_ff = 0; // RGMIIå‘é€å‡†å¤‡ä¿¡å·
-  reg  [3:0]    tx_data_msb = 0; // RGMII å‘é€æ•°æ®é«˜ 4-bit
-  reg  [3:0]    tx_data_lsb = 4'b1101; // RGMII å‘é€æ•°æ®ä½ 4-bit
-  reg           tx_nibble_sw = 0; // 10/100Mbpsä¸‹ RGMII å‘é€åŠå­—èŠ‚åˆ‡æ¢æŒ‡ç¤º
-  reg           tx_nibble_sw_d1 = 0; // å»¶è¿Ÿä¸€æ‹
-  reg           msb_lsb_flag = 0; // 10/100Mbpsä¸‹å½“å‰ RGMII  å‘é€é«˜ä½nibbleæŒ‡ç¤º, H-nibble(1), L-nibble(0)
-  reg           bus_status = 0; // å‘é€æ€»çº¿çŠ¶æ€, ç©ºé—²(0), å¿™ç¢Œ(1)
-  reg           tx10_100_data_en = 0; // 10/100Mbpsæœ‰æ•ˆæ•°æ®å‘é€æœŸé—´æŒ‡ç¤º
-  reg           tx10_100_data_en_d1 = 0; // å»¶è¿Ÿä¸€æ‹
+  reg  [7:0]    tx_axis_rgmii_tdata_ff = 0; // ¼Ä´æĞÅºÅ
+  reg           tx_axis_rgmii_handshake = 0; // ÎÕÊÖ³É¹¦Ö¸Ê¾
+  reg  [5:0]    clk_cnt = 0; // ·ÖÆµÊ±ÖÓ¼ÆÊıÆ÷
+  reg           clk_div5_50 = 1; // 10/100MbpsÏÂ 5/50±¶·ÖÆµĞÅºÅ
+  reg           clk90_div5_50 = 0; // 10/100MbpsÏÂ 5/50±¶·ÖÆµĞÅºÅ²¢ÏàÒÆ90¶ÈĞÅºÅ
+  reg           tx_data_en = 0; // ·¢ËÍÊı¾İÓĞĞ§Ö¸Ê¾
+  reg           tx_data_error = 0; // ·¢ËÍÊı¾İ´íÎóÖ¸Ê¾
+  reg           tx_axis_rgmii_tready_ff = 0; // RGMII·¢ËÍ×¼±¸ĞÅºÅ
+  reg  [3:0]    tx_data_msb = 0; // RGMII ·¢ËÍÊı¾İ¸ß 4-bit
+  reg  [3:0]    tx_data_lsb = 4'b1101; // RGMII ·¢ËÍÊı¾İµÍ 4-bit
+  reg           tx_nibble_sw = 0; // 10/100MbpsÏÂ RGMII ·¢ËÍ°ë×Ö½ÚÇĞ»»Ö¸Ê¾
+  reg           tx_nibble_sw_d1 = 0; // ÑÓ³ÙÒ»ÅÄ
+  reg           msb_lsb_flag = 0; // 10/100MbpsÏÂµ±Ç° RGMII  ·¢ËÍ¸ßµÍnibbleÖ¸Ê¾, H-nibble(1), L-nibble(0)
+  reg           bus_status = 0; // ·¢ËÍ×ÜÏß×´Ì¬, ¿ÕÏĞ(0), Ã¦Âµ(1)
+  reg           tx10_100_data_en = 0; // 10/100MbpsÓĞĞ§Êı¾İ·¢ËÍÆÚ¼äÖ¸Ê¾
+  reg           tx10_100_data_en_d1 = 0; // ÑÓ³ÙÒ»ÅÄ
 
 //------------------------------------
 //             User Logic
 //------------------------------------
-// åˆ†é¢‘æ—¶é’Ÿè®¡æ•°å™¨
+// ·ÖÆµÊ±ÖÓ¼ÆÊıÆ÷
   always @ (posedge clk_125mhz)
   begin
     if (reset | (~phy_link_status_txclk))
@@ -65,7 +65,7 @@ module rgmii_tx (
           clk_cnt <= clk_cnt + 6'd1;
       end
   end
-// 10/1000Mbpsä¸‹5/50å€åˆ†é¢‘ä¿¡å·
+// 10/1000MbpsÏÂ5/50±¶·ÖÆµĞÅºÅ
   always @ (posedge clk_125mhz)
   begin
     if (reset | (~phy_link_status_txclk))
@@ -87,31 +87,31 @@ module rgmii_tx (
           clk_div5_50 <= 1'b0;
       end
   end
-// RGMII å‘é€æ•°æ®AXISæ¥å£æ¡æ‰‹æˆåŠŸæŒ‡ç¤º
+// RGMII ·¢ËÍÊı¾İAXIS½Ó¿ÚÎÕÊÖ³É¹¦Ö¸Ê¾
   always @ (posedge clk_125mhz)
   begin
     if (reset)
       tx_axis_rgmii_handshake <= 1'b0;
-    else if (tx_axis_rgmii_tvalid & tx_axis_rgmii_tready_ff) // æ¡æ‰‹æˆåŠŸ
+    else if (tx_axis_rgmii_tvalid & tx_axis_rgmii_tready_ff) // ÎÕÊÖ³É¹¦
       tx_axis_rgmii_handshake <= 1'b1;
     else
       tx_axis_rgmii_handshake <= 1'b0;
   end
-// RGMIIå‘é€æ•°æ®å¯„å­˜
+// RGMII·¢ËÍÊı¾İ¼Ä´æ
   always @ (posedge clk_125mhz)
   begin
     if (reset)
       tx_axis_rgmii_tdata_ff <= {4'b0,4'b1101};
-    else if (tx_axis_rgmii_tvalid & tx_axis_rgmii_tready_ff) // æ›´æ–°å‘é€æ•°æ®
+    else if (tx_axis_rgmii_tvalid & tx_axis_rgmii_tready_ff) // ¸üĞÂ·¢ËÍÊı¾İ
       tx_axis_rgmii_tdata_ff <= tx_axis_rgmii_tdata;
-    else if (tx_nibble_sw) // 10/100Mbps å‘é€é«˜ä½nibble
+    else if (tx_nibble_sw) // 10/100Mbps ·¢ËÍ¸ßµÍnibble
       tx_axis_rgmii_tdata_ff <= {4'b0,tx_axis_rgmii_tdataff[7:4]};
-    else if (!tx10_100_data_en) // é»˜è®¤ä¼ è¾“æ•°æ®
+    else if (!tx10_100_data_en) // Ä¬ÈÏ´«ÊäÊı¾İ
       tx_axis_rgmii_tdata_ff <= {4'b0,1'b1,phy_speed_status_txclk,1'b1};
     else
       tx_axis_rgmii_tdata_ff <= tx_axis_rgmii_tdata_ff;
   end
-// å‘é€æ€»çº¿çŠ¶æ€, ç©ºé—²(0), å¿™ç¢Œ(1)
+// ·¢ËÍ×ÜÏß×´Ì¬, ¿ÕÏĞ(0), Ã¦Âµ(1)
   always @ (posedge clk_125mhz)
   begin
     if (reset)
@@ -120,15 +120,15 @@ module rgmii_tx (
       bus_status <= 1'b1;
     else // 10/100Mbps
       begin
-        if (tx_axis_rgmii_handshake) // æœ‰æ–°æ•°æ®
+        if (tx_axis_rgmii_handshake) // ÓĞĞÂÊı¾İ
           bus_status <= 1'b1;
-        else if (msb_lsb_flag && ((phy_speed_status_txclk[0] && clk_cnt == 6'd3) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd48))) // å‘é€å®Œå½“å‰æ•°æ®, ä¸”æ²¡æœ‰æ–°æ•°æ®å¾…å‘é€
+        else if (msb_lsb_flag && ((phy_speed_status_txclk[0] && clk_cnt == 6'd3) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd48))) // ·¢ËÍÍêµ±Ç°Êı¾İ, ÇÒÃ»ÓĞĞÂÊı¾İ´ı·¢ËÍ
           bus_status <= 1'b0;
         else
           bus_status <= bus_status;
       end
   end
-// RGMIIå‘é€å‡†å¤‡ä¿¡å·
+// RGMII·¢ËÍ×¼±¸ĞÅºÅ
   always @ (posedge clk_125mhz)
   begin
     if (reset || (~phy_link_status_txclk))
@@ -137,13 +137,13 @@ module rgmii_tx (
       tx_axis_rgmii_tready_ff <= 1'b1;
     else // 10/100Mbps
       begin
-        if (tx_axis_rgmii_tvalid && ((!bus_status) | msb_lsb_flag) && ((phy_speed_status_txclk[0] && clk_cnt == 6'd2) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd47))) // 10/100Mbpsä¸‹éè¿ç»­è¾“å…¥å‘é€æ•°æ®æˆ–å‘é€å®Œå½“å‰æ•°æ®, ä¸”è¿˜æœ‰æ•°æ®å¾…å‘é€
+        if (tx_axis_rgmii_tvalid && ((!bus_status) | msb_lsb_flag) && ((phy_speed_status_txclk[0] && clk_cnt == 6'd2) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd47))) // 10/100MbpsÏÂ·ÇÁ¬ĞøÊäÈë·¢ËÍÊı¾İ»ò·¢ËÍÍêµ±Ç°Êı¾İ, ÇÒ»¹ÓĞÊı¾İ´ı·¢ËÍ
           tx_axis_rgmii_tready_ff <= 1'b1;
         else
           tx_axis_rgmii_tready_ff <= 1'b0;
       end
   end
-// å‘é€æ•°æ®æœ‰æ•ˆæŒ‡ç¤º
+// ·¢ËÍÊı¾İÓĞĞ§Ö¸Ê¾
   always @ (posedge clk_125mhz)
   begin
     if (reset)
@@ -152,15 +152,15 @@ module rgmii_tx (
       tx_data_en <= tx_axis_rgmii_handshake;
     else // 10/100Mbps
       begin
-        if (tx_axis_rgmii_handshake | tx_nibble_sw_d1) // æœ‰æ–°æ•°æ® æˆ– å‘é€å®Œä½nibble, å‡†å¤‡å‘é€é«˜nibble
+        if (tx_axis_rgmii_handshake | tx_nibble_sw_d1) // ÓĞĞÂÊı¾İ »ò ·¢ËÍÍêµÍnibble, ×¼±¸·¢ËÍ¸ßnibble
           tx_data_en <= 1'b1;
-        else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd4) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd49)) // å‘å®ŒåŠä¸ªå‘¨æœŸä½¿èƒ½ä¿¡å·, æ¥ç€å‘é€åŠä¸ªå‘¨æœŸé”™è¯¯æŒ‡ç¤ºä¿¡å·
+        else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd4) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd49)) // ·¢Íê°ë¸öÖÜÆÚÊ¹ÄÜĞÅºÅ, ½Ó×Å·¢ËÍ°ë¸öÖÜÆÚ´íÎóÖ¸Ê¾ĞÅºÅ
           tx_data_en <= 1'b0;
         else
           tx_data_en <= tx_data_en;
       end
   end
-// å‘é€æ•°æ®é”™è¯¯æŒ‡ç¤º
+// ·¢ËÍÊı¾İ´íÎóÖ¸Ê¾
   always @ (posedge clk_125mhz)
   begin
     if (reset)
@@ -169,15 +169,15 @@ module rgmii_tx (
       tx_data_error <= 1'b0;
     else // 10/100Mbps
       begin
-        if (tx_axis_rgmii_handshake | tx_nibble_sw_d1) // æœ‰æ–°æ•°æ® æˆ– å‘é€å®Œä½nibble, å‡†å¤‡å‘é€é«˜nibble
+        if (tx_axis_rgmii_handshake | tx_nibble_sw_d1) // ÓĞĞÂÊı¾İ »ò ·¢ËÍÍêµÍnibble, ×¼±¸·¢ËÍ¸ßnibble
           tx_data_error <= 1'b1;
-        else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd2) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd24)) // å‘å®ŒåŠä¸ªå‘¨æœŸä½¿èƒ½ä¿¡å·, æ¥ç€å‘é€åŠä¸ªå‘¨æœŸé”™è¯¯æŒ‡ç¤ºä¿¡å·
+        else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd2) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd24)) // ·¢Íê°ë¸öÖÜÆÚÊ¹ÄÜĞÅºÅ, ½Ó×Å·¢ËÍ°ë¸öÖÜÆÚ´íÎóÖ¸Ê¾ĞÅºÅ
           tx_data_error <= 1'b0;
         else
           tx_data_error <= tx_data_error;
       end
   end
-// 10/100Mbpsä¸‹ RGMII å‘é€åŠå­—èŠ‚åˆ‡æ¢æŒ‡ç¤º
+// 10/100MbpsÏÂ RGMII ·¢ËÍ°ë×Ö½ÚÇĞ»»Ö¸Ê¾
   always @ (posedge clk_125mhz)
   begin
     if (reset)
@@ -196,13 +196,13 @@ module rgmii_tx (
     else
       tx_nibble_sw <= 1'b0;
   end
-// å»¶è¿Ÿä¸€æ‹
+// ÑÓ³ÙÒ»ÅÄ
   always @ (posedge clk_125mhz)
   begin
     tx_nibble_sw_d1 <= tx_nibble_sw;
     tx10_100_data_en_d1 <= tx10_100_data_en;
   end
-// 10/100Mbpsä¸‹å½“å‰ RGMII  å‘é€é«˜ä½nibbleæŒ‡ç¤º, H-nibble(1), L-nibble(0)
+// 10/100MbpsÏÂµ±Ç° RGMII  ·¢ËÍ¸ßµÍnibbleÖ¸Ê¾, H-nibble(1), L-nibble(0)
   always @ (posedge clk_125mhz)
   begin
     if (reset)
@@ -220,14 +220,14 @@ module rgmii_tx (
       msb_lsb_flag <= 1'b0;
   end
 
-// 10/100Mbpsæœ‰æ•ˆæ•°æ®å‘é€æœŸé—´æŒ‡ç¤º
+// 10/100MbpsÓĞĞ§Êı¾İ·¢ËÍÆÚ¼äÖ¸Ê¾
   always @ (posedge clk_125mhz)
   begin
     if (reset)
       tx10_100_data_en <= 1'b0;
     else if (!phy_speed_status_txclk[1]) // 10/100Mbps
       begin
-        if (tx_axis_rgmii_tready_ff | tx_nibble_sw) // æœ‰æ–°æ•°æ® æˆ– å‘é€å®Œä½nibble, å‡†å¤‡å‘é€é«˜nibble
+        if (tx_axis_rgmii_tready_ff | tx_nibble_sw) // ÓĞĞÂÊı¾İ »ò ·¢ËÍÍêµÍnibble, ×¼±¸·¢ËÍ¸ßnibble
         else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd3) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd48))
           tx10_100_data_en <= 1'b0;
         else
@@ -236,17 +236,17 @@ module rgmii_tx (
     else
       tx10_100_data_en <= 1'b0;
   end
-// å‘é€æ•°æ®é«˜nibble
+// ·¢ËÍÊı¾İ¸ßnibble
   always @ (posedge clk_125mhz)
   begin
     if (reset)
       tx_data_msb <= 4'b0;
-    else if (phy_speed_status_txclk[1]) // 1000Mbps ä¸‹åŒæ²¿ä¼ è¾“
+    else if (phy_speed_status_txclk[1]) // 1000Mbps ÏÂË«ÑØ´«Êä
       tx_data_msb <= tx_axis_rgmii_tdata_ff[7:4];
-    else // 10/100Mbps ä¸‹å•æ²¿ä¼ è¾“
+    else // 10/100Mbps ÏÂµ¥ÑØ´«Êä
       tx_data_msb <= tx_axis_rgmii_tdata_ff[3:0];
   end
-// å‘é€æ•°æ®ä½nibble
+// ·¢ËÍÊı¾İµÍnibble
   always @ (posedge clk_125mhz)
   begin
     if (reset || (!phy_link_status_txclk))
