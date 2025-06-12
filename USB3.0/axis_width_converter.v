@@ -1,4 +1,4 @@
-// AXI4-Stream位宽转换模块
+// AXI4-Stream整数倍位宽转换模块
 
 module axis_width_converter #(
   parameter interger S_TDATA_WIDTH = 0, // 1-512 (byte)
