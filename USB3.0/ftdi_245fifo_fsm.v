@@ -1,41 +1,41 @@
 // FT60x驱动模块
 
 module ftdi_245fifo_fsm #(
-  parameter interger TDATA_WIDTH = 0
+  parameter interger FIFO_BUS_WIDTH = 2
 )(
 // FT60x芯片接口
-  input                      usb_clk,
-  output                     usb_rstn,
-  input                      usb_txe_n, // 传输FIFO空指示，低有效
-  input                      usb_rxf_n, // 接收FIFO满指示，只有低电平时才进行读数据
-  output                     usb_wr_n, // 写使能
-  output                     usb_rd_n, // 读使能
-  output                     usb_oe_n, // 数据输出使能
-  input  [TDATA_WIDTH/8-1:0] usb_be_i, // 并行数据字节使能(接收)
-  output [TDATA_WIDTH/8-1:0] usb_be_o, // 并行数据字节使能(发送)
-  output [TDATA_WIDTH/8-1:0] usb_be_t, // 三态输入使能信号, output(0), input(1)
-  input  [TDATA_WIDTH-1:0]   usb_data_i, // 并行数据(接收)
-  output [TDATA_WIDTH-1:0]   usb_data_o, // 并行数据(发送)
-  output [TDATA_WIDTH-1:0]   usb_data_t, // 三态输入使能信号, output(0), input(1)
-  output [1:0]               usb_gpio, // 模式选择
-  output                     usb_siwu_n,
-  output                     usb_wakeup_n,
+  input                          usb_clk,
+  output                         usb_rstn,
+  input                          usb_txe_n, // 传输FIFO空指示，低有效
+  input                          usb_rxf_n, // 接收FIFO满指示，只有低电平时才进行读数据
+  output                         usb_wr_n, // 写使能
+  output                         usb_rd_n, // 读使能
+  output                         usb_oe_n, // 数据输出使能
+  input  [FIFO_BUS_WIDTH-1:0]    usb_be_i, // 并行数据字节使能(接收)
+  output [FIFO_BUS_WIDTH-1:0]    usb_be_o, // 并行数据字节使能(发送)
+  output                         usb_be_t, // 三态输入使能信号, output(0), input(1)
+  input  [FIFO_BUS_WIDTH*8-1:0]  usb_data_i, // 并行数据(接收)
+  output [FIFO_BUS_WIDTH*8-1:0]  usb_data_o, // 并行数据(发送)
+  output                         usb_data_t, // 三态输入使能信号, output(0), input(1)
+  output [1:0]                   usb_gpio, // 模式选择
+  output                         usb_siwu_n,
+  output                         usb_wakeup_n,
 // 内部用户接口
-  input                       rstn_usbclk,
-  input  [TDATA_WIDTH-1:0]    s_axis_tdata,
-  input  [TDATA_WIDTH/8-1:0]  s_axis_tkeep,
-  input                       s_axis_tlast,
-  input  [TDATA_WIDTH/8-1:0]  s_axis_tstrb,
-  input                       s_axis_tvalid,
-  output                      s_axis_tready,
+  input                          rstn_usbclk,
+  input  [FIFO_BUS_WIDTH*8-1:0]  s_axis_tdata,
+  input  [FIFO_BUS_WIDTH-1:0]    s_axis_tkeep,
+  input                          s_axis_tlast,
+  input  [FIFO_BUS_WIDTH-1:0]    s_axis_tstrb,
+  input                          s_axis_tvalid,
+  output                         s_axis_tready,
 
-  output [TDATA_WIDTH-1:0]    m_axis_tdata,
-  output [TDATA_WIDTH/8-1:0]  m_axis_tkeep,
-  output                      m_axis_tlast,
-  output [TDATA_WIDTH/8-1:0]  m_axis_tstrb,
-  output                      m_axis_tvalid,
-  input                       m_axis_tready,
-  input                       almost_full_axis
+  output [FIFO_BUS_WIDTH*8-1:0]  m_axis_tdata,
+  output [FIFO_BUS_WIDTH-1:0]    m_axis_tkeep,
+  output                         m_axis_tlast,
+  output [FIFO_BUS_WIDTH-1:0]    m_axis_tstrb,
+  output                         m_axis_tvalid,
+  input                          m_axis_tready,
+  input                          almost_full_axis
 );
 
 //------------------------------------
@@ -50,24 +50,24 @@ module ftdi_245fifo_fsm #(
 //------------------------------------
 //             Local Signal
 //------------------------------------
-  reg [4:0]                usb_state = S_IDLE;
-  reg [TDATA_WIDTH/8-1:0]  usb_be_i_d1 = 0; // 延迟1拍:并行数据字节使能(接收)
-  reg [TDATA_WIDTH-1:0]    usb_data_i_d1 = 0; // 延迟1拍:并行数据(接收)
+  reg [4:0]                  usb_state = S_IDLE;
+  reg [FIFO_BUS_WIDTH-1:0]   usb_be_i_d1 = 0; // 延迟1拍:并行数据字节使能(接收)
+  reg [FIFO_BUS_WIDTH*8-1:0] usb_data_i_d1 = 0; // 延迟1拍:并行数据(接收)
 
-  reg                      usb_wr_n_ff = 1'b1;
-  reg                      usb_rd_n_ff = 1'b1;
-  reg                      usb_oe_n_ff = 1'b1;
-  reg [TDATA_WIDTH/8-1:0]  usb_be_o_ff = 0;
-  reg                      usb_be_t_ff = 1'b1;
-  reg [TDATA_WIDTH-1:0]    usb_data_o_ff = 0;
-  reg                      usb_data_t_ff = 1'b1;
+  reg                        usb_wr_n_ff = 1'b1;
+  reg                        usb_rd_n_ff = 1'b1;
+  reg                        usb_oe_n_ff = 1'b1;
+  reg [FIFO_BUS_WIDTH-1:0]   usb_be_o_ff = 0;
+  reg                        usb_be_t_ff = 1'b1;
+  reg [FIFO_BUS_WIDTH*8-1:0] usb_data_o_ff = 0;
+  reg                        usb_data_t_ff = 1'b1;
 
-  reg [TDATA_WIDTH-1:0]    m_axis_tdata_ff = 0;
-  reg [TDATA_WIDTH/8-1:0]  m_axis_tkeep_ff = 0;
-  reg                      m_axis_tlast_ff = 0;
-  reg [TDATA_WIDTH/8-1:0]  m_axis_tstrb_ff = 0;
-  reg                      m_axis_tvalid_ff = 0;
-  reg                      s_axis_tready_ff = 0;
+  reg [FIFO_BUS_WIDTH*8-1:0] m_axis_tdata_ff = 0;
+  reg [FIFO_BUS_WIDTH-1:0]   m_axis_tkeep_ff = 0;
+  reg                        m_axis_tlast_ff = 0;
+  reg [FIFO_BUS_WIDTH-1:0]   m_axis_tstrb_ff = 0;
+  reg                        m_axis_tvalid_ff = 0;
+  reg                        s_axis_tready_ff = 0;
 
 //------------------------------------
 //             User Logic
