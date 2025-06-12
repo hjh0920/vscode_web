@@ -6,6 +6,7 @@ module axis_data_fifo #(
   parameter interger FIFO_DEPTH = 2048, // 16-4194304
   parameter string   FIFO_MEMORY_TYPE = "auto", // auto, block, distributed, ultra
   parameter string   PACKET_FIFO = "false", // false, true
+  parameter interger PROG_FULL_THRESH = 10, // Specifies the maximum number of write words in the FIFO at or above which prog_full is asserted, Max_Value = FIFO_DEPTH - 5, Min_Value = 5 + CDC_SYNC_STAGES
   parameter interger RELATED_CLOCKS = 0, // Specifies if the s_aclk and m_aclk are related having the same source but different clock ratios.
   parameter interger TDATA_WIDTH = 0, // 8-2048
   parameter interger TDEST_WIDTH = 0, // 1-32
@@ -23,6 +24,7 @@ module axis_data_fifo #(
   input  [TUSER_WIDTH-1:0]    s_axis_tuser,
   input                       s_axis_tvalid,
   output                      s_axis_tready,
+  output                      almost_full_axis,
 
   input                       m_aclk,
   output [TDATA_WIDTH-1:0]    m_axis_tdata,
@@ -45,7 +47,6 @@ module axis_data_fifo #(
 //             Local Signal
 //------------------------------------
   wire almost_empty_axis;
-  wire almost_full_axis;
   wire dbiterr_axis;
   wire prog_empty_axis;
   wire prog_full_axis;
@@ -75,7 +76,7 @@ module axis_data_fifo #(
     .FIFO_MEMORY_TYPE(FIFO_MEMORY_TYPE),      // String
     .PACKET_FIFO(PACKET_FIFO),          // String
     .PROG_EMPTY_THRESH(5),         // DECIMAL
-    .PROG_FULL_THRESH(10),          // DECIMAL
+    .PROG_FULL_THRESH(PROG_FULL_THRESH),          // DECIMAL
     .RD_DATA_COUNT_WIDTH(RD_DATA_COUNT_WIDTH),        // DECIMAL
     .RELATED_CLOCKS(RELATED_CLOCKS),             // DECIMAL
     .SIM_ASSERT_CHK(0),             // DECIMAL; 0=disable simulation messages, 1=enable simulation messages
