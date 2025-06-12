@@ -42,63 +42,43 @@ module rgmii_rx(
 // RGMII 2.0 支持直接通过 RX_DV & RX_ER & RXD[3:0] 来判断链路状态
   // 当 RX_DV = 0 && RX_ER = 0 时, 通过 RXD[0] 判断链路链接状态
   always @ (posedge rgmii_rxc_bufr)
-  begin
     if ((gmii_rx_dv | gmii_rx_er) == 1'b0)
       link_status <= gmii_rxd[0];
-    else
-      link_status <= link_status;
-  end
+
   // 当 RX_DV = 0 && RX_ER = 0 时, 通过 RXD[2:1] 判断链路时钟状态
   always @ (posedge rgmii_rxc_bufr)
-  begin
     if ((gmii_rx_dv | gmii_rx_er) == 1'b0)
       clock_speed <= gmii_rxd[2:1];
-    else
-      clock_speed <= clock_speed;
-  end
+
   // 当 RX_DV = 0 && RX_ER = 0 时, 通过 RXD[3] 判断链路单双工状态
   always @ (posedge rgmii_rxc_bufr)
-  begin
     if ((gmii_rx_dv | gmii_rx_er) == 1'b0)
       duplex_status <= gmii_rxd[3];
-    else
-      duplex_status <= duplex_status;
-  end
+
 // 接收数据正确标志
   always @ (posedge rgmii_rxc_bufr)
-  begin
     if (gmii_rx_dv)
     // if (gmii_rx_dv & (~gmii_rx_er))
       gmii_rx_no_error <= 1'b1;
     else
       gmii_rx_no_error <= 1'b0;
-  end
+
 // 寄存正确的数据
   always @ (posedge rgmii_rxc_bufr)
-  begin
     if (gmii_rx_dv)
     // if (gmii_rx_dv & (~gmii_rx_er))
       begin
         gmii_rxd_ff1 <= gmii_rxd;
         gmii_rxd_ff2 <= gmii_rxd_ff1;
       end
-    else
-      begin
-        gmii_rxd_ff1 <= gmii_rxd_ff1;
-        gmii_rxd_ff2 <= gmii_rxd_ff2;
-      end
-  end
+
 // 10&100Mbps下每个周期翻转一次, 用于拼接数据
   always @ (posedge rgmii_rxc_bufr)
-  begin
     if (gmii_rx_no_error)
       nibble_flag <= ~nibble_flag;
-    else
-      nibble_flag <= nibble_flag;
-  end
+
 // 接收数据及有效输出信号生成
   always @ (posedge rgmii_rxc_bufr)
-  begin
     if (link_status & gmii_rx_no_error)
       begin
         if (clock_speed == 2'b10) // 接收时钟为 125MHz, 对应链路速率 1Gbps
@@ -122,7 +102,6 @@ module rgmii_rx(
         rx_axis_rgmii_tdata_ff <= 8'b0;
         rx_axis_rgmii_tvalid_ff <= 1'b0;
       end
-  end
 
 //------------------------------------
 //             Output Port
@@ -188,6 +167,5 @@ generate
     );
   end
 endgenerate
-
 
 endmodule

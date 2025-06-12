@@ -38,14 +38,12 @@ module rgmii_tx (
   reg           msb_lsb_flag = 0; // 10/100Mbps下当前 RGMII  发送高低nibble指示, H-nibble(1), L-nibble(0)
   reg           bus_status = 0; // 发送总线状态, 空闲(0), 忙碌(1)
   reg           tx10_100_data_en = 0; // 10/100Mbps有效数据发送期间指示
-  reg           tx10_100_data_en_d1 = 0; // 延迟一拍
 
 //------------------------------------
 //             User Logic
 //------------------------------------
 // 分频时钟计数器
   always @ (posedge clk_125mhz)
-  begin
     if (reset | (~phy_link_status_txclk))
       clk_cnt <= 6'd0;
     else if (phy_speed_status_txclk[1]) // 1000Mbps
@@ -64,10 +62,9 @@ module rgmii_tx (
         else
           clk_cnt <= clk_cnt + 6'd1;
       end
-  end
+
 // 10/1000Mbps下5/50倍分频信号
   always @ (posedge clk_125mhz)
-  begin
     if (reset | (~phy_link_status_txclk))
       clk_div5_50 <= 1'b1;
     else if (phy_speed_status_txclk[1]) // 1000Mbps
@@ -86,20 +83,18 @@ module rgmii_tx (
         else
           clk_div5_50 <= 1'b0;
       end
-  end
+
 // RGMII 发送数据AXIS接口握手成功指示
   always @ (posedge clk_125mhz)
-  begin
     if (reset)
       tx_axis_rgmii_handshake <= 1'b0;
     else if (tx_axis_rgmii_tvalid & tx_axis_rgmii_tready_ff) // 握手成功
       tx_axis_rgmii_handshake <= 1'b1;
     else
       tx_axis_rgmii_handshake <= 1'b0;
-  end
+
 // RGMII发送数据寄存
   always @ (posedge clk_125mhz)
-  begin
     if (reset)
       tx_axis_rgmii_tdata_ff <= {4'b0,4'b1101};
     else if (tx_axis_rgmii_tvalid & tx_axis_rgmii_tready_ff) // 更新发送数据
@@ -110,10 +105,9 @@ module rgmii_tx (
       tx_axis_rgmii_tdata_ff <= {4'b0,1'b1,phy_speed_status_txclk,1'b1};
     else
       tx_axis_rgmii_tdata_ff <= tx_axis_rgmii_tdata_ff;
-  end
+
 // 发送总线状态, 空闲(0), 忙碌(1)
   always @ (posedge clk_125mhz)
-  begin
     if (reset)
       bus_status <= 1'b0;
     else if (phy_speed_status_txclk[1]) // 1000Mbps
@@ -124,13 +118,10 @@ module rgmii_tx (
           bus_status <= 1'b1;
         else if (msb_lsb_flag && ((phy_speed_status_txclk[0] && clk_cnt == 6'd3) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd48))) // 发送完当前数据, 且没有新数据待发送
           bus_status <= 1'b0;
-        else
-          bus_status <= bus_status;
       end
-  end
+
 // RGMII发送准备信号
   always @ (posedge clk_125mhz)
-  begin
     if (reset || (~phy_link_status_txclk))
       tx_axis_rgmii_tready_ff <= 1'b0;
     else if (phy_speed_status_txclk[1]) // 1000Mbps
@@ -142,10 +133,9 @@ module rgmii_tx (
         else
           tx_axis_rgmii_tready_ff <= 1'b0;
       end
-  end
+
 // 发送数据有效指示
   always @ (posedge clk_125mhz)
-  begin
     if (reset)
       tx_data_en <= 1'b0;
     else if (phy_speed_status_txclk[1]) // 1000Mbps
@@ -156,13 +146,10 @@ module rgmii_tx (
           tx_data_en <= 1'b1;
         else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd4) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd49)) // 发完半个周期使能信号, 接着发送半个周期错误指示信号
           tx_data_en <= 1'b0;
-        else
-          tx_data_en <= tx_data_en;
       end
-  end
+
 // 发送数据错误指示
   always @ (posedge clk_125mhz)
-  begin
     if (reset)
       tx_data_error <= 1'b0;
     else if (phy_speed_status_txclk[1]) // 1000Mbps
@@ -173,13 +160,10 @@ module rgmii_tx (
           tx_data_error <= 1'b1;
         else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd2) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd24)) // 发完半个周期使能信号, 接着发送半个周期错误指示信号
           tx_data_error <= 1'b0;
-        else
-          tx_data_error <= tx_data_error;
       end
-  end
+
 // 10/100Mbps下 RGMII 发送半字节切换指示
   always @ (posedge clk_125mhz)
-  begin
     if (reset)
       tx_nibble_sw <= 1'b0;
     else if (phy_speed_status_txclk[1]) // 1000Mbps
@@ -195,16 +179,12 @@ module rgmii_tx (
       end
     else
       tx_nibble_sw <= 1'b0;
-  end
+
 // 延迟一拍
-  always @ (posedge clk_125mhz)
-  begin
-    tx_nibble_sw_d1 <= tx_nibble_sw;
-    tx10_100_data_en_d1 <= tx10_100_data_en;
-  end
+  always @ (posedge clk_125mhz) tx_nibble_sw_d1 <= tx_nibble_sw;
+
 // 10/100Mbps下当前 RGMII  发送高低nibble指示, H-nibble(1), L-nibble(0)
   always @ (posedge clk_125mhz)
-  begin
     if (reset)
       msb_lsb_flag <= 1'b0;
     else if (phy_speed_status_txclk[1]) // 1000Mbps
@@ -213,16 +193,12 @@ module rgmii_tx (
       begin
         if ((phy_speed_status_txclk[0] && clk_cnt == 6'd4) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd49))
           msb_lsb_flag <= ~msb_lsb_flag;
-        else
-          msb_lsb_flag <= msb_lsb_flag;
       end
     else
       msb_lsb_flag <= 1'b0;
-  end
 
 // 10/100Mbps有效数据发送期间指示
   always @ (posedge clk_125mhz)
-  begin
     if (reset)
       tx10_100_data_en <= 1'b0;
     else if (!phy_speed_status_txclk[1]) // 10/100Mbps
@@ -230,30 +206,26 @@ module rgmii_tx (
         if (tx_axis_rgmii_tready_ff | tx_nibble_sw) // 有新数据 或 发送完低nibble, 准备发送高nibble
         else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd3) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd48))
           tx10_100_data_en <= 1'b0;
-        else
-          tx10_100_data_en <= tx10_100_data_en;
       end
     else
       tx10_100_data_en <= 1'b0;
-  end
+
 // 发送数据高nibble
   always @ (posedge clk_125mhz)
-  begin
     if (reset)
       tx_data_msb <= 4'b0;
     else if (phy_speed_status_txclk[1]) // 1000Mbps 下双沿传输
       tx_data_msb <= tx_axis_rgmii_tdata_ff[7:4];
     else // 10/100Mbps 下单沿传输
       tx_data_msb <= tx_axis_rgmii_tdata_ff[3:0];
-  end
+
 // 发送数据低nibble
   always @ (posedge clk_125mhz)
-  begin
     if (reset || (!phy_link_status_txclk))
       tx_data_lsb <= 4'b1101;
     else
       tx_data_lsb <= tx_axis_rgmii_tdata_ff[3:0];
-  end
+
 //------------------------------------
 //             Output Port
 //------------------------------------
@@ -316,16 +288,15 @@ endgenerate
     .DEST_SYNC_FF(4),   // DECIMAL; range: 2-10
     .INIT_SYNC_FF(0),   // DECIMAL; 0=disable simulation init values, 1=enable simulation init values
     .SIM_ASSERT_CHK(0), // DECIMAL; 0=disable simulation messages, 1=enable simulation messages
-    .SRC_INPUT_REG(1),  // DECIMAL; 0=do not register input, 1=register input
+    .SRC_INPUT_REG(0),  // DECIMAL; 0=do not register input, 1=register input
     .WIDTH(2)           // DECIMAL; range: 1-1024
-  )
-  xpm_cdc_array_single_inst (
-    .dest_out(dest_out), // WIDTH-bit output: src_in synchronized to the destination clock domain. This
+  )phy_speed_status_txclk(
+    .dest_out(phy_speed_status_txclk), // WIDTH-bit output: src_in synchronized to the destination clock domain. This
                           // output is registered.
 
-    .dest_clk(dest_clk), // 1-bit input: Clock signal for the destination clock domain.
-    .src_clk(src_clk),   // 1-bit input: optional; required when SRC_INPUT_REG = 1
-    .src_in(src_in)      // WIDTH-bit input: Input single-bit array to be synchronized to destination clock
+    .dest_clk(clk_125mhz), // 1-bit input: Clock signal for the destination clock domain.
+    .src_clk(1'b0),   // 1-bit input: optional; required when SRC_INPUT_REG = 1
+    .src_in(phy_speed_status)      // WIDTH-bit input: Input single-bit array to be synchronized to destination clock
                           // domain. It is assumed that each bit of the array is unrelated to the others. This
                           // is reflected in the constraints applied to this macro. To transfer a binary value
                           // losslessly across the two clock domains, use the XPM_CDC_GRAY macro instead.
@@ -336,15 +307,14 @@ endgenerate
     .DEST_SYNC_FF(4),   // DECIMAL; range: 2-10
     .INIT_SYNC_FF(0),   // DECIMAL; 0=disable simulation init values, 1=enable simulation init values
     .SIM_ASSERT_CHK(0), // DECIMAL; 0=disable simulation messages, 1=enable simulation messages
-    .SRC_INPUT_REG(1)   // DECIMAL; 0=do not register input, 1=register input
-  )
-  xpm_cdc_single_inst (
-    .dest_out(dest_out), // 1-bit output: src_in synchronized to the destination clock domain. This output is
+    .SRC_INPUT_REG(0)   // DECIMAL; 0=do not register input, 1=register input
+  )phy_link_status_txclk(
+    .dest_out(phy_link_status_txclk), // 1-bit output: src_in synchronized to the destination clock domain. This output is
                           // registered.
 
-    .dest_clk(dest_clk), // 1-bit input: Clock signal for the destination clock domain.
-    .src_clk(src_clk),   // 1-bit input: optional; required when SRC_INPUT_REG = 1
-    .src_in(src_in)      // 1-bit input: Input signal to be synchronized to dest_clk domain.
+    .dest_clk(clk_125mhz), // 1-bit input: Clock signal for the destination clock domain.
+    .src_clk(1'b0),   // 1-bit input: optional; required when SRC_INPUT_REG = 1
+    .src_in(phy_link_status)      // 1-bit input: Input signal to be synchronized to dest_clk domain.
   );
 
 
