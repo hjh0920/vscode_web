@@ -2670,6 +2670,12 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="XPt_VaVl8rFYHVkyCotQ-50" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://alimg.szlcsc.com/upload/public/product/source/20230109/98BA1E801BE12F52768CB3EEF4A9CD04.jpg;clipPath=inset(34% 1.33% 10.33% 31.67%);" vertex="1" parent="1">
+          <mxGeometry x="1101.35" y="238.5" width="58.98" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="XPt_VaVl8rFYHVkyCotQ-49" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://alimg.szlcsc.com/upload/public/product/source/20230109/98BA1E801BE12F52768CB3EEF4A9CD04.jpg;clipPath=inset(34% 1.33% 10.33% 31.67%);" vertex="1" parent="1">
+          <mxGeometry x="680" y="238.5" width="58.98" height="49" as="geometry" />
+        </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-72" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://alimg.szlcsc.com/upload/public/product/source/20230106/6DF3333F901450469028667F83FA6254.jpg;clipPath=inset(12.33% 9% 13.67% 8.67%);" parent="1" vertex="1">
           <mxGeometry x="-290.26" y="360" width="44.51" height="40" as="geometry" />
         </mxCell>
@@ -3143,7 +3149,7 @@
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-127" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 10px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;传统以太网*1&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;labelBackgroundColor=none;" parent="1" vertex="1">
           <mxGeometry x="-624.09" y="722" width="50" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-132" value="2.0测试平台&lt;font style=&quot;&quot;&gt;多功能通信板第一版&lt;/font&gt;优化点：&lt;div&gt;1、保留1.5测试平台继电器控制功能，替代致远电子的CAN盒、车载以太网转换器以及PWM信号发生器；&lt;/div&gt;&lt;div&gt;2、简化与上位机通信方式，使用1路USB3.0或者1路传统以太网与上位机进行通信；&lt;/div&gt;&lt;div&gt;3、添加SENT、PSI5电路，用于方案验证；&lt;/div&gt;&lt;div&gt;4、预留板间通信IO，后续通过背板与其他板卡进行通信；&lt;/div&gt;&lt;div&gt;5、FPGA采用模块化设计，后续可根据修改模块例化个数来实现通道数增减，提高后续开发效率；&lt;/div&gt;&lt;div&gt;6、 供电可通过背板连接器供电或者单独电源座子供电，这样板卡也可以独立使用。&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontColor=default;" parent="1" vertex="1">
+        <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-132" value="2.0测试平台&lt;font style=&quot;&quot;&gt;多功能通信板第一版&lt;/font&gt;优化点：&lt;div&gt;1、保留1.5测试平台继电器控制功能，替代致远电子的CAN盒、车载以太网转换器以及PWM信号发生器；&lt;/div&gt;&lt;div&gt;2、简化与上位机通信方式，使用1路USB3.0或者1路传统以太网与上位机进行通信；&lt;/div&gt;&lt;div&gt;3、添加SENT、PSI5电路，用于方案验证；&lt;/div&gt;&lt;div&gt;4、预留板间通信IO，后续通过背板与其他板卡进行通信；&lt;/div&gt;&lt;div&gt;5、FPGA采用模块化设计，后续可根据修改模块例化个数来实现通道数增减，提高后续开发效率；&lt;/div&gt;&lt;div&gt;6、供电可通过背板连接器供电或者单独电源座子供电，这样板卡也可以独立使用。&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontColor=default;" parent="1" vertex="1">
           <mxGeometry x="-614.48" y="410" width="580" height="110" as="geometry" />
         </mxCell>
         <mxCell id="FQ7A9Pf7v7ba3PZDAM1t-133" value="2.0测试平台&lt;font style=&quot;&quot;&gt;多功能通信板第二版&lt;/font&gt;优化点：&lt;div&gt;1、取消继电器控制电路，根据所需通道数对应的资源重新进行FPGA选型；&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;2、取消购买核心板方式，自研FPGA核心板；&lt;/span&gt;&lt;/div&gt;&lt;div&gt;3、支持8路PSI5接口；&lt;/div&gt;&lt;div&gt;4、支持9路SENT接口。&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontColor=default;" parent="1" vertex="1">
@@ -3193,30 +3199,27 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="_Qyu2EAt_I4MBeYBOR1W-34" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="813.63" y="340" width="356.37" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="_Qyu2EAt_I4MBeYBOR1W-35" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://alimg.szlcsc.com/upload/public/product/source/20230106/6DF3333F901450469028667F83FA6254.jpg;clipPath=inset(12.33% 9% 13.67% 8.67%);" parent="1" vertex="1">
-          <mxGeometry x="1500" y="669" width="44.51" height="40" as="geometry" />
+          <mxGeometry x="742.98" y="187.5" width="356.37" height="130" as="geometry" />
         </mxCell>
         <mxCell id="_Qyu2EAt_I4MBeYBOR1W-37" value="FPGA核心板&lt;div&gt;（AMD XC7A&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;100T&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;）&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="930" y="370" width="120" height="90" as="geometry" />
+          <mxGeometry x="859.35" y="217.5" width="120" height="90" as="geometry" />
         </mxCell>
         <mxCell id="_Qyu2EAt_I4MBeYBOR1W-61" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;产品&lt;/font&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.car;" parent="1" vertex="1">
           <mxGeometry x="1567" y="391" width="140" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="_Qyu2EAt_I4MBeYBOR1W-87" value="采集卡&lt;font color=&quot;#ff0000&quot;&gt;FPGA版本&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontStyle=1" parent="1" vertex="1">
-          <mxGeometry x="807.63" y="340" width="140" height="30" as="geometry" />
+        <mxCell id="_Qyu2EAt_I4MBeYBOR1W-87" value="采集卡" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="744.98" y="187.5" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-3" value="ADC芯片" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="820" y="380" width="59.48" height="30" as="geometry" />
+          <mxGeometry x="749.35" y="227.5" width="59.48" height="30" as="geometry" />
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-4" value="DAC芯片" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1100" y="380" width="60" height="30" as="geometry" />
+          <mxGeometry x="1029.35" y="227.5" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-26" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=-0.003;entryY=0.185;entryDx=0;entryDy=0;entryPerimeter=0;width=7.7852348993288585;startSize=4.0147651006711405;startWidth=8.799603621458493;endWidth=8.799603621458493;endSize=4.0147651006711405;" edge="1" parent="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="881" y="394.88" as="sourcePoint" />
-            <mxPoint x="930" y="394.88" as="targetPoint" />
+            <mxPoint x="810.35" y="242.38" as="sourcePoint" />
+            <mxPoint x="859.35" y="242.38" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-27" value="SPI" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=8;fontStyle=1;labelBackgroundColor=none;" vertex="1" connectable="0" parent="XPt_VaVl8rFYHVkyCotQ-26">
@@ -3226,8 +3229,8 @@
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-28" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=-0.003;entryY=0.185;entryDx=0;entryDy=0;entryPerimeter=0;width=7.7852348993288585;startSize=4.0147651006711405;startWidth=8.799603621458493;endWidth=8.799603621458493;endSize=4.0147651006711405;" edge="1" parent="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="1050" y="394.8" as="sourcePoint" />
-            <mxPoint x="1099" y="394.8" as="targetPoint" />
+            <mxPoint x="979.35" y="242.3" as="sourcePoint" />
+            <mxPoint x="1028.35" y="242.3" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-29" value="SPI" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=8;fontStyle=1;labelBackgroundColor=none;" vertex="1" connectable="0" parent="XPt_VaVl8rFYHVkyCotQ-28">
@@ -3237,8 +3240,8 @@
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-31" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=-0.018;entryY=0.84;entryDx=0;entryDy=0;entryPerimeter=0;width=7.7852348993288585;startSize=4.0147651006711405;startWidth=8.799603621458493;endWidth=8.799603621458493;endSize=4.0147651006711405;" edge="1" parent="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="769.82" y="440" as="sourcePoint" />
-            <mxPoint x="929.6600000000002" y="440.79999999999995" as="targetPoint" />
+            <mxPoint x="699.1700000000001" y="287.5" as="sourcePoint" />
+            <mxPoint x="859.0100000000002" y="288.29999999999995" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-32" value="DIO*48" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=8;fontStyle=1;labelBackgroundColor=none;" vertex="1" connectable="0" parent="XPt_VaVl8rFYHVkyCotQ-31">
@@ -3248,8 +3251,8 @@
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-33" value="" style="shape=flexArrow;endArrow=classic;startArrow=none;html=1;rounded=0;width=7.7852348993288585;startSize=4.0147651006711405;startWidth=8.799603621458493;endWidth=8.799603621458493;endSize=4.0147651006711405;startFill=0;" edge="1" parent="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="771" y="394.8" as="sourcePoint" />
-            <mxPoint x="820" y="395" as="targetPoint" />
+            <mxPoint x="700.35" y="242.3" as="sourcePoint" />
+            <mxPoint x="749.35" y="242.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-34" value="AI*32" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=8;fontStyle=1;labelBackgroundColor=none;" vertex="1" connectable="0" parent="XPt_VaVl8rFYHVkyCotQ-33">
@@ -3259,8 +3262,8 @@
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-35" value="" style="shape=flexArrow;endArrow=block;startArrow=none;html=1;rounded=0;entryX=-0.003;entryY=0.185;entryDx=0;entryDy=0;entryPerimeter=0;width=7.7852348993288585;startSize=4.0147651006711405;startWidth=8.799603621458493;endWidth=8.799603621458493;endSize=4.0147651006711405;startFill=0;" edge="1" parent="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="1160" y="394.9" as="sourcePoint" />
-            <mxPoint x="1209" y="394.9" as="targetPoint" />
+            <mxPoint x="1089.35" y="242.39999999999998" as="sourcePoint" />
+            <mxPoint x="1138.35" y="242.39999999999998" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-36" value="AO*4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=8;fontStyle=1;labelBackgroundColor=none;" vertex="1" connectable="0" parent="XPt_VaVl8rFYHVkyCotQ-35">
@@ -3270,14 +3273,17 @@
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-47" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;width=7.7852348993288585;startSize=4.0147651006711405;startWidth=8.799603621458493;endWidth=8.799603621458493;endSize=4.0147651006711405;" edge="1" parent="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="1050" y="440" as="sourcePoint" />
-            <mxPoint x="1210" y="440" as="targetPoint" />
+            <mxPoint x="979.35" y="287.5" as="sourcePoint" />
+            <mxPoint x="1139.35" y="287.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-48" value="板间通信IO" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=8;fontStyle=1;labelBackgroundColor=none;" vertex="1" connectable="0" parent="XPt_VaVl8rFYHVkyCotQ-47">
           <mxGeometry x="-0.0163" y="1" relative="1" as="geometry">
             <mxPoint y="1" as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="XPt_VaVl8rFYHVkyCotQ-51" value="2.0测试平台&lt;font style=&quot;&quot;&gt;采集卡&lt;/font&gt;：&lt;div&gt;1、&lt;span style=&quot;text-wrap-mode: wrap;&quot;&gt;AI：支持单端32通道或差分16通道输入，单通道采样率250KSPS，分辨率16bits，支持输入范围±0.2/1/5/10V&lt;/span&gt;；&lt;/div&gt;&lt;div&gt;2、&lt;span style=&quot;text-wrap-mode: wrap;&quot;&gt;AO：支持4通道输出，分辨率16bits，输出范围±10V&lt;/span&gt;；&lt;/div&gt;&lt;div&gt;3、&lt;span style=&quot;text-wrap-mode: wrap;&quot;&gt;DIO：支持48路数字量输入/输出&lt;/span&gt;；&lt;/div&gt;&lt;div&gt;4、预留板间通信IO，后续通过背板与其他板卡进行通信；&lt;/div&gt;&lt;div&gt;5、FPGA采用模块化设计，后续可根据修改模块例化个数来实现通道数增减，提高后续开发效率；&lt;/div&gt;&lt;div&gt;6、供电可通过背板连接器供电或者单独电源座子供电，这样板卡也可以独立使用。&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="661" y="340" width="630" height="110" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
