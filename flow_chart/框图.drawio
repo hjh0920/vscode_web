@@ -2670,6 +2670,9 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="XPt_VaVl8rFYHVkyCotQ-56" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://alimg.szlcsc.com/upload/public/product/source/20230109/98BA1E801BE12F52768CB3EEF4A9CD04.jpg;clipPath=inset(34% 1.33% 10.33% 31.67%);" vertex="1" parent="1">
+          <mxGeometry x="-414.94" y="831" width="46.94" height="39" as="geometry" />
+        </mxCell>
         <mxCell id="XPt_VaVl8rFYHVkyCotQ-53" value="" style="shape=image;imageAspect=0;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;image=https://alimg.szlcsc.com/upload/public/product/source/20230106/6DF3333F901450469028667F83FA6254.jpg;clipPath=inset(12.33% 9% 13.67% 8.67%);" vertex="1" parent="1">
           <mxGeometry x="-235.26" y="360" width="44.51" height="40" as="geometry" />
         </mxCell>
