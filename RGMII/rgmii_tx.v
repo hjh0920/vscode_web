@@ -312,11 +312,40 @@ generate
     end
 endgenerate
 
-  xpm_cdc_array_sigle #
+  xpm_cdc_array_single #(
+    .DEST_SYNC_FF(4),   // DECIMAL; range: 2-10
+    .INIT_SYNC_FF(0),   // DECIMAL; 0=disable simulation init values, 1=enable simulation init values
+    .SIM_ASSERT_CHK(0), // DECIMAL; 0=disable simulation messages, 1=enable simulation messages
+    .SRC_INPUT_REG(1),  // DECIMAL; 0=do not register input, 1=register input
+    .WIDTH(2)           // DECIMAL; range: 1-1024
+  )
+  xpm_cdc_array_single_inst (
+    .dest_out(dest_out), // WIDTH-bit output: src_in synchronized to the destination clock domain. This
+                          // output is registered.
 
+    .dest_clk(dest_clk), // 1-bit input: Clock signal for the destination clock domain.
+    .src_clk(src_clk),   // 1-bit input: optional; required when SRC_INPUT_REG = 1
+    .src_in(src_in)      // WIDTH-bit input: Input single-bit array to be synchronized to destination clock
+                          // domain. It is assumed that each bit of the array is unrelated to the others. This
+                          // is reflected in the constraints applied to this macro. To transfer a binary value
+                          // losslessly across the two clock domains, use the XPM_CDC_GRAY macro instead.
 
+  );
 
-  xpm_cdc_single #
+  xpm_cdc_single #(
+    .DEST_SYNC_FF(4),   // DECIMAL; range: 2-10
+    .INIT_SYNC_FF(0),   // DECIMAL; 0=disable simulation init values, 1=enable simulation init values
+    .SIM_ASSERT_CHK(0), // DECIMAL; 0=disable simulation messages, 1=enable simulation messages
+    .SRC_INPUT_REG(1)   // DECIMAL; 0=do not register input, 1=register input
+  )
+  xpm_cdc_single_inst (
+    .dest_out(dest_out), // 1-bit output: src_in synchronized to the destination clock domain. This output is
+                          // registered.
+
+    .dest_clk(dest_clk), // 1-bit input: Clock signal for the destination clock domain.
+    .src_clk(src_clk),   // 1-bit input: optional; required when SRC_INPUT_REG = 1
+    .src_in(src_in)      // 1-bit input: Input signal to be synchronized to dest_clk domain.
+  );
 
 
 endmodule
