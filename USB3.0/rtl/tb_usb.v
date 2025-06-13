@@ -7,7 +7,6 @@ module tb_usb;
 //*************************** Parameters ***************************
   parameter integer  PERIOD_TXCLK = 12;
   parameter integer  PERIOD_RXCLK = 12;
-  parameter integer  PERIOD_USBCLK = 10;
 
   parameter  FIFO_BUS_WIDTH   = 2; // FT600(2Bytes), FT601(4Bytes)
   parameter  S_TDATA_WIDTH    = 4; // 1-512 (byte)
@@ -21,19 +20,21 @@ module tb_usb;
   // 全局异步复位
     reg                          rst_glbl = 1;
   // FT60x芯片接口
-    reg                          usb_clk = 0;
+    wire                         usb_clk;
     wire                         usb_rstn;
-    reg                          usb_txe_n = 1; // 传输FIFO空指示，低有效
-    reg                          usb_rxf_n = 1; // 接收FIFO满指示，只有低电平时才进行读数据
+    wire                         usb_txe_n; // 传输FIFO空指示，低有效
+    wire                         usb_rxf_n; // 接收FIFO满指示，只有低电平时才进行读数据
     wire                         usb_wr_n; // 写使能
     wire                         usb_rd_n; // 读使能
     wire                         usb_oe_n; // 数据输出使能
-    reg  [FIFO_BUS_WIDTH-1:0]    usb_be_i = 0; // 并行数据字节使能(接收)
+    wire [FIFO_BUS_WIDTH-1:0]    usb_be_i = 0; // 并行数据字节使能(接收)
     wire [FIFO_BUS_WIDTH-1:0]    usb_be_o; // 并行数据字节使能(发送)
     wire                         usb_be_t; // 三态输入使能信号, output(0), input(1)
-    reg  [FIFO_BUS_WIDTH*8-1:0]  usb_data_i = 0; // 并行数据(接收)
+    wire                         usb_be;
+    wire [FIFO_BUS_WIDTH*8-1:0]  usb_data_i = 0; // 并行数据(接收)
     wire [FIFO_BUS_WIDTH*8-1:0]  usb_data_o; // 并行数据(发送)
     wire                         usb_data_t; // 三态输入使能信号, output(0), input(1)
+    wire                         usb_data;
     wire [1:0]                   usb_gpio; // 模式选择
     wire                         usb_siwu_n;
     wire                         usb_wakeup_n;
@@ -54,9 +55,13 @@ module tb_usb;
 //*************************** Test Logic ***************************
   always # (PERIOD_TXCLK/2) tx_clk = ~tx_clk;
   always # (PERIOD_RXCLK/2) rx_clk = ~rx_clk;
-  always # (PERIOD_USBCLK/2) usb_clk = ~usb_clk;
 
-//***************************    Task    ***************************
+  assign usb_data_i = usb_data;
+  assign usb_data = usb_data_t ? {{FIFO_BUS_WIDTH*8}{1'bz}} : usb_data_o;
+  assign usb_be_i = usb_be;
+  assign usb_be = usb_be_t ? {{FIFO_BUS_WIDTH}{1'bz}} : usb_be_o;
+
+
   initial
     begin
       #100
@@ -68,7 +73,7 @@ module tb_usb;
     #1000;
     $stop;
     end
-
+//***************************    Task    ***************************
 
 //***************************  Instance  ***************************
 // FT60x驱动模块
@@ -115,6 +120,19 @@ module tb_usb;
     .m_axis_tstrb   (m_axis_tstrb),
     .m_axis_tkeep   (m_axis_tkeep),
     .m_axis_tlast   (m_axis_tlast)
+  );
+
+  tb_ftdi_chip_model #(
+    .CHIP_EW (1)        // FTDI USB chip data width, 0=8bit, 1=16bit, 2=32bit. for FT232H is 0, for FT600 is 1, for FT601 is 2.
+  )ft_600_model(
+    .ftdi_clk    (usb_clk),
+    .ftdi_rxf_n  (usb_rxf_n),
+    .ftdi_txe_n  (usb_txe_n),
+    .ftdi_oe_n   (usb_oe_n),
+    .ftdi_rd_n   (usb_rd_n),
+    .ftdi_wr_n   (usb_wr_n),
+    .ftdi_data   (usb_data),
+    .ftdi_be     (usb_be)
   );
 
 
