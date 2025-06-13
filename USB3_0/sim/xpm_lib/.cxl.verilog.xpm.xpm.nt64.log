@@ -1,0 +1,57 @@
+** Warning: (vlog-159) Mode option -64 is not supported in this context and will be ignored.
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+Start time: 07:03:23 on Apr 28,2024
+vlog -sv -64 -work xpm -f C:\modeltech64_2020.4\vivado2020_lib/xpm/.cxl.verilog.xpm.xpm.nt64.cmf 
+-- Compiling module xpm_cdc_single
+-- Compiling module xpm_cdc_gray
+-- Compiling module xpm_cdc_handshake
+-- Compiling module xpm_cdc_pulse
+-- Compiling module xpm_cdc_array_single
+-- Compiling module xpm_cdc_sync_rst
+-- Compiling module xpm_cdc_async_rst
+-- Compiling module xpm_cdc_low_latency_handshake
+-- Compiling module xpm_fifo_base
+-- Compiling module xpm_fifo_rst
+-- Compiling module xpm_counter_updn
+-- Compiling module xpm_fifo_reg_vec
+-- Compiling module xpm_fifo_reg_bit
+-- Compiling module xpm_reg_pipe_bit
+-- Compiling module xpm_fifo_sync
+-- Compiling module xpm_fifo_async
+-- Compiling module xpm_fifo_axis
+-- Compiling module xpm_fifo_axif
+-- Compiling module xpm_fifo_axil
+-- Compiling module xpm_fifo_axi_reg_slice
+-- Compiling module xpm_fifo_tb
+-- Compiling module xpm_fifo_ex
+-- Compiling module xpm_fifo_gen_dverif
+-- Compiling module xpm_fifo_gen_rng
+-- Compiling module xpm_fifo_gen_dgen
+-- Compiling module xpm_fifo_gen_pctrl
+-- Compiling module xpm_memory_base
+-- Compiling module asym_bwe_bb
+-- Compiling module xpm_memory_dpdistram
+-- Compiling module xpm_memory_dprom
+-- Compiling module xpm_memory_sdpram
+-- Compiling module xpm_memory_spram
+-- Compiling module xpm_memory_sprom
+-- Compiling module xpm_memory_tdpram
+
+Top level modules:
+	xpm_cdc_handshake
+	xpm_cdc_pulse
+	xpm_cdc_array_single
+	xpm_cdc_async_rst
+	xpm_cdc_low_latency_handshake
+	xpm_fifo_axis
+	xpm_fifo_axif
+	xpm_fifo_axil
+	xpm_fifo_tb
+	xpm_memory_dpdistram
+	xpm_memory_dprom
+	xpm_memory_sdpram
+	xpm_memory_spram
+	xpm_memory_sprom
+	xpm_memory_tdpram
+End time: 07:03:23 on Apr 28,2024, Elapsed time: 0:00:00
+Errors: 0, Warnings: 1

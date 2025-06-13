@@ -1,3 +1,3 @@
-# æ·»åŠ æ³¢å½¢
+# Ìí¼Ó²¨ĞÎ
 # add wave *
 add wave /u_ftdi_245fifo/*

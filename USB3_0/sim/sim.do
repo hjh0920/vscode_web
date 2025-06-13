@@ -1,41 +1,41 @@
-# 1. æ¸…é™¤ä¹‹å‰çš„å·¥ä½œ
+# 1. Çå³ıÖ®Ç°µÄ¹¤×÷
 quit -sim
 .main clear
 
-# 2. åˆ›å»ºåº“
+# 2. ´´½¨¿â
 vlib xpm_lib
 vlib xil_defaultlib
 vlib work
 
-# 3. æ˜ å°„åº“
-# éœ€è¦å…ˆå¤åˆ¶ xpmåº“ åˆ° "./xpm_lib" è·¯å¾„ä¸‹, xmpä»¥åŠå„ç§IPåº“åœ¨ modelsim è”åˆ vivado ç”Ÿæˆçš„åº“æ–‡ä»¶å¤¹ä¸‹
+# 3. Ó³Éä¿â
+# ĞèÒªÏÈ¸´ÖÆ xpm¿â µ½ "./xpm_lib" Â·¾¶ÏÂ, xmpÒÔ¼°¸÷ÖÖIP¿âÔÚ modelsim ÁªºÏ vivado Éú³ÉµÄ¿âÎÄ¼ş¼ĞÏÂ
 vmap xpm_lib ./xpm_lib
 vmap xil_defaultlib ./xil_defaultlib
 vmap work ./work
 
-# 4. ç¼–è¯‘ XPM åº“
-# xpmæ–‡ä»¶å­˜æ”¾åœ¨ "./vivado/2020.2/data/ip/xmp" è·¯å¾„ä¸‹, éœ€è¦æå‰å¤åˆ¶åˆ°å½“å‰ç›®å½•ä¸‹
+# 4. ±àÒë XPM ¿â
+# xpmÎÄ¼ş´æ·ÅÔÚ "./vivado/2020.2/data/ip/xmp" Â·¾¶ÏÂ, ĞèÒªÌáÇ°¸´ÖÆµ½µ±Ç°Ä¿Â¼ÏÂ
 vlog -work xpm_lib "./xpm_lib/xpm_fifo.sv"
-# æ·»åŠ å…¶ä»–éœ€è¦çš„ XPM æ–‡ä»¶...
+# Ìí¼ÓÆäËûĞèÒªµÄ XPM ÎÄ¼ş...
 
-# 5. ç¼–è¯‘è®¾è®¡æ–‡ä»¶
+# 5. ±àÒëÉè¼ÆÎÄ¼ş
 vlog -work work +incdir+../rtl ../rtl/*.v
 
-# 6. ç¼–è¯‘Xilinx IPæ ¸ (å¦‚æœæœ‰)
-   # ç¼–è¯‘FIFO IP
+# 6. ±àÒëXilinx IPºË (Èç¹ûÓĞ)
+   # ±àÒëFIFO IP
    # vlog -work xil_defaultlib ../ip/fifo_generator_0/simulation/fifo_generator_0.v
    # vlog -work xil_defaultlib ../ip/fifo_generator_0/simulation/fifo_generator_0_sim_netlist.v
 
-# 7. ç¼–è¯‘ glbl æ¨¡å—
-# glbl æ¨¡å—å­˜æ”¾åœ¨ "./vivado/2020.2/data/verilog/src/glbl.v" è·¯å¾„ä¸‹, éœ€è¦æå‰å¤åˆ¶åˆ°å½“å‰ç›®å½•ä¸‹
+# 7. ±àÒë glbl Ä£¿é
+# glbl Ä£¿é´æ·ÅÔÚ "./vivado/2020.2/data/verilog/src/glbl.v" Â·¾¶ÏÂ, ĞèÒªÌáÇ°¸´ÖÆµ½µ±Ç°Ä¿Â¼ÏÂ
 vlog -work xil_defaultlib ./glbl.v
 
-# 8. å¯åŠ¨ä»¿çœŸ
+# 8. Æô¶¯·ÂÕæ
 vsim -voptargs="+acc" -L xpm_lib -L xil_defaultlib -L work work.tb_usb xil_defaultlib.glbl
 
-# 9. æ·»åŠ æ³¢å½¢
+# 9. Ìí¼Ó²¨ĞÎ
 do wave.do
 
-# 10. è¿è¡Œä»¿çœŸ
+# 10. ÔËĞĞ·ÂÕæ
 run -all
 wave zoom full
