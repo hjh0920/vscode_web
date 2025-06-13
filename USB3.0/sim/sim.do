@@ -15,7 +15,7 @@ vmap work ./work
 
 # 4. 编译 XPM 库
 # xpm文件存放在 "./vivado/2020.2/data/ip/xmp" 路径下, 需要提前复制到当前目录下
-vlog -work xpm_lib ".xpm_lib/xpm_fifo.sv"
+vlog -work xpm_lib "./xpm_lib/xpm_fifo.sv"
 # 添加其他需要的 XPM 文件...
 
 # 5. 编译设计文件
@@ -31,7 +31,7 @@ vlog -work work +incdir+../rtl ../rtl/*.v
 vlog -work xil_defaultlib ./glbl.v
 
 # 8. 启动仿真
-vsim -L xpm_lib -L xil_defaultlib -L work work.top_module xil_defaultlib.glbl
+vsim -voptargs="+acc" -L xpm_lib -L xil_defaultlib -L work work.tb_usb xil_defaultlib.glbl
 
 # 9. 添加波形
 do wave.do
