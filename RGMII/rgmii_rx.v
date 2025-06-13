@@ -1,7 +1,7 @@
-// ±¾Ä£¿éÎªÒÔÌ«Íø RGMII ½ÓÊÕÄ£¿é, Ö§³ÖÁ´Â·×´Ì¬½âÎö, Ö§³Ö´íÎóÊı¾İ¹ıÂË
+// æœ¬æ¨¡å—ä¸ºä»¥å¤ªç½‘ RGMII æ¥æ”¶æ¨¡å—, æ”¯æŒé“¾è·¯çŠ¶æ€è§£æ, æ”¯æŒé”™è¯¯æ•°æ®è¿‡æ»¤
 
 module rgmii_rx(
-  // PHY Ğ¾Æ¬×´Ì¬Ö¸Ê¾
+  // PHY èŠ¯ç‰‡çŠ¶æ€æŒ‡ç¤º
   output      inband_link_status, // up(1), down(0)
   output [1:0]inband_clock_speed, // 125MHz(10), 2.5MHz(01), 2.5MHz(00), reserved(11)
   output      inband_duplex_status, // half-duplex(0), full-duplex(1)
@@ -21,11 +21,10 @@ module rgmii_rx(
   reg        link_status = 0; // up(1), down(0)
   reg  [1:0] clock_speed = 0; // 125MHz(10), 25MHz(01), 2.5MHz(00), reserved(11)
   reg        duplex_status = 0; // half-duplex(0), full-duplex(1)
-  
-  reg        nibble_flag = 0; // 10&100MbpsÏÂÃ¿¸öÖÜÆÚ·­×ªÒ»´Î, ÓÃÓÚÆ´½ÓÊı¾İ
-  reg        gmii_rx_no_error = 0; // ½ÓÊÕÊı¾İÕıÈ·±êÖ¾
-  reg  [7:0] gmii_rxd_ff1 = 0; // ÕıÈ·Êı¾İ¼Ä´æÆ÷1
-  reg  [7:0] gmii_rxd_ff2 = 0; // ÕıÈ·Êı¾İ¼Ä´æÆ÷2
+  reg        nibble_flag = 0; // 10&100Mbpsä¸‹æ¯ä¸ªå‘¨æœŸç¿»è½¬ä¸€æ¬¡, ç”¨äºæ‹¼æ¥æ•°æ®
+  reg        gmii_rx_no_error = 0; // æ¥æ”¶æ•°æ®æ­£ç¡®æ ‡å¿—
+  reg  [7:0] gmii_rxd_ff1 = 0; // æ­£ç¡®æ•°æ®å¯„å­˜å™¨1
+  reg  [7:0] gmii_rxd_ff2 = 0; // æ­£ç¡®æ•°æ®å¯„å­˜å™¨2
   reg  [7:0] rx_axis_rgmii_tdata_ff = 0;
   reg        rx_axis_rgmii_tvalid_ff = 0;
   
@@ -39,23 +38,23 @@ module rgmii_rx(
 //------------------------------------
 //             User Logic
 //------------------------------------
-// RGMII 2.0 Ö§³ÖÖ±½ÓÍ¨¹ı RX_DV & RX_ER & RXD[3:0] À´ÅĞ¶ÏÁ´Â·×´Ì¬
-  // µ± RX_DV = 0 && RX_ER = 0 Ê±, Í¨¹ı RXD[0] ÅĞ¶ÏÁ´Â·Á´½Ó×´Ì¬
+// RGMII 2.0 æ”¯æŒç›´æ¥é€šè¿‡ RX_DV & RX_ER & RXD[3:0] æ¥åˆ¤æ–­é“¾è·¯çŠ¶æ€
+  // å½“ RX_DV = 0 && RX_ER = 0 æ—¶, é€šè¿‡ RXD[0] åˆ¤æ–­é“¾è·¯é“¾æ¥çŠ¶æ€
   always @ (posedge rgmii_rxc_bufr)
     if ((gmii_rx_dv | gmii_rx_er) == 1'b0)
       link_status <= gmii_rxd[0];
 
-  // µ± RX_DV = 0 && RX_ER = 0 Ê±, Í¨¹ı RXD[2:1] ÅĞ¶ÏÁ´Â·Ê±ÖÓ×´Ì¬
+  // å½“ RX_DV = 0 && RX_ER = 0 æ—¶, é€šè¿‡ RXD[2:1] åˆ¤æ–­é“¾è·¯æ—¶é’ŸçŠ¶æ€
   always @ (posedge rgmii_rxc_bufr)
     if ((gmii_rx_dv | gmii_rx_er) == 1'b0)
       clock_speed <= gmii_rxd[2:1];
 
-  // µ± RX_DV = 0 && RX_ER = 0 Ê±, Í¨¹ı RXD[3] ÅĞ¶ÏÁ´Â·µ¥Ë«¹¤×´Ì¬
+  // å½“ RX_DV = 0 && RX_ER = 0 æ—¶, é€šè¿‡ RXD[3] åˆ¤æ–­é“¾è·¯å•åŒå·¥çŠ¶æ€
   always @ (posedge rgmii_rxc_bufr)
     if ((gmii_rx_dv | gmii_rx_er) == 1'b0)
       duplex_status <= gmii_rxd[3];
 
-// ½ÓÊÕÊı¾İÕıÈ·±êÖ¾
+// æ¥æ”¶æ•°æ®æ­£ç¡®æ ‡å¿—
   always @ (posedge rgmii_rxc_bufr)
     if (gmii_rx_dv)
     // if (gmii_rx_dv & (~gmii_rx_er))
@@ -63,7 +62,7 @@ module rgmii_rx(
     else
       gmii_rx_no_error <= 1'b0;
 
-// ¼Ä´æÕıÈ·µÄÊı¾İ
+// å¯„å­˜æ­£ç¡®çš„æ•°æ®
   always @ (posedge rgmii_rxc_bufr)
     if (gmii_rx_dv)
     // if (gmii_rx_dv & (~gmii_rx_er))
@@ -72,21 +71,21 @@ module rgmii_rx(
         gmii_rxd_ff2 <= gmii_rxd_ff1;
       end
 
-// 10&100MbpsÏÂÃ¿¸öÖÜÆÚ·­×ªÒ»´Î, ÓÃÓÚÆ´½ÓÊı¾İ
+// 10&100Mbpsä¸‹æ¯ä¸ªå‘¨æœŸç¿»è½¬ä¸€æ¬¡, ç”¨äºæ‹¼æ¥æ•°æ®
   always @ (posedge rgmii_rxc_bufr)
     if (gmii_rx_no_error)
       nibble_flag <= ~nibble_flag;
 
-// ½ÓÊÕÊı¾İ¼°ÓĞĞ§Êä³öĞÅºÅÉú³É
+// æ¥æ”¶æ•°æ®åŠæœ‰æ•ˆè¾“å‡ºä¿¡å·ç”Ÿæˆ
   always @ (posedge rgmii_rxc_bufr)
     if (link_status & gmii_rx_no_error)
       begin
-        if (clock_speed == 2'b10) // ½ÓÊÕÊ±ÖÓÎª 125MHz, ¶ÔÓ¦Á´Â·ËÙÂÊ 1Gbps
+        if (clock_speed == 2'b10) // æ¥æ”¶æ—¶é’Ÿä¸º 125MHz, å¯¹åº”é“¾è·¯é€Ÿç‡ 1Gbps
           begin
             rx_axis_rgmii_tdata_ff <= gmii_rxd_ff1;
             rx_axis_rgmii_tvalid_ff <= 1'b1;
           end
-        else if (nibble_flag) // ½ÓÊÕÊ±ÖÓÎª 2.5/25MHz, ¶ÔÓ¦Á´Â·ËÙÂÊ 10/100Mbps, ÇÒÒÑ½ÓÊÕÍêÇ°°ë×Ö½ÚÊı¾İ
+        else if (nibble_flag) // æ¥æ”¶æ—¶é’Ÿä¸º 2.5/25MHz, å¯¹åº”é“¾è·¯é€Ÿç‡ 10/100Mbps, ä¸”å·²æ¥æ”¶å®Œå‰åŠå­—èŠ‚æ•°æ®
           begin
             rx_axis_rgmii_tdata_ff <= {gmii_rxd_ff2[3:0],gmii_rxd_ff1[3:0]};
             rx_axis_rgmii_tvalid_ff <= 1'b1;
@@ -97,7 +96,7 @@ module rgmii_rx(
             rx_axis_rgmii_tvalid_ff <= 1'b0;
           end
       end
-    else // Á´Â·¶Ï¿ª »ò ½ÓÊÕÊı¾İ´íÎó
+    else // é“¾è·¯æ–­å¼€ æˆ– æ¥æ”¶æ•°æ®é”™è¯¯
       begin
         rx_axis_rgmii_tdata_ff <= 8'b0;
         rx_axis_rgmii_tvalid_ff <= 1'b0;
