@@ -1,11 +1,11 @@
-// ±¾Ä£¿éÎªÒÔÌ«ÍøRGMII·¢ËÍÄ£¿é, Ö§³ÖËÙÂÊ×ÔÊÊÓ¦
+// æœ¬æ¨¡å—ä¸ºä»¥å¤ªç½‘RGMIIå‘é€æ¨¡å—, æ”¯æŒé€Ÿç‡è‡ªé€‚åº”
 
 module rgmii_tx (
   input         clk_125mhz,
   input         clk90_125mhz,
   input         reset,
   input         reset90,
-  // PHY Ğ¾Æ¬×´Ì¬Ö¸Ê¾
+  // PHY èŠ¯ç‰‡çŠ¶æ€æŒ‡ç¤º
   input         phy_link_status, // up(1), down(0)
   input  [1:0]  phy_speed_status, // 10Mbps(0), 100Mbps(1), 1000Mbps(2)
   // RGMII_TX
@@ -23,26 +23,26 @@ module rgmii_tx (
 //------------------------------------
   wire          phy_link_status_txclk;
   wire [1:0]    phy_speed_status_txclk;
-  reg  [7:0]    tx_axis_rgmii_tdata_ff = 0; // ¼Ä´æĞÅºÅ
-  reg           tx_axis_rgmii_handshake = 0; // ÎÕÊÖ³É¹¦Ö¸Ê¾
-  reg  [5:0]    clk_cnt = 0; // ·ÖÆµÊ±ÖÓ¼ÆÊıÆ÷
-  reg           clk_div5_50 = 1; // 10/100MbpsÏÂ 5/50±¶·ÖÆµĞÅºÅ
-  reg           clk90_div5_50 = 0; // 10/100MbpsÏÂ 5/50±¶·ÖÆµĞÅºÅ²¢ÏàÒÆ90¶ÈĞÅºÅ
-  reg           tx_data_en = 0; // ·¢ËÍÊı¾İÓĞĞ§Ö¸Ê¾
-  reg           tx_data_error = 0; // ·¢ËÍÊı¾İ´íÎóÖ¸Ê¾
-  reg           tx_axis_rgmii_tready_ff = 0; // RGMII·¢ËÍ×¼±¸ĞÅºÅ
-  reg  [3:0]    tx_data_msb = 0; // RGMII ·¢ËÍÊı¾İ¸ß 4-bit
-  reg  [3:0]    tx_data_lsb = 4'b1101; // RGMII ·¢ËÍÊı¾İµÍ 4-bit
-  reg           tx_nibble_sw = 0; // 10/100MbpsÏÂ RGMII ·¢ËÍ°ë×Ö½ÚÇĞ»»Ö¸Ê¾
-  reg           tx_nibble_sw_d1 = 0; // ÑÓ³ÙÒ»ÅÄ
-  reg           msb_lsb_flag = 0; // 10/100MbpsÏÂµ±Ç° RGMII  ·¢ËÍ¸ßµÍnibbleÖ¸Ê¾, H-nibble(1), L-nibble(0)
-  reg           bus_status = 0; // ·¢ËÍ×ÜÏß×´Ì¬, ¿ÕÏĞ(0), Ã¦Âµ(1)
-  reg           tx10_100_data_en = 0; // 10/100MbpsÓĞĞ§Êı¾İ·¢ËÍÆÚ¼äÖ¸Ê¾
+  reg  [7:0]    tx_axis_rgmii_tdata_ff = 0; // å¯„å­˜ä¿¡å·
+  reg           tx_axis_rgmii_handshake = 0; // æ¡æ‰‹æˆåŠŸæŒ‡ç¤º
+  reg  [5:0]    clk_cnt = 0; // åˆ†é¢‘æ—¶é’Ÿè®¡æ•°å™¨
+  reg           clk_div5_50 = 1; // 10/100Mbpsä¸‹ 5/50å€åˆ†é¢‘ä¿¡å·
+  reg           clk90_div5_50 = 0; // 10/100Mbpsä¸‹ 5/50å€åˆ†é¢‘ä¿¡å·å¹¶ç›¸ç§»90åº¦ä¿¡å·
+  reg           tx_data_en = 0; // å‘é€æ•°æ®æœ‰æ•ˆæŒ‡ç¤º
+  reg           tx_data_error = 0; // å‘é€æ•°æ®é”™è¯¯æŒ‡ç¤º
+  reg           tx_axis_rgmii_tready_ff = 0; // RGMIIå‘é€å‡†å¤‡ä¿¡å·
+  reg  [3:0]    tx_data_msb = 0; // RGMII å‘é€æ•°æ®é«˜ 4-bit
+  reg  [3:0]    tx_data_lsb = 4'b1101; // RGMII å‘é€æ•°æ®ä½ 4-bit
+  reg           tx_nibble_sw = 0; // 10/100Mbpsä¸‹ RGMII å‘é€åŠå­—èŠ‚åˆ‡æ¢æŒ‡ç¤º
+  reg           tx_nibble_sw_d1 = 0; // å»¶è¿Ÿä¸€æ‹
+  reg           msb_lsb_flag = 0; // 10/100Mbpsä¸‹å½“å‰ RGMII  å‘é€é«˜ä½nibbleæŒ‡ç¤º, H-nibble(1), L-nibble(0)
+  reg           bus_status = 0; // å‘é€æ€»çº¿çŠ¶æ€, ç©ºé—²(0), å¿™ç¢Œ(1)
+  reg           tx10_100_data_en = 0; // 10/100Mbpsæœ‰æ•ˆæ•°æ®å‘é€æœŸé—´æŒ‡ç¤º
 
 //------------------------------------
 //             User Logic
 //------------------------------------
-// ·ÖÆµÊ±ÖÓ¼ÆÊıÆ÷
+// åˆ†é¢‘æ—¶é’Ÿè®¡æ•°å™¨
   always @ (posedge clk_125mhz)
     if (reset | (~phy_link_status_txclk))
       clk_cnt <= 6'd0;
@@ -63,7 +63,7 @@ module rgmii_tx (
           clk_cnt <= clk_cnt + 6'd1;
       end
 
-// 10/1000MbpsÏÂ5/50±¶·ÖÆµĞÅºÅ
+// 10/1000Mbpsä¸‹5/50å€åˆ†é¢‘ä¿¡å·
   always @ (posedge clk_125mhz)
     if (reset | (~phy_link_status_txclk))
       clk_div5_50 <= 1'b1;
@@ -84,29 +84,29 @@ module rgmii_tx (
           clk_div5_50 <= 1'b0;
       end
 
-// RGMII ·¢ËÍÊı¾İAXIS½Ó¿ÚÎÕÊÖ³É¹¦Ö¸Ê¾
+// RGMII å‘é€æ•°æ®AXISæ¥å£æ¡æ‰‹æˆåŠŸæŒ‡ç¤º
   always @ (posedge clk_125mhz)
     if (reset)
       tx_axis_rgmii_handshake <= 1'b0;
-    else if (tx_axis_rgmii_tvalid & tx_axis_rgmii_tready_ff) // ÎÕÊÖ³É¹¦
+    else if (tx_axis_rgmii_tvalid & tx_axis_rgmii_tready_ff) // æ¡æ‰‹æˆåŠŸ
       tx_axis_rgmii_handshake <= 1'b1;
     else
       tx_axis_rgmii_handshake <= 1'b0;
 
-// RGMII·¢ËÍÊı¾İ¼Ä´æ
+// RGMIIå‘é€æ•°æ®å¯„å­˜
   always @ (posedge clk_125mhz)
     if (reset)
       tx_axis_rgmii_tdata_ff <= {4'b0,4'b1101};
-    else if (tx_axis_rgmii_tvalid & tx_axis_rgmii_tready_ff) // ¸üĞÂ·¢ËÍÊı¾İ
+    else if (tx_axis_rgmii_tvalid & tx_axis_rgmii_tready_ff) // æ›´æ–°å‘é€æ•°æ®
       tx_axis_rgmii_tdata_ff <= tx_axis_rgmii_tdata;
-    else if (tx_nibble_sw) // 10/100Mbps ·¢ËÍ¸ßµÍnibble
+    else if (tx_nibble_sw) // 10/100Mbps å‘é€é«˜ä½nibble
       tx_axis_rgmii_tdata_ff <= {4'b0,tx_axis_rgmii_tdataff[7:4]};
-    else if (!tx10_100_data_en) // Ä¬ÈÏ´«ÊäÊı¾İ
+    else if (!tx10_100_data_en) // é»˜è®¤ä¼ è¾“æ•°æ®
       tx_axis_rgmii_tdata_ff <= {4'b0,1'b1,phy_speed_status_txclk,1'b1};
     else
       tx_axis_rgmii_tdata_ff <= tx_axis_rgmii_tdata_ff;
 
-// ·¢ËÍ×ÜÏß×´Ì¬, ¿ÕÏĞ(0), Ã¦Âµ(1)
+// å‘é€æ€»çº¿çŠ¶æ€, ç©ºé—²(0), å¿™ç¢Œ(1)
   always @ (posedge clk_125mhz)
     if (reset)
       bus_status <= 1'b0;
@@ -114,13 +114,13 @@ module rgmii_tx (
       bus_status <= 1'b1;
     else // 10/100Mbps
       begin
-        if (tx_axis_rgmii_handshake) // ÓĞĞÂÊı¾İ
+        if (tx_axis_rgmii_handshake) // æœ‰æ–°æ•°æ®
           bus_status <= 1'b1;
-        else if (msb_lsb_flag && ((phy_speed_status_txclk[0] && clk_cnt == 6'd3) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd48))) // ·¢ËÍÍêµ±Ç°Êı¾İ, ÇÒÃ»ÓĞĞÂÊı¾İ´ı·¢ËÍ
+        else if (msb_lsb_flag && ((phy_speed_status_txclk[0] && clk_cnt == 6'd3) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd48))) // å‘é€å®Œå½“å‰æ•°æ®, ä¸”æ²¡æœ‰æ–°æ•°æ®å¾…å‘é€
           bus_status <= 1'b0;
       end
 
-// RGMII·¢ËÍ×¼±¸ĞÅºÅ
+// RGMIIå‘é€å‡†å¤‡ä¿¡å·
   always @ (posedge clk_125mhz)
     if (reset || (~phy_link_status_txclk))
       tx_axis_rgmii_tready_ff <= 1'b0;
@@ -128,13 +128,13 @@ module rgmii_tx (
       tx_axis_rgmii_tready_ff <= 1'b1;
     else // 10/100Mbps
       begin
-        if (tx_axis_rgmii_tvalid && ((!bus_status) | msb_lsb_flag) && ((phy_speed_status_txclk[0] && clk_cnt == 6'd2) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd47))) // 10/100MbpsÏÂ·ÇÁ¬ĞøÊäÈë·¢ËÍÊı¾İ»ò·¢ËÍÍêµ±Ç°Êı¾İ, ÇÒ»¹ÓĞÊı¾İ´ı·¢ËÍ
+        if (tx_axis_rgmii_tvalid && ((!bus_status) | msb_lsb_flag) && ((phy_speed_status_txclk[0] && clk_cnt == 6'd2) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd47))) // 10/100Mbpsä¸‹éè¿ç»­è¾“å…¥å‘é€æ•°æ®æˆ–å‘é€å®Œå½“å‰æ•°æ®, ä¸”è¿˜æœ‰æ•°æ®å¾…å‘é€
           tx_axis_rgmii_tready_ff <= 1'b1;
         else
           tx_axis_rgmii_tready_ff <= 1'b0;
       end
 
-// ·¢ËÍÊı¾İÓĞĞ§Ö¸Ê¾
+// å‘é€æ•°æ®æœ‰æ•ˆæŒ‡ç¤º
   always @ (posedge clk_125mhz)
     if (reset)
       tx_data_en <= 1'b0;
@@ -142,13 +142,13 @@ module rgmii_tx (
       tx_data_en <= tx_axis_rgmii_handshake;
     else // 10/100Mbps
       begin
-        if (tx_axis_rgmii_handshake | tx_nibble_sw_d1) // ÓĞĞÂÊı¾İ »ò ·¢ËÍÍêµÍnibble, ×¼±¸·¢ËÍ¸ßnibble
+        if (tx_axis_rgmii_handshake | tx_nibble_sw_d1) // æœ‰æ–°æ•°æ® æˆ– å‘é€å®Œä½nibble, å‡†å¤‡å‘é€é«˜nibble
           tx_data_en <= 1'b1;
-        else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd4) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd49)) // ·¢Íê°ë¸öÖÜÆÚÊ¹ÄÜĞÅºÅ, ½Ó×Å·¢ËÍ°ë¸öÖÜÆÚ´íÎóÖ¸Ê¾ĞÅºÅ
+        else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd4) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd49)) // å‘å®ŒåŠä¸ªå‘¨æœŸä½¿èƒ½ä¿¡å·, æ¥ç€å‘é€åŠä¸ªå‘¨æœŸé”™è¯¯æŒ‡ç¤ºä¿¡å·
           tx_data_en <= 1'b0;
       end
 
-// ·¢ËÍÊı¾İ´íÎóÖ¸Ê¾
+// å‘é€æ•°æ®é”™è¯¯æŒ‡ç¤º
   always @ (posedge clk_125mhz)
     if (reset)
       tx_data_error <= 1'b0;
@@ -156,13 +156,13 @@ module rgmii_tx (
       tx_data_error <= 1'b0;
     else // 10/100Mbps
       begin
-        if (tx_axis_rgmii_handshake | tx_nibble_sw_d1) // ÓĞĞÂÊı¾İ »ò ·¢ËÍÍêµÍnibble, ×¼±¸·¢ËÍ¸ßnibble
+        if (tx_axis_rgmii_handshake | tx_nibble_sw_d1) // æœ‰æ–°æ•°æ® æˆ– å‘é€å®Œä½nibble, å‡†å¤‡å‘é€é«˜nibble
           tx_data_error <= 1'b1;
-        else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd2) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd24)) // ·¢Íê°ë¸öÖÜÆÚÊ¹ÄÜĞÅºÅ, ½Ó×Å·¢ËÍ°ë¸öÖÜÆÚ´íÎóÖ¸Ê¾ĞÅºÅ
+        else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd2) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd24)) // å‘å®ŒåŠä¸ªå‘¨æœŸä½¿èƒ½ä¿¡å·, æ¥ç€å‘é€åŠä¸ªå‘¨æœŸé”™è¯¯æŒ‡ç¤ºä¿¡å·
           tx_data_error <= 1'b0;
       end
 
-// 10/100MbpsÏÂ RGMII ·¢ËÍ°ë×Ö½ÚÇĞ»»Ö¸Ê¾
+// 10/100Mbpsä¸‹ RGMII å‘é€åŠå­—èŠ‚åˆ‡æ¢æŒ‡ç¤º
   always @ (posedge clk_125mhz)
     if (reset)
       tx_nibble_sw <= 1'b0;
@@ -180,10 +180,10 @@ module rgmii_tx (
     else
       tx_nibble_sw <= 1'b0;
 
-// ÑÓ³ÙÒ»ÅÄ
+// å»¶è¿Ÿä¸€æ‹
   always @ (posedge clk_125mhz) tx_nibble_sw_d1 <= tx_nibble_sw;
 
-// 10/100MbpsÏÂµ±Ç° RGMII  ·¢ËÍ¸ßµÍnibbleÖ¸Ê¾, H-nibble(1), L-nibble(0)
+// 10/100Mbpsä¸‹å½“å‰ RGMII  å‘é€é«˜ä½nibbleæŒ‡ç¤º, H-nibble(1), L-nibble(0)
   always @ (posedge clk_125mhz)
     if (reset)
       msb_lsb_flag <= 1'b0;
@@ -197,29 +197,29 @@ module rgmii_tx (
     else
       msb_lsb_flag <= 1'b0;
 
-// 10/100MbpsÓĞĞ§Êı¾İ·¢ËÍÆÚ¼äÖ¸Ê¾
+// 10/100Mbpsæœ‰æ•ˆæ•°æ®å‘é€æœŸé—´æŒ‡ç¤º
   always @ (posedge clk_125mhz)
     if (reset)
       tx10_100_data_en <= 1'b0;
     else if (!phy_speed_status_txclk[1]) // 10/100Mbps
       begin
-        if (tx_axis_rgmii_tready_ff | tx_nibble_sw) // ÓĞĞÂÊı¾İ »ò ·¢ËÍÍêµÍnibble, ×¼±¸·¢ËÍ¸ßnibble
+        if (tx_axis_rgmii_tready_ff | tx_nibble_sw) // æœ‰æ–°æ•°æ® æˆ– å‘é€å®Œä½nibble, å‡†å¤‡å‘é€é«˜nibble
         else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd3) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd48))
           tx10_100_data_en <= 1'b0;
       end
     else
       tx10_100_data_en <= 1'b0;
 
-// ·¢ËÍÊı¾İ¸ßnibble
+// å‘é€æ•°æ®é«˜nibble
   always @ (posedge clk_125mhz)
     if (reset)
       tx_data_msb <= 4'b0;
-    else if (phy_speed_status_txclk[1]) // 1000Mbps ÏÂË«ÑØ´«Êä
+    else if (phy_speed_status_txclk[1]) // 1000Mbps ä¸‹åŒæ²¿ä¼ è¾“
       tx_data_msb <= tx_axis_rgmii_tdata_ff[7:4];
-    else // 10/100Mbps ÏÂµ¥ÑØ´«Êä
+    else // 10/100Mbps ä¸‹å•æ²¿ä¼ è¾“
       tx_data_msb <= tx_axis_rgmii_tdata_ff[3:0];
 
-// ·¢ËÍÊı¾İµÍnibble
+// å‘é€æ•°æ®ä½nibble
   always @ (posedge clk_125mhz)
     if (reset || (!phy_link_status_txclk))
       tx_data_lsb <= 4'b1101;
@@ -300,7 +300,6 @@ endgenerate
                           // domain. It is assumed that each bit of the array is unrelated to the others. This
                           // is reflected in the constraints applied to this macro. To transfer a binary value
                           // losslessly across the two clock domains, use the XPM_CDC_GRAY macro instead.
-
   );
 
   xpm_cdc_single #(
