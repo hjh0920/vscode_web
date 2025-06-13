@@ -1,11 +1,11 @@
 // FT60x驱动模块
 
 module ftdi_245fifo_top #(
-  parameter string   FTDI_CHIP_TYPE   = "FT600", // FT600(16bits), FT601(32bits)
-  parameter interger S_TDATA_WIDTH    = 0, // 1-512 (byte)
-  parameter interger M_TDATA_WIDTH    = 0, // 1-512 (byte)
-  parameter interger FIFO_DEPTH       = 2048, // 16-4194304
-  parameter interger PROG_FULL_THRESH = 10 // Specifies the maximum number of write words in the FIFO at or above which prog_full is asserted, Max_Value = FIFO_DEPTH - 5, Min_Value = 5 + CDC_SYNC_STAGES
+  parameter  FIFO_BUS_WIDTH   = 2, // FT600(2Bytes), FT601(4Bytes)
+  parameter  S_TDATA_WIDTH    = 0, // 1-512 (byte)
+  parameter  M_TDATA_WIDTH    = 0, // 1-512 (byte)
+  parameter  FIFO_DEPTH       = 2048, // 16-4194304
+  parameter  PROG_FULL_THRESH = 10 // Specifies the maximum number of write words in the FIFO at or above which prog_full is asserted, Max_Value = FIFO_DEPTH - 5, Min_Value = 5 + CDC_SYNC_STAGES
 )(
 // 模块时钟
   input                         tx_clk, // 发送时钟
@@ -20,11 +20,11 @@ module ftdi_245fifo_top #(
   output                        usb_wr_n, // 写使能
   output                        usb_rd_n, // 读使能
   output                        usb_oe_n, // 数据输出使能
-  input  [TDATA_WIDTH/8-1:0]    usb_be_i, // 并行数据字节使能(接收)
-  output [TDATA_WIDTH/8-1:0]    usb_be_o, // 并行数据字节使能(发送)
+  input  [FIFO_BUS_WIDTH-1:0]   usb_be_i, // 并行数据字节使能(接收)
+  output [FIFO_BUS_WIDTH-1:0]   usb_be_o, // 并行数据字节使能(发送)
   output                        usb_be_t, // 三态输入使能信号, output(0), input(1)
-  input  [TDATA_WIDTH-1:0]      usb_data_i, // 并行数据(接收)
-  output [TDATA_WIDTH-1:0]      usb_data_o, // 并行数据(发送)
+  input  [FIFO_BUS_WIDTH*8-1:0] usb_data_i, // 并行数据(接收)
+  output [FIFO_BUS_WIDTH*8-1:0] usb_data_o, // 并行数据(发送)
   output                        usb_data_t, // 三态输入使能信号, output(0), input(1)
   output [1:0]                  usb_gpio, // 模式选择
   output                        usb_siwu_n,
@@ -48,12 +48,11 @@ module ftdi_245fifo_top #(
 //------------------------------------
 //             Local Parameter
 //------------------------------------
-  localparam interger FIFO_BUS_WIDTH = (FTDI_CHIP_TYPE == "FT600") ? 2 : ((FTDI_CHIP_TYPE == "FT601") ? 4 : 2); // Bytes
-  localparam interger CDC_SYNC_STAGES = 2; // 2-8
-  localparam string   CLOCKING_MODE = "independent_clock"; // common_clock, independent_clock
-  localparam string   FIFO_MEMORY_TYPE = "auto"; // auto, block, distributed, ultra
-  localparam string   PACKET_FIFO = "true"; // false, true
-  localparam interger RELATED_CLOCKS = 0; // Specifies if the s_aclk and m_aclk are related having the same source but different clock ratios.
+  localparam  CDC_SYNC_STAGES = 2; // 2-8
+  localparam  CLOCKING_MODE = "independent_clock"; // common_clock, independent_clock
+  localparam  FIFO_MEMORY_TYPE = "auto"; // auto, block, distributed, ultra
+  localparam  PACKET_FIFO = "true"; // false, true
+  localparam  RELATED_CLOCKS = 0; // Specifies if the s_aclk and m_aclk are related having the same source but different clock ratios.
 
 //------------------------------------
 //             Local Signal
@@ -145,17 +144,17 @@ module ftdi_245fifo_top #(
   );
 // 封装 xpm_fifo_axis
   axis_data_fifo #(
-    CDC_SYNC_STAGES       (CDC_SYNC_STAGES), // 2-8
-    CLOCKING_MODE         (CLOCKING_MODE), // common_clock, independent_clock
-    FIFO_DEPTH            (FIFO_DEPTH), // 16-4194304
-    FIFO_MEMORY_TYPE      (FIFO_MEMORY_TYPE), // auto, block, distributed, ultra
-    PACKET_FIFO           (PACKET_FIFO), // false, true
-    PROG_FULL_THRESH      (PROG_FULL_THRESH), // Specifies the maximum number of write words in the FIFO at or above which prog_full is asserted, Max_Value = FIFO_DEPTH - 5, Min_Value = 5 + CDC_SYNC_STAGES
-    RELATED_CLOCKS        (RELATED_CLOCKS), // Specifies if the s_aclk and m_aclk are related having the same source but different clock ratios.
-    TDATA_WIDTH           (FIFO_BUS_WIDTH*8), // 8-2048
-    TDEST_WIDTH           (0), // 1-32
-    TID_WIDTH             (0), // 1-32
-    TUSER_WIDTH           (0) // 1-4096
+    .CDC_SYNC_STAGES      (CDC_SYNC_STAGES), // 2-8
+    .CLOCKING_MODE        (CLOCKING_MODE), // common_clock, independent_clock
+    .FIFO_DEPTH           (FIFO_DEPTH), // 16-4194304
+    .FIFO_MEMORY_TYPE     (FIFO_MEMORY_TYPE), // auto, block, distributed, ultra
+    .PACKET_FIFO          (PACKET_FIFO), // false, true
+    .PROG_FULL_THRESH     (PROG_FULL_THRESH), // Specifies the maximum number of write words in the FIFO at or above which prog_full is asserted, Max_Value = FIFO_DEPTH - 5, Min_Value = 5 + CDC_SYNC_STAGES
+    .RELATED_CLOCKS       (RELATED_CLOCKS), // Specifies if the s_aclk and m_aclk are related having the same source but different clock ratios.
+    .TDATA_WIDTH          (FIFO_BUS_WIDTH*8), // 8-2048
+    .TDEST_WIDTH          (1), // 1-32
+    .TID_WIDTH            (1), // 1-32
+    .TUSER_WIDTH          (1) // 1-4096
   )tx_axis_data_fifo(
     .s_aclk               (tx_clk),
     .s_aresetn            (rstn_txclk),
@@ -222,17 +221,17 @@ ftdi_245fifo_fsm #(
 
 // 封装 xpm_fifo_axis
   axis_data_fifo #(
-    CDC_SYNC_STAGES       (CDC_SYNC_STAGES), // 2-8
-    CLOCKING_MODE         (CLOCKING_MODE), // common_clock, independent_clock
-    FIFO_DEPTH            (FIFO_DEPTH), // 16-4194304
-    FIFO_MEMORY_TYPE      (FIFO_MEMORY_TYPE), // auto, block, distributed, ultra
-    PACKET_FIFO           (PACKET_FIFO), // false, true
-    PROG_FULL_THRESH      (PROG_FULL_THRESH), // Specifies the maximum number of write words in the FIFO at or above which prog_full is asserted, Max_Value = FIFO_DEPTH - 5, Min_Value = 5 + CDC_SYNC_STAGES
-    RELATED_CLOCKS        (RELATED_CLOCKS), // Specifies if the s_aclk and m_aclk are related having the same source but different clock ratios.
-    TDATA_WIDTH           (FIFO_BUS_WIDTH*8), // 8-2048
-    TDEST_WIDTH           (0), // 1-32
-    TID_WIDTH             (0), // 1-32
-    TUSER_WIDTH           (0) // 1-4096
+    .CDC_SYNC_STAGES      (CDC_SYNC_STAGES), // 2-8
+    .CLOCKING_MODE        (CLOCKING_MODE), // common_clock, independent_clock
+    .FIFO_DEPTH           (FIFO_DEPTH), // 16-4194304
+    .FIFO_MEMORY_TYPE     (FIFO_MEMORY_TYPE), // auto, block, distributed, ultra
+    .PACKET_FIFO          (PACKET_FIFO), // false, true
+    .PROG_FULL_THRESH     (PROG_FULL_THRESH), // Specifies the maximum number of write words in the FIFO at or above which prog_full is asserted, Max_Value = FIFO_DEPTH - 5, Min_Value = 5 + CDC_SYNC_STAGES
+    .RELATED_CLOCKS       (RELATED_CLOCKS), // Specifies if the s_aclk and m_aclk are related having the same source but different clock ratios.
+    .TDATA_WIDTH          (FIFO_BUS_WIDTH*8), // 8-2048
+    .TDEST_WIDTH          (1), // 1-32
+    .TID_WIDTH            (1), // 1-32
+    .TUSER_WIDTH          (1) // 1-4096
   )rx_axis_data_fifo(
     .s_aclk               (usb_clk),
     .s_aresetn            (rstn_usbclk),

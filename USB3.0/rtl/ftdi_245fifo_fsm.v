@@ -1,7 +1,7 @@
 // FT60x驱动模块
 
 module ftdi_245fifo_fsm #(
-  parameter interger FIFO_BUS_WIDTH = 2
+  parameter FIFO_BUS_WIDTH = 2
 )(
 // FT60x芯片接口
   input                          usb_clk,
@@ -53,7 +53,9 @@ module ftdi_245fifo_fsm #(
   reg [4:0]                  usb_state = S_IDLE;
   reg [FIFO_BUS_WIDTH-1:0]   usb_be_i_d1 = 0; // 延迟1拍:并行数据字节使能(接收)
   reg [FIFO_BUS_WIDTH*8-1:0] usb_data_i_d1 = 0; // 延迟1拍:并行数据(接收)
-
+  reg [1:0]                  rx_dly_cnt = 0; 
+  reg [1:0]                  tx_dly_cnt = 0; 
+  
   reg                        usb_wr_n_ff = 1'b1;
   reg                        usb_rd_n_ff = 1'b1;
   reg                        usb_oe_n_ff = 1'b1;

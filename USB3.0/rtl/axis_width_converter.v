@@ -1,11 +1,11 @@
 // AXI4-Stream整数倍位宽转换模块
 
 module axis_width_converter #(
-  parameter interger S_TDATA_WIDTH = 0, // 1-512 (byte)
-  parameter interger M_TDATA_WIDTH = 0, // 1-512 (byte)
-  parameter interger TID_WIDTH = 0, // 0-32 (bit)
-  parameter interger TDEST_WIDTH = 0, // 0-32 (bit)
-  parameter interger TUSER_WIDTH_PER_BYTE = 0 // 0-2048 (bit)
+  parameter  S_TDATA_WIDTH = 0, // 1-512 (byte)
+  parameter  M_TDATA_WIDTH = 0, // 1-512 (byte)
+  parameter  TID_WIDTH = 0, // 0-32 (bit)
+  parameter  TDEST_WIDTH = 0, // 0-32 (bit)
+  parameter  TUSER_WIDTH_PER_BYTE = 0 // 0-2048 (bit)
 )(
   input                                           aclk,
   input                                           aresetn,
@@ -51,7 +51,7 @@ generate
     // Local Parameter
       localparam WIDTH_MULTIPLE = M_TDATA_WIDTH/S_TDATA_WIDTH;
     // Local Signal
-      reg [$clogb2(WIDTH_MULTIPLE)-1:0]             cnt = 0;
+      reg [$clog2(WIDTH_MULTIPLE)-1:0]              cnt = 0;
       reg                                           s_axis_tlast_d1 = 0;
       reg                                           refresh = 1; // 用于第一个输出数据更新 tid/tdest 信号
       reg [M_TDATA_WIDTH*8-1:0]                     s_axis_tdata_srl = 0;
@@ -186,7 +186,7 @@ generate
     // Local Parameter
       localparam WIDTH_MULTIPLE = S_TDATA_WIDTH/M_TDATA_WIDTH;
     // Local Signal
-      reg [$clogb2(WIDTH_MULTIPLE)-1:0]             cnt = 0;
+      reg [$clog2(WIDTH_MULTIPLE)-1:0]              cnt = 0;
       reg                                           start_conv = 0; // 复位后开始转换标志
       reg [S_TDATA_WIDTH*8-1:0]                     s_axis_tdata_srl = 0;
       reg [S_TDATA_WIDTH-1:0]                       s_axis_tstrb_srl = 0;
@@ -248,19 +248,19 @@ generate
           end
 
       always @ (posedge aclk)
-        if (m_axis_tvalid_ff && m_axis_tready && (cnt > 0))
+        if (m_axis_tvalid_ff && m_axis_tready && (cnt > 0) && (WIDTH_MULTIPLE > 2))
           begin
-            s_axis_tdata_srl <= {s_axis_tdata_srl[(S_TDATA_WIDTH-2*M_TDATA_WIDTH)*8-1:0],{{2*M_TDATA_WIDTH}{8'b0}}};
-            s_axis_tstrb_srl <= {s_axis_tstrb_srl[(S_TDATA_WIDTH-2*M_TDATA_WIDTH)-1:0],{{2*M_TDATA_WIDTH}{1'b0}}};
-            s_axis_tkeep_srl <= {s_axis_tkeep_srl[(S_TDATA_WIDTH-2*M_TDATA_WIDTH)-1:0],{{2*M_TDATA_WIDTH}{1'b0}}};
-            s_axis_tuser_srl <= {s_axis_tuser_srl[(S_TDATA_WIDTH-2*M_TDATA_WIDTH)-1:0],{{2*M_TDATA_WIDTH}{1'b0}}};
+            s_axis_tdata_srl <= {s_axis_tdata_srl[0 +: (S_TDATA_WIDTH-2*M_TDATA_WIDTH)*8],{{2*M_TDATA_WIDTH}{8'b0}}};
+            s_axis_tstrb_srl <= {s_axis_tstrb_srl[0 +: (S_TDATA_WIDTH-2*M_TDATA_WIDTH)],{{2*M_TDATA_WIDTH}{1'b0}}};
+            s_axis_tkeep_srl <= {s_axis_tkeep_srl[0 +: (S_TDATA_WIDTH-2*M_TDATA_WIDTH)],{{2*M_TDATA_WIDTH}{1'b0}}};
+            // s_axis_tuser_srl <= {s_axis_tuser_srl[0 +: (S_TDATA_WIDTH-2*M_TDATA_WIDTH)],{{2*M_TDATA_WIDTH}{1'b0}}};
           end
         else if (s_axis_tvalid && s_axis_tready_ff)
           begin
             s_axis_tdata_srl <= {s_axis_tdata[(S_TDATA_WIDTH-M_TDATA_WIDTH)*8-1:0],{{M_TDATA_WIDTH}{8'b0}}};
             s_axis_tstrb_srl <= {s_axis_tstrb[(S_TDATA_WIDTH-M_TDATA_WIDTH)-1:0],{{M_TDATA_WIDTH}{1'b0}}};
             s_axis_tkeep_srl <= {s_axis_tkeep[(S_TDATA_WIDTH-M_TDATA_WIDTH)-1:0],{{M_TDATA_WIDTH}{1'b0}}};
-            s_axis_tuser_srl <= {s_axis_tuser[(S_TDATA_WIDTH-M_TDATA_WIDTH)-1:0],{{M_TDATA_WIDTH}{1'b0}}};
+            // s_axis_tuser_srl <= {s_axis_tuser[(S_TDATA_WIDTH-M_TDATA_WIDTH)-1:0],{{M_TDATA_WIDTH}{1'b0}}};
           end
 
       always @ (posedge aclk or negedge aresetn)
@@ -277,19 +277,19 @@ generate
       always @ (posedge aclk)
         if (s_axis_tvalid && s_axis_tready_ff)
           begin
-            m_axis_tdata_ff <= s_axis_tdata[S_TDATA_WIDTH*8-1:-(M_TDATA_WIDTH*8)];
-            m_axis_tstrb_ff <= s_axis_tstrb[S_TDATA_WIDTH-1:-M_TDATA_WIDTH];
-            m_axis_tkeep_ff <= s_axis_tkeep[S_TDATA_WIDTH-1:-M_TDATA_WIDTH];
-            m_axis_tuser_ff <= s_axis_tuser[S_TDATA_WIDTH-1:-M_TDATA_WIDTH];
+            m_axis_tdata_ff <= s_axis_tdata[S_TDATA_WIDTH*8-1 -: (M_TDATA_WIDTH*8)];
+            m_axis_tstrb_ff <= s_axis_tstrb[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
+            m_axis_tkeep_ff <= s_axis_tkeep[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
+            // m_axis_tuser_ff <= s_axis_tuser[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
           end
         else if (cnt > 0)
           begin
-            m_axis_tdata_ff <= s_axis_tdata_srl[S_TDATA_WIDTH*8-1:-(M_TDATA_WIDTH*8)];
-            m_axis_tstrb_ff <= s_axis_tstrb_srl[S_TDATA_WIDTH-1:-M_TDATA_WIDTH];
-            m_axis_tkeep_ff <= s_axis_tkeep_srl[S_TDATA_WIDTH-1:-M_TDATA_WIDTH];
-            m_axis_tuser_ff <= s_axis_tuser_srl[S_TDATA_WIDTH-1:-M_TDATA_WIDTH];
+            m_axis_tdata_ff <= s_axis_tdata_srl[S_TDATA_WIDTH*8-1 -: (M_TDATA_WIDTH*8)];
+            m_axis_tstrb_ff <= s_axis_tstrb_srl[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
+            m_axis_tkeep_ff <= s_axis_tkeep_srl[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
+            // m_axis_tuser_ff <= s_axis_tuser_srl[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
           end
-
+      
       always @ (posedge aclk or negedge aresetn)
         if (!aresetn)
           m_axis_tlast_ff <= 1'b0;

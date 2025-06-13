@@ -1,17 +1,17 @@
 // 封装 xpm_fifo_axis
 
 module axis_data_fifo #(
-  parameter interger CDC_SYNC_STAGES = 2, // 2-8
-  parameter string   CLOCKING_MODE = "common_clock", // common_clock, independent_clock
-  parameter interger FIFO_DEPTH = 2048, // 16-4194304
-  parameter string   FIFO_MEMORY_TYPE = "auto", // auto, block, distributed, ultra
-  parameter string   PACKET_FIFO = "false", // false, true
-  parameter interger PROG_FULL_THRESH = 10, // Specifies the maximum number of write words in the FIFO at or above which prog_full is asserted, Max_Value = FIFO_DEPTH - 5, Min_Value = 5 + CDC_SYNC_STAGES
-  parameter interger RELATED_CLOCKS = 0, // Specifies if the s_aclk and m_aclk are related having the same source but different clock ratios.
-  parameter interger TDATA_WIDTH = 0, // 8-2048
-  parameter interger TDEST_WIDTH = 0, // 1-32
-  parameter interger TID_WIDTH = 0, // 1-32
-  parameter interger TUSER_WIDTH = 0 // 1-4096
+  parameter  CDC_SYNC_STAGES = 2, // 2-8
+  parameter  CLOCKING_MODE = "common_clock", // common_clock, independent_clock
+  parameter  FIFO_DEPTH = 2048, // 16-4194304
+  parameter  FIFO_MEMORY_TYPE = "auto", // auto, block, distributed, ultra
+  parameter  PACKET_FIFO = "false", // false, true
+  parameter  PROG_FULL_THRESH = 10, // Specifies the maximum number of write words in the FIFO at or above which prog_full is asserted, Max_Value = FIFO_DEPTH - 5, Min_Value = 5 + CDC_SYNC_STAGES
+  parameter  RELATED_CLOCKS = 0, // Specifies if the s_aclk and m_aclk are related having the same source but different clock ratios.
+  parameter  TDATA_WIDTH = 0, // 8-2048
+  parameter  TDEST_WIDTH = 0, // 1-32
+  parameter  TID_WIDTH = 0, // 1-32
+  parameter  TUSER_WIDTH = 0 // 1-4096
 )(
   input                       s_aclk,
   input                       s_aresetn,
@@ -41,7 +41,7 @@ module axis_data_fifo #(
 //------------------------------------
 //             Local Parameter
 //------------------------------------
-  localparam RD_DATA_COUNT_WIDTH = $clogb2(FIFO_DEPTH) + 1; // log2(FIFO_DEPTH)+1
+  localparam RD_DATA_COUNT_WIDTH = $clog2(FIFO_DEPTH) + 1; // log2(FIFO_DEPTH)+1
 
 //------------------------------------
 //             Local Signal
