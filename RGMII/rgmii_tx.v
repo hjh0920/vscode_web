@@ -103,8 +103,6 @@ module rgmii_tx (
       tx_axis_rgmii_tdata_ff <= {4'b0,tx_axis_rgmii_tdataff[7:4]};
     else if (!tx10_100_data_en) // 默认传输数据
       tx_axis_rgmii_tdata_ff <= {4'b0,1'b1,phy_speed_status_txclk,1'b1};
-    else
-      tx_axis_rgmii_tdata_ff <= tx_axis_rgmii_tdata_ff;
 
 // 发送总线状态, 空闲(0), 忙碌(1)
   always @ (posedge clk_125mhz)
@@ -204,6 +202,7 @@ module rgmii_tx (
     else if (!phy_speed_status_txclk[1]) // 10/100Mbps
       begin
         if (tx_axis_rgmii_tready_ff | tx_nibble_sw) // 有新数据 或 发送完低nibble, 准备发送高nibble
+          tx10_100_data_en <= 1'b1;
         else if ((phy_speed_status_txclk[0] && clk_cnt == 6'd3) || ((!phy_speed_status_txclk[0]) && clk_cnt == 6'd48))
           tx10_100_data_en <= 1'b0;
       end
@@ -290,7 +289,7 @@ endgenerate
     .SIM_ASSERT_CHK(0), // DECIMAL; 0=disable simulation messages, 1=enable simulation messages
     .SRC_INPUT_REG(0),  // DECIMAL; 0=do not register input, 1=register input
     .WIDTH(2)           // DECIMAL; range: 1-1024
-  )phy_speed_status_txclk(
+  )phy_speed_status_sync(
     .dest_out(phy_speed_status_txclk), // WIDTH-bit output: src_in synchronized to the destination clock domain. This
                           // output is registered.
 
@@ -307,7 +306,7 @@ endgenerate
     .INIT_SYNC_FF(0),   // DECIMAL; 0=disable simulation init values, 1=enable simulation init values
     .SIM_ASSERT_CHK(0), // DECIMAL; 0=disable simulation messages, 1=enable simulation messages
     .SRC_INPUT_REG(0)   // DECIMAL; 0=do not register input, 1=register input
-  )phy_link_status_txclk(
+  )phy_link_status_sync(
     .dest_out(phy_link_status_txclk), // 1-bit output: src_in synchronized to the destination clock domain. This output is
                           // registered.
 
