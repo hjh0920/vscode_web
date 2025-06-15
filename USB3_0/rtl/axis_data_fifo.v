@@ -71,7 +71,6 @@ module axis_data_fifo #(
     .CDC_SYNC_STAGES(CDC_SYNC_STAGES),            // DECIMAL
     .CLOCKING_MODE(CLOCKING_MODE), // String,
     .ECC_MODE("no_ecc"),            // String
-    .EN_SIM_ASSERT_ERR("warning"),  // String
     .FIFO_DEPTH(FIFO_DEPTH),              // DECIMAL
     .FIFO_MEMORY_TYPE(FIFO_MEMORY_TYPE),      // String
     .PACKET_FIFO(PACKET_FIFO),          // String
