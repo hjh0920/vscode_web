@@ -569,3 +569,4 @@ do sim.do
 # Break in Module tb_usb at ../rtl/tb_usb.v line 74
 # 0 ps
 # 1260 ns
+run -all
