@@ -16,82 +16,6 @@
 # C:/modeltech64_2020.4/vivado2020_lib
 # ../ip
 # ../rtl
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
-# Copying C:/modeltech64_2020.4/win64/../modelsim.ini to modelsim.ini
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm_lib 
-# Modifying modelsim.ini
-# ** Error (suppressible): (vmap-19) Failed to access library 'xpm_lib' at "C:/modeltech64_2020.4/vivado2020_lib/xpm_lib".
-# No such file or directory. (errno = ENOENT)
-# Error in macro ./sim.do line 29
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm_lib 
-# Modifying modelsim.ini
-# ** Error (suppressible): (vmap-19) Failed to access library 'xpm_lib' at "C:/modeltech64_2020.4/vivado2020_lib/xpm_lib".
-# No such file or directory. (errno = ENOENT)
-#     while executing
-# "error [FixExecError $msg]"
-#     (procedure "vmap" line 29)
-#     invoked from within
-# "vmap xpm_lib "$VIVADO_LIB_DIR/xpm_lib""
-# ( ModelSim }‰L¿ÂÔÑ/&X(
-file exists "C:/modeltech64_2020.4/vivado2020_lib/xpm_lib"
-# 0
-do sim.do
-# C:/Software/Xilinx/Vivado/2020.1/data
-# C:/modeltech64_2020.4/vivado2020_lib
-# ../ip
-# ../rtl
-# ** Warning: (vlib-34) Library already exists at "unisim".
-# Errors: 0, Warnings: 1
-# ** Warning: (vlib-34) Library already exists at "unimacro".
-# Errors: 0, Warnings: 1
-# ** Warning: (vlib-34) Library already exists at "secureip".
-# Errors: 0, Warnings: 1
-# ** Warning: (vlib-34) Library already exists at "xpm_lib".
-# Errors: 0, Warnings: 1
-# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
-# Errors: 0, Warnings: 1
-# ** Warning: (vlib-34) Library already exists at "work".
-# Errors: 0, Warnings: 1
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm_lib 
-# Modifying modelsim.ini
-# ** Error (suppressible): (vmap-19) Failed to access library 'xpm_lib' at "C:/modeltech64_2020.4/vivado2020_lib/xpm_lib".
-# No such file or directory. (errno = ENOENT)
-# Error in macro ./sim.do line 29
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm_lib 
-# Modifying modelsim.ini
-# ** Error (suppressible): (vmap-19) Failed to access library 'xpm_lib' at "C:/modeltech64_2020.4/vivado2020_lib/xpm_lib".
-# No such file or directory. (errno = ENOENT)
-#     while executing
-# "error [FixExecError $msg]"
-#     (procedure "vmap" line 29)
-#     invoked from within
-# "vmap xpm_lib "$VIVADO_LIB_DIR/xpm_lib""
-do sim.do
-# C:/Software/Xilinx/Vivado/2020.1/data
-# C:/modeltech64_2020.4/vivado2020_lib
-# ../ip
-# ../rtl
 # ** Warning: (vlib-34) Library already exists at "unisim".
 # Errors: 0, Warnings: 1
 # ** Warning: (vlib-34) Library already exists at "unimacro".
@@ -123,16 +47,16 @@ do sim.do
 # vmap work ./work 
 # Modifying modelsim.ini
 # Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
-# Start time: 15:21:01 on Jun 15,2025
+# Start time: 21:42:21 on Jun 15,2025
 # vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
 # -- Compiling module glbl
 # 
 # Top level modules:
 # 	glbl
-# End time: 15:21:01 on Jun 15,2025, Elapsed time: 0:00:00
+# End time: 21:42:21 on Jun 15,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
-# Start time: 15:21:01 on Jun 15,2025
+# Start time: 21:42:22 on Jun 15,2025
 # vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
 # -- Compiling module xpm_fifo_base
 # -- Compiling module xpm_fifo_rst
@@ -153,10 +77,10 @@ do sim.do
 # 	xpm_fifo_axis
 # 	xpm_fifo_axif
 # 	xpm_fifo_axil
-# End time: 15:21:02 on Jun 15,2025, Elapsed time: 0:00:01
+# End time: 21:42:22 on Jun 15,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
-# Start time: 15:21:02 on Jun 15,2025
+# Start time: 21:42:22 on Jun 15,2025
 # vlog -reportprogress 300 -work work ../rtl/axis_data_fifo.v ../rtl/axis_width_converter.v ../rtl/ftdi_245fifo_fsm.v ../rtl/ftdi_245fifo_top.v ../rtl/reset_ctrl.v ../rtl/tb_ftdi_chip_model.v ../rtl/tb_usb.v 
 # -- Compiling module axis_data_fifo
 # -- Compiling module axis_width_converter
@@ -168,104 +92,10 @@ do sim.do
 # 
 # Top level modules:
 # 	tb_usb
-# End time: 15:21:02 on Jun 15,2025, Elapsed time: 0:00:00
+# End time: 21:42:23 on Jun 15,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_usb 
-# Start time: 15:21:03 on Jun 15,2025
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Error (suppressible): ../rtl/axis_data_fifo.v(74): (vopt-2732) Module parameter 'EN_SIM_ASSERT_ERR' not found for override.
-# Optimization failed
-# Error loading design
-# Error: Error loading design
-#        Pausing macro execution
-# MACRO ./sim.do PAUSED at line 45
-do sim.do
-# End time: 15:21:41 on Jun 15,2025, Elapsed time: 0:00:38
-# Errors: 0, Warnings: 0
-# C:/Software/Xilinx/Vivado/2020.1/data
-# C:/modeltech64_2020.4/vivado2020_lib
-# ../ip
-# ../rtl
-# ** Warning: (vlib-34) Library already exists at "unisim".
-# Errors: 0, Warnings: 1
-# ** Warning: (vlib-34) Library already exists at "unimacro".
-# Errors: 0, Warnings: 1
-# ** Warning: (vlib-34) Library already exists at "secureip".
-# Errors: 0, Warnings: 1
-# ** Warning: (vlib-34) Library already exists at "xpm_lib".
-# Errors: 0, Warnings: 1
-# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
-# Errors: 0, Warnings: 1
-# ** Warning: (vlib-34) Library already exists at "work".
-# Errors: 0, Warnings: 1
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap xil_defaultlib ./xil_defaultlib 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
-# vmap work ./work 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
-# Start time: 15:21:42 on Jun 15,2025
-# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
-# -- Compiling module glbl
-# 
-# Top level modules:
-# 	glbl
-# End time: 15:21:42 on Jun 15,2025, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
-# Start time: 15:21:42 on Jun 15,2025
-# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
-# -- Compiling module xpm_fifo_base
-# -- Compiling module xpm_fifo_rst
-# -- Compiling module xpm_counter_updn
-# -- Compiling module xpm_fifo_reg_vec
-# -- Compiling module xpm_fifo_reg_bit
-# -- Compiling module xpm_reg_pipe_bit
-# -- Compiling module xpm_fifo_sync
-# -- Compiling module xpm_fifo_async
-# -- Compiling module xpm_fifo_axis
-# -- Compiling module xpm_fifo_axif
-# -- Compiling module xpm_fifo_axil
-# -- Compiling module xpm_fifo_axi_reg_slice
-# 
-# Top level modules:
-# 	xpm_fifo_sync
-# 	xpm_fifo_async
-# 	xpm_fifo_axis
-# 	xpm_fifo_axif
-# 	xpm_fifo_axil
-# End time: 15:21:43 on Jun 15,2025, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
-# Start time: 15:21:43 on Jun 15,2025
-# vlog -reportprogress 300 -work work ../rtl/axis_data_fifo.v ../rtl/axis_width_converter.v ../rtl/ftdi_245fifo_fsm.v ../rtl/ftdi_245fifo_top.v ../rtl/reset_ctrl.v ../rtl/tb_ftdi_chip_model.v ../rtl/tb_usb.v 
-# -- Compiling module axis_data_fifo
-# -- Compiling module axis_width_converter
-# -- Compiling module ftdi_245fifo_fsm
-# -- Compiling module ftdi_245fifo_top
-# -- Compiling module reset_ctrl
-# -- Compiling module tb_ftdi_chip_model
-# -- Compiling module tb_usb
-# 
-# Top level modules:
-# 	tb_usb
-# End time: 15:21:43 on Jun 15,2025, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_usb 
-# Start time: 15:21:43 on Jun 15,2025
+# Start time: 21:42:23 on Jun 15,2025
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vopt-143) Recognized 1 FSM in module "xpm_fifo_base(fast__1)".
 # ** Note: (vopt-143) Recognized 1 FSM in module "xpm_fifo_base(fast)".
@@ -366,14 +196,34 @@ do sim.do
 #    Time: 0 ps  Iteration: 0  Instance: /tb_usb/ft_600_model File: ../rtl/tb_usb.v Line: 127
 # ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'ftdi_be'. The port definition is at: ../rtl/tb_ftdi_chip_model.v(21).
 #    Time: 0 ps  Iteration: 0  Instance: /tb_usb/ft_600_model File: ../rtl/tb_usb.v Line: 127
-# ** UI-Msg: (vish-4014) No objects found matching '/u_ftdi_245fifo/*'.
-# Error in macro ./wave.do line 3
-# ** UI-Msg: (vish-4014) No objects found matching '/u_ftdi_245fifo/*'.
-#     while executing
-# "add wave /u_ftdi_245fifo/*"
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: arlen  Hostname: WOWO  ProcessID: 33668
+#           Attempting to use alternate WLF file "./wlftc49fwc".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftc49fwc
+# 1
+# /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_state_named
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Note: $stop    : ../rtl/tb_usb.v(74)
+#    Time: 1200 ns  Iteration: 0  Instance: /tb_usb
+# Break in Module tb_usb at ../rtl/tb_usb.v line 74
+# 0 ps
+# 1260 ns
+run 10us
 do sim.do
-# End time: 15:25:00 on Jun 15,2025, Elapsed time: 0:03:17
-# Errors: 0, Warnings: 17
+# End time: 22:09:55 on Jun 15,2025, Elapsed time: 0:27:32
+# Errors: 0, Warnings: 19
 # C:/Software/Xilinx/Vivado/2020.1/data
 # C:/modeltech64_2020.4/vivado2020_lib
 # ../ip
@@ -409,16 +259,16 @@ do sim.do
 # vmap work ./work 
 # Modifying modelsim.ini
 # Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
-# Start time: 15:25:01 on Jun 15,2025
+# Start time: 22:09:56 on Jun 15,2025
 # vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
 # -- Compiling module glbl
 # 
 # Top level modules:
 # 	glbl
-# End time: 15:25:01 on Jun 15,2025, Elapsed time: 0:00:00
+# End time: 22:09:56 on Jun 15,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
-# Start time: 15:25:01 on Jun 15,2025
+# Start time: 22:09:56 on Jun 15,2025
 # vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
 # -- Compiling module xpm_fifo_base
 # -- Compiling module xpm_fifo_rst
@@ -439,10 +289,10 @@ do sim.do
 # 	xpm_fifo_axis
 # 	xpm_fifo_axif
 # 	xpm_fifo_axil
-# End time: 15:25:01 on Jun 15,2025, Elapsed time: 0:00:00
+# End time: 22:09:56 on Jun 15,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
-# Start time: 15:25:01 on Jun 15,2025
+# Start time: 22:09:56 on Jun 15,2025
 # vlog -reportprogress 300 -work work ../rtl/axis_data_fifo.v ../rtl/axis_width_converter.v ../rtl/ftdi_245fifo_fsm.v ../rtl/ftdi_245fifo_top.v ../rtl/reset_ctrl.v ../rtl/tb_ftdi_chip_model.v ../rtl/tb_usb.v 
 # -- Compiling module axis_data_fifo
 # -- Compiling module axis_width_converter
@@ -453,12 +303,19 @@ do sim.do
 # -- Compiling module tb_usb
 # 
 # Top level modules:
+# 	tb_ftdi_chip_model
 # 	tb_usb
-# End time: 15:25:01 on Jun 15,2025, Elapsed time: 0:00:00
+# End time: 22:09:56 on Jun 15,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_usb 
-# Start time: 15:25:01 on Jun 15,2025
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Start time: 22:09:57 on Jun 15,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in module "xpm_fifo_base(fast__1)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "xpm_fifo_base(fast)".
+# ** Warning: ../rtl/axis_width_converter.v(253): (vopt-2697) End index -1 of part-select into 's_axis_tdata_srl' is out of bounds.
+# ** Warning: ../rtl/axis_width_converter.v(254): (vopt-2697) End index -1 of part-select into 's_axis_tstrb_srl' is out of bounds.
+# ** Warning: ../rtl/axis_width_converter.v(255): (vopt-2697) End index -1 of part-select into 's_axis_tkeep_srl' is out of bounds.
+# ** Note: (vopt-143) Recognized 1 FSM in module "ftdi_245fifo_fsm(fast)".
 # Loading xil_defaultlib.glbl(fast)
 # Loading work.tb_usb(fast)
 # Loading work.ftdi_245fifo_top(fast)
@@ -517,7 +374,6 @@ do sim.do
 # Loading xpm_lib.xpm_cdc_gray(fast__9)
 # Loading xpm_lib.xpm_cdc_single(fast__1)
 # Loading work.axis_width_converter(fast__1)
-# Loading work.tb_ftdi_chip_model(fast)
 # ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
 #    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
 # ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
@@ -548,10 +404,13 @@ do sim.do
 #    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
 # ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
 #    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
-# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (1) for port 'ftdi_data'. The port definition is at: ../rtl/tb_ftdi_chip_model.v(20).
-#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/ft_600_model File: ../rtl/tb_usb.v Line: 127
-# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'ftdi_be'. The port definition is at: ../rtl/tb_ftdi_chip_model.v(21).
-#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/ft_600_model File: ../rtl/tb_usb.v Line: 127
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: arlen  Hostname: WOWO  ProcessID: 33668
+#           Attempting to use alternate WLF file "./wlft3bx5ca".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft3bx5ca
+# 0
+# /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_state_named
 # ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
 #    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
 # ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
@@ -564,9 +423,1220 @@ do sim.do
 #    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
 # ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
 #    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
-# ** Note: $stop    : ../rtl/tb_usb.v(74)
-#    Time: 1200 ns  Iteration: 0  Instance: /tb_usb
-# Break in Module tb_usb at ../rtl/tb_usb.v line 74
+# ** Note: $stop    : ../rtl/tb_usb.v(73)
+#    Time: 51100 ns  Iteration: 0  Instance: /tb_usb
+# Break in Module tb_usb at ../rtl/tb_usb.v line 73
 # 0 ps
-# 1260 ns
-run -all
+# 53655 ns
+do sim.do
+# End time: 22:14:38 on Jun 15,2025, Elapsed time: 0:04:41
+# Errors: 0, Warnings: 17
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../ip
+# ../rtl
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:14:39 on Jun 15,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:14:39 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:14:40 on Jun 15,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:14:40 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:14:40 on Jun 15,2025
+# vlog -reportprogress 300 -work work ../rtl/axis_data_fifo.v ../rtl/axis_width_converter.v ../rtl/ftdi_245fifo_fsm.v ../rtl/ftdi_245fifo_top.v ../rtl/reset_ctrl.v ../rtl/tb_ftdi_chip_model.v ../rtl/tb_usb.v 
+# -- Compiling module axis_data_fifo
+# -- Compiling module axis_width_converter
+# -- Compiling module ftdi_245fifo_fsm
+# -- Compiling module ftdi_245fifo_top
+# -- Compiling module reset_ctrl
+# -- Compiling module tb_ftdi_chip_model
+# -- Compiling module tb_usb
+# 
+# Top level modules:
+# 	tb_ftdi_chip_model
+# 	tb_usb
+# End time: 22:14:40 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_usb 
+# Start time: 22:14:40 on Jun 15,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_usb(fast)
+# Loading work.ftdi_245fifo_top(fast)
+# Loading work.reset_ctrl(fast)
+# Loading sv_std.std
+# Loading xpm_lib.xpm_cdc_async_rst(fast)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__1)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__2)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__3)
+# Loading work.axis_width_converter(fast)
+# Loading work.axis_data_fifo(fast)
+# Loading xpm_lib.xpm_fifo_axis(fast)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast)
+# Loading xpm_lib.xpm_fifo_base(fast)
+# Loading xpm_lib.xpm_fifo_rst(fast)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast)
+# Loading xpm_lib.xpm_counter_updn(fast)
+# Loading xpm_lib.xpm_counter_updn(fast__1)
+# Loading xpm_lib.xpm_counter_updn(fast__2)
+# Loading xpm_lib.xpm_counter_updn(fast__3)
+# Loading xpm_lib.xpm_counter_updn(fast__4)
+# Loading xpm_lib.xpm_counter_updn(fast__5)
+# Loading xpm_lib.xpm_counter_updn(fast__6)
+# Loading xpm_lib.xpm_memory_base(fast)
+# Loading xpm_lib.xpm_cdc_gray(fast)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast)
+# Loading xpm_lib.xpm_cdc_gray(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__1)
+# Loading xpm_lib.xpm_cdc_gray(fast__2)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__2)
+# Loading xpm_lib.xpm_cdc_gray(fast__3)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__3)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast__1)
+# Loading xpm_lib.xpm_counter_updn(fast__7)
+# Loading xpm_lib.xpm_cdc_gray(fast__4)
+# Loading xpm_lib.xpm_cdc_single(fast)
+# Loading work.ftdi_245fifo_fsm(fast)
+# Loading work.axis_data_fifo(fast__1)
+# Loading xpm_lib.xpm_fifo_axis(fast__1)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast__2)
+# Loading xpm_lib.xpm_fifo_base(fast__1)
+# Loading xpm_lib.xpm_fifo_rst(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast__2)
+# Loading xpm_lib.xpm_counter_updn(fast__8)
+# Loading xpm_lib.xpm_counter_updn(fast__9)
+# Loading xpm_lib.xpm_counter_updn(fast__10)
+# Loading xpm_lib.xpm_counter_updn(fast__11)
+# Loading xpm_lib.xpm_memory_base(fast__1)
+# Loading xpm_lib.xpm_cdc_gray(fast__5)
+# Loading xpm_lib.xpm_cdc_gray(fast__6)
+# Loading xpm_lib.xpm_cdc_gray(fast__7)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__4)
+# Loading xpm_lib.xpm_cdc_gray(fast__8)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__5)
+# Loading xpm_lib.xpm_cdc_gray(fast__9)
+# Loading xpm_lib.xpm_cdc_single(fast__1)
+# Loading work.axis_width_converter(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_data_fifo.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_data_fifo.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_data_fifo.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_data_fifo.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_data_fifo.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_data_fifo.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (128) does not match connection size (16) for port 's_axis_tdata'. The port definition is at: ../rtl/axis_width_converter.v(15).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (2) for port 's_axis_tstrb'. The port definition is at: ../rtl/axis_width_converter.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (2) for port 's_axis_tkeep'. The port definition is at: ../rtl/axis_width_converter.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: arlen  Hostname: WOWO  ProcessID: 33668
+#           Attempting to use alternate WLF file "./wlftijmqg2".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftijmqg2
+# 0
+# /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_state_named
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Note: $stop    : ../rtl/tb_usb.v(73)
+#    Time: 51100 ns  Iteration: 0  Instance: /tb_usb
+# Break in Module tb_usb at ../rtl/tb_usb.v line 73
+# 0 ps
+# 53655 ns
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/arlen/Desktop/Github/vscode_web/USB3_0/sim/wave1.do
+do sim.do
+# End time: 22:24:02 on Jun 15,2025, Elapsed time: 0:09:22
+# Errors: 0, Warnings: 17
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../ip
+# ../rtl
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:24:03 on Jun 15,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:24:03 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:24:04 on Jun 15,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:24:04 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:24:04 on Jun 15,2025
+# vlog -reportprogress 300 -work work ../rtl/axis_data_fifo.v ../rtl/axis_width_converter.v ../rtl/ftdi_245fifo_fsm.v ../rtl/ftdi_245fifo_top.v ../rtl/reset_ctrl.v ../rtl/tb_ftdi_chip_model.v ../rtl/tb_usb.v 
+# -- Compiling module axis_data_fifo
+# -- Compiling module axis_width_converter
+# -- Compiling module ftdi_245fifo_fsm
+# -- Compiling module ftdi_245fifo_top
+# -- Compiling module reset_ctrl
+# -- Compiling module tb_ftdi_chip_model
+# -- Compiling module tb_usb
+# 
+# Top level modules:
+# 	tb_ftdi_chip_model
+# 	tb_usb
+# End time: 22:24:04 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_usb 
+# Start time: 22:24:04 on Jun 15,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_usb(fast)
+# Loading work.ftdi_245fifo_top(fast)
+# Loading work.reset_ctrl(fast)
+# Loading sv_std.std
+# Loading xpm_lib.xpm_cdc_async_rst(fast)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__1)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__2)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__3)
+# Loading work.axis_width_converter(fast)
+# Loading work.axis_data_fifo(fast)
+# Loading xpm_lib.xpm_fifo_axis(fast)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast)
+# Loading xpm_lib.xpm_fifo_base(fast)
+# Loading xpm_lib.xpm_fifo_rst(fast)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast)
+# Loading xpm_lib.xpm_counter_updn(fast)
+# Loading xpm_lib.xpm_counter_updn(fast__1)
+# Loading xpm_lib.xpm_counter_updn(fast__2)
+# Loading xpm_lib.xpm_counter_updn(fast__3)
+# Loading xpm_lib.xpm_counter_updn(fast__4)
+# Loading xpm_lib.xpm_counter_updn(fast__5)
+# Loading xpm_lib.xpm_counter_updn(fast__6)
+# Loading xpm_lib.xpm_memory_base(fast)
+# Loading xpm_lib.xpm_cdc_gray(fast)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast)
+# Loading xpm_lib.xpm_cdc_gray(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__1)
+# Loading xpm_lib.xpm_cdc_gray(fast__2)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__2)
+# Loading xpm_lib.xpm_cdc_gray(fast__3)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__3)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast__1)
+# Loading xpm_lib.xpm_counter_updn(fast__7)
+# Loading xpm_lib.xpm_cdc_gray(fast__4)
+# Loading xpm_lib.xpm_cdc_single(fast)
+# Loading work.ftdi_245fifo_fsm(fast)
+# Loading work.axis_data_fifo(fast__1)
+# Loading xpm_lib.xpm_fifo_axis(fast__1)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast__2)
+# Loading xpm_lib.xpm_fifo_base(fast__1)
+# Loading xpm_lib.xpm_fifo_rst(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast__2)
+# Loading xpm_lib.xpm_counter_updn(fast__8)
+# Loading xpm_lib.xpm_counter_updn(fast__9)
+# Loading xpm_lib.xpm_counter_updn(fast__10)
+# Loading xpm_lib.xpm_counter_updn(fast__11)
+# Loading xpm_lib.xpm_memory_base(fast__1)
+# Loading xpm_lib.xpm_cdc_gray(fast__5)
+# Loading xpm_lib.xpm_cdc_gray(fast__6)
+# Loading xpm_lib.xpm_cdc_gray(fast__7)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__4)
+# Loading xpm_lib.xpm_cdc_gray(fast__8)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__5)
+# Loading xpm_lib.xpm_cdc_gray(fast__9)
+# Loading xpm_lib.xpm_cdc_single(fast__1)
+# Loading work.axis_width_converter(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_data_fifo.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_data_fifo.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_data_fifo.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_data_fifo.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_data_fifo.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_data_fifo.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (128) does not match connection size (16) for port 's_axis_tdata'. The port definition is at: ../rtl/axis_width_converter.v(15).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (2) for port 's_axis_tstrb'. The port definition is at: ../rtl/axis_width_converter.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (2) for port 's_axis_tkeep'. The port definition is at: ../rtl/axis_width_converter.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# 0
+# /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_state_named
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: arlen  Hostname: WOWO  ProcessID: 33668
+#           Attempting to use alternate WLF file "./wlft21d5q8".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft21d5q8
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Note: $stop    : ../rtl/tb_usb.v(73)
+#    Time: 51100 ns  Iteration: 0  Instance: /tb_usb
+# Break in Module tb_usb at ../rtl/tb_usb.v line 73
+# 0 ps
+# 53655 ns
+do sim.do
+# End time: 22:36:11 on Jun 15,2025, Elapsed time: 0:12:07
+# Errors: 0, Warnings: 17
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../ip
+# ../rtl
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:36:12 on Jun 15,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:36:12 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:36:12 on Jun 15,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:36:12 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:36:12 on Jun 15,2025
+# vlog -reportprogress 300 -work work ../rtl/axis_data_fifo.v ../rtl/axis_width_converter.v ../rtl/ftdi_245fifo_fsm.v ../rtl/ftdi_245fifo_top.v ../rtl/reset_ctrl.v ../rtl/tb_ftdi_chip_model.v ../rtl/tb_usb.v 
+# -- Compiling module axis_data_fifo
+# -- Compiling module axis_width_converter
+# -- Compiling module ftdi_245fifo_fsm
+# -- Compiling module ftdi_245fifo_top
+# -- Compiling module reset_ctrl
+# -- Compiling module tb_ftdi_chip_model
+# -- Compiling module tb_usb
+# 
+# Top level modules:
+# 	tb_ftdi_chip_model
+# 	tb_usb
+# End time: 22:36:12 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_usb 
+# Start time: 22:36:13 on Jun 15,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in module "ftdi_245fifo_fsm(fast)".
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_usb(fast)
+# Loading work.ftdi_245fifo_top(fast)
+# Loading work.reset_ctrl(fast)
+# Loading sv_std.std
+# Loading xpm_lib.xpm_cdc_async_rst(fast)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__1)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__2)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__3)
+# Loading work.axis_width_converter(fast)
+# Loading work.axis_data_fifo(fast)
+# Loading xpm_lib.xpm_fifo_axis(fast)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast)
+# Loading xpm_lib.xpm_fifo_base(fast)
+# Loading xpm_lib.xpm_fifo_rst(fast)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast)
+# Loading xpm_lib.xpm_counter_updn(fast)
+# Loading xpm_lib.xpm_counter_updn(fast__1)
+# Loading xpm_lib.xpm_counter_updn(fast__2)
+# Loading xpm_lib.xpm_counter_updn(fast__3)
+# Loading xpm_lib.xpm_counter_updn(fast__4)
+# Loading xpm_lib.xpm_counter_updn(fast__5)
+# Loading xpm_lib.xpm_counter_updn(fast__6)
+# Loading xpm_lib.xpm_memory_base(fast)
+# Loading xpm_lib.xpm_cdc_gray(fast)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast)
+# Loading xpm_lib.xpm_cdc_gray(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__1)
+# Loading xpm_lib.xpm_cdc_gray(fast__2)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__2)
+# Loading xpm_lib.xpm_cdc_gray(fast__3)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__3)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast__1)
+# Loading xpm_lib.xpm_counter_updn(fast__7)
+# Loading xpm_lib.xpm_cdc_gray(fast__4)
+# Loading xpm_lib.xpm_cdc_single(fast)
+# Loading work.ftdi_245fifo_fsm(fast)
+# Loading work.axis_data_fifo(fast__1)
+# Loading xpm_lib.xpm_fifo_axis(fast__1)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast__2)
+# Loading xpm_lib.xpm_fifo_base(fast__1)
+# Loading xpm_lib.xpm_fifo_rst(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast__2)
+# Loading xpm_lib.xpm_counter_updn(fast__8)
+# Loading xpm_lib.xpm_counter_updn(fast__9)
+# Loading xpm_lib.xpm_counter_updn(fast__10)
+# Loading xpm_lib.xpm_counter_updn(fast__11)
+# Loading xpm_lib.xpm_memory_base(fast__1)
+# Loading xpm_lib.xpm_cdc_gray(fast__5)
+# Loading xpm_lib.xpm_cdc_gray(fast__6)
+# Loading xpm_lib.xpm_cdc_gray(fast__7)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__4)
+# Loading xpm_lib.xpm_cdc_gray(fast__8)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__5)
+# Loading xpm_lib.xpm_cdc_gray(fast__9)
+# Loading xpm_lib.xpm_cdc_single(fast__1)
+# Loading work.axis_width_converter(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_data_fifo.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_data_fifo.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_data_fifo.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_data_fifo.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_data_fifo.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_data_fifo.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (128) does not match connection size (16) for port 's_axis_tdata'. The port definition is at: ../rtl/axis_width_converter.v(15).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (2) for port 's_axis_tstrb'. The port definition is at: ../rtl/axis_width_converter.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (2) for port 's_axis_tkeep'. The port definition is at: ../rtl/axis_width_converter.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# 0
+# /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_state_named
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: arlen  Hostname: WOWO  ProcessID: 33668
+#           Attempting to use alternate WLF file "./wlfttbk42m".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlfttbk42m
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Note: $stop    : ../rtl/tb_usb.v(73)
+#    Time: 51100 ns  Iteration: 0  Instance: /tb_usb
+# Break in Module tb_usb at ../rtl/tb_usb.v line 73
+# 0 ps
+# 53655 ns
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/arlen/Desktop/Github/vscode_web/USB3_0/sim/wave1.do
+do sim.do
+# End time: 22:40:15 on Jun 15,2025, Elapsed time: 0:04:02
+# Errors: 0, Warnings: 17
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../ip
+# ../rtl
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:40:16 on Jun 15,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:40:16 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:40:16 on Jun 15,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:40:17 on Jun 15,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:40:17 on Jun 15,2025
+# vlog -reportprogress 300 -work work ../rtl/axis_data_fifo.v ../rtl/axis_width_converter.v ../rtl/ftdi_245fifo_fsm.v ../rtl/ftdi_245fifo_top.v ../rtl/reset_ctrl.v ../rtl/tb_ftdi_chip_model.v ../rtl/tb_usb.v 
+# -- Compiling module axis_data_fifo
+# -- Compiling module axis_width_converter
+# -- Compiling module ftdi_245fifo_fsm
+# -- Compiling module ftdi_245fifo_top
+# -- Compiling module reset_ctrl
+# -- Compiling module tb_ftdi_chip_model
+# -- Compiling module tb_usb
+# 
+# Top level modules:
+# 	tb_ftdi_chip_model
+# 	tb_usb
+# End time: 22:40:17 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_usb 
+# Start time: 22:40:17 on Jun 15,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in module "ftdi_245fifo_fsm(fast)".
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_usb(fast)
+# Loading work.ftdi_245fifo_top(fast)
+# Loading work.reset_ctrl(fast)
+# Loading sv_std.std
+# Loading xpm_lib.xpm_cdc_async_rst(fast)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__1)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__2)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__3)
+# Loading work.axis_width_converter(fast)
+# Loading work.axis_data_fifo(fast)
+# Loading xpm_lib.xpm_fifo_axis(fast)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast)
+# Loading xpm_lib.xpm_fifo_base(fast)
+# Loading xpm_lib.xpm_fifo_rst(fast)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast)
+# Loading xpm_lib.xpm_counter_updn(fast)
+# Loading xpm_lib.xpm_counter_updn(fast__1)
+# Loading xpm_lib.xpm_counter_updn(fast__2)
+# Loading xpm_lib.xpm_counter_updn(fast__3)
+# Loading xpm_lib.xpm_counter_updn(fast__4)
+# Loading xpm_lib.xpm_counter_updn(fast__5)
+# Loading xpm_lib.xpm_counter_updn(fast__6)
+# Loading xpm_lib.xpm_memory_base(fast)
+# Loading xpm_lib.xpm_cdc_gray(fast)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast)
+# Loading xpm_lib.xpm_cdc_gray(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__1)
+# Loading xpm_lib.xpm_cdc_gray(fast__2)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__2)
+# Loading xpm_lib.xpm_cdc_gray(fast__3)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__3)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast__1)
+# Loading xpm_lib.xpm_counter_updn(fast__7)
+# Loading xpm_lib.xpm_cdc_gray(fast__4)
+# Loading xpm_lib.xpm_cdc_single(fast)
+# Loading work.ftdi_245fifo_fsm(fast)
+# Loading work.axis_data_fifo(fast__1)
+# Loading xpm_lib.xpm_fifo_axis(fast__1)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast__2)
+# Loading xpm_lib.xpm_fifo_base(fast__1)
+# Loading xpm_lib.xpm_fifo_rst(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast__2)
+# Loading xpm_lib.xpm_counter_updn(fast__8)
+# Loading xpm_lib.xpm_counter_updn(fast__9)
+# Loading xpm_lib.xpm_counter_updn(fast__10)
+# Loading xpm_lib.xpm_counter_updn(fast__11)
+# Loading xpm_lib.xpm_memory_base(fast__1)
+# Loading xpm_lib.xpm_cdc_gray(fast__5)
+# Loading xpm_lib.xpm_cdc_gray(fast__6)
+# Loading xpm_lib.xpm_cdc_gray(fast__7)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__4)
+# Loading xpm_lib.xpm_cdc_gray(fast__8)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__5)
+# Loading xpm_lib.xpm_cdc_gray(fast__9)
+# Loading xpm_lib.xpm_cdc_single(fast__1)
+# Loading work.axis_width_converter(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_data_fifo.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_data_fifo.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_data_fifo.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_data_fifo.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_data_fifo.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_data_fifo.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (128) does not match connection size (16) for port 's_axis_tdata'. The port definition is at: ../rtl/axis_width_converter.v(15).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (2) for port 's_axis_tstrb'. The port definition is at: ../rtl/axis_width_converter.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (2) for port 's_axis_tkeep'. The port definition is at: ../rtl/axis_width_converter.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# 0
+# /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_state_named
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: arlen  Hostname: WOWO  ProcessID: 33668
+#           Attempting to use alternate WLF file "./wlftknb1rq".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftknb1rq
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Note: $stop    : ../rtl/tb_usb.v(73)
+#    Time: 51100 ns  Iteration: 0  Instance: /tb_usb
+# Break in Module tb_usb at ../rtl/tb_usb.v line 73
+# 0 ps
+# 53655 ns
+do sim.do
+# End time: 22:52:07 on Jun 15,2025, Elapsed time: 0:11:50
+# Errors: 0, Warnings: 17
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../ip
+# ../rtl
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:52:08 on Jun 15,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:52:08 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:52:08 on Jun 15,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:52:08 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:52:09 on Jun 15,2025
+# vlog -reportprogress 300 -work work ../rtl/axis_data_fifo.v ../rtl/axis_width_converter.v ../rtl/ftdi_245fifo_fsm.v ../rtl/ftdi_245fifo_top.v ../rtl/reset_ctrl.v ../rtl/tb_ftdi_chip_model.v ../rtl/tb_usb.v 
+# -- Compiling module axis_data_fifo
+# -- Compiling module axis_width_converter
+# -- Compiling module ftdi_245fifo_fsm
+# -- Compiling module ftdi_245fifo_top
+# -- Compiling module reset_ctrl
+# -- Compiling module tb_ftdi_chip_model
+# -- Compiling module tb_usb
+# 
+# Top level modules:
+# 	tb_ftdi_chip_model
+# 	tb_usb
+# End time: 22:52:09 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_usb 
+# Start time: 22:52:09 on Jun 15,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_usb(fast)
+# Loading work.ftdi_245fifo_top(fast)
+# Loading work.reset_ctrl(fast)
+# Loading sv_std.std
+# Loading xpm_lib.xpm_cdc_async_rst(fast)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__1)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__2)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__3)
+# Loading work.axis_width_converter(fast)
+# Loading work.axis_data_fifo(fast)
+# Loading xpm_lib.xpm_fifo_axis(fast)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast)
+# Loading xpm_lib.xpm_fifo_base(fast)
+# Loading xpm_lib.xpm_fifo_rst(fast)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast)
+# Loading xpm_lib.xpm_counter_updn(fast)
+# Loading xpm_lib.xpm_counter_updn(fast__1)
+# Loading xpm_lib.xpm_counter_updn(fast__2)
+# Loading xpm_lib.xpm_counter_updn(fast__3)
+# Loading xpm_lib.xpm_counter_updn(fast__4)
+# Loading xpm_lib.xpm_counter_updn(fast__5)
+# Loading xpm_lib.xpm_counter_updn(fast__6)
+# Loading xpm_lib.xpm_memory_base(fast)
+# Loading xpm_lib.xpm_cdc_gray(fast)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast)
+# Loading xpm_lib.xpm_cdc_gray(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__1)
+# Loading xpm_lib.xpm_cdc_gray(fast__2)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__2)
+# Loading xpm_lib.xpm_cdc_gray(fast__3)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__3)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast__1)
+# Loading xpm_lib.xpm_counter_updn(fast__7)
+# Loading xpm_lib.xpm_cdc_gray(fast__4)
+# Loading xpm_lib.xpm_cdc_single(fast)
+# Loading work.ftdi_245fifo_fsm(fast)
+# Loading work.axis_data_fifo(fast__1)
+# Loading xpm_lib.xpm_fifo_axis(fast__1)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast__2)
+# Loading xpm_lib.xpm_fifo_base(fast__1)
+# Loading xpm_lib.xpm_fifo_rst(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast__2)
+# Loading xpm_lib.xpm_counter_updn(fast__8)
+# Loading xpm_lib.xpm_counter_updn(fast__9)
+# Loading xpm_lib.xpm_counter_updn(fast__10)
+# Loading xpm_lib.xpm_counter_updn(fast__11)
+# Loading xpm_lib.xpm_memory_base(fast__1)
+# Loading xpm_lib.xpm_cdc_gray(fast__5)
+# Loading xpm_lib.xpm_cdc_gray(fast__6)
+# Loading xpm_lib.xpm_cdc_gray(fast__7)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__4)
+# Loading xpm_lib.xpm_cdc_gray(fast__8)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__5)
+# Loading xpm_lib.xpm_cdc_gray(fast__9)
+# Loading xpm_lib.xpm_cdc_single(fast__1)
+# Loading work.axis_width_converter(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_data_fifo.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_data_fifo.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_data_fifo.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_data_fifo.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_data_fifo.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_data_fifo.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (128) does not match connection size (16) for port 's_axis_tdata'. The port definition is at: ../rtl/axis_width_converter.v(15).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (2) for port 's_axis_tstrb'. The port definition is at: ../rtl/axis_width_converter.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (2) for port 's_axis_tkeep'. The port definition is at: ../rtl/axis_width_converter.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# 0
+# /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_state_named
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: arlen  Hostname: WOWO  ProcessID: 33668
+#           Attempting to use alternate WLF file "./wlft7mtdz7".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft7mtdz7
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Note: $stop    : ../rtl/tb_usb.v(83)
+#    Time: 51350 ns  Iteration: 0  Instance: /tb_usb
+# Break in Module tb_usb at ../rtl/tb_usb.v line 83
+# 0 ps
+# 53917500 ps
+do sim.do
+# End time: 22:55:27 on Jun 15,2025, Elapsed time: 0:03:18
+# Errors: 0, Warnings: 17
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../ip
+# ../rtl
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:55:28 on Jun 15,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:55:28 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:55:29 on Jun 15,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:55:29 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:55:29 on Jun 15,2025
+# vlog -reportprogress 300 -work work ../rtl/axis_data_fifo.v ../rtl/axis_width_converter.v ../rtl/ftdi_245fifo_fsm.v ../rtl/ftdi_245fifo_top.v ../rtl/reset_ctrl.v ../rtl/tb_ftdi_chip_model.v ../rtl/tb_usb.v 
+# -- Compiling module axis_data_fifo
+# -- Compiling module axis_width_converter
+# -- Compiling module ftdi_245fifo_fsm
+# -- Compiling module ftdi_245fifo_top
+# -- Compiling module reset_ctrl
+# -- Compiling module tb_ftdi_chip_model
+# -- Compiling module tb_usb
+# 
+# Top level modules:
+# 	tb_ftdi_chip_model
+# 	tb_usb
+# End time: 22:55:29 on Jun 15,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_usb 
+# Start time: 22:55:29 on Jun 15,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_usb(fast)
+# Loading work.ftdi_245fifo_top(fast)
+# Loading work.reset_ctrl(fast)
+# Loading sv_std.std
+# Loading xpm_lib.xpm_cdc_async_rst(fast)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__1)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__2)
+# Loading xpm_lib.xpm_cdc_async_rst(fast__3)
+# Loading work.axis_width_converter(fast)
+# Loading work.axis_data_fifo(fast)
+# Loading xpm_lib.xpm_fifo_axis(fast)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast)
+# Loading xpm_lib.xpm_fifo_base(fast)
+# Loading xpm_lib.xpm_fifo_rst(fast)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast)
+# Loading xpm_lib.xpm_counter_updn(fast)
+# Loading xpm_lib.xpm_counter_updn(fast__1)
+# Loading xpm_lib.xpm_counter_updn(fast__2)
+# Loading xpm_lib.xpm_counter_updn(fast__3)
+# Loading xpm_lib.xpm_counter_updn(fast__4)
+# Loading xpm_lib.xpm_counter_updn(fast__5)
+# Loading xpm_lib.xpm_counter_updn(fast__6)
+# Loading xpm_lib.xpm_memory_base(fast)
+# Loading xpm_lib.xpm_cdc_gray(fast)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast)
+# Loading xpm_lib.xpm_cdc_gray(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__1)
+# Loading xpm_lib.xpm_cdc_gray(fast__2)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__2)
+# Loading xpm_lib.xpm_cdc_gray(fast__3)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__3)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast__1)
+# Loading xpm_lib.xpm_counter_updn(fast__7)
+# Loading xpm_lib.xpm_cdc_gray(fast__4)
+# Loading xpm_lib.xpm_cdc_single(fast)
+# Loading work.ftdi_245fifo_fsm(fast)
+# Loading work.axis_data_fifo(fast__1)
+# Loading xpm_lib.xpm_fifo_axis(fast__1)
+# Loading xpm_lib.xpm_cdc_sync_rst(fast__2)
+# Loading xpm_lib.xpm_fifo_base(fast__1)
+# Loading xpm_lib.xpm_fifo_rst(fast__1)
+# Loading xpm_lib.xpm_fifo_reg_bit(fast__2)
+# Loading xpm_lib.xpm_counter_updn(fast__8)
+# Loading xpm_lib.xpm_counter_updn(fast__9)
+# Loading xpm_lib.xpm_counter_updn(fast__10)
+# Loading xpm_lib.xpm_counter_updn(fast__11)
+# Loading xpm_lib.xpm_memory_base(fast__1)
+# Loading xpm_lib.xpm_cdc_gray(fast__5)
+# Loading xpm_lib.xpm_cdc_gray(fast__6)
+# Loading xpm_lib.xpm_cdc_gray(fast__7)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__4)
+# Loading xpm_lib.xpm_cdc_gray(fast__8)
+# Loading xpm_lib.xpm_fifo_reg_vec(fast__5)
+# Loading xpm_lib.xpm_cdc_gray(fast__9)
+# Loading xpm_lib.xpm_cdc_single(fast__1)
+# Loading work.axis_width_converter(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 123
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_data_fifo.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_data_fifo.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_data_fifo.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/tx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 158
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_data_fifo.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_data_fifo.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_data_fifo.v(24).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_data_fifo File: ../rtl/ftdi_245fifo_top.v Line: 235
+# ** Warning: (vsim-3015) [PCDPC] - Port size (128) does not match connection size (16) for port 's_axis_tdata'. The port definition is at: ../rtl/axis_width_converter.v(15).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (2) for port 's_axis_tstrb'. The port definition is at: ../rtl/axis_width_converter.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (2) for port 's_axis_tkeep'. The port definition is at: ../rtl/axis_width_converter.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tid'. The port definition is at: ../rtl/axis_width_converter.v(19).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tdest'. The port definition is at: ../rtl/axis_width_converter.v(20).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (32) for port 's_axis_tuser'. The port definition is at: ../rtl/axis_width_converter.v(21).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_usb/u_ftdi_245fifo/rx_axis_width_converter File: ../rtl/ftdi_245fifo_top.v Line: 267
+# 0
+# /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_state_named
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: arlen  Hostname: WOWO  ProcessID: 33668
+#           Attempting to use alternate WLF file "./wlftkdd0zq".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftkdd0zq
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.tx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost full flag option is not enabled (USE_ADV_FEATURES[3] = 0) but Packet FIFO mode requires almost_full to be enabled. XPM_FIFO_AXIS enables the Almost full flag automatically. You may ignore almost_full port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2453
+# ** Info: [XPM_FIFO_AXIS 21-1] Almost empty flag option is not enabled (USE_ADV_FEATURES[11] = 0) but Packet FIFO mode requires almost_empty to be enabled. XPM_FIFO_AXIS enables the Almost empty flag automatically. You may ignore almost_empty port if not required tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.config_drc_axis File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv Line: 2456
+# ** Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+#    Time: 1 ps  Scope: tb_usb.u_ftdi_245fifo.rx_axis_data_fifo.xpm_fifo_axis_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc File: C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 488
+# ** Note: $stop    : ../rtl/tb_usb.v(98)
+#    Time: 51610 ns  Iteration: 0  Instance: /tb_usb
+# Break in Module tb_usb at ../rtl/tb_usb.v line 98
+# 0 ps
+# 54190500 ps
+# End time: 23:51:26 on Jun 15,2025, Elapsed time: 0:55:57
+# Errors: 0, Warnings: 17

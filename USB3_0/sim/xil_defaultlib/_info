@@ -10,7 +10,7 @@ z2
 cModel Technology
 Z0 dC:/Users/arlen/Desktop/Github/vscode_web/USB3_0/sim
 vglbl
-!s110 1749972301
+!s110 1749999328
 !i10b 1
 !s100 ZHmTNm_h3dd`6mIQLzSUN3
 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -19,14 +19,14 @@ R0
 w1590624368
 8C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v
 FC:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v
-!i122 2
+!i122 40
 L0 6 78
 VDg1SIo80bB@j0V0VzS_@n1
 OL;L;2020.4;71
 r1
 !s85 0
 31
-!s108 1749972301.000000
+!s108 1749999328.000000
 !s107 C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v|
 !s90 -reportprogress|300|-work|xil_defaultlib|C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v|
 !i113 0
