@@ -51,7 +51,7 @@ generate
     // Local Parameter
       localparam WIDTH_MULTIPLE = M_TDATA_WIDTH/S_TDATA_WIDTH;
     // Local Signal
-      reg [$clog2(WIDTH_MULTIPLE)-1:0]              cnt = 0;
+      reg [$clog2(WIDTH_MULTIPLE):0]              cnt = 0;
       reg                                           s_axis_tlast_d1 = 0;
       reg                                           refresh = 1; // 用于第一个输出数据更新 tid/tdest 信号
       reg [M_TDATA_WIDTH*8-1:0]                     s_axis_tdata_srl = 0;
@@ -88,7 +88,7 @@ generate
           s_axis_tready_ff <= 1'b0;
         else
           begin
-            if ((cnt == (WIDTH_MULTIPLE-1)) && s_axis_tvalid && (!m_axis_tready))
+            if (((cnt == (WIDTH_MULTIPLE-1)) && s_axis_tvalid && (!m_axis_tready)) || ((cnt == WIDTH_MULTIPLE) && (!m_axis_tready)))
               s_axis_tready_ff <= 1'b0;
             else
               s_axis_tready_ff <= 1'b1;

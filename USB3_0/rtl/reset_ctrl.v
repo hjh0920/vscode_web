@@ -101,7 +101,7 @@ module reset_ctrl(
     .INIT_SYNC_FF   (0),    // 仿真初始化参数使能
     .RST_ACTIVE_HIGH(0)    // DECIMAL; 0=active low reset, 1=active high reset
   )xpm_cdc_async_rstn_rxclk (
-    .dest_arst(o_rstn_txclk),       //目的复位信号
+    .dest_arst(o_rstn_rxclk),       //目的复位信号
     .dest_clk (rx_clk ),       // 目的时钟
     .src_arst (rstn_dly16 )       // 源复位信号
   );   

@@ -1,6 +1,7 @@
 # 添加波形
 # add wave *
  
+
 # 状态机重命名
   # 删除可能存在的旧定义（防止冲突）
   catch {virtual type -delete state_type_t}
@@ -34,13 +35,13 @@ add wave -noupdate /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_data_i
 add wave -noupdate /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_data_o
 add wave -noupdate /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_data_t
 add wave -noupdate -color pink /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_state_named
-add wave -noupdate -expand -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/s_axis_tdata
-add wave -noupdate -expand -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/s_axis_tkeep
-add wave -noupdate -expand -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/s_axis_tlast
-add wave -noupdate -expand -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/s_axis_tstrb
-add wave -noupdate -expand -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/s_axis_tvalid
-add wave -noupdate -expand -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/s_axis_tready
-add wave -noupdate -expand -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/rx_dly_cnt
+add wave -noupdate -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/s_axis_tdata
+add wave -noupdate -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/s_axis_tkeep
+add wave -noupdate -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/s_axis_tlast
+add wave -noupdate -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/s_axis_tstrb
+add wave -noupdate -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/s_axis_tvalid
+add wave -noupdate -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/s_axis_tready
+add wave -noupdate -group TX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/rx_dly_cnt
 add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/m_axis_tdata
 add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/m_axis_tkeep
 add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/m_axis_tlast
@@ -49,6 +50,34 @@ add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/m
 add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/m_axis_tready
 add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/almost_full_axis
 add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/tx_dly_cnt
+
+add wave -noupdate -group TX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_tvalid
+add wave -noupdate -group TX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_tready
+add wave -noupdate -group TX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_tdata
+add wave -noupdate -group TX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_tstrb
+add wave -noupdate -group TX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_tkeep
+add wave -noupdate -group TX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_tlast
+add wave -noupdate -group TX_CONV_M /tb_usb/u_ftdi_245fifo/m_axis_tx_tvalid
+add wave -noupdate -group TX_CONV_M /tb_usb/u_ftdi_245fifo/m_axis_tx_tready
+add wave -noupdate -group TX_CONV_M /tb_usb/u_ftdi_245fifo/m_axis_tx_tdata
+add wave -noupdate -group TX_CONV_M /tb_usb/u_ftdi_245fifo/m_axis_tx_tstrb
+add wave -noupdate -group TX_CONV_M /tb_usb/u_ftdi_245fifo/m_axis_tx_tkeep
+add wave -noupdate -group TX_CONV_M /tb_usb/u_ftdi_245fifo/m_axis_tx_tlast
+
+add wave -noupdate -expand -group RX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_rx_tvalid
+add wave -noupdate -expand -group RX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_rx_tready
+add wave -noupdate -expand -group RX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_rx_tdata
+add wave -noupdate -expand -group RX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_rx_tstrb
+add wave -noupdate -expand -group RX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_rx_tkeep
+add wave -noupdate -expand -group RX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_rx_tlast
+add wave -noupdate -expand -group RX_CONV_M /tb_usb/u_ftdi_245fifo/m_axis_tvalid
+add wave -noupdate -expand -group RX_CONV_M /tb_usb/u_ftdi_245fifo/m_axis_tready
+add wave -noupdate -expand -group RX_CONV_M /tb_usb/u_ftdi_245fifo/m_axis_tdata
+add wave -noupdate -expand -group RX_CONV_M /tb_usb/u_ftdi_245fifo/m_axis_tstrb
+add wave -noupdate -expand -group RX_CONV_M /tb_usb/u_ftdi_245fifo/m_axis_tkeep
+add wave -noupdate -expand -group RX_CONV_M /tb_usb/u_ftdi_245fifo/m_axis_tlast
+
+
 
   # 显示信号名称简称
   configure wave -signalnamewidth 1

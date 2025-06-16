@@ -259,7 +259,7 @@ ftdi_245fifo_fsm #(
 
 // AXI4-Stream整数倍位宽转换模块
   axis_width_converter #(
-    .S_TDATA_WIDTH         (FIFO_BUS_WIDTH*8), // 1-512 (byte)
+    .S_TDATA_WIDTH         (FIFO_BUS_WIDTH), // 1-512 (byte)
     .M_TDATA_WIDTH         (M_TDATA_WIDTH), // 1-512 (byte)
     .TID_WIDTH             (0), // 0-32 (bit)
     .TDEST_WIDTH           (0), // 0-32 (bit)

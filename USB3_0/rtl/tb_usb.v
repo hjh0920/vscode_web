@@ -47,7 +47,7 @@ module tb_usb;
     reg                          s_axis_tlast = 0;
 
     wire                         m_axis_tvalid;
-    reg                          m_axis_tready = 0;
+    reg                          m_axis_tready = 1;
     wire [M_TDATA_WIDTH*8-1:0]   m_axis_tdata;
     wire [M_TDATA_WIDTH-1:0]     m_axis_tstrb;
     wire [M_TDATA_WIDTH-1:0]     m_axis_tkeep;
@@ -127,6 +127,7 @@ module tb_usb;
         force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tlast = 0;
         force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tstrb = {{FIFO_BUS_WIDTH}{1'b0}};
         force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tvalid = 0;
+
 
 
       #50000;
