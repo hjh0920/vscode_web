@@ -1,26 +1,26 @@
-// FT60xÇı¶¯Ä£¿é
-
+// FT60xé©±åŠ¨æ¨¡å—
+ 
 module ftdi_245fifo_fsm #(
   parameter FIFO_BUS_WIDTH = 2
 )(
-// FT60xĞ¾Æ¬½Ó¿Ú
+// FT60xèŠ¯ç‰‡æ¥å£
   input                          usb_clk,
   output                         usb_rstn,
-  input                          usb_txe_n, // ´«ÊäFIFO¿ÕÖ¸Ê¾£¬µÍÓĞĞ§
-  input                          usb_rxf_n, // ½ÓÊÕFIFOÂúÖ¸Ê¾£¬Ö»ÓĞµÍµçÆ½Ê±²Å½øĞĞ¶ÁÊı¾İ
-  output                         usb_wr_n, // Ğ´Ê¹ÄÜ
-  output                         usb_rd_n, // ¶ÁÊ¹ÄÜ
-  output                         usb_oe_n, // Êı¾İÊä³öÊ¹ÄÜ
-  input  [FIFO_BUS_WIDTH-1:0]    usb_be_i, // ²¢ĞĞÊı¾İ×Ö½ÚÊ¹ÄÜ(½ÓÊÕ)
-  output [FIFO_BUS_WIDTH-1:0]    usb_be_o, // ²¢ĞĞÊı¾İ×Ö½ÚÊ¹ÄÜ(·¢ËÍ)
-  output                         usb_be_t, // ÈıÌ¬ÊäÈëÊ¹ÄÜĞÅºÅ, output(0), input(1)
-  input  [FIFO_BUS_WIDTH*8-1:0]  usb_data_i, // ²¢ĞĞÊı¾İ(½ÓÊÕ)
-  output [FIFO_BUS_WIDTH*8-1:0]  usb_data_o, // ²¢ĞĞÊı¾İ(·¢ËÍ)
-  output                         usb_data_t, // ÈıÌ¬ÊäÈëÊ¹ÄÜĞÅºÅ, output(0), input(1)
-  output [1:0]                   usb_gpio, // Ä£Ê½Ñ¡Ôñ
+  input                          usb_txe_n, // ä¼ è¾“FIFOç©ºæŒ‡ç¤ºï¼Œä½æœ‰æ•ˆ
+  input                          usb_rxf_n, // æ¥æ”¶FIFOæ»¡æŒ‡ç¤ºï¼Œåªæœ‰ä½ç”µå¹³æ—¶æ‰è¿›è¡Œè¯»æ•°æ®
+  output                         usb_wr_n, // å†™ä½¿èƒ½
+  output                         usb_rd_n, // è¯»ä½¿èƒ½
+  output                         usb_oe_n, // æ•°æ®è¾“å‡ºä½¿èƒ½
+  input  [FIFO_BUS_WIDTH-1:0]    usb_be_i, // å¹¶è¡Œæ•°æ®å­—èŠ‚ä½¿èƒ½(æ¥æ”¶)
+  output [FIFO_BUS_WIDTH-1:0]    usb_be_o, // å¹¶è¡Œæ•°æ®å­—èŠ‚ä½¿èƒ½(å‘é€)
+  output                         usb_be_t, // ä¸‰æ€è¾“å…¥ä½¿èƒ½ä¿¡å·, output(0), input(1)
+  input  [FIFO_BUS_WIDTH*8-1:0]  usb_data_i, // å¹¶è¡Œæ•°æ®(æ¥æ”¶)
+  output [FIFO_BUS_WIDTH*8-1:0]  usb_data_o, // å¹¶è¡Œæ•°æ®(å‘é€)
+  output                         usb_data_t, // ä¸‰æ€è¾“å…¥ä½¿èƒ½ä¿¡å·, output(0), input(1)
+  output [1:0]                   usb_gpio, // æ¨¡å¼é€‰æ‹©
   output                         usb_siwu_n,
   output                         usb_wakeup_n,
-// ÄÚ²¿ÓÃ»§½Ó¿Ú
+// å†…éƒ¨ç”¨æˆ·æ¥å£
   input                          rstn_usbclk,
   input  [FIFO_BUS_WIDTH*8-1:0]  s_axis_tdata,
   input  [FIFO_BUS_WIDTH-1:0]    s_axis_tkeep,
@@ -52,8 +52,8 @@ module ftdi_245fifo_fsm #(
 //             Local Signal
 //------------------------------------
   reg [5:0]                  usb_state = S_IDLE;
-  reg [FIFO_BUS_WIDTH-1:0]   usb_be_i_d1 = 0; // ÑÓ³Ù1ÅÄ:²¢ĞĞÊı¾İ×Ö½ÚÊ¹ÄÜ(½ÓÊÕ)
-  reg [FIFO_BUS_WIDTH*8-1:0] usb_data_i_d1 = 0; // ÑÓ³Ù1ÅÄ:²¢ĞĞÊı¾İ(½ÓÊÕ)
+  reg [FIFO_BUS_WIDTH-1:0]   usb_be_i_d1 = 0; // å»¶è¿Ÿ1æ‹:å¹¶è¡Œæ•°æ®å­—èŠ‚ä½¿èƒ½(æ¥æ”¶)
+  reg [FIFO_BUS_WIDTH*8-1:0] usb_data_i_d1 = 0; // å»¶è¿Ÿ1æ‹:å¹¶è¡Œæ•°æ®(æ¥æ”¶)
   reg [1:0]                  rx_dly_cnt = 0; 
   reg [1:0]                  tx_dly_cnt = 0; 
   
@@ -76,7 +76,7 @@ module ftdi_245fifo_fsm #(
 //             User Logic
 //------------------------------------
 
-// USB ×´Ì¬»ú  
+// USB çŠ¶æ€æœº  
   always @(posedge usb_clk or negedge rstn_usbclk)
     if (!rstn_usbclk)
       usb_state <= S_IDLE;
