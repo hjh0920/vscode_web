@@ -1,28 +1,28 @@
-# 1. Çå³ıÖ®Ç°µÄ¹¤×÷
+# 1. æ¸…é™¤ä¹‹å‰çš„å·¥ä½œ
 quit -sim
 .main clear
-
-# 2. ÉèÖÃ¿âÂ·¾¶
+ 
+# 2. è®¾ç½®åº“è·¯å¾„
 set VIVADO_DIR "C:/Software/Xilinx/Vivado/2020.1/data"
 set VIVADO_LIB_DIR "C:/modeltech64_2020.4/vivado2020_lib"
 set IP_DIR "../ip"
 set RTL_DIR "../rtl"
 
-# 3. ´´½¨¿â
-# unisim ¿â Ìá¹©Xilinx FPGAËùÓĞ»ù±¾Ó²¼şÔ­Óï(LUT/FDCE/RAMB36E1/BUFG/MMCM/IOÔ­ÓïµÈ)µÄĞĞÎª¼¶ºÍ½á¹¹¼¶·ÂÕæÄ£ĞÍ
+# 3. åˆ›å»ºåº“
+# unisim åº“ æä¾›Xilinx FPGAæ‰€æœ‰åŸºæœ¬ç¡¬ä»¶åŸè¯­(LUT/FDCE/RAMB36E1/BUFG/MMCM/IOåŸè¯­ç­‰)çš„è¡Œä¸ºçº§å’Œç»“æ„çº§ä»¿çœŸæ¨¡å‹
 vlib unisim
-# unimacro¿â Ìá¹©¸´ÔÓ¹¦ÄÜÄ£¿é(ÈçFIFO/ÒÆÎ»¼Ä´æÆ÷/DSPºê)µÄ·ÂÕæÄ£ĞÍ
+# unimacroåº“ æä¾›å¤æ‚åŠŸèƒ½æ¨¡å—(å¦‚FIFO/ç§»ä½å¯„å­˜å™¨/DSPå®)çš„ä»¿çœŸæ¨¡å‹
 vlib unimacro
-# secureip ¿â Ìá¹©Xilinx¼ÓÃÜIPºË(ÈçPCIe/GTXÊÕ·¢Æ÷)µÄ·ÂÕæÄ£ĞÍ
+# secureip åº“ æä¾›XilinxåŠ å¯†IPæ ¸(å¦‚PCIe/GTXæ”¶å‘å™¨)çš„ä»¿çœŸæ¨¡å‹
 vlib secureip
-# xpm ¿â Ìá¹©Xilinx CDC/XPM_MEMORY/XPM_FIFO²ÎÊıºêµÄ·ÂÕæÄ£ĞÍ
+# xpm åº“ æä¾›Xilinx CDC/XPM_MEMORY/XPM_FIFOå‚æ•°å®çš„ä»¿çœŸæ¨¡å‹
 vlib xpm_lib
-# xil_defaultlib ¿â ´æ·ÅVivado×Ô¶¯Éú³ÉµÄIPºË·ÂÕæÄ£ĞÍ(ÈçFIFO/DDR¿ØÖÆÆ÷µÈ)
+# xil_defaultlib åº“ å­˜æ”¾Vivadoè‡ªåŠ¨ç”Ÿæˆçš„IPæ ¸ä»¿çœŸæ¨¡å‹(å¦‚FIFO/DDRæ§åˆ¶å™¨ç­‰)
 vlib xil_defaultlib
-# work ¿â ÎªÓÃ»§×Ô¶¨Òå¿â
+# work åº“ ä¸ºç”¨æˆ·è‡ªå®šä¹‰åº“
 vlib work
 
-# 4. Ó³Éä¿â
+# 4. æ˜ å°„åº“
 vmap unisim "$VIVADO_LIB_DIR/unisim"
 vmap unimacro "$VIVADO_LIB_DIR/unimacro"
 vmap secureip "$VIVADO_LIB_DIR/secureip"
@@ -30,23 +30,23 @@ vmap xpm_lib "$VIVADO_LIB_DIR/xpm"
 vmap xil_defaultlib ./xil_defaultlib
 vmap work ./work
 
-# 5. ±àÒë¿âÎÄ¼ş
-  # ±àÒë glbl Ä£¿é
+# 5. ç¼–è¯‘åº“æ–‡ä»¶
+  # ç¼–è¯‘ glbl æ¨¡å—
   vlog -work xil_defaultlib "$VIVADO_DIR/verilog/src/glbl.v"
-  # ±àÒë xpm Ä£¿é
+  # ç¼–è¯‘ xpm æ¨¡å—
   vlog -work xpm_lib "$VIVADO_DIR/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv"
-  # ±àÒë Xilinx IP
+  # ç¼–è¯‘ Xilinx IP
   # vlog -work xil_defaultlib "$IP_DIR/fifo_generator_0/simulation/fifo_generator_0.v"
   # vlog -work xil_defaultlib "$IP_DIR/fifo_generator_0/simulation/fifo_generator_0_sim_netlist.v"
-  # ±àÒëÉè¼ÆÎÄ¼ş
+  # ç¼–è¯‘è®¾è®¡æ–‡ä»¶
   vlog -work work "$RTL_DIR/*.v"
 
-# 6. Æô¶¯·ÂÕæ
+# 6. å¯åŠ¨ä»¿çœŸ
 vsim -voptargs="+acc" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_usb
 
-# 7. Ìí¼Ó²¨ĞÎ
+# 7. æ·»åŠ æ³¢å½¢
 do wave.do
 
-# 8. ÔËĞĞ·ÂÕæ
+# 8. è¿è¡Œä»¿çœŸ
 run -all
 wave zoom full
