@@ -49,7 +49,7 @@ add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/m
 add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/m_axis_tvalid
 add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/m_axis_tready
 add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/almost_full_axis
-add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/tx_dly_cnt
+add wave -noupdate -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/tx_dly_cnt
 
 add wave -noupdate -group TX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_tvalid
 add wave -noupdate -group TX_CONV_S /tb_usb/u_ftdi_245fifo/s_axis_tready
