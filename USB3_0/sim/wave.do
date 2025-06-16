@@ -1,10 +1,10 @@
-# Ìí¼Ó²¨ĞÎ
+# æ·»åŠ æ³¢å½¢
 # add wave *
-
-# ×´Ì¬»úÖØÃüÃû
-  # É¾³ı¿ÉÄÜ´æÔÚµÄ¾É¶¨Òå£¨·ÀÖ¹³åÍ»£©
+ 
+# çŠ¶æ€æœºé‡å‘½å
+  # åˆ é™¤å¯èƒ½å­˜åœ¨çš„æ—§å®šä¹‰ï¼ˆé˜²æ­¢å†²çªï¼‰
   catch {virtual type -delete state_type_t}
-  # ´´½¨×´Ì¬Ãû³ÆÓ³Éä¹ØÏµ£¨ĞèÔÚ·ÂÕæÇ°Ö´ĞĞ£©
+  # åˆ›å»ºçŠ¶æ€åç§°æ˜ å°„å…³ç³»ï¼ˆéœ€åœ¨ä»¿çœŸå‰æ‰§è¡Œï¼‰
   virtual type {
     {'b000001   IDLE     }
     {'b000010   RX_DLY   }
@@ -14,12 +14,12 @@
     {'b100000   TX_DATA  }
   } state_type_t
 
-  # ½«ĞÅºÅ¹ØÁªµ½ĞéÄâÀàĞÍ
+  # å°†ä¿¡å·å…³è”åˆ°è™šæ‹Ÿç±»å‹
   virtual function {(state_type_t)/tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_state} usb_state_named
 
-  # Ìí¼ÓÖØÃüÃûºóµÄĞÅºÅµ½²¨ĞÎ
+  # æ·»åŠ é‡å‘½ååçš„ä¿¡å·åˆ°æ³¢å½¢
   # add wave -color pink /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_state_named
-# Ìí¼ÓĞÅºÅ
+# æ·»åŠ ä¿¡å·
 add wave -noupdate /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_clk
 add wave -noupdate /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_rstn
 add wave -noupdate -color Gold /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/usb_txe_n
@@ -50,5 +50,5 @@ add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/m
 add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/almost_full_axis
 add wave -noupdate -expand -group RX /tb_usb/u_ftdi_245fifo/u_ftdi_245fifo_fsm/tx_dly_cnt
 
-  # ÏÔÊ¾ĞÅºÅÃû³Æ¼ò³Æ
+  # æ˜¾ç¤ºä¿¡å·åç§°ç®€ç§°
   configure wave -signalnamewidth 1
