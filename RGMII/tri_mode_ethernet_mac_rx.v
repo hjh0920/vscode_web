@@ -15,12 +15,12 @@ module tri_mode_ethernet_mac_rx #(
   parameter C_TIMEOUT   = 3000
 )(
   input  [1:0]  inband_clock_speed, // 125MHz(10), 2.5MHz(01), 2.5MHz(00), reserved(11)
-  
+  // RGMII 接收数据 AXIS 接口
   input         rx_mac_aclk,
   input         rx_mac_reset,
   input  [7:0]  rx_axis_rgmii_tdata,
   input         rx_axis_rgmii_tvalid,
-   
+  // 用户接收数据 AXIS 接口
   output  [7:0] rx_axis_mac_tdata,
   output        rx_axis_mac_tvalid,
   output        rx_axis_mac_tlast,
@@ -64,13 +64,13 @@ module tri_mode_ethernet_mac_rx #(
   reg          rx_ip_data_done = 0; // 完成IP报文数据接收
   reg          rx_timeout_flag = 0; // 接收超时
   reg          rx_filter_success = 0; // 帧过滤成功
-
-  reg          crc32_reset = 1;
-  reg  [7:0]   crc32_din = 0;
-  reg          crc32_enable = 0;
-  reg  [31:0]  crc32_result = 0;
-  wire [31:0]  crc32_result_temp;
-
+// CRC校验模块
+  reg          rx_crc32_reset = 1;
+  reg  [7:0]   rx_crc32_din = 0;
+  reg          rx_crc32_enable = 0;
+  reg  [31:0]  rx_crc32_result = 0;
+  wire [31:0]  rx_crc32_result_temp;
+// 输出寄存器
   reg  [7:0]   rx_axis_mac_tdata_ff = 0;
   reg          rx_axis_mac_tvalid_ff = 0;
   reg          rx_axis_mac_tlast_ff = 0;
@@ -258,44 +258,44 @@ module tri_mode_ethernet_mac_rx #(
 // CRC校验模块复位
   always @ (posedge rx_mac_aclk)
     if (rx_mac_state == S_PREAMBLE)
-      crc32_reset <= 1'b1;
+      rx_crc32_reset <= 1'b1;
     else
-      crc32_reset <= 1'b0;
+      rx_crc32_reset <= 1'b0;
 // CRC校验模块使能
   always @ (posedge rx_mac_aclk)
     if (rx_mac_state == S_PREAMBLE)
-      crc32_enable <= 1'b0;
+      rx_crc32_enable <= 1'b0;
     else if (rx_mac_state == S_MAC_HEAD) // 以太网帧类型还没解析完成
-      crc32_enable <= rx_axis_rgmii_tvalid_d1;
+      rx_crc32_enable <= rx_axis_rgmii_tvalid_d1;
     else if ((rx_eth_type == 16'h0806) || ((rx_eth_type == 16'h0800) && rx_ip_total_length < 16'd46)) // 以太网帧长小于64字节
       begin
         if (rx_byte_cnt > 12'd60)
-          crc32_enable <= 1'b0;
+          rx_crc32_enable <= 1'b0;
         else if (rx_byte_cnt > 12'd0)
-          crc32_enable <= rx_axis_rgmii_tvalid_d1;
+          rx_crc32_enable <= rx_axis_rgmii_tvalid_d1;
       end
     else if (rx_eth_type == 16'h0800) // 以太网帧长大于64字节
       begin
         if (rx_byte_cnt > (12'd14 + rx_ip_total_length[11:0]))
-          crc32_enable <= 1'b0;
+          rx_crc32_enable <= 1'b0;
         else if (rx_byte_cnt > 12'd0)
-          crc32_enable <= rx_axis_rgmii_tvalid_d1;
+          rx_crc32_enable <= rx_axis_rgmii_tvalid_d1;
       end
 // CRC校验模块输入数据
   always @ (posedge rx_mac_aclk)
     if (inband_clock_speed[1])
-      crc32_din <= rx_axis_rgmii_tdata_ff[7:0];
+      rx_crc32_din <= rx_axis_rgmii_tdata_ff[7:0];
     else if (rx_preamble_type_flag)
-      crc32_din <= {rx_axis_rgmii_tdata_ff[ 3: 0],rx_axis_rgmii_tdata_ff[ 7: 4]};
+      rx_crc32_din <= {rx_axis_rgmii_tdata_ff[ 3: 0],rx_axis_rgmii_tdata_ff[ 7: 4]};
     else
-      crc32_din <= {rx_axis_rgmii_tdata_ff[ 7: 4],rx_axis_rgmii_tdata_ff[11: 8]};
+      rx_crc32_din <= {rx_axis_rgmii_tdata_ff[ 7: 4],rx_axis_rgmii_tdata_ff[11: 8]};
 // CRC校验模块输出结果锁存
   always @ (posedge rx_mac_aclk)
     if (rx_arp_data_done | rx_ip_data_done)
-      crc32_result <= {~crc32_result_temp[24],~crc32_result_temp[25],~crc32_result_temp[26],~crc32_result_temp[27],~crc32_result_temp[28],~crc32_result_temp[29],~crc32_result_temp[30],~crc32_result_temp[31],
-                       ~crc32_result_temp[16],~crc32_result_temp[17],~crc32_result_temp[18],~crc32_result_temp[19],~crc32_result_temp[20],~crc32_result_temp[21],~crc32_result_temp[22],~crc32_result_temp[23],
-                       ~crc32_result_temp[ 8],~crc32_result_temp[ 9],~crc32_result_temp[10],~crc32_result_temp[11],~crc32_result_temp[12],~crc32_result_temp[13],~crc32_result_temp[14],~crc32_result_temp[15],
-                       ~crc32_result_temp[ 0],~crc32_result_temp[ 1],~crc32_result_temp[ 2],~crc32_result_temp[ 3],~crc32_result_temp[ 4],~crc32_result_temp[ 5],~crc32_result_temp[ 6],~crc32_result_temp[ 7]};
+      rx_crc32_result <= {~rx_crc32_result_temp[24],~rx_crc32_result_temp[25],~rx_crc32_result_temp[26],~rx_crc32_result_temp[27],~rx_crc32_result_temp[28],~rx_crc32_result_temp[29],~rx_crc32_result_temp[30],~rx_crc32_result_temp[31],
+                       ~rx_crc32_result_temp[16],~rx_crc32_result_temp[17],~rx_crc32_result_temp[18],~rx_crc32_result_temp[19],~rx_crc32_result_temp[20],~rx_crc32_result_temp[21],~rx_crc32_result_temp[22],~rx_crc32_result_temp[23],
+                       ~rx_crc32_result_temp[ 8],~rx_crc32_result_temp[ 9],~rx_crc32_result_temp[10],~rx_crc32_result_temp[11],~rx_crc32_result_temp[12],~rx_crc32_result_temp[13],~rx_crc32_result_temp[14],~rx_crc32_result_temp[15],
+                       ~rx_crc32_result_temp[ 0],~rx_crc32_result_temp[ 1],~rx_crc32_result_temp[ 2],~rx_crc32_result_temp[ 3],~rx_crc32_result_temp[ 4],~rx_crc32_result_temp[ 5],~rx_crc32_result_temp[ 6],~rx_crc32_result_temp[ 7]};
 // 最后一个数据锁存, 等待整帧数据接收校验完成再输出
   always @ (posedge rx_mac_aclk)
     if (rx_mac_state == S_IDLE)
@@ -337,7 +337,7 @@ module tri_mode_ethernet_mac_rx #(
     else
       rx_axis_mac_tlast_ff <= 1'b0;
   always @ (posedge rx_mac_aclk)
-    if (rx_timeout_flag || ((rx_mac_state == S_FCS_CHECK) && (crc32_result != rx_eth_fcs)) || rx_filter_success)
+    if (rx_timeout_flag || ((rx_mac_state == S_FCS_CHECK) && (rx_crc32_result != rx_eth_fcs)) || rx_filter_success)
       rx_axis_mac_tuser_ff <= 1'b1;
     else
       rx_axis_mac_tuser_ff <= 1'b0;
@@ -354,12 +354,12 @@ module tri_mode_ethernet_mac_rx #(
 //------------------------------------
 // CRC校验模块
   crc32 eth_rx_crc32(
-    .clk         (rx_mac_aclk),
-    .reset       (crc32_reset),
-    .din         (crc32_din),
-    .enable      (crc32_enable),
-    .crc32       (crc32_result_temp),
-    .crc32_next  ()
+    .clk            (rx_mac_aclk),
+    .reset          (rx_crc32_reset),
+    .din            (rx_crc32_din),
+    .enable         (rx_crc32_enable),
+    .crc32          (rx_crc32_result_temp),
+    .rx_crc32_next  ()
   );
 
 endmodule
