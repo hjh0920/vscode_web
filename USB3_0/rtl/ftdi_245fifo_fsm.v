@@ -96,7 +96,7 @@ module ftdi_245fifo_fsm #(
           if (usb_rxf_n)
             usb_state <= S_IDLE;
         S_TX_DLY:
-          if (tx_dly_cnt == 'd1)
+          // if (tx_dly_cnt == 'd1)
             usb_state <= S_TX_DATA;
         S_TX_DATA:
           if ((s_axis_tvalid && s_axis_tlast) || usb_txe_n)
@@ -159,20 +159,32 @@ module ftdi_245fifo_fsm #(
       else
         tx_dly_cnt <= 'd0;
 
-    always @ (posedge usb_clk)
+    always @ (negedge usb_clk)
       if (usb_state[5])
         usb_wr_n_ff <= 1'b0;
       else
         usb_wr_n_ff <= 1'b1;
 
-    always @ (posedge usb_clk)  usb_data_o_ff <= s_axis_tdata;
-    always @ (posedge usb_clk)  usb_be_o_ff <= (s_axis_tkeep & s_axis_tstrb);
+    always @ (negedge usb_clk)  usb_data_o_ff <= s_axis_tdata;
+
+    always @ (negedge usb_clk)
+      if (usb_state[5])
+        usb_be_o_ff <= (s_axis_tkeep & s_axis_tstrb);
+      else
+        usb_be_o_ff <= 0;
 
     always @ (posedge usb_clk)
-      if (usb_state[5])
+      if (usb_state[4] || (usb_state[5] && ((~(s_axis_tvalid && s_axis_tlast)) || (!usb_txe_n))))
         s_axis_tready_ff <= 1'b1;
       else
         s_axis_tready_ff <= 1'b0;
+        
+    always @ (posedge usb_clk)
+      if (usb_state[5] || usb_state[4])
+        usb_be_t_ff <= 1'b0;
+      else
+        usb_be_t_ff <= 1'b1;
+
 //------------------------------------
 //             Output
 //------------------------------------

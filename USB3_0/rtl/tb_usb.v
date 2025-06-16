@@ -22,7 +22,7 @@ module tb_usb;
   // FT60x芯片接口
     reg                          usb_clk = 0;
     wire                         usb_rstn;
-    reg                          usb_txe_n = 1; // 传输FIFO空指示，低有效
+    reg                          usb_txe_n = 0; // 传输FIFO空指示，低有效
     reg                          usb_rxf_n = 1; // 接收FIFO满指示，只有低电平时才进行读数据
     wire                         usb_wr_n; // 写使能
     wire                         usb_rd_n; // 读使能
@@ -52,6 +52,9 @@ module tb_usb;
     wire [M_TDATA_WIDTH-1:0]     m_axis_tstrb;
     wire [M_TDATA_WIDTH-1:0]     m_axis_tkeep;
     wire                         m_axis_tlast;
+  // Test signals
+    reg [FIFO_BUS_WIDTH*8-1:0]   index = 1;
+
 //*************************** Test Logic ***************************
   always # (PERIOD_TXCLK/2) tx_clk = ~tx_clk;
   always # (PERIOD_RXCLK/2) rx_clk = ~rx_clk;
@@ -100,12 +103,30 @@ module tb_usb;
       force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tlast = 0;
       force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tstrb = {{FIFO_BUS_WIDTH}{1'b1}};
       force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tvalid = 1;
-      repeat(20)
+
+      while(index < 20)
         begin
-          @
+          @(posedge usb_clk)
+          if (u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tready)
+            begin
+              index = index + 1;
+              force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tdata = index;
+            end
         end
-
-
+      wait(u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tready)
+        @(posedge usb_clk);
+        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tdata = index + 1;
+        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tkeep = {{FIFO_BUS_WIDTH}{1'b1}};
+        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tlast = 1;
+        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tstrb = {{FIFO_BUS_WIDTH}{1'b1}};
+        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tvalid = 1;
+      wait(u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tready)
+        @(posedge usb_clk);
+        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tdata = 0;
+        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tkeep = {{FIFO_BUS_WIDTH}{1'b0}};
+        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tlast = 0;
+        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tstrb = {{FIFO_BUS_WIDTH}{1'b0}};
+        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tvalid = 0;
 
 
       #50000;
