@@ -51,7 +51,7 @@ generate
     // Local Parameter
       localparam WIDTH_MULTIPLE = M_TDATA_WIDTH/S_TDATA_WIDTH;
     // Local Signal
-      reg [$clog2(WIDTH_MULTIPLE):0]              cnt = 0;
+      reg [$clog2(WIDTH_MULTIPLE):0]                cnt = 0;
       reg                                           s_axis_tlast_d1 = 0;
       reg                                           refresh = 1; // 用于第一个输出数据更新 tid/tdest 信号
       reg [M_TDATA_WIDTH*8-1:0]                     s_axis_tdata_srl = 0;
@@ -187,7 +187,7 @@ generate
       localparam WIDTH_MULTIPLE = S_TDATA_WIDTH/M_TDATA_WIDTH;
     // Local Signal
       reg [$clog2(WIDTH_MULTIPLE)-1:0]              cnt = 0;
-      reg                                           start_conv = 0; // 复位后开始转换标志
+      reg                                           start_conv = 1; // 复位后第一个数据
       reg [S_TDATA_WIDTH*8-1:0]                     s_axis_tdata_srl = 0;
       reg [S_TDATA_WIDTH-1:0]                       s_axis_tstrb_srl = 0;
       reg [S_TDATA_WIDTH-1:0]                       s_axis_tkeep_srl = 0;
@@ -208,27 +208,27 @@ generate
     // User Logic
       always @ (posedge aclk or negedge aresetn)
         if (!aresetn)
+          start_conv <= 1'b1;
+        else if (s_axis_tvalid && m_axis_tready)
+          start_conv <= 1'b0;
+
+      always @ (posedge aclk or negedge aresetn)
+        if (!aresetn)
           cnt <= 'd0;
         else
           begin
             if (m_axis_tvalid_ff && m_axis_tready && (cnt == WIDTH_MULTIPLE-1))
               cnt <= 'd0;
-            else if (m_axis_tvalid_ff && m_axis_tready)
+            else if ((m_axis_tvalid_ff && m_axis_tready && (!m_axis_tlast)) || (s_axis_tvalid && s_axis_tready_ff && m_axis_tready))
               cnt <= cnt + 'd1;
           end
-
-      always @ (posedge aclk or negedge aresetn)
-        if (!aresetn)
-          start_conv <= 'b0;
-        else if (s_axis_tvalid)
-          start_conv <= 'b1;
 
       always @ (posedge aclk or negedge aresetn)
         if (!aresetn)
           s_axis_tready_ff <= 1'b0;
         else
           begin
-            if ((!start_conv) || ((cnt == (WIDTH_MULTIPLE-1)) && m_axis_tvalid_ff && m_axis_tready))
+            if ((start_conv && s_axis_tvalid && m_axis_tready) || ((cnt == (WIDTH_MULTIPLE-1)) && m_axis_tready))
               s_axis_tready_ff <= 1'b1;
             else
               s_axis_tready_ff <= 1'b0;
@@ -268,27 +268,28 @@ generate
           m_axis_tvalid_ff <= 1'b0;
         else
           begin
-            if ((s_axis_tvalid && s_axis_tready_ff) || (cnt > 0))
+            if ((s_axis_tvalid && s_axis_tready_ff && m_axis_tready) || (cnt > 0))
               m_axis_tvalid_ff <= 1'b1;
             else if (m_axis_tready)
               m_axis_tvalid_ff <= 1'b0;
           end
 
       always @ (posedge aclk)
-        if (s_axis_tvalid && s_axis_tready_ff)
-          begin
-            m_axis_tdata_ff <= s_axis_tdata[S_TDATA_WIDTH*8-1 -: (M_TDATA_WIDTH*8)];
-            m_axis_tstrb_ff <= s_axis_tstrb[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
-            m_axis_tkeep_ff <= s_axis_tkeep[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
-            // m_axis_tuser_ff <= s_axis_tuser[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
-          end
-        else if (cnt > 0)
+        if (cnt > 0)
           begin
             m_axis_tdata_ff <= s_axis_tdata_srl[S_TDATA_WIDTH*8-1 -: (M_TDATA_WIDTH*8)];
             m_axis_tstrb_ff <= s_axis_tstrb_srl[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
             m_axis_tkeep_ff <= s_axis_tkeep_srl[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
             // m_axis_tuser_ff <= s_axis_tuser_srl[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
           end
+        else if (s_axis_tvalid && m_axis_tready)
+          begin
+            m_axis_tdata_ff <= s_axis_tdata[S_TDATA_WIDTH*8-1 -: (M_TDATA_WIDTH*8)];
+            m_axis_tstrb_ff <= s_axis_tstrb[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
+            m_axis_tkeep_ff <= s_axis_tkeep[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
+            // m_axis_tuser_ff <= s_axis_tuser[S_TDATA_WIDTH-1 -: M_TDATA_WIDTH];
+          end
+
       
       always @ (posedge aclk or negedge aresetn)
         if (!aresetn)

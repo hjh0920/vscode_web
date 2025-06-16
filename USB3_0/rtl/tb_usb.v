@@ -97,40 +97,90 @@ module tb_usb;
         usb_data_i = 0;
 
 // tx package 1
-      #10
-      force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tdata = 'd1;
-      force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tkeep = {{FIFO_BUS_WIDTH}{1'b1}};
-      force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tlast = 0;
-      force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tstrb = {{FIFO_BUS_WIDTH}{1'b1}};
-      force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tvalid = 1;
+      @(posedge tx_clk);
+        s_axis_tdata = 32'h0001_0002;
+        s_axis_tkeep = {{S_TDATA_WIDTH}{1'b1}};
+        s_axis_tlast = 0;
+        s_axis_tstrb = {{S_TDATA_WIDTH}{1'b1}};
+        s_axis_tvalid = 1;
 
       while(index < 20)
         begin
-          @(posedge usb_clk)
-          if (u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tready)
+          @(posedge tx_clk);
+          if (s_axis_tready)
             begin
               index = index + 1;
-              force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tdata = index;
+              s_axis_tdata = s_axis_tdata + 32'h0002_0002;
             end
         end
-      wait(u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tready)
-        @(posedge usb_clk);
-        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tdata = index + 1;
-        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tkeep = {{FIFO_BUS_WIDTH}{1'b1}};
-        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tlast = 1;
-        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tstrb = {{FIFO_BUS_WIDTH}{1'b1}};
-        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tvalid = 1;
-      wait(u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tready)
-        @(posedge usb_clk);
-        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tdata = 0;
-        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tkeep = {{FIFO_BUS_WIDTH}{1'b0}};
-        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tlast = 0;
-        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tstrb = {{FIFO_BUS_WIDTH}{1'b0}};
-        force u_ftdi_245fifo.u_ftdi_245fifo_fsm.s_axis_tvalid = 0;
+
+      @(posedge tx_clk);
+      @(posedge tx_clk);
+      if (s_axis_tready)
+        begin
+          s_axis_tdata = s_axis_tdata + 32'h0002_0002;
+          s_axis_tkeep = {{S_TDATA_WIDTH}{1'b1}};
+          s_axis_tlast = 1;
+          s_axis_tstrb = {{S_TDATA_WIDTH}{1'b1}};
+          s_axis_tvalid = 1;
+        end
+
+      @(posedge tx_clk);
+      @(posedge tx_clk);
+      if (s_axis_tready)
+        begin
+          s_axis_tdata = 0;
+          s_axis_tkeep = {{S_TDATA_WIDTH}{1'b0}};
+          s_axis_tlast = 0;
+          s_axis_tstrb = {{S_TDATA_WIDTH}{1'b0}};
+          s_axis_tvalid = 0;
+          index = 0;
+        end
+
+// tx package 2
+      @(posedge tx_clk);
+        s_axis_tdata = 32'h0001_0002;
+        s_axis_tkeep = {{S_TDATA_WIDTH}{1'b1}};
+        s_axis_tlast = 0;
+        s_axis_tstrb = {{S_TDATA_WIDTH}{1'b1}};
+        s_axis_tvalid = 1;
+
+      while(index < 20)
+        begin
+          @(posedge tx_clk);
+          if (s_axis_tready)
+            begin
+              index = index + 1;
+              s_axis_tdata = s_axis_tdata + 32'h0002_0002;
+            end
+        end
+
+      @(posedge tx_clk);
+      @(posedge tx_clk);
+      if (s_axis_tready)
+        begin
+          s_axis_tdata = s_axis_tdata + 32'h0002_0002;
+          s_axis_tkeep = {{S_TDATA_WIDTH}{1'b1}};
+          s_axis_tlast = 1;
+          s_axis_tstrb = {{S_TDATA_WIDTH}{1'b1}};
+          s_axis_tvalid = 1;
+        end
+
+      @(posedge tx_clk);
+      @(posedge tx_clk);
+      if (s_axis_tready)
+        begin
+          s_axis_tdata = 0;
+          s_axis_tkeep = {{S_TDATA_WIDTH}{1'b0}};
+          s_axis_tlast = 0;
+          s_axis_tstrb = {{S_TDATA_WIDTH}{1'b0}};
+          s_axis_tvalid = 0;
+          index = 0;
+        end
 
 
 
-      #50000;
+      #10000;
       $stop;
     end
 //***************************    Task    ***************************
