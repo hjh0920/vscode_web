@@ -1,5 +1,5 @@
-// FT60xÇı¶¯Ä£¿é
-
+// FT60xé©±åŠ¨æ¨¡å—
+ 
 module ftdi_245fifo_top #(
   parameter  FIFO_BUS_WIDTH   = 2, // FT600(2Bytes), FT601(4Bytes)
   parameter  S_TDATA_WIDTH    = 0, // 1-512 (byte)
@@ -7,29 +7,29 @@ module ftdi_245fifo_top #(
   parameter  FIFO_DEPTH       = 2048, // 16-4194304
   parameter  PROG_FULL_THRESH = 10 // Specifies the maximum number of write words in the FIFO at or above which prog_full is asserted, Max_Value = FIFO_DEPTH - 5, Min_Value = 5 + CDC_SYNC_STAGES
 )(
-// Ä£¿éÊ±ÖÓ
-  input                         tx_clk, // ·¢ËÍÊ±ÖÓ
-  input                         rx_clk, // ½ÓÊÕÊ±ÖÓ
-// È«¾ÖÒì²½¸´Î»
+// æ¨¡å—æ—¶é’Ÿ
+  input                         tx_clk, // å‘é€æ—¶é’Ÿ
+  input                         rx_clk, // æ¥æ”¶æ—¶é’Ÿ
+// å…¨å±€å¼‚æ­¥å¤ä½
   input                         rst_glbl,
-// FT60xĞ¾Æ¬½Ó¿Ú
+// FT60xèŠ¯ç‰‡æ¥å£
   input                         usb_clk,
   output                        usb_rstn,
-  input                         usb_txe_n, // ´«ÊäFIFO¿ÕÖ¸Ê¾£¬µÍÓĞĞ§
-  input                         usb_rxf_n, // ½ÓÊÕFIFOÂúÖ¸Ê¾£¬Ö»ÓĞµÍµçÆ½Ê±²Å½øĞĞ¶ÁÊı¾İ
-  output                        usb_wr_n, // Ğ´Ê¹ÄÜ
-  output                        usb_rd_n, // ¶ÁÊ¹ÄÜ
-  output                        usb_oe_n, // Êı¾İÊä³öÊ¹ÄÜ
-  input  [FIFO_BUS_WIDTH-1:0]   usb_be_i, // ²¢ĞĞÊı¾İ×Ö½ÚÊ¹ÄÜ(½ÓÊÕ)
-  output [FIFO_BUS_WIDTH-1:0]   usb_be_o, // ²¢ĞĞÊı¾İ×Ö½ÚÊ¹ÄÜ(·¢ËÍ)
-  output                        usb_be_t, // ÈıÌ¬ÊäÈëÊ¹ÄÜĞÅºÅ, output(0), input(1)
-  input  [FIFO_BUS_WIDTH*8-1:0] usb_data_i, // ²¢ĞĞÊı¾İ(½ÓÊÕ)
-  output [FIFO_BUS_WIDTH*8-1:0] usb_data_o, // ²¢ĞĞÊı¾İ(·¢ËÍ)
-  output                        usb_data_t, // ÈıÌ¬ÊäÈëÊ¹ÄÜĞÅºÅ, output(0), input(1)
-  output [1:0]                  usb_gpio, // Ä£Ê½Ñ¡Ôñ
+  input                         usb_txe_n, // ä¼ è¾“FIFOç©ºæŒ‡ç¤ºï¼Œä½æœ‰æ•ˆ
+  input                         usb_rxf_n, // æ¥æ”¶FIFOæ»¡æŒ‡ç¤ºï¼Œåªæœ‰ä½ç”µå¹³æ—¶æ‰è¿›è¡Œè¯»æ•°æ®
+  output                        usb_wr_n, // å†™ä½¿èƒ½
+  output                        usb_rd_n, // è¯»ä½¿èƒ½
+  output                        usb_oe_n, // æ•°æ®è¾“å‡ºä½¿èƒ½
+  input  [FIFO_BUS_WIDTH-1:0]   usb_be_i, // å¹¶è¡Œæ•°æ®å­—èŠ‚ä½¿èƒ½(æ¥æ”¶)
+  output [FIFO_BUS_WIDTH-1:0]   usb_be_o, // å¹¶è¡Œæ•°æ®å­—èŠ‚ä½¿èƒ½(å‘é€)
+  output                        usb_be_t, // ä¸‰æ€è¾“å…¥ä½¿èƒ½ä¿¡å·, output(0), input(1)
+  input  [FIFO_BUS_WIDTH*8-1:0] usb_data_i, // å¹¶è¡Œæ•°æ®(æ¥æ”¶)
+  output [FIFO_BUS_WIDTH*8-1:0] usb_data_o, // å¹¶è¡Œæ•°æ®(å‘é€)
+  output                        usb_data_t, // ä¸‰æ€è¾“å…¥ä½¿èƒ½ä¿¡å·, output(0), input(1)
+  output [1:0]                  usb_gpio, // æ¨¡å¼é€‰æ‹©
   output                        usb_siwu_n,
   output                        usb_wakeup_n,
-// ÓÃ»§½Ó¿Ú
+// ç”¨æˆ·æ¥å£
   input                         s_axis_tvalid,
   output                        s_axis_tready,
   input  [S_TDATA_WIDTH*8-1:0]  s_axis_tdata,
@@ -96,15 +96,15 @@ module ftdi_245fifo_top #(
 //------------------------------------
 //             Instance
 //------------------------------------
-// ¸´Î»¹ÜÀíÄ£¿é
+// å¤ä½ç®¡ç†æ¨¡å—
   reset_ctrl u_reset_ctrl(
-    // Ä£¿éÊ±ÖÓ
-    .tx_clk        (tx_clk), // ·¢ËÍÊ±ÖÓ
-    .rx_clk        (rx_clk), // ½ÓÊÕÊ±ÖÓ
-    .usb_clk       (usb_clk), // USBÔ´Í¬²½Ê±ÖÓ
-    // È«¾ÖÒì²½¸´Î»
+    // æ¨¡å—æ—¶é’Ÿ
+    .tx_clk        (tx_clk), // å‘é€æ—¶é’Ÿ
+    .rx_clk        (rx_clk), // æ¥æ”¶æ—¶é’Ÿ
+    .usb_clk       (usb_clk), // USBæºåŒæ­¥æ—¶é’Ÿ
+    // å…¨å±€å¼‚æ­¥å¤ä½
     .rst_glbl      (rst_glbl),
-    // Ä£¿é¸´Î»
+    // æ¨¡å—å¤ä½
     .o_rst_txclk   (rst_txclk),
     .o_rst_rxclk   (rst_rxclk),
     .o_rst_usbclk  (rst_usbclk),
@@ -113,7 +113,7 @@ module ftdi_245fifo_top #(
     .o_rstn_usbclk (rstn_usbclk)
   );
 
-// AXI4-StreamÕûÊı±¶Î»¿í×ª»»Ä£¿é
+// AXI4-Streamæ•´æ•°å€ä½å®½è½¬æ¢æ¨¡å—
   axis_width_converter #(
     .S_TDATA_WIDTH         (S_TDATA_WIDTH), // 1-512 (byte)
     .M_TDATA_WIDTH         (FIFO_BUS_WIDTH), // 1-512 (byte)
@@ -142,7 +142,7 @@ module ftdi_245fifo_top #(
     .m_axis_tdest          (),
     .m_axis_tuser          ()
   );
-// ·â×° xpm_fifo_axis
+// å°è£… xpm_fifo_axis
   axis_data_fifo #(
     .CDC_SYNC_STAGES      (CDC_SYNC_STAGES), // 2-8
     .CLOCKING_MODE        (CLOCKING_MODE), // common_clock, independent_clock
@@ -180,28 +180,28 @@ module ftdi_245fifo_top #(
     .m_axis_tready        (s_axis_tx_tready_usbclk)
   );
 
-// FT60xÇı¶¯Ä£¿é
+// FT60xé©±åŠ¨æ¨¡å—
 ftdi_245fifo_fsm #(
   .FIFO_BUS_WIDTH   (FIFO_BUS_WIDTH)
 )u_ftdi_245fifo_fsm(
-// FT60xĞ¾Æ¬½Ó¿Ú
+// FT60xèŠ¯ç‰‡æ¥å£
   .usb_clk          (usb_clk),
   .usb_rstn         (usb_rstn),
-  .usb_txe_n        (usb_txe_n), // ´«ÊäFIFO¿ÕÖ¸Ê¾£¬µÍÓĞĞ§
-  .usb_rxf_n        (usb_rxf_n), // ½ÓÊÕFIFOÂúÖ¸Ê¾£¬Ö»ÓĞµÍµçÆ½Ê±²Å½øĞĞ¶ÁÊı¾İ
-  .usb_wr_n         (usb_wr_n), // Ğ´Ê¹ÄÜ
-  .usb_rd_n         (usb_rd_n), // ¶ÁÊ¹ÄÜ
-  .usb_oe_n         (usb_oe_n), // Êı¾İÊä³öÊ¹ÄÜ
-  .usb_be_i         (usb_be_i), // ²¢ĞĞÊı¾İ×Ö½ÚÊ¹ÄÜ(½ÓÊÕ)
-  .usb_be_o         (usb_be_o), // ²¢ĞĞÊı¾İ×Ö½ÚÊ¹ÄÜ(·¢ËÍ)
-  .usb_be_t         (usb_be_t), // ÈıÌ¬ÊäÈëÊ¹ÄÜĞÅºÅ, output(0), input(1)
-  .usb_data_i       (usb_data_i), // ²¢ĞĞÊı¾İ(½ÓÊÕ)
-  .usb_data_o       (usb_data_o), // ²¢ĞĞÊı¾İ(·¢ËÍ)
-  .usb_data_t       (usb_data_t), // ÈıÌ¬ÊäÈëÊ¹ÄÜĞÅºÅ, output(0), input(1)
-  .usb_gpio         (usb_gpio), // Ä£Ê½Ñ¡Ôñ
+  .usb_txe_n        (usb_txe_n), // ä¼ è¾“FIFOç©ºæŒ‡ç¤ºï¼Œä½æœ‰æ•ˆ
+  .usb_rxf_n        (usb_rxf_n), // æ¥æ”¶FIFOæ»¡æŒ‡ç¤ºï¼Œåªæœ‰ä½ç”µå¹³æ—¶æ‰è¿›è¡Œè¯»æ•°æ®
+  .usb_wr_n         (usb_wr_n), // å†™ä½¿èƒ½
+  .usb_rd_n         (usb_rd_n), // è¯»ä½¿èƒ½
+  .usb_oe_n         (usb_oe_n), // æ•°æ®è¾“å‡ºä½¿èƒ½
+  .usb_be_i         (usb_be_i), // å¹¶è¡Œæ•°æ®å­—èŠ‚ä½¿èƒ½(æ¥æ”¶)
+  .usb_be_o         (usb_be_o), // å¹¶è¡Œæ•°æ®å­—èŠ‚ä½¿èƒ½(å‘é€)
+  .usb_be_t         (usb_be_t), // ä¸‰æ€è¾“å…¥ä½¿èƒ½ä¿¡å·, output(0), input(1)
+  .usb_data_i       (usb_data_i), // å¹¶è¡Œæ•°æ®(æ¥æ”¶)
+  .usb_data_o       (usb_data_o), // å¹¶è¡Œæ•°æ®(å‘é€)
+  .usb_data_t       (usb_data_t), // ä¸‰æ€è¾“å…¥ä½¿èƒ½ä¿¡å·, output(0), input(1)
+  .usb_gpio         (usb_gpio), // æ¨¡å¼é€‰æ‹©
   .usb_siwu_n       (usb_siwu_n),
   .usb_wakeup_n     (usb_wakeup_n),
-// ÄÚ²¿ÓÃ»§½Ó¿Ú
+// å†…éƒ¨ç”¨æˆ·æ¥å£
   .rstn_usbclk      (rstn_usbclk),
   .s_axis_tdata     (s_axis_tx_tdata_usbclk),
   .s_axis_tkeep     (s_axis_tx_tkeep_usbclk),
@@ -219,7 +219,7 @@ ftdi_245fifo_fsm #(
   .almost_full_axis (rx_almost_full_axis)
 );
 
-// ·â×° xpm_fifo_axis
+// å°è£… xpm_fifo_axis
   axis_data_fifo #(
     .CDC_SYNC_STAGES      (CDC_SYNC_STAGES), // 2-8
     .CLOCKING_MODE        (CLOCKING_MODE), // common_clock, independent_clock
@@ -257,7 +257,7 @@ ftdi_245fifo_fsm #(
     .m_axis_tready        (s_axis_rx_tready)
   );
 
-// AXI4-StreamÕûÊı±¶Î»¿í×ª»»Ä£¿é
+// AXI4-Streamæ•´æ•°å€ä½å®½è½¬æ¢æ¨¡å—
   axis_width_converter #(
     .S_TDATA_WIDTH         (FIFO_BUS_WIDTH*8), // 1-512 (byte)
     .M_TDATA_WIDTH         (M_TDATA_WIDTH), // 1-512 (byte)
