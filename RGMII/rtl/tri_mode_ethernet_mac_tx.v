@@ -1,7 +1,7 @@
 // 三速以太网MAC接收模块, 支持填充前导码 & SFD & 填充字段 & FCS 以及不足64字节长度填充
 
 module tri_mode_ethernet_mac_tx #(
-  // 帧间隔(Unit: bit time)
+  // 帧间隔(Unit: bit time, 8整倍数)
   parameter C_IFG = 96
 )(
   input [1:0]   inband_clock_speed,   // 125MHz, 25MHz, 2.5MHz

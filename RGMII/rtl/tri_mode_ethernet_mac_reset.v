@@ -6,8 +6,8 @@ module tri_mode_ethernet_mac_reset (
   // 时钟及复位
   input     sys_rst,
   input     rx_mac_aclk,
-  output    rx_mac_reset,
   input     tx_mac_aclk,
+  output    rx_mac_reset,
   output    tx_mac_reset
 );
 
