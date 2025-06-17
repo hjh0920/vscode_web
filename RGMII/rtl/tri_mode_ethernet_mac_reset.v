@@ -2,7 +2,7 @@
 
 module tri_mode_ethernet_mac_reset (
   // PHY 芯片状态指示
-  input     inband_link_statut, // up(1), dowm(0)
+  input     inband_link_status, // up(1), dowm(0)
   // 时钟及复位
   input     sys_rst,
   input     rx_mac_aclk,

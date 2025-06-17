@@ -36,14 +36,14 @@ module tri_mode_ethernet_mac #(
   output        rgmii_tx_ctl,
   output [3:0]  rgmii_txd,
   // 用户接收数据 AXIS 接口
-  output        rx_mac_alck,
+  output        rx_mac_aclk,
   output        rx_mac_reset,
   output  [7:0] rx_axis_mac_tdata,
   output        rx_axis_mac_tvalid,
   output        rx_axis_mac_tlast,
   output        rx_axis_mac_tuser,
   // 用户发送数据 AXIS 接口
-  output        tx_mac_alck,
+  output        tx_mac_aclk,
   output        tx_mac_reset,
   input         tx_axis_mac_tvalid,
   input [7:0]   tx_axis_mac_tdata,
@@ -79,7 +79,7 @@ module tri_mode_ethernet_mac #(
   assign inband_clock_speed   = inband_clock_speed_temp;
   assign inband_duplex_status = inband_duplex_status_temp;
   assign rx_mac_aclk          = rx_mac_aclk_temp;
-  assign tx_mac_aclk          = rx_mac_aclk_temp;
+  assign tx_mac_aclk          = clk_125mhz;
   assign rx_mac_reset         = rx_mac_reset_temp;
   assign tx_mac_reset         = tx_mac_reset_temp;
 
@@ -108,8 +108,8 @@ module tri_mode_ethernet_mac #(
     .reset                 (reset),
     .reset90               (reset90),
     // PHY 芯片状态指示
-    .phy_link_status       (phy_link_status_temp), // up(1), down(0)
-    .phy_speed_status      (phy_speed_status_temp), // 10Mbps(0), 100Mbps(1), 1000Mbps(2)
+    .phy_link_status       (inband_link_status_temp), // up(1), down(0)
+    .phy_speed_status      (inband_clock_speed_temp), // 10Mbps(0), 100Mbps(1), 1000Mbps(2)
     // RGMII_TX
     .rgmii_txc             (rgmii_txc),
     .rgmii_tx_ctl          (rgmii_tx_ctl),
@@ -122,9 +122,9 @@ module tri_mode_ethernet_mac #(
 // 三速以太网MAC复位模块
   tri_mode_ethernet_mac_reset u_tri_mode_ethernet_mac_reset(
     // PHY 芯片状态指示
-    .inband_link_statut (inband_link_statut_temp), // up(1), dowm(0)
+    .inband_link_status (inband_link_status_temp), // up(1), dowm(0)
     // 时钟及复位
-    .sys_rst            (sys_rst),
+    .sys_rst            (reset),
     .rx_mac_aclk        (rx_mac_aclk_temp),
     .tx_mac_aclk        (clk_125mhz),
     .rx_mac_reset       (rx_mac_reset_temp),
@@ -158,7 +158,7 @@ module tri_mode_ethernet_mac #(
   )U_tri_mode_ethernet_mac_tx(
     .inband_clock_speed    (inband_clock_speed_temp),   // 125MHz, 25MHz, 2.5MHz
     // RGMII 发送数据 AXIS 接口
-    .tx_mac_alck           (tx_mac_alck),
+    .tx_mac_aclk           (tx_mac_aclk),
     .tx_mac_reset          (tx_mac_reset_temp),
     .tx_axis_rgmii_tdata   (tx_axis_rgmii_tdata),
     .tx_axis_rgmii_tvalid  (tx_axis_rgmii_tvalid),

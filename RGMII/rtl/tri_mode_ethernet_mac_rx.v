@@ -149,9 +149,9 @@ module tri_mode_ethernet_mac_rx #(
       rx_byte_cnt <= rx_byte_cnt + 12'd1;
 // 接收前导码+SFD
   always @ (posedge rx_mac_aclk)
-    if ((inband_clock_speed ==2'b10) && rx_axis_rgmii_tvalid && ({rx_axis_rgmii_tdata_ff[8*7-1:0],rx_axis_rgmii_tdata} == 64'h5555_55555_5555_55D5))
+    if ((inband_clock_speed == 2'b10) && rx_axis_rgmii_tvalid && ({rx_axis_rgmii_tdata_ff[8*7-1:0],rx_axis_rgmii_tdata} == 64'h5555_5555_5555_55D5))
       rx_preamble_flag <= 1'b1;
-    else if ((inband_clock_speed[1] == 1'b0) && rx_axis_rgmii_tvalid && (({rx_axis_rgmii_tdata_ff[8*7-1:0],rx_axis_rgmii_tdata} == 64'h5555_55555_5555_555D) || ({rx_axis_rgmii_tdata_ff[8*7+3:0],rx_axis_rgmii_tdata[7:4]} == 64'h5555_55555_5555_555D)))
+    else if ((inband_clock_speed[1] == 1'b0) && rx_axis_rgmii_tvalid && (({rx_axis_rgmii_tdata_ff[8*7-1:0],rx_axis_rgmii_tdata} == 64'h5555_5555_5555_555D) || ({rx_axis_rgmii_tdata_ff[8*7+3:0],rx_axis_rgmii_tdata[7:4]} == 64'h5555_5555_5555_555D)))
       rx_preamble_flag <= 1'b1;
     else
       rx_preamble_flag <= 1'b0;
@@ -213,7 +213,7 @@ module tri_mode_ethernet_mac_rx #(
     if ((rx_eth_type == 16'h0800) || (rx_eth_type == 16'h0806))
       rx_eth_type_match <= 1'b1;
     else
-      rxmac_type_match <= 1'b0;
+      rx_eth_type_match <= 1'b0;
 // 完成以太网报文帧头接收
   always @ (posedge rx_mac_aclk)
     if (rx_byte_cnt == 12'd13 && rx_axis_rgmii_tvalid)
@@ -230,9 +230,10 @@ module tri_mode_ethernet_mac_rx #(
       rx_ip_head_done <= 1'b0;
 // 完成IP报文数据接收
   always @(posedge rx_mac_aclk)
-    if (rx_mac_state == S_IP_DATA) && rx_axis_rgmii_tvalid && (
+    if ((rx_mac_state == S_IP_DATA) && rx_axis_rgmii_tvalid && (
        ((rx_ip_total_length < 16'd46) && (rx_byte_cnt == 12'd63)) ||
-       ((rx_ip_total_length > 16'd45) && (rx_byte_cnt == (12'd17 + rx_ip_total_length[11:0]))))
+       ((rx_ip_total_length > 16'd45) && (rx_byte_cnt == (12'd17 + rx_ip_total_length[11:0])))
+       ))
       rx_ip_data_done <= 1'b1;
     else
       rx_ip_data_done <= 1'b0;
@@ -246,12 +247,12 @@ module tri_mode_ethernet_mac_rx #(
 // 接收超时
   always @ (posedge rx_mac_aclk)
     if (rx_timeout_cnt == C_TIMEOUT[15:0])
-      rx_timeout <= 1'b1;
+      rx_timeout_flag <= 1'b1;
     else 
-      rx_timeout <= 1'b0;
+      rx_timeout_flag <= 1'b0;
 // 帧过滤成功
   always @(posedge rx_mac_aclk)
-    if (rx_mac_state == S_FILTER) && ((!rx_eth_type_match) || (C_FILTER_EN[0] && (!rx_dst_mac_match)))
+    if ((rx_mac_state == S_FILTER) && ((!rx_eth_type_match) || (C_FILTER_EN[0] && (!rx_dst_mac_match))))
       rx_filter_success <= 1'b1;
     else
       rx_filter_success <= 1'b0;
@@ -325,7 +326,7 @@ module tri_mode_ethernet_mac_rx #(
   always @ (posedge rx_mac_aclk)
     if (rx_mac_reset)
       rx_axis_mac_tvalid_ff <= 1'b0;
-    else if (rx_timeout || (rx_mac_state == S_FCS_CHECK) || rx_filter_success)
+    else if (rx_timeout_flag || (rx_mac_state == S_FCS_CHECK) || rx_filter_success)
       rx_axis_mac_tvalid_ff <= 1'b1;
     else if ((rx_mac_state == S_IP_HEAD) || ((rx_eth_type == 16'h0806) && (rx_byte_cnt < 12'd42)) || ((rx_eth_type == 16'h0800) && (rx_byte_cnt < (12'd14 + rx_ip_total_length[11:0]))))
       rx_axis_mac_tvalid_ff <= rx_axis_rgmii_tvalid_d1;
@@ -359,7 +360,7 @@ module tri_mode_ethernet_mac_rx #(
     .din            (rx_crc32_din),
     .enable         (rx_crc32_enable),
     .crc32          (rx_crc32_result_temp),
-    .rx_crc32_next  ()
+    .crc32_next  ()
   );
 
 endmodule

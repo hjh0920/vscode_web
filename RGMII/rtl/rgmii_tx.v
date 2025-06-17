@@ -100,7 +100,7 @@ module rgmii_tx (
     else if (tx_axis_rgmii_tvalid & tx_axis_rgmii_tready_ff) // 更新发送数据
       tx_axis_rgmii_tdata_ff <= tx_axis_rgmii_tdata;
     else if (tx_nibble_sw) // 10/100Mbps 发送高低nibble
-      tx_axis_rgmii_tdata_ff <= {4'b0,tx_axis_rgmii_tdataff[7:4]};
+      tx_axis_rgmii_tdata_ff <= {4'b0,tx_axis_rgmii_tdata_ff[7:4]};
     else if (!tx10_100_data_en) // 默认传输数据
       tx_axis_rgmii_tdata_ff <= {4'b0,1'b1,phy_speed_status_txclk,1'b1};
 

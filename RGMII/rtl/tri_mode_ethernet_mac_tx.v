@@ -6,7 +6,7 @@ module tri_mode_ethernet_mac_tx #(
 )(
   input [1:0]   inband_clock_speed,   // 125MHz, 25MHz, 2.5MHz
   // RGMII 发送数据 AXIS 接口
-  input         tx_mac_alck,
+  input         tx_mac_aclk,
   input         tx_mac_reset,
   output [7:0]  tx_axis_rgmii_tdata,
   output        tx_axis_rgmii_tvalid,
@@ -44,10 +44,10 @@ module tri_mode_ethernet_mac_tx #(
   reg          tx_ifg_flag_d1 = 0;
   reg  [31:0]  tx_ifg_cnt = 0; // 发送帧间隔计数器
 // CRC校验模块
-  reg          tx_crc32_reset = 1;
-  reg  [7:0]   tx_crc32_din = 0;
-  reg          tx_crc32_enable = 0;
-  reg  [31:0]  tx_crc32_result = 0;
+  wire         tx_crc32_reset;
+  wire [7:0]   tx_crc32_din;
+  wire         tx_crc32_enable;
+  wire [31:0]  tx_crc32_result;
 // 输出寄存器
   reg  [7:0]   tx_axis_rgmii_tdata_ff = 8'h55;
   reg          tx_axis_rgmii_tvalid_ff = 0;
@@ -73,7 +73,7 @@ module tri_mode_ethernet_mac_tx #(
     always @(posedge tx_mac_aclk)
       if (tx_mac_reset)
         tx_total_byte <= 0;
-      else if (tx_axis_mac_tvalid && tx_axis_mac_tready && tx_axis_mac_tlast) && (tx_byte_cnt < 12'd67)
+      else if (tx_axis_mac_tvalid && tx_axis_mac_tready && tx_axis_mac_tlast && (tx_byte_cnt < 12'd67))
         tx_total_byte <= 12'd71;
       else if (tx_axis_mac_tvalid && tx_axis_mac_tready && tx_axis_mac_tlast)
         tx_total_byte <= tx_byte_cnt + 12'd5;
@@ -105,7 +105,7 @@ module tri_mode_ethernet_mac_tx #(
   always @(posedge tx_mac_aclk)
     if (tx_mac_reset)
       tx_fcs_flag <= 1'b0;
-    else if ((tx_fcs_byte_cnt = 2'd3) && tx_axis_rgmii_tvalid && tx_axis_rgmii_tready)
+    else if ((tx_fcs_byte_cnt == 2'd3) && tx_axis_rgmii_tvalid && tx_axis_rgmii_tready)
       tx_fcs_flag <= 1'b0;
     else if (((tx_byte_cnt == 12'd66) && tx_axis_rgmii_tvalid && tx_axis_rgmii_tready && tx_stuff_flag) 
            || ((tx_byte_cnt > 12'd66) && tx_axis_mac_tvalid && tx_axis_mac_tready && tx_axis_mac_tlast))
@@ -183,7 +183,7 @@ module tri_mode_ethernet_mac_tx #(
       tx_axis_rgmii_tvalid_ff <= 1'b1;
     else if ((tx_byte_cnt < 12'd71) && tx_stuff_flag && tx_axis_rgmii_tvalid && tx_axis_rgmii_tready)
       tx_axis_rgmii_tvalid_ff <= 1'b1;
-    else (tx_data_flag)
+    else if (tx_data_flag)
       tx_axis_rgmii_tvalid_ff <= tx_axis_mac_tvalid;
     else if (tx_axis_rgmii_tvalid_ff && tx_axis_rgmii_tvalid && tx_axis_rgmii_tready)
       tx_axis_rgmii_tvalid_ff <= 1'b0;
@@ -192,10 +192,9 @@ module tri_mode_ethernet_mac_tx #(
 //------------------------------------
 //             Output Port
 //------------------------------------
-  assign rx_axis_mac_tdata = rx_axis_mac_tdata_ff;
-  assign rx_axis_mac_tvalid = rx_axis_mac_tvalid_ff;
-  assign rx_axis_mac_tlast = rx_axis_mac_tlast_ff;
-  assign rx_axis_mac_tuser = rx_axis_mac_tuser_ff;
+  assign tx_axis_rgmii_tdata  = tx_axis_rgmii_tdata_ff;
+  assign tx_axis_rgmii_tvalid = tx_axis_rgmii_tvalid_ff;
+  assign tx_axis_mac_tready   = (tx_mac_en & (!(tx_55d5_flag | tx_stuff_flag | tx_fcs_flag))) ? tx_axis_rgmii_tready : 1'b0;
 //------------------------------------
 //             Instance
 //------------------------------------
