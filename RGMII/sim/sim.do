@@ -34,7 +34,8 @@ vmap work ./work
   # 编译 glbl 模块
   vlog -work xil_defaultlib "$VIVADO_DIR/verilog/src/glbl.v"
   # 编译 xpm 模块
-  vlog -work xpm_lib "$VIVADO_DIR/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv"
+  # vlog -work xpm_lib "$VIVADO_DIR/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv"
+  vlog -work xpm_lib "$VIVADO_DIR/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv"
   # 编译 Xilinx IP
   # vlog -work xil_defaultlib "$IP_DIR/fifo_generator_0/simulation/fifo_generator_0.v"
   # vlog -work xil_defaultlib "$IP_DIR/fifo_generator_0/simulation/fifo_generator_0_sim_netlist.v"
@@ -42,7 +43,7 @@ vmap work ./work
   vlog -work work "$RTL_DIR/*.v"
 
 # 6. 启动仿真
-vsim -voptargs="+acc" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_usb
+vsim -voptargs="+acc" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_tri_mode_ethernet_mac
 
 # 7. 添加波形
 do wave.do
