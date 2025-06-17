@@ -159,7 +159,34 @@ module tri_mode_ethernet_mac_tx #(
       tx_axis_rgmii_tdata_ff <= 8'h55;
     else if (tx_mac_done_d1)
       tx_axis_rgmii_tdata_ff <= 8'h55;
-    else
+    else if (tx_fcs_flag && tx_axis_rgmii_tready) // 发送FCS
+      case (tx_fcs_byte_cnt)
+        2'd0: tx_axis_rgmii_tdata_ff <= {~tx_crc32_result[0],~tx_crc32_result[1],~tx_crc32_result[2],~tx_crc32_result[3],~tx_crc32_result[4],~tx_crc32_result[5],~tx_crc32_result[6],~tx_crc32_result[7]};
+        2'd1: tx_axis_rgmii_tdata_ff <= {~tx_crc32_result[8],~tx_crc32_result[9],~tx_crc32_result[10],~tx_crc32_result[11],~tx_crc32_result[12],~tx_crc32_result[13],~tx_crc32_result[14],~tx_crc32_result[15]};
+        2'd2: tx_axis_rgmii_tdata_ff <= {~tx_crc32_result[16],~tx_crc32_result[17],~tx_crc32_result[18],~tx_crc32_result[19],~tx_crc32_result[20],~tx_crc32_result[21],~tx_crc32_result[22],~tx_crc32_result[23]};
+        default: tx_axis_rgmii_tdata_ff <= {~tx_crc32_result[24],~tx_crc32_result[25],~tx_crc32_result[26],~tx_crc32_result[27],~tx_crc32_result[28],~tx_crc32_result[29],~tx_crc32_result[30],~tx_crc32_result[31]}; 
+      endcase
+    else if (tx_stuff_flag && tx_axis_rgmii_tready) // 发送填充字节
+      tx_axis_rgmii_tdata_ff <= 8'h00;
+    else if (tx_axis_rgmii_tvalid && tx_axis_rgmii_tready) // 发送前导码+SFD+数据
+      case (tx_byte_cnt)
+        12'd0,12'd1,12'd2,12'd3,12'd4,12'd5: tx_axis_rgmii_tdata_ff <= 8'h55;
+        12'd6: tx_axis_rgmii_tdata_ff <= 8'hD5;
+        default: tx_axis_rgmii_tdata_ff <= tx_axis_mac_tdata;
+      endcase
+  always @ (posedge tx_mac_aclk)
+    if (tx_mac_reset)
+      tx_axis_rgmii_tvalid_ff <= 1'b0;
+    else if (tx_ifg_flag)
+      tx_axis_rgmii_tvalid_ff <= 1'b0;
+    else if (tx_fcs_flag)
+      tx_axis_rgmii_tvalid_ff <= 1'b1;
+    else if ((tx_byte_cnt < 12'd71) && tx_stuff_flag && tx_axis_rgmii_tvalid && tx_axis_rgmii_tready)
+      tx_axis_rgmii_tvalid_ff <= 1'b1;
+    else (tx_data_flag)
+      tx_axis_rgmii_tvalid_ff <= tx_axis_mac_tvalid;
+    else if (tx_axis_rgmii_tvalid_ff && tx_axis_rgmii_tvalid && tx_axis_rgmii_tready)
+      tx_axis_rgmii_tvalid_ff <= 1'b0;
 
 
 //------------------------------------
