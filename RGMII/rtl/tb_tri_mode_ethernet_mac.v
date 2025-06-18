@@ -18,18 +18,18 @@ module tb_tri_mode_ethernet_mac;
   localparam [1:0] SPEED_1000M = 2'b10;
   localparam [1:0] SPEED_100M = 2'b01;
   localparam [1:0] SPEED_10M = 2'b00;
-  localparam       ARP_REPLY = 16'h02;
-  localparam       ARP_REQUEST = 16'h01;
-  localparam       IP_PROTO_ICMP = 8'h01;
-  localparam       IP_PROTO_UDP = 8'h11;
-  localparam       ICMP_ECHO_REPLY = 8'h00;
-  localparam       ICMP_ECHO_REQUEST = 8'h08;
-  localparam       DMAC = 48'h06_05_04_03_02_01;
-  localparam       SMAC = 48'h01_02_03_04_05_06;
-  localparam       DIP = 32'h0102_0304;
-  localparam       SIP = 32'h04;
-  localparam       UDP_SRC_PORT = 16'h0102;
-  localparam       UDP_DST_PORT = 16'h0201;
+  localparam [15:0] ARP_REPLY = 16'h02;
+  localparam [15:0] ARP_REQUEST = 16'h01;
+  localparam [7:0]  IP_PROTO_ICMP = 8'h01;
+  localparam [7:0]  IP_PROTO_UDP = 8'h11;
+  localparam [7:0]  ICMP_ECHO_REPLY = 8'h00;
+  localparam [7:0]  ICMP_ECHO_REQUEST = 8'h08;
+  localparam [47:0] DMAC = 48'h06_05_04_03_02_01;
+  localparam [47:0] SMAC = 48'h01_02_03_04_05_06;
+  localparam [31:0] DIP = 32'h0102_0304;
+  localparam [31:0] SIP = 32'h0403_0201;
+  localparam [15:0] UDP_SRC_PORT = 16'h0102;
+  localparam [15:0] UDP_DST_PORT = 16'h0201;
 
 //***************************   Signals  ***************************
   reg           clk_125mhz = 0;
@@ -272,6 +272,7 @@ module tb_tri_mode_ethernet_mac;
     reg   [31:0]  udp_checksum;
     integer       i;
     begin
+      i = 0;
       crc32_result = {32{1'b1}};
       ip_data_len = ip_total_len - 20;
       // Preamble
@@ -338,7 +339,7 @@ module tb_tri_mode_ethernet_mac;
             @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00);
             // ICMP Checksum
             icmp_checksum = {16'h0,icmp_type,8'h0};
-            for (i = 0; i < (ip_data_len-24); i=i+1)
+            for (i = 0; i < (ip_data_len-4); i=i+1)
               begin
                 if (i[0] == 0)
                   icmp_checksum = icmp_checksum + {i[7:0],8'h0};
@@ -350,7 +351,7 @@ module tb_tri_mode_ethernet_mac;
             @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_checksum[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_checksum[15:12]; crc32_result = CRC32(crc32_result, icmp_checksum[15:8]);
             @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_checksum[3:0];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_checksum[7:4];   crc32_result = CRC32(crc32_result, icmp_checksum[7:0]);
             // ICMP Payload
-            for (i = 0; i < (ip_data_len-24); i=i+1)
+            for (i = 0; i < (ip_data_len-4); i=i+1)
               begin
                 @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = i[3:0]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = i[7:4]; crc32_result = CRC32(crc32_result, i[7:0]);
               end
@@ -369,7 +370,7 @@ module tb_tri_mode_ethernet_mac;
             // UDP Checksum
             udp_checksum = src_ip[31:16] + src_ip[15:0] + dst_ip[31:16] + dst_ip[15:0] + {ip_type,8'h0} + ip_data_len;
             udp_checksum = udp_checksum + udp_src_port + udp_dst_port + ip_data_len;
-            for (i = 0; i < (ip_data_len-24); i=i+1)
+            for (i = 0; i < (ip_data_len-8); i=i+1)
               begin
                 if (i[0] == 0)
                   udp_checksum = udp_checksum + {i[7:0],8'h0};
@@ -381,7 +382,7 @@ module tb_tri_mode_ethernet_mac;
             @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_checksum[11:8];    @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_checksum[15:12]; crc32_result = CRC32(crc32_result, udp_checksum[15:8]);
             @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_checksum[3:0];     @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_checksum[7:4];  crc32_result = CRC32(crc32_result, udp_checksum[7:0]);
             // UDP Payload
-            for (i = 0; i < (ip_data_len-24); i=i+1)
+            for (i = 0; i < (ip_data_len-8); i=i+1)
               begin
                 @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = i[3:0]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = i[7:4]; crc32_result = CRC32(crc32_result, i[7:0]);
               end
