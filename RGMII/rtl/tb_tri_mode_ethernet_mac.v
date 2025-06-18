@@ -141,8 +141,80 @@ module tb_tri_mode_ethernet_mac;
         end
     end
   endtask
+  task T_RX_ARP;
+    input         arp_type;
+    input [47:0]  src_mac;
+    input [31:0]  src_ip;
+    input [31:0]  dst_ip;
+    reg   [31:0]  crc32_result;
+    reg   [47:0]  dst_mac;
+    begin
+      crc32_result = {32{1'b1}};
+      dst_mac = {48{1'b1}};
+      // Preamble
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5;
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5;
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5;
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5;
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5;
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5;
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5;
+      // SFD
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'hD;
+      // MAC DA
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[43:40]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[47:44];
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[35:32]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[39:36];
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[27:24]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[31:28];
+      
+      
 
 
+
+    end
+  endtask
+
+//***************************    Function      ***************************
+function [31:0] CRC32;
+  input [7:0] din;
+  input [7:0] crc32_next;
+  reg   [7:0] data;
+  begin
+    assign data = {din[0],din[1],din[2],din[3],din[4],din[5],din[6],din[7]};
+
+    assign CRC32[0]  = crc32_next[24] ^ crc32_next[30] ^ data[0] ^ data[6];
+    assign CRC32[1]  = crc32_next[24] ^ crc32_next[25] ^ crc32_next[30] ^ crc32_next[31] ^ data[0] ^ data[1] ^ data[6] ^ data[7];
+    assign CRC32[2]  = crc32_next[24] ^ crc32_next[25] ^ crc32_next[26] ^ crc32_next[30] ^ crc32_next[31] ^ data[0] ^ data[1] ^ data[2] ^ data[6] ^ data[7];
+    assign CRC32[3]  = crc32_next[25] ^ crc32_next[26] ^ crc32_next[27] ^ crc32_next[31] ^ data[1] ^ data[2] ^ data[3] ^ data[7];
+    assign CRC32[4]  = crc32_next[24] ^ crc32_next[26] ^ crc32_next[27] ^ crc32_next[28] ^ crc32_next[30] ^ data[0] ^ data[2] ^ data[3] ^ data[4] ^ data[6];
+    assign CRC32[5]  = crc32_next[24] ^ crc32_next[25] ^ crc32_next[27] ^ crc32_next[28] ^ crc32_next[29] ^ crc32_next[30] ^ crc32_next[31] ^ data[0] ^ data[1] ^ data[3] ^ data[4] ^ data[5] ^ data[6] ^ data[7];
+    assign CRC32[6]  = crc32_next[25] ^ crc32_next[26] ^ crc32_next[28] ^ crc32_next[29] ^ crc32_next[30] ^ crc32_next[31] ^ data[1] ^ data[2] ^ data[4] ^ data[5] ^ data[6] ^ data[7];
+    assign CRC32[7]  = crc32_next[24] ^ crc32_next[26] ^ crc32_next[27] ^ crc32_next[29] ^ crc32_next[31] ^ data[0] ^ data[2] ^ data[3] ^ data[5] ^ data[7];
+    assign CRC32[8]  = crc32_next[0] ^ crc32_next[24] ^ crc32_next[25] ^ crc32_next[27] ^ crc32_next[28] ^ data[0] ^ data[1] ^ data[3] ^ data[4];
+    assign CRC32[9]  = crc32_next[1] ^ crc32_next[25] ^ crc32_next[26] ^ crc32_next[28] ^ crc32_next[29] ^ data[1] ^ data[2] ^ data[4] ^ data[5];
+    assign CRC32[10] = crc32_next[2] ^ crc32_next[24] ^ crc32_next[26] ^ crc32_next[27] ^ crc32_next[29] ^ data[0] ^ data[2] ^ data[3] ^ data[5];
+    assign CRC32[11] = crc32_next[3] ^ crc32_next[24] ^ crc32_next[25] ^ crc32_next[27] ^ crc32_next[28] ^ data[0] ^ data[1] ^ data[3] ^ data[4];
+    assign CRC32[12] = crc32_next[4] ^ crc32_next[24] ^ crc32_next[25] ^ crc32_next[26] ^ crc32_next[28] ^ crc32_next[29] ^ crc32_next[30] ^ data[0] ^ data[1] ^ data[2] ^ data[4] ^ data[5] ^ data[6];
+    assign CRC32[13] = crc32_next[5] ^ crc32_next[25] ^ crc32_next[26] ^ crc32_next[27] ^ crc32_next[29] ^ crc32_next[30] ^ crc32_next[31] ^ data[1] ^ data[2] ^ data[3] ^ data[5] ^ data[6] ^ data[7];
+    assign CRC32[14] = crc32_next[6] ^ crc32_next[26] ^ crc32_next[27] ^ crc32_next[28] ^ crc32_next[30] ^ crc32_next[31] ^ data[2] ^ data[3] ^ data[4] ^ data[6] ^ data[7];
+    assign CRC32[15] = crc32_next[7] ^ crc32_next[27] ^ crc32_next[28] ^ crc32_next[29] ^ crc32_next[31] ^ data[3] ^ data[4] ^ data[5] ^ data[7];
+    assign CRC32[16] = crc32_next[8] ^ crc32_next[24] ^ crc32_next[28] ^ crc32_next[29] ^ data[0] ^ data[4] ^ data[5];
+    assign CRC32[17] = crc32_next[9] ^ crc32_next[25] ^ crc32_next[29] ^ crc32_next[30] ^ data[1] ^ data[5] ^ data[6];
+    assign CRC32[18] = crc32_next[10] ^ crc32_next[26] ^ crc32_next[30] ^ crc32_next[31] ^ data[2] ^ data[6] ^ data[7];
+    assign CRC32[19] = crc32_next[11] ^ crc32_next[27] ^ crc32_next[31] ^ data[3] ^ data[7];
+    assign CRC32[20] = crc32_next[12] ^ crc32_next[28] ^ data[4];
+    assign CRC32[21] = crc32_next[13] ^ crc32_next[29] ^ data[5];
+    assign CRC32[22] = crc32_next[14] ^ crc32_next[24] ^ data[0];
+    assign CRC32[23] = crc32_next[15] ^ crc32_next[24] ^ crc32_next[25] ^ crc32_next[30] ^ data[0] ^ data[1] ^ data[6];
+    assign CRC32[24] = crc32_next[16] ^ crc32_next[25] ^ crc32_next[26] ^ crc32_next[31] ^ data[1] ^ data[2] ^ data[7];
+    assign CRC32[25] = crc32_next[17] ^ crc32_next[26] ^ crc32_next[27] ^ data[2] ^ data[3];
+    assign CRC32[26] = crc32_next[18] ^ crc32_next[24] ^ crc32_next[27] ^ crc32_next[28] ^ crc32_next[30] ^ data[0] ^ data[3] ^ data[4] ^ data[6];
+    assign CRC32[27] = crc32_next[19] ^ crc32_next[25] ^ crc32_next[28] ^ crc32_next[29] ^ crc32_next[31] ^ data[1] ^ data[4] ^ data[5] ^ data[7];
+    assign CRC32[28] = crc32_next[20] ^ crc32_next[26] ^ crc32_next[29] ^ crc32_next[30] ^ data[2] ^ data[5] ^ data[6];
+    assign CRC32[29] = crc32_next[21] ^ crc32_next[27] ^ crc32_next[30] ^ crc32_next[31] ^ data[3] ^ data[6] ^ data[7];
+    assign CRC32[30] = crc32_next[22] ^ crc32_next[28] ^ crc32_next[31] ^ data[4] ^ data[7];
+    assign CRC32[31] = crc32_next[23] ^ crc32_next[29] ^ data[5];
+  end
+endfunction
 //***************************  Instance  ***************************
 // 三速以太网MAC模块
   tri_mode_ethernet_mac #(
