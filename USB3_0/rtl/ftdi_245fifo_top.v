@@ -29,14 +29,14 @@ module ftdi_245fifo_top #(
   output [1:0]                  usb_gpio, // 模式选择
   output                        usb_siwu_n,
   output                        usb_wakeup_n,
-// 用户接口
+// 用户发送接口
   input                         s_axis_tvalid,
   output                        s_axis_tready,
   input  [S_TDATA_WIDTH*8-1:0]  s_axis_tdata,
   input  [S_TDATA_WIDTH-1:0]    s_axis_tstrb,
   input  [S_TDATA_WIDTH-1:0]    s_axis_tkeep,
   input                         s_axis_tlast,
-
+// 用户接收接口
   output                        m_axis_tvalid,
   input                         m_axis_tready,
   output [M_TDATA_WIDTH*8-1:0]  m_axis_tdata,
