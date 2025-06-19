@@ -118,13 +118,13 @@ generate
         if (s_axis_tvalid && s_axis_tready_ff && (cnt == WIDTH_MULTIPLE))
           s_axis_tstrb_srl <= {{{M_TDATA_WIDTH-S_TDATA_WIDTH}{1'b0}},s_axis_tstrb};
         else if (s_axis_tvalid && s_axis_tready_ff)
-          s_axis_tstrb_srl <= {s_axis_tstrb_srl[(M_TDATA_WIDTH-S_TDATA_WIDTH)*8-1:0],s_axis_tstrb};
+          s_axis_tstrb_srl <= {s_axis_tstrb_srl[(M_TDATA_WIDTH-S_TDATA_WIDTH)-1:0],s_axis_tstrb};
 
       always @ (posedge aclk)
         if (s_axis_tvalid && s_axis_tready_ff && (cnt == WIDTH_MULTIPLE))
           s_axis_tkeep_srl <= {{{M_TDATA_WIDTH-S_TDATA_WIDTH}{1'b0}},s_axis_tkeep};
         else if (s_axis_tvalid && s_axis_tready_ff)
-          s_axis_tkeep_srl <= {s_axis_tkeep_srl[(M_TDATA_WIDTH-S_TDATA_WIDTH)*8-1:0],s_axis_tkeep};
+          s_axis_tkeep_srl <= {s_axis_tkeep_srl[(M_TDATA_WIDTH-S_TDATA_WIDTH)-1:0],s_axis_tkeep};
 
       always @ (posedge aclk)
         if (s_axis_tvalid && s_axis_tready_ff && (cnt == WIDTH_MULTIPLE))
