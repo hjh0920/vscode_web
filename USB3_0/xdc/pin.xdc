@@ -67,3 +67,5 @@ set_property IOSTANDARD LVCMOS33 [get_ports usb_rxf_n]
 set_property IOSTANDARD LVCMOS33 [get_ports usb_clk]
 set_property IOSTANDARD LVCMOS33 [get_ports {usb_be[*]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {usb_data[*]}]
+
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets {usb_clk_IBUF}]
