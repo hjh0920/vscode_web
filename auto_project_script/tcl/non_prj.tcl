@@ -21,9 +21,9 @@ add_files   [glob $srcDir/rtl/*]
 # add_files   [glob $srcDir/ip/*.xcix]
 update_compile_order -fileset sources_1
 # update_compile_order
-# ÓÃÓÚ¸üĞÂÖ¸¶¨ÎÄ¼ş¼¯ÏÂÎÄ¼şµÄ±àÒëË³Ğò£¬Vivado¿É¾İ´ËÈ·¶¨¶¥²ãÎÄ¼şÄ£¿éÃû
+# ç”¨äºæ›´æ–°æŒ‡å®šæ–‡ä»¶é›†ä¸‹æ–‡ä»¶çš„ç¼–è¯‘é¡ºåºï¼ŒVivadoå¯æ®æ­¤ç¡®å®šé¡¶å±‚æ–‡ä»¶æ¨¡å—å
 # set_property top top [current_fileset]
-# ÉèÖÃ¶¥²ãÎÄ¼ş
+# è®¾ç½®é¡¶å±‚æ–‡ä»¶
 
 add_files -fileset constrs_1 [glob $srcDir/xdc/*.xdc]
 
@@ -32,16 +32,16 @@ update_compile_order -fileset sim_1
 
 # set_property strategy Flow_AreaOptimized_high [get_runs synth_1]
 # set_property strategy Performance_Explore [get_runs impl_1]
-# Ö¸¶¨×ÛºÏ²ßÂÔ 
-# Ö¸¶¨ÊµÏÖ²ßÂÔ
-# Î´Ö¸¶¨£¬ÔòÊ¹ÓÃÄ¬ÈÏ²ßÂÔ
+# æŒ‡å®šç»¼åˆç­–ç•¥ 
+# æŒ‡å®šå®ç°ç­–ç•¥
+# æœªæŒ‡å®šï¼Œåˆ™ä½¿ç”¨é»˜è®¤ç­–ç•¥
 
 # launch_runs synth_1
 # wait_on_run synth_1
 # launch_runs impl_1 -to_step write_bitstream
 # wait_on_run impl_1
-# Ö´ĞĞ×ÛºÏ²Ù×÷
-# Ö´ĞĞÊµÏÖ²Ù×÷£¬Èç¹ûÃ»ÓĞ-to_step£¬ÔòÖ»»áÖ´ĞĞµ½²¼Ïß²Ù×÷£¬²»»áÉú³Ébitstream
+# æ‰§è¡Œç»¼åˆæ“ä½œ
+# æ‰§è¡Œå®ç°æ“ä½œï¼Œå¦‚æœæ²¡æœ‰-to_stepï¼Œåˆ™åªä¼šæ‰§è¡Œåˆ°å¸ƒçº¿æ“ä½œï¼Œä¸ä¼šç”Ÿæˆbitstream
 
 start_gui
-# ´ò¿ªVivadoÍ¼ĞÎ½çÃæ
+# æ‰“å¼€Vivadoå›¾å½¢ç•Œé¢

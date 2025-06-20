@@ -17,10 +17,10 @@ if exist "*.xpr" (
 pause
 exit
 
-@REM @REM vivado �У�cmd���ڵĵ�ǰ·�������Ǵ�� log�ļ���jou�ļ���.Xil�ļ��е�·��
-@REM @REM ��ˣ����е������� ./prj Ŀ¼��ִ��
+@REM @REM vivado 中，cmd窗口的当前路径，就是存放 log文件、jou文件、.Xil文件夹的路径
+@REM @REM 因此，所有的命令在 ./prj 目录下执行
 @REM @REM 
-@REM @REM vivado_pid***.str�ļ�����һ����ʱ�ļ�����xpr����ʱ�Զ����ɣ�
-@REM @REM ����λ�����ݴ򿪷�ʽ������ͬ��
-@REM @REM ������Դ��������˫��xpr�ļ��򿪣�������xpr�ļ�����·��
-@REM @REM ����cmd��������򿪣������� cmd���ڵĵ�ǰ·��
+@REM @REM vivado_pid***.str文件，是一个临时文件，打开xpr工程时自动生成，
+@REM @REM 其存放位置依据打开方式有所不同，
+@REM @REM 当在资源管理器中双击xpr文件打开，则存放于xpr文件所在路径
+@REM @REM 当在cmd中用命令打开，则存放在 cmd窗口的当前路径
