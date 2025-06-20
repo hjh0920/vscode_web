@@ -5,8 +5,9 @@ quit -sim
 # 2. 设置库路径
 set VIVADO_DIR "C:/Software/Xilinx/Vivado/2020.1/data"
 set VIVADO_LIB_DIR "C:/modeltech64_2020.4/vivado2020_lib"
-set IP_DIR "../ip"
-set RTL_DIR "../rtl"
+set IP_DIR "../src/ip"
+set RTL_DIR "../src/rtl"
+set TB_DIR "../src/tb"
 
 # 3. 创建库
 # unisim 库 提供Xilinx FPGA所有基本硬件原语(LUT/FDCE/RAMB36E1/BUFG/MMCM/IO原语等)的行为级和结构级仿真模型
@@ -40,6 +41,7 @@ vmap work ./work
   # vlog -work xil_defaultlib "$IP_DIR/fifo_generator_0/simulation/fifo_generator_0_sim_netlist.v"
   # 编译设计文件
   vlog -work work "$RTL_DIR/*.v"
+  vlog -work work "$TB_DIR/*.v"
 
 # 6. 启动仿真
 vsim -voptargs="+acc" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_usb
