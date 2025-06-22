@@ -1,0 +1,205 @@
+m255
+K4
+z2
+!s11f vlog 2020.4 2020.10, Oct 13 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/arlen/Desktop/Github/vscode_web/RGMII/sim
+T_opt
+!s110 1750416189
+VZ9P=S3ah=:>EkLU:L7D`b3
+014 4 4 xil_defaultlib glbl fast 0
+04 24 4 work tb_tri_mode_ethernet_mac fast 0
+=1-2c3b70b554cb-68553b3c-a0-4580
+o-quiet -auto_acc_if_foreign -work work -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work +acc
+Z1 tCvgOpt 0
+n@_opt
+OL;O;2020.4;71
+vcrc32
+Z2 !s110 1750416186
+!i10b 1
+!s100 Xj;bIEFac9[2BK7knJA4e0
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I_]aAn7FYQUSQ7OOM3edEJ2
+R0
+Z4 w1750415700
+8../src/rtl/crc32.v
+F../src/rtl/crc32.v
+!i122 0
+L0 3 65
+Z5 VDg1SIo80bB@j0V0VzS_@n1
+Z6 OL;L;2020.4;71
+r1
+!s85 0
+31
+Z7 !s108 1750416186.000000
+Z8 !s107 ../src/rtl/tri_mode_ethernet_mac_tx.v|../src/rtl/tri_mode_ethernet_mac_rx.v|../src/rtl/tri_mode_ethernet_mac_reset.v|../src/rtl/tri_mode_ethernet_mac.v|../src/rtl/rgmii_tx.v|../src/rtl/rgmii_rx.v|../src/rtl/crc32.v|
+Z9 !s90 -reportprogress|300|-work|work|../src/rtl/crc32.v|../src/rtl/rgmii_rx.v|../src/rtl/rgmii_tx.v|../src/rtl/tri_mode_ethernet_mac.v|../src/rtl/tri_mode_ethernet_mac_reset.v|../src/rtl/tri_mode_ethernet_mac_rx.v|../src/rtl/tri_mode_ethernet_mac_tx.v|
+!i113 0
+Z10 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vrgmii_rx
+R2
+!i10b 1
+!s100 Jcm3FOn8>G4gnUgD[S8Z50
+R3
+IbB<fDkzUiKlV23bD<@=Qe2
+R0
+R4
+8../src/rtl/rgmii_rx.v
+F../src/rtl/rgmii_rx.v
+!i122 0
+L0 3 168
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vrgmii_tx
+R2
+!i10b 1
+!s100 T>mAVe?eY[<n>WODh;z=N2
+R3
+Ie[kS<JhX>[G`W_E2hziRN1
+R0
+R4
+8../src/rtl/rgmii_tx.v
+F../src/rtl/rgmii_tx.v
+!i122 0
+L0 3 317
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vtb_tri_mode_ethernet_mac
+!s110 1750416187
+!i10b 1
+!s100 LGgj6<LYEAP]SkdJW[3BY3
+R3
+IVo4>k7@R1RbS[N=kKcnU@1
+R0
+R4
+8../src/tb/tb_tri_mode_ethernet_mac.v
+F../src/tb/tb_tri_mode_ethernet_mac.v
+!i122 1
+L0 4 484
+R5
+R6
+r1
+!s85 0
+31
+!s108 1750416187.000000
+!s107 ../src/tb/tb_tri_mode_ethernet_mac.v|
+!s90 -reportprogress|300|-work|work|../src/tb/tb_tri_mode_ethernet_mac.v|
+!i113 0
+R10
+R1
+vtri_mode_ethernet_mac
+R2
+!i10b 1
+!s100 E5X6^`6<^_UOLzU6IfG:F1
+R3
+IaX2Lo84jO]=eE2>Km94=A3
+R0
+R4
+8../src/rtl/tri_mode_ethernet_mac.v
+F../src/rtl/tri_mode_ethernet_mac.v
+!i122 0
+L0 12 162
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vtri_mode_ethernet_mac_reset
+R2
+!i10b 1
+!s100 Ld>W4mn1Z_?O9XaARm1He0
+R3
+ITb@m8HS=>^LA^0L^LPBgb0
+R0
+R4
+8../src/rtl/tri_mode_ethernet_mac_reset.v
+F../src/rtl/tri_mode_ethernet_mac_reset.v
+!i122 0
+L0 3 81
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vtri_mode_ethernet_mac_rx
+R2
+!i10b 1
+!s100 4M_PnCF7;UIXQiL?UBYdW2
+R3
+ITi:`<]?^NT26HLVIC>WSe3
+R0
+R4
+8../src/rtl/tri_mode_ethernet_mac_rx.v
+F../src/rtl/tri_mode_ethernet_mac_rx.v
+!i122 0
+L0 9 358
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vtri_mode_ethernet_mac_tx
+R2
+!i10b 1
+!s100 K>CYYMaOX>?UGOU6MKWmZ3
+R3
+I12`GVK90bdI9Peg@;1ENG2
+R0
+R4
+8../src/rtl/tri_mode_ethernet_mac_tx.v
+F../src/rtl/tri_mode_ethernet_mac_tx.v
+!i122 0
+L0 3 229
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1

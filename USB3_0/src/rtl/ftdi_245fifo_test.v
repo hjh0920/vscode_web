@@ -211,9 +211,10 @@ endgenerate
   wire [1:0]                  ila_usb_gpio;       assign ila_usb_gpio         = usb_gpio;
   wire [0:0]                  ila_usb_siwu_n;     assign ila_usb_siwu_n[0]    = usb_siwu_n;
   wire [0:0]                  ila_usb_wakeup_n;   assign ila_usb_wakeup_n[0]  = usb_wakeup_n;
+  wire [2:0]                  ila_usb_led;        assign ila_usb_led          = usb_led;
 
   ila_usb_if u_ila_usb_if (
-    .clk        (usb_clk),
+    .clk        (clk_100mhz),
     .probe0     (ila_usb_txe_n),
     .probe1     (ila_usb_rxf_n),
     .probe2     (ila_usb_wr_n),
@@ -227,7 +228,8 @@ endgenerate
     .probe10    (ila_usb_data_t),
     .probe11    (ila_usb_gpio),
     .probe12    (ila_usb_siwu_n),
-    .probe13    (ila_usb_wakeup_n)
+    .probe13    (ila_usb_wakeup_n),
+    .probe14    (ila_usb_led)
   );
   wire [0:0]                  ila_s_axis_tvalid;          assign ila_s_axis_tvalid[0]      = s_axis_tvalid;
   wire [0:0]                  ila_s_axis_tready;          assign ila_s_axis_tready[0]      = s_axis_tready;

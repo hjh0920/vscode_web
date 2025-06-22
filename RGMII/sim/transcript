@@ -1,0 +1,126 @@
+# //  ModelSim SE-64 2020.4 Oct 13 2020
+# //
+# //  Copyright 1991-2020 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim SE-64 and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# do sim.do
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Copying C:/modeltech64_2020.4/win64/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 18:43:05 on Jun 20,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 18:43:05 on Jun 20,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 18:43:06 on Jun 20,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv 
+# -- Compiling module xpm_cdc_single
+# -- Compiling module xpm_cdc_gray
+# -- Compiling module xpm_cdc_handshake
+# -- Compiling module xpm_cdc_pulse
+# -- Compiling module xpm_cdc_array_single
+# -- Compiling module xpm_cdc_sync_rst
+# -- Compiling module xpm_cdc_async_rst
+# -- Compiling module xpm_cdc_low_latency_handshake
+# 
+# Top level modules:
+# 	xpm_cdc_gray
+# 	xpm_cdc_handshake
+# 	xpm_cdc_pulse
+# 	xpm_cdc_array_single
+# 	xpm_cdc_sync_rst
+# 	xpm_cdc_async_rst
+# 	xpm_cdc_low_latency_handshake
+# End time: 18:43:06 on Jun 20,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 18:43:06 on Jun 20,2025
+# vlog -reportprogress 300 -work work ../src/rtl/crc32.v ../src/rtl/rgmii_rx.v ../src/rtl/rgmii_tx.v ../src/rtl/tri_mode_ethernet_mac.v ../src/rtl/tri_mode_ethernet_mac_reset.v ../src/rtl/tri_mode_ethernet_mac_rx.v ../src/rtl/tri_mode_ethernet_mac_tx.v 
+# -- Compiling module crc32
+# -- Compiling module rgmii_rx
+# -- Compiling module rgmii_tx
+# -- Compiling module tri_mode_ethernet_mac
+# -- Compiling module tri_mode_ethernet_mac_reset
+# -- Compiling module tri_mode_ethernet_mac_rx
+# -- Compiling module tri_mode_ethernet_mac_tx
+# 
+# Top level modules:
+# 	tri_mode_ethernet_mac
+# End time: 18:43:06 on Jun 20,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 18:43:07 on Jun 20,2025
+# vlog -reportprogress 300 -work work ../src/tb/tb_tri_mode_ethernet_mac.v 
+# -- Compiling module tb_tri_mode_ethernet_mac
+# 
+# Top level modules:
+# 	tb_tri_mode_ethernet_mac
+# End time: 18:43:07 on Jun 20,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_tri_mode_ethernet_mac 
+# Start time: 18:43:07 on Jun 20,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in module "tri_mode_ethernet_mac_rx(fast)".
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_tri_mode_ethernet_mac(fast)
+# Loading work.tri_mode_ethernet_mac(fast)
+# Loading work.rgmii_rx(fast)
+# Loading work.rgmii_tx(fast)
+# Loading sv_std.std
+# Loading xpm_lib.xpm_cdc_array_single(fast)
+# Loading xpm_lib.xpm_cdc_single(fast)
+# Loading work.tri_mode_ethernet_mac_reset(fast)
+# Loading work.tri_mode_ethernet_mac_rx(fast)
+# Loading work.crc32(fast)
+# Loading work.tri_mode_ethernet_mac_tx(fast)
+# Loading work.crc32(fast__1)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.bufio(bufio_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# Loading ieee.numeric_std(body)
+# Loading unisim.bufr(bufr_v)#1
+# Loading unisim.iddr(iddr_v)#1
+# Loading unisim.oddr(oddr_v)#1
+# ** Note: $stop    : ../src/tb/tb_tri_mode_ethernet_mac.v(117)
+#    Time: 8788 ns  Iteration: 0  Instance: /tb_tri_mode_ethernet_mac
+# Break in Module tb_tri_mode_ethernet_mac at ../src/tb/tb_tri_mode_ethernet_mac.v line 117
+# 0 ps
+# 9227400 ps
