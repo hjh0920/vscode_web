@@ -61,20 +61,29 @@ module tb_tri_mode_ethernet_mac;
       T_LINK_UP(50,SPEED_1000M);
       T_RX_ARP(ARP_REQUEST,SMAC,SIP,DIP);
 
-      T_LINK_UP(50,SPEED_1000M);
-      T_RX_ARP(ARP_REPLY,SMAC,SIP,DIP);
+      // T_LINK_UP(50,SPEED_1000M);
+      // T_RX_ARP(ARP_REPLY,SMAC,SIP,DIP);
 
       T_LINK_UP(50,SPEED_1000M);
       T_RX_IP(IP_PROTO_ICMP,SMAC,DMAC,SIP,DIP,40,UDP_SRC_PORT,UDP_DST_PORT,ICMP_ECHO_REQUEST);
-
-      T_LINK_UP(50,SPEED_1000M);
-      T_RX_IP(IP_PROTO_ICMP,SMAC,DMAC,SIP,DIP,40,UDP_SRC_PORT,UDP_DST_PORT,ICMP_ECHO_REPLY);
-
-      T_LINK_UP(50,SPEED_1000M);
-      T_RX_IP(IP_PROTO_UDP,SMAC,DMAC,SIP,DIP,40,UDP_SRC_PORT,UDP_DST_PORT,ICMP_ECHO_REQUEST);
       
       T_LINK_UP(50,SPEED_1000M);
-      T_RX_IP(IP_PROTO_UDP,SMAC,DMAC,SIP,DIP,40,UDP_SRC_PORT,UDP_DST_PORT,ICMP_ECHO_REPLY);
+      T_RX_NO_ARP_IP(IP_PROTO_ICMP,SMAC,DMAC,SIP,DIP,40,UDP_SRC_PORT,UDP_DST_PORT,ICMP_ECHO_REQUEST);
+
+      T_LINK_UP(50,SPEED_1000M);
+      T_RX_NO_ARP_IP(IP_PROTO_ICMP,SMAC,DMAC,SIP,DIP,40,UDP_SRC_PORT,UDP_DST_PORT,ICMP_ECHO_REQUEST);
+
+      T_LINK_UP(50,SPEED_1000M);
+      T_RX_IP(IP_PROTO_ICMP,SMAC,DMAC,SIP,DIP,100,UDP_SRC_PORT,UDP_DST_PORT,ICMP_ECHO_REQUEST);
+
+      // T_LINK_UP(50,SPEED_1000M);
+      // T_RX_IP(IP_PROTO_ICMP,SMAC,DMAC,SIP,DIP,40,UDP_SRC_PORT,UDP_DST_PORT,ICMP_ECHO_REPLY);
+
+      // T_LINK_UP(50,SPEED_1000M);
+      // T_RX_IP(IP_PROTO_UDP,SMAC,DMAC,SIP,DIP,40,UDP_SRC_PORT,UDP_DST_PORT,ICMP_ECHO_REQUEST);
+      
+      // T_LINK_UP(50,SPEED_1000M);
+      // T_RX_IP(IP_PROTO_UDP,SMAC,DMAC,SIP,DIP,40,UDP_SRC_PORT,UDP_DST_PORT,ICMP_ECHO_REPLY);
       
       T_LINK_UP(100,SPEED_1000M);
       T_LINK_DOWM(5);
@@ -249,6 +258,11 @@ module tb_tri_mode_ethernet_mac;
         // Stuff Data
         repeat(18) begin  @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00); end
         // CRC
+        crc32_result = {~crc32_result[24],~crc32_result[25],~crc32_result[26],~crc32_result[27],~crc32_result[28],~crc32_result[29],~crc32_result[30],~crc32_result[31],
+                       ~crc32_result[16],~crc32_result[17],~crc32_result[18],~crc32_result[19],~crc32_result[20],~crc32_result[21],~crc32_result[22],~crc32_result[23],
+                       ~crc32_result[ 8],~crc32_result[ 9],~crc32_result[10],~crc32_result[11],~crc32_result[12],~crc32_result[13],~crc32_result[14],~crc32_result[15],
+                       ~crc32_result[ 0],~crc32_result[ 1],~crc32_result[ 2],~crc32_result[ 3],~crc32_result[ 4],~crc32_result[ 5],~crc32_result[ 6],~crc32_result[ 7]};
+
         @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[27:24]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[31:28];
         @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[19:16]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[23:20];
         @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[15:12];
@@ -390,17 +404,310 @@ module tb_tri_mode_ethernet_mac;
           // Stuff Data
           if (ip_data_len < 26) repeat(26-ip_data_len) begin @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00); end
         // CRC
+        crc32_result = {~crc32_result[24],~crc32_result[25],~crc32_result[26],~crc32_result[27],~crc32_result[28],~crc32_result[29],~crc32_result[30],~crc32_result[31],
+                ~crc32_result[16],~crc32_result[17],~crc32_result[18],~crc32_result[19],~crc32_result[20],~crc32_result[21],~crc32_result[22],~crc32_result[23],
+                ~crc32_result[ 8],~crc32_result[ 9],~crc32_result[10],~crc32_result[11],~crc32_result[12],~crc32_result[13],~crc32_result[14],~crc32_result[15],
+                ~crc32_result[ 0],~crc32_result[ 1],~crc32_result[ 2],~crc32_result[ 3],~crc32_result[ 4],~crc32_result[ 5],~crc32_result[ 6],~crc32_result[ 7]};
+
         @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[27:24]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[31:28];
         @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[19:16]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[23:20];
         @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[15:12];
         @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[3:0];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[7:4];
     end
   endtask
+  task T_RX_NO_ARP_IP;
+    input [7:0]   ip_type;
+    input [47:0]  src_mac;
+    input [47:0]  dst_mac;
+    input [31:0]  src_ip;
+    input [31:0]  dst_ip;
+    input [15:0]  ip_total_len;
+    input [15:0]  udp_src_port;
+    input [15:0]  udp_dst_port;
+    input [7:0]   icmp_type;
+    reg   [31:0]  crc32_result;
+    reg   [15:0]  ip_data_len;
+    reg   [31:0]  ip_checksum;
+    reg   [31:0]  icmp_checksum;
+    reg   [31:0]  udp_checksum;
+    integer       i;
+    begin
+      i = 0;
+      crc32_result = {32{1'b1}};
+      ip_data_len = ip_total_len - 20;
+      // Preamble
+      repeat(7) begin @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; end
+      // SFD
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'hD;
+      // MAC DA
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[43:40]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[47:44]; crc32_result = CRC32(crc32_result, dst_mac[47:40]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[35:32]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[39:36]; crc32_result = CRC32(crc32_result, dst_mac[39:32]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[27:24]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[31:28]; crc32_result = CRC32(crc32_result, dst_mac[31:24]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[19:16]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[23:20]; crc32_result = CRC32(crc32_result, dst_mac[23:16]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[15:12]; crc32_result = CRC32(crc32_result, dst_mac[15:8]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[3:0];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[7:4];   crc32_result = CRC32(crc32_result, dst_mac[7:0]);
+      // MAC SA
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[43:40]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[47:44]; crc32_result = CRC32(crc32_result, src_mac[47:40]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[35:32]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[39:36]; crc32_result = CRC32(crc32_result, src_mac[39:32]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[27:24]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[31:28]; crc32_result = CRC32(crc32_result, src_mac[31:24]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[19:16]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[23:20]; crc32_result = CRC32(crc32_result, src_mac[23:16]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[15:12]; crc32_result = CRC32(crc32_result, src_mac[15:8]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[3:0];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[7:4];   crc32_result = CRC32(crc32_result, src_mac[7:0]);
+      // EtherType
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h8; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h08);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h1; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h01);
+      // IP
+        // IP Version
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h4; crc32_result = CRC32(crc32_result, 8'h45);
+        // IP Service
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00);
+        // IP Total Length
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_total_len[11:8]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_total_len[15:12]; crc32_result = CRC32(crc32_result, ip_total_len[15:8]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_total_len[3:0];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_total_len[7:4];  crc32_result = CRC32(crc32_result, ip_total_len[7:0]);
+        // IP Identification
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00);
+        // IP Flags & IP Fragment Offset
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h4; crc32_result = CRC32(crc32_result, 8'h40);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00);
+        // IP TTL
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h4; crc32_result = CRC32(crc32_result, 8'h40);
+        // IP Protocol
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_type[3:0];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_type[7:4];  crc32_result = CRC32(crc32_result, ip_type);
+        // IP Header Checksum
+        ip_checksum = 16'h4500 + ip_total_len + 16'h0000 + 16'h4000 + {8'h40, ip_type} + src_ip[31:16] + src_ip[15:0] + dst_ip[31:16] + dst_ip[15:0];
+        ip_checksum = ip_checksum[31:16] + ip_checksum[15:0];
+        ip_checksum = ~ip_checksum;
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_checksum[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_checksum[15:12]; crc32_result = CRC32(crc32_result, ip_checksum[15:8]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_checksum[3:0];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_checksum[7:4];   crc32_result = CRC32(crc32_result, ip_checksum[7:0]);
+        // IP Source Address
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[27:24];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[31:28];  crc32_result = CRC32(crc32_result, src_ip[31:24]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[19:16];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[23:20];  crc32_result = CRC32(crc32_result, src_ip[23:16]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[11:8];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[15:12];  crc32_result = CRC32(crc32_result, src_ip[15:8]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[3:0];    @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[7:4];    crc32_result = CRC32(crc32_result, src_ip[7:0]);
+        // IP Destination Address
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[27:24];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[31:28];  crc32_result = CRC32(crc32_result, dst_ip[31:24]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[19:16];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[23:20];  crc32_result = CRC32(crc32_result, dst_ip[23:16]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[11:8];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[15:12];  crc32_result = CRC32(crc32_result, dst_ip[15:8]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[3:0];    @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[7:4];    crc32_result = CRC32(crc32_result, dst_ip[7:0]);
+        // IP Payload
+        if (ip_type == IP_PROTO_ICMP)
+          begin
+            // ICMP Type
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_type[3:0]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_type[7:4]; crc32_result = CRC32(crc32_result, icmp_type);
+            // ICMP Code
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00);
+            // ICMP Checksum
+            icmp_checksum = {16'h0,icmp_type,8'h0};
+            for (i = 0; i < (ip_data_len-4); i=i+1)
+              begin
+                if (i[0] == 0)
+                  icmp_checksum = icmp_checksum + {i[7:0],8'h0};
+                else
+                  icmp_checksum = icmp_checksum + {8'h0,i[7:0]};
+              end
+            icmp_checksum = icmp_checksum[31:16] + icmp_checksum[15:0];
+            icmp_checksum = ~icmp_checksum;
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_checksum[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_checksum[15:12]; crc32_result = CRC32(crc32_result, icmp_checksum[15:8]);
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_checksum[3:0];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_checksum[7:4];   crc32_result = CRC32(crc32_result, icmp_checksum[7:0]);
+            // ICMP Payload
+            for (i = 0; i < (ip_data_len-4); i=i+1)
+              begin
+                @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = i[3:0]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = i[7:4]; crc32_result = CRC32(crc32_result, i[7:0]);
+              end
+          end
+        else if (ip_type == IP_PROTO_UDP)
+          begin
+            // UDP Source Port
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_src_port[11:8]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_src_port[15:12]; crc32_result = CRC32(crc32_result, udp_src_port[15:8]);
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_src_port[3:0];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_src_port[7:4];  crc32_result = CRC32(crc32_result, udp_src_port[7:0]);
+            // UDP Destination Port
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_dst_port[11:8]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_dst_port[15:12]; crc32_result = CRC32(crc32_result, udp_dst_port[15:8]);
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_dst_port[3:0];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_dst_port[7:4];  crc32_result = CRC32(crc32_result, udp_dst_port[7:0]);
+            // UDP Length
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_data_len[11:8];    @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_data_len[15:12]; crc32_result = CRC32(crc32_result, ip_data_len[15:8]);
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_data_len[3:0];    @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_data_len[7:4];  crc32_result = CRC32(crc32_result, ip_data_len[7:0]);
+            // UDP Checksum
+            udp_checksum = src_ip[31:16] + src_ip[15:0] + dst_ip[31:16] + dst_ip[15:0] + {ip_type,8'h0} + ip_data_len;
+            udp_checksum = udp_checksum + udp_src_port + udp_dst_port + ip_data_len;
+            for (i = 0; i < (ip_data_len-8); i=i+1)
+              begin
+                if (i[0] == 0)
+                  udp_checksum = udp_checksum + {i[7:0],8'h0};
+                else
+                  udp_checksum = udp_checksum + {8'h0,i[7:0]};
+              end
+            udp_checksum = udp_checksum[31:16] + udp_checksum[15:0];
+            udp_checksum = ~udp_checksum;
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_checksum[11:8];    @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_checksum[15:12]; crc32_result = CRC32(crc32_result, udp_checksum[15:8]);
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_checksum[3:0];     @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_checksum[7:4];  crc32_result = CRC32(crc32_result, udp_checksum[7:0]);
+            // UDP Payload
+            for (i = 0; i < (ip_data_len-8); i=i+1)
+              begin
+                @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = i[3:0]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = i[7:4]; crc32_result = CRC32(crc32_result, i[7:0]);
+              end
+          end
+          // Stuff Data
+          if (ip_data_len < 26) repeat(26-ip_data_len) begin @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00); end
+        // CRC
+        crc32_result = {~crc32_result[24],~crc32_result[25],~crc32_result[26],~crc32_result[27],~crc32_result[28],~crc32_result[29],~crc32_result[30],~crc32_result[31],
+                ~crc32_result[16],~crc32_result[17],~crc32_result[18],~crc32_result[19],~crc32_result[20],~crc32_result[21],~crc32_result[22],~crc32_result[23],
+                ~crc32_result[ 8],~crc32_result[ 9],~crc32_result[10],~crc32_result[11],~crc32_result[12],~crc32_result[13],~crc32_result[14],~crc32_result[15],
+                ~crc32_result[ 0],~crc32_result[ 1],~crc32_result[ 2],~crc32_result[ 3],~crc32_result[ 4],~crc32_result[ 5],~crc32_result[ 6],~crc32_result[ 7]};
 
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[27:24]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[31:28];
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[19:16]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[23:20];
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[15:12];
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[3:0];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[7:4];
+    end
+  endtask
+  task T_RX_CRC_ERR;
+    input [7:0]   ip_type;
+    input [47:0]  src_mac;
+    input [47:0]  dst_mac;
+    input [31:0]  src_ip;
+    input [31:0]  dst_ip;
+    input [15:0]  ip_total_len;
+    input [15:0]  udp_src_port;
+    input [15:0]  udp_dst_port;
+    input [7:0]   icmp_type;
+    reg   [31:0]  crc32_result;
+    reg   [15:0]  ip_data_len;
+    reg   [31:0]  ip_checksum;
+    reg   [31:0]  icmp_checksum;
+    reg   [31:0]  udp_checksum;
+    integer       i;
+    begin
+      i = 0;
+      crc32_result = {32{1'b1}};
+      ip_data_len = ip_total_len - 20;
+      // Preamble
+      repeat(7) begin @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; end
+      // SFD
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'hD;
+      // MAC DA
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[43:40]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[47:44]; crc32_result = CRC32(crc32_result, dst_mac[47:40]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[35:32]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[39:36]; crc32_result = CRC32(crc32_result, dst_mac[39:32]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[27:24]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[31:28]; crc32_result = CRC32(crc32_result, dst_mac[31:24]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[19:16]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[23:20]; crc32_result = CRC32(crc32_result, dst_mac[23:16]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[15:12]; crc32_result = CRC32(crc32_result, dst_mac[15:8]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[3:0];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_mac[7:4];   crc32_result = CRC32(crc32_result, dst_mac[7:0]);
+      // MAC SA
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[43:40]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[47:44]; crc32_result = CRC32(crc32_result, src_mac[47:40]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[35:32]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[39:36]; crc32_result = CRC32(crc32_result, src_mac[39:32]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[27:24]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[31:28]; crc32_result = CRC32(crc32_result, src_mac[31:24]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[19:16]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[23:20]; crc32_result = CRC32(crc32_result, src_mac[23:16]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[15:12]; crc32_result = CRC32(crc32_result, src_mac[15:8]);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[3:0];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_mac[7:4];   crc32_result = CRC32(crc32_result, src_mac[7:0]);
+      // EtherType
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h8; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h08);
+      @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00);
+      // IP
+        // IP Version
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h5; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h4; crc32_result = CRC32(crc32_result, 8'h45);
+        // IP Service
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00);
+        // IP Total Length
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_total_len[11:8]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_total_len[15:12]; crc32_result = CRC32(crc32_result, ip_total_len[15:8]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_total_len[3:0];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_total_len[7:4];  crc32_result = CRC32(crc32_result, ip_total_len[7:0]);
+        // IP Identification
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00);
+        // IP Flags & IP Fragment Offset
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h4; crc32_result = CRC32(crc32_result, 8'h40);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00);
+        // IP TTL
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h4; crc32_result = CRC32(crc32_result, 8'h40);
+        // IP Protocol
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_type[3:0];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_type[7:4];  crc32_result = CRC32(crc32_result, ip_type);
+        // IP Header Checksum
+        ip_checksum = 16'h4500 + ip_total_len + 16'h0000 + 16'h4000 + {8'h40, ip_type} + src_ip[31:16] + src_ip[15:0] + dst_ip[31:16] + dst_ip[15:0];
+        ip_checksum = ip_checksum[31:16] + ip_checksum[15:0];
+        ip_checksum = ~ip_checksum;
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_checksum[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_checksum[15:12]; crc32_result = CRC32(crc32_result, ip_checksum[15:8]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_checksum[3:0];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_checksum[7:4];   crc32_result = CRC32(crc32_result, ip_checksum[7:0]);
+        // IP Source Address
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[27:24];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[31:28];  crc32_result = CRC32(crc32_result, src_ip[31:24]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[19:16];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[23:20];  crc32_result = CRC32(crc32_result, src_ip[23:16]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[11:8];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[15:12];  crc32_result = CRC32(crc32_result, src_ip[15:8]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[3:0];    @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = src_ip[7:4];    crc32_result = CRC32(crc32_result, src_ip[7:0]);
+        // IP Destination Address
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[27:24];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[31:28];  crc32_result = CRC32(crc32_result, dst_ip[31:24]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[19:16];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[23:20];  crc32_result = CRC32(crc32_result, dst_ip[23:16]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[11:8];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[15:12];  crc32_result = CRC32(crc32_result, dst_ip[15:8]);
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[3:0];    @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = dst_ip[7:4];    crc32_result = CRC32(crc32_result, dst_ip[7:0]);
+        // IP Payload
+        if (ip_type == IP_PROTO_ICMP)
+          begin
+            // ICMP Type
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_type[3:0]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_type[7:4]; crc32_result = CRC32(crc32_result, icmp_type);
+            // ICMP Code
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00);
+            // ICMP Checksum
+            icmp_checksum = {16'h0,icmp_type,8'h0};
+            for (i = 0; i < (ip_data_len-4); i=i+1)
+              begin
+                if (i[0] == 0)
+                  icmp_checksum = icmp_checksum + {i[7:0],8'h0};
+                else
+                  icmp_checksum = icmp_checksum + {8'h0,i[7:0]};
+              end
+            icmp_checksum = icmp_checksum[31:16] + icmp_checksum[15:0];
+            icmp_checksum = ~icmp_checksum;
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_checksum[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_checksum[15:12]; crc32_result = CRC32(crc32_result, icmp_checksum[15:8]);
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_checksum[3:0];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = icmp_checksum[7:4];   crc32_result = CRC32(crc32_result, icmp_checksum[7:0]);
+            // ICMP Payload
+            for (i = 0; i < (ip_data_len-4); i=i+1)
+              begin
+                @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = i[3:0]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = i[7:4]; crc32_result = CRC32(crc32_result, i[7:0]);
+              end
+          end
+        else if (ip_type == IP_PROTO_UDP)
+          begin
+            // UDP Source Port
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_src_port[11:8]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_src_port[15:12]; crc32_result = CRC32(crc32_result, udp_src_port[15:8]);
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_src_port[3:0];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_src_port[7:4];  crc32_result = CRC32(crc32_result, udp_src_port[7:0]);
+            // UDP Destination Port
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_dst_port[11:8]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_dst_port[15:12]; crc32_result = CRC32(crc32_result, udp_dst_port[15:8]);
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_dst_port[3:0];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_dst_port[7:4];  crc32_result = CRC32(crc32_result, udp_dst_port[7:0]);
+            // UDP Length
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_data_len[11:8];    @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_data_len[15:12]; crc32_result = CRC32(crc32_result, ip_data_len[15:8]);
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_data_len[3:0];    @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = ip_data_len[7:4];  crc32_result = CRC32(crc32_result, ip_data_len[7:0]);
+            // UDP Checksum
+            udp_checksum = src_ip[31:16] + src_ip[15:0] + dst_ip[31:16] + dst_ip[15:0] + {ip_type,8'h0} + ip_data_len;
+            udp_checksum = udp_checksum + udp_src_port + udp_dst_port + ip_data_len;
+            for (i = 0; i < (ip_data_len-8); i=i+1)
+              begin
+                if (i[0] == 0)
+                  udp_checksum = udp_checksum + {i[7:0],8'h0};
+                else
+                  udp_checksum = udp_checksum + {8'h0,i[7:0]};
+              end
+            udp_checksum = udp_checksum[31:16] + udp_checksum[15:0];
+            udp_checksum = ~udp_checksum;
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_checksum[11:8];    @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_checksum[15:12]; crc32_result = CRC32(crc32_result, udp_checksum[15:8]);
+            @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_checksum[3:0];     @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = udp_checksum[7:4];  crc32_result = CRC32(crc32_result, udp_checksum[7:0]);
+            // UDP Payload
+            for (i = 0; i < (ip_data_len-8); i=i+1)
+              begin
+                @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = i[3:0]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = i[7:4]; crc32_result = CRC32(crc32_result, i[7:0]);
+              end
+          end
+          // Stuff Data
+          if (ip_data_len < 26) repeat(26-ip_data_len) begin @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = 4'h0; crc32_result = CRC32(crc32_result, 8'h00); end
+        // CRC
+        crc32_result = 32'hFFFF_FFFF;
+
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[27:24]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[31:28];
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[19:16]; @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[23:20];
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[11:8];  @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[15:12];
+        @(posedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[3:0];   @(negedge rgmii_rxc) rgmii_rx_ctl = 1;  rgmii_rxd = crc32_result[7:4];
+    end
+  endtask
 //***************************    Function      ***************************
 function [31:0] CRC32;
-  input [7:0] din;
   input [31:0] crc32_next;
+  input [7:0] din;
   reg   [7:0] data;
   begin
     data = {din[0],din[1],din[2],din[3],din[4],din[5],din[6],din[7]};
