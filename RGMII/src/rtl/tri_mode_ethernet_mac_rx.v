@@ -57,7 +57,7 @@ module tri_mode_ethernet_mac_rx #(
   reg  [7:0]      rx_last_data = 0; // 最后一个数据锁存, 等待整帧数据接收校验完成再输出
 
   reg          rx_preamble_flag = 0; // 接收到前导码+SFD
-  reg          rx_preamble_type_flag = 0; // 前导码+SFD组成类型(因为采样位置不同会出现两种情况: SFD在高nibble(0), SFD在低nibble(1))
+  reg          rx_preamble_type_flag = 0; // 前导码+SFD组成类型(因为10/100M采样位置不同会出现两种情况: SFD的"D"在高nibble(0), SFD的"D"在低nibble(1))
   wire         rx_eth_head_done; // 完成以太网报文帧头接收
   wire         rx_arp_data_done; // 完成ARP报文数据接收
   wire         rx_ip_head_done; // 完成IP报文首部接收
@@ -85,12 +85,7 @@ module tri_mode_ethernet_mac_rx #(
     if (rx_mac_reset)
       rx_axis_rgmii_tdata_ff <= 'd0;
     else if (rx_axis_rgmii_tvalid)
-      begin
-        if (rx_preamble_type_flag)
-          rx_axis_rgmii_tdata_ff <= {rx_axis_rgmii_tdata_ff[8*13-1:0],rx_axis_rgmii_tdata[3:0],rx_axis_rgmii_tdata[7:4]};
-        else
-          rx_axis_rgmii_tdata_ff <= {rx_axis_rgmii_tdata_ff[8*13-1:0],rx_axis_rgmii_tdata};
-      end
+      rx_axis_rgmii_tdata_ff <= {rx_axis_rgmii_tdata_ff[8*13-1:0],rx_axis_rgmii_tdata};
 // 输入打拍
   always @ (posedge rx_mac_aclk)
     if (rx_mac_reset)
@@ -160,7 +155,7 @@ module tri_mode_ethernet_mac_rx #(
       rx_byte_cnt <= rx_byte_cnt + 12'd1;
 // 接收前导码+SFD
   always @ (posedge rx_mac_aclk)
-    if (rx_mac_state == S_PREAMBLE && rx_axis_rgmii_tvalid && (({rx_axis_rgmii_tdata_ff[8*7-1:0],rx_axis_rgmii_tdata} == 64'h5555_5555_5555_55D5) || ({rx_axis_rgmii_tdata_ff[8*7+3:0],rx_axis_rgmii_tdata[3:0]} == 64'h5555_5555_5555_555D)))
+    if (rx_mac_state == S_PREAMBLE && rx_axis_rgmii_tvalid && (({rx_axis_rgmii_tdata_ff[8*7-1:0],rx_axis_rgmii_tdata} == 64'h5555_5555_5555_55D5) || ({rx_axis_rgmii_tdata_ff[8*7+3:0],rx_axis_rgmii_tdata[7:4]} == 64'h5555_5555_5555_55D5)))
       rx_preamble_flag <= 1'b1;
     else
       rx_preamble_flag <= 1'b0;
@@ -168,25 +163,37 @@ module tri_mode_ethernet_mac_rx #(
   always @ (posedge rx_mac_aclk)
     if (rx_mac_state == S_IDLE)
       rx_preamble_type_flag <= 1'b0;
-    else if (rx_mac_state == S_PREAMBLE && rx_preamble_flag && (rx_axis_rgmii_tdata_ff[7:0] != 8'hD5)) // SFD在低nibble
+    else if (rx_mac_state == S_PREAMBLE && rx_preamble_flag && (rx_axis_rgmii_tdata_ff[7:0] != 8'hD5)) // SFD的"D"在低nibble
       rx_preamble_type_flag <= 1'b1;
 // 接收帧目的MAC
   always @ (posedge rx_mac_aclk)
     if ((rx_byte_cnt == 12'd6) && (rx_axis_rgmii_tvalid))
       begin
         if (rx_preamble_type_flag)
-          rx_dst_mac <= {rx_axis_rgmii_tdata_ff[55:52],rx_axis_rgmii_tdata_ff[47:4]};
+          rx_dst_mac <= rx_axis_rgmii_tdata_ff[51:4];
         else
           rx_dst_mac <= rx_axis_rgmii_tdata_ff[47:0];  
       end
 // 接收帧类型
   always @ (posedge rx_mac_aclk)
-    if ((rx_byte_cnt == 12'd14) && (rx_axis_rgmii_tvalid))
-      rx_eth_type <= rx_axis_rgmii_tdata_ff[15:0];  
+    if (rx_mac_state == S_IDLE)
+      rx_eth_type <= 16'h0000;
+    else if ((rx_byte_cnt == 12'd14) && (rx_axis_rgmii_tvalid))
+      begin
+        if (rx_preamble_type_flag)
+          rx_eth_type <= rx_axis_rgmii_tdata_ff[19:4];
+        else
+          rx_eth_type <= rx_axis_rgmii_tdata_ff[15:0];  
+      end
 // 接收IP报文总长度
   always @ (posedge rx_mac_aclk)
     if ((rx_byte_cnt == 12'd18) && (rx_axis_rgmii_tvalid))
-      rx_ip_total_length <= rx_axis_rgmii_tdata_ff[15:0];  
+      begin
+        if (rx_preamble_type_flag)
+          rx_ip_total_length <= rx_axis_rgmii_tdata_ff[19:4];
+        else
+          rx_ip_total_length <= rx_axis_rgmii_tdata_ff[15:0];  
+      end
 // 接收FCS字节计数器
   always @ (posedge rx_mac_aclk)
     if (rx_mac_state == S_FCS)
@@ -256,12 +263,10 @@ module tri_mode_ethernet_mac_rx #(
       end
 // CRC校验模块输入数据
   always @ (posedge rx_mac_aclk)
-    if (inband_clock_speed[1])
-      rx_crc32_din <= rx_axis_rgmii_tdata_ff[7:0];
-    else if (rx_preamble_type_flag)
-      rx_crc32_din <= {rx_axis_rgmii_tdata_ff[ 3: 0],rx_axis_rgmii_tdata_ff[ 7: 4]};
+    if (rx_preamble_type_flag)
+      rx_crc32_din <= rx_axis_rgmii_tdata_ff[11:4];
     else
-      rx_crc32_din <= {rx_axis_rgmii_tdata_ff[ 7: 4],rx_axis_rgmii_tdata_ff[11: 8]};
+      rx_crc32_din <= rx_axis_rgmii_tdata_ff[7:0];
 // CRC校验模块输出结果锁存
   always @ (posedge rx_mac_aclk)
     if (rx_fcs_done)
@@ -274,19 +279,22 @@ module tri_mode_ethernet_mac_rx #(
     if (rx_mac_state == S_IDLE)
       rx_last_data <= 8'h00;
     else if (((rx_eth_type == 16'h0806) && (rx_byte_cnt == 12'd42)) || ((rx_eth_type == 16'h0800) && (rx_byte_cnt == (12'd14 + rx_ip_total_length[11:0]))))
-      rx_last_data <= rx_axis_rgmii_tdata_ff[7:0];
+      begin
+        if (rx_preamble_type_flag)
+          rx_last_data <= rx_axis_rgmii_tdata_ff[11:4];
+        else
+          rx_last_data <= rx_axis_rgmii_tdata_ff[7:0];
+      end
 // 用户接收数据AXIS接口寄存器
   always @ (posedge rx_mac_aclk)
     if (rx_mac_state == S_FCS_CHECK)
       rx_axis_mac_tdata_ff <= rx_last_data;
     else if (rx_byte_cnt > 12'd0)
       begin
-        if (inband_clock_speed[1])
-          rx_axis_mac_tdata_ff <= rx_axis_rgmii_tdata_ff[7:0];
-        else if (rx_preamble_type_flag)
-          rx_axis_mac_tdata_ff <= {rx_axis_rgmii_tdata_ff[ 3: 0],rx_axis_rgmii_tdata_ff[ 7: 4]};
+        if (rx_preamble_type_flag)
+          rx_axis_mac_tdata_ff <= rx_axis_rgmii_tdata_ff[ 11: 4];
         else
-          rx_axis_mac_tdata_ff <= {rx_axis_rgmii_tdata_ff[ 7: 4],rx_axis_rgmii_tdata_ff[11: 8]};
+          rx_axis_mac_tdata_ff <= rx_axis_rgmii_tdata_ff[ 7: 0];
       end
   always @ (posedge rx_mac_aclk)
     if (rx_mac_reset)
