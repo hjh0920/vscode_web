@@ -71,7 +71,7 @@ module rgmii_tx (
       clk_div5_50 <= 1'b1;
     else if (phy_speed_status_txclk[0]) // 100Mbps
       begin
-        if (clk_cnt == 6'd4 || clk_cnt == 6'd0)
+        if (clk_cnt == 6'd2 || clk_cnt == 6'd3)
           clk_div5_50 <= 1'b1;
         else
           clk_div5_50 <= 1'b0;
@@ -82,6 +82,27 @@ module rgmii_tx (
           clk_div5_50 <= 1'b1;
         else
           clk_div5_50 <= 1'b0;
+      end
+
+// 10/1000Mbps下5/50倍分频信号并相移90度信号
+  always @ (posedge clk_125mhz)
+    if (reset | (~phy_link_status_txclk))
+      clk90_div5_50 <= 1'b0;
+    else if (phy_speed_status_txclk[1]) // 1000Mbps
+      clk90_div5_50 <= 1'b0;
+    else if (phy_speed_status_txclk[0]) // 100Mbps
+      begin
+        if (clk_cnt == 6'd4 || clk_cnt == 6'd0)
+          clk90_div5_50 <= 1'b1;
+        else
+          clk90_div5_50 <= 1'b0;
+      end
+    else // 10Mbps
+      begin
+        if (clk_cnt == 6'd49 || clk_cnt < 6'd24)
+          clk90_div5_50 <= 1'b1;
+        else
+          clk90_div5_50 <= 1'b0;
       end
 
 // RGMII 发送数据AXIS接口握手成功指示

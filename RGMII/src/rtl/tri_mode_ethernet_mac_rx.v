@@ -206,7 +206,12 @@ module tri_mode_ethernet_mac_rx #(
 // 接收FCS
   always @ (posedge rx_mac_aclk)
     if (rx_fcs_done)
-      rx_eth_fcs <= rx_axis_rgmii_tdata_ff[31:0];  
+      begin
+        if (rx_preamble_type_flag)
+          rx_eth_fcs <= rx_axis_rgmii_tdata_ff[35:4];
+        else
+          rx_eth_fcs <= rx_axis_rgmii_tdata_ff[31:0];  
+      end
 // 完成以太网报文帧头接收
   assign rx_eth_head_done = (rx_byte_cnt == 12'd14 && rx_axis_rgmii_tvalid);
 // 完成ARP报文数据接收

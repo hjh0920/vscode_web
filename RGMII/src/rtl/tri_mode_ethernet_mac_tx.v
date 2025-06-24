@@ -33,10 +33,10 @@ module tri_mode_ethernet_mac_tx #(
   reg  [11:0]  tx_byte_cnt = 0; // 发送字节计数器
   reg  [11:0]  tx_total_byte = 0; // 发送总字节计数器
   reg          tx_55d5_flag = 1; // 前导码+SFD填充标志 
-  reg          tx_stuff_flag = 1; // 不足64字节填充标志 
+  reg          tx_stuff_flag = 0; // 不足64字节填充标志 
   reg          tx_data_flag = 1; // 发送帧数据标志 
-  reg          tx_fcs_flag = 1; // 发送FCS标志 
-  reg          tx_fcs_flag_d1 = 1; 
+  reg          tx_fcs_flag = 0; // 发送FCS标志 
+  reg          tx_fcs_flag_d1 = 0; 
   reg  [1:0]   tx_fcs_byte_cnt = 0; // 发送fcs字节计数器
   reg          tx_mac_done = 0; // 完成一帧MAC帧发送
   reg          tx_mac_done_d1 = 0; 
@@ -67,12 +67,14 @@ module tri_mode_ethernet_mac_tx #(
   always @(posedge tx_mac_aclk)
     if (tx_mac_reset)
       tx_byte_cnt <= 12'd0;
+    else if (tx_mac_done)
+      tx_byte_cnt <= 12'd0;
     else if (tx_axis_rgmii_tvalid && tx_axis_rgmii_tready)
       tx_byte_cnt <= tx_byte_cnt + 12'd1;
 // 发送总字节计数器
     always @(posedge tx_mac_aclk)
       if (tx_mac_reset)
-        tx_total_byte <= 0;
+        tx_total_byte <= 12'd0;
       else if (tx_axis_mac_tvalid && tx_axis_mac_tready && tx_axis_mac_tlast && (tx_byte_cnt < 12'd67))
         tx_total_byte <= 12'd71;
       else if (tx_axis_mac_tvalid && tx_axis_mac_tready && tx_axis_mac_tlast)
@@ -88,7 +90,7 @@ module tri_mode_ethernet_mac_tx #(
 // 不足64字节填充标志
   always @(posedge tx_mac_aclk)
     if (tx_mac_reset)
-      tx_stuff_flag <= 1'b1;
+      tx_stuff_flag <= 1'b0;
     else if ((tx_byte_cnt < 12'd67) && tx_axis_mac_tvalid && tx_axis_mac_tready && tx_axis_mac_tlast)
       tx_stuff_flag <= 1'b1;
     else if (tx_mac_done)
@@ -99,7 +101,7 @@ module tri_mode_ethernet_mac_tx #(
       tx_data_flag <= 1'b1;
     else if (tx_axis_mac_tvalid && tx_axis_mac_tready && tx_axis_mac_tlast)
       tx_data_flag <= 1'b0;
-    else if (tx_ifg_flag && (!tx_ifg_flag_d1))
+    else if ((!tx_ifg_flag) && tx_ifg_flag_d1)
       tx_data_flag <= 1'b1;
 // 发送FCS标志
   always @(posedge tx_mac_aclk)
@@ -110,6 +112,7 @@ module tri_mode_ethernet_mac_tx #(
     else if (((tx_byte_cnt == 12'd66) && tx_axis_rgmii_tvalid && tx_axis_rgmii_tready && tx_stuff_flag) 
            || ((tx_byte_cnt > 12'd66) && tx_axis_mac_tvalid && tx_axis_mac_tready && tx_axis_mac_tlast))
       tx_fcs_flag <= 1'b1;
+    always @ (posedge tx_mac_aclk) tx_fcs_flag_d1 <= tx_fcs_flag;
 // 发送fcs字节计数器
   always @(posedge tx_mac_aclk)
     if (tx_mac_reset)
@@ -144,7 +147,7 @@ module tri_mode_ethernet_mac_tx #(
         || ((inband_clock_speed_txclk == 2'b01) && (tx_ifg_cnt == C_IFG_100M_CNT))
         || ((inband_clock_speed_txclk == 2'b00) && (tx_ifg_cnt == C_IFG_10M_CNT)))
       tx_ifg_flag <= 1'b0;
-  always @ (posedge tx_mac_aclk) tx_fcs_flag_d1 <= tx_fcs_flag;
+  always @ (posedge tx_mac_aclk) tx_ifg_flag_d1 <= tx_ifg_flag;
 // 发送帧间隔计数器
   always @(posedge tx_mac_aclk)
     if (tx_mac_reset)
