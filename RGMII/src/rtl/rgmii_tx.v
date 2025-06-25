@@ -72,9 +72,9 @@ module rgmii_tx (
     else if (phy_speed_status_txclk[0]) // 100Mbps
       begin
         if (clk_cnt == 6'd2 || clk_cnt == 6'd3)
-          clk_div5_50 <= 1'b1;
-        else
           clk_div5_50 <= 1'b0;
+        else
+          clk_div5_50 <= 1'b1;
       end
     else // 10Mbps
       begin

@@ -105,8 +105,8 @@ module tri_mode_ethernet_mac #(
   rgmii_tx u_rgmii_tx (
     .clk_125mhz            (clk_125mhz),
     .clk90_125mhz          (clk90_125mhz),
-    .reset                 (reset),
-    .reset90               (reset90),
+    .reset                 (tx_mac_reset_temp),
+    .reset90               (1'b0),
     // PHY 芯片状态指示
     .phy_link_status       (inband_link_status_temp), // up(1), down(0)
     .phy_speed_status      (inband_clock_speed_temp), // 10Mbps(0), 100Mbps(1), 1000Mbps(2)
