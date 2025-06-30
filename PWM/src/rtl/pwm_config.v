@@ -1,4 +1,12 @@
 // PWM 参数配置模块, 解析参数并分发至相应通道
+//   word 0: bit[ 7: 0] 通道索引
+//           bit[31: 8] 保留
+//   word 1: bit[31: 0] PWM输出频率, 单位Hz
+//   word 2: bit[ 7: 0] PWM输出占空比, 0-100%
+//           bit[31: 8] 保留
+//   word 3: 保留
+//   word 4: bit[ 0: 0] PWM输出使能
+//           bit[31: 1] 保留
 
 module pwm_config #(
   parameter   PWM_PARAM_TYPE = 0
@@ -10,7 +18,7 @@ module pwm_config #(
   input  [31:0] rx_axis_udp_tdata,
   input         rx_axis_udp_tvalid,
   input         rx_axis_udp_tlast,
-  input         rx_axis_udp_tuser, // 帧类型
+  input  [7:0]  rx_axis_udp_tuser, // 帧类型
   //输出参数
   output        pwm_config_vld, // 参数配置使能
   output [7:0]  pwm_config_channel, // 通道索引
@@ -22,55 +30,43 @@ module pwm_config #(
 //------------------------------------
 //             Local Signal
 //------------------------------------
-  reg  [7:0] word_cnt = 0; // word计数器
-
+  reg  [31:0]  rx_axis_udp_tdata_d1 = 0; // 打拍, 减小扇出
+  reg          rx_axis_udp_tvalid_d1 = 0;
+  reg          rx_axis_udp_tlast_d1 = 0;
+  reg  [7:0]   rx_axis_udp_tuser_d1 = 0;
+  reg  [7:0]   word_cnt = 0; // word计数器
+  reg          pwm_param_en = 0; // PWM参数帧使能
 
 
 //------------------------------------
 //             User Logic
 //------------------------------------
+// 打拍, 减小扇出
+  always @ (posedge clk) rx_axis_udp_tdata_d1 <= rx_axis_udp_tdata;
+  always @ (posedge clk) rx_axis_udp_tvalid_d1 <= rx_axis_udp_tvalid;
+  always @ (posedge clk) rx_axis_udp_tlast_d1 <= rx_axis_udp_tlast;
+  always @ (posedge clk) rx_axis_udp_tuser_d1 <= rx_axis_udp_tuser;
 // 接收word计数器
-
-
-
-
-
-
-
-  always @ (posedge clk or posedge rst)
-    if (pwm_config_vld && (pwm_config_channel == CHANNEL_INDEX[7:0]))
-      begin
-        pwm_en_reg <= pwm_en;
-        pwm_period_reg <= pwm_period;
-        pwm_hlevel_reg <= pwm_hlevel;
-      end
-  always @ (posedge clk or posedge rst)
+  always @ (posedge clk)
     if (rst)
-      pwm_config_vld_reg <= 0;
-    else if (pwm_config_vld && (pwm_config_channel == CHANNEL_INDEX[7:0]))
-      pwm_config_vld_reg <= 1;
-    else if (period_cnt == pwm_period_local)
-      pwm_config_vld_reg <= 0;
+      word_cnt <= 0;
+    else if (rx_axis_udp_tvalid_d1 && rx_axis_udp_tlast_d1)
+      word_cnt <= 0;
+    else if (rx_axis_udp_tvalid_d1)
+      word_cnt <= word_cnt + 1; 
+// 解析参数
+  always @(posedge clk or posedge rst)
     if (rst)
-      begin
-        pwm_en_local <= 0;
-        pwm_period_local <= 0;
-        pwm_hlevel_local <= 0;
-      end
-    else if (pwm_config_vld_reg)
-      begin
-        pwm_en_local <= pwm_en_reg;
-        pwm_period_local <= pwm_period_reg;
-        pwm_hlevel_local <= pwm_hlevel_reg;
-      end
-    if (rst)
-       <= 0;
+      pwm_param_en <= 1'b0;
+    else if (rx_axis_udp_tuser_d1 == PWM_PARAM_TYPE[7:0])
+      pwm_param_en <= 1'b1;
     else
-      period_cnt <= period_cnt + 1;
-    if (rst)
-      pwm_ff <= 0;
-        else if (period_cnt < pwm_hlevel_local)
-          pwm_ff <= 1;
+      pwm_param_en <= 1'b0;
+// 输出参数
+
+
+
+
 //------------------------------------
 //             Output Port
 //------------------------------------
