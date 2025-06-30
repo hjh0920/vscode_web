@@ -36,6 +36,7 @@ module pwm_config #(
 
 
 
+
   always @ (posedge clk or posedge rst)
     if (pwm_config_vld && (pwm_config_channel == CHANNEL_INDEX[7:0]))
       begin
