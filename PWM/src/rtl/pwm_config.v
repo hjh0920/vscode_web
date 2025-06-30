@@ -1,17 +1,20 @@
-// PWM 控制器, 默认输出为低电平, 只有在单周期结束才会更新PWM参数
+// PWM 参数配置模块, 解析参数并分发至相应通道
 
-module pwm_ctrl #(
-  // 通道索引
-  parameter CHANNEL_INDEX = 0
-)(
-  input        clk,
-  input        rst,
-  input        pwm_config_vld, // 参数配置使能
-  input [7:0]  pwm_config_channel, // 通道索引
-  input        pwm_en, // PWM输出使能
-  input [27:0] pwm_period, // 单周期计数时间
-  input [27:0] pwm_hlevel, // 高电平持续计数时间
-  output       pwm // PWM输出
+module pwm_config (
+  // 模块时钟及复位
+  input         clk,
+  input         rst,
+  // 用户UDP数据接收接口
+  input  [31:0] rx_axis_udp_tdata,
+  input         rx_axis_udp_tvalid,
+  input         rx_axis_udp_tlast,
+  input  [15:0] rx_axis_udp_tuser, // 目的端口号
+  //输出参数
+  output        pwm_config_vld, // 参数配置使能
+  output [7:0]  pwm_config_channel, // 通道索引
+  output        pwm_en, // PWM输出使能
+  output [27:0] pwm_period, // 单周期计数时间
+  output [27:0] pwm_hlevel // 高电平持续计数时间
 );
 
 //------------------------------------
