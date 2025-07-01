@@ -55,7 +55,7 @@ module pwm_ctrl #(
         pwm_period_local <= 0;
         pwm_hlevel_local <= 0;
       end
-    else if (pwm_config_vld_reg)
+    else if (pwm_config_vld_reg && (period_cnt == pwm_period_local))
       begin
         pwm_en_local <= pwm_en_reg;
         pwm_period_local <= pwm_period_reg;

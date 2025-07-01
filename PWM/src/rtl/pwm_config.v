@@ -9,8 +9,8 @@
 //           bit[31: 1] 保留
 
 module pwm_config #(
-  parameter   ID_PWM_PARAM = 0, // PWM参数帧ID
-  parameter   CLK_FREQ = 100000000 // 模块时钟频率, Unit: Hz
+  parameter     ID_PWM_PARAM = 0, // PWM参数帧ID
+  parameter     CLK_FREQ = 100000000 // 模块时钟频率, Unit: Hz
 )(
   // 模块时钟及复位
   input         clk,
@@ -19,7 +19,7 @@ module pwm_config #(
   input  [31:0] rx_axis_udp_tdata,
   input         rx_axis_udp_tvalid,
   input         rx_axis_udp_tlast,
-  input  [7:0]  rx_axis_udp_tuser, // 帧类型
+  input  [7:0]  rx_axis_udp_tuser, // 帧ID
   //输出参数
   output        pwm_config_vld, // 参数配置使能
   output [7:0]  pwm_config_channel, // 通道索引
@@ -39,7 +39,18 @@ module pwm_config #(
   reg  [27:0]  pwm_frequency = 0; // PWM输出频率
   reg  [6:0]   pwm_duty = 0; // PWM输出占空比
   reg          cal_period_en = 0; // 计算单周期计数时间使能
-  reg          cal_period_en_d1 = 0; // 计算单周期计数时间使能
+  reg          cal_period_en_d1 = 0; // 延迟一拍
+// 除法器 IP 信号
+  reg          s_axis_divisor_tvalid = 0;
+  reg  [31:0]  s_axis_divisor_tdata = 0;
+  reg          s_axis_dividend_tvalid = 0;
+  reg  [31:0]  s_axis_dividend_tdata = 0;
+  wire         m_axis_dout_tvalid;
+  wire [63:0]  m_axis_dout_tdata;
+// 乘法器 IP 信号
+  wire [6:0]   pwm_mul_a = 0;
+  wire [20:0]  pwm_mul_b = 0;
+  wire [27:0]  pwm_mul_p = 0;
 // 输出寄存器
   reg          pwm_config_vld_ff = 0; // 参数配置使能
   reg  [7:0]   pwm_config_channel_ff = 0; // 通道索引
@@ -79,76 +90,97 @@ module pwm_config #(
     always @ (posedge clk) if (pwm_param_en && (word_cnt == 2) && rx_axis_udp_tvalid_d1) pwm_duty <= rx_axis_udp_tdata_d1[6:0];
   // PWM输出使能
     always @ (posedge clk) if (pwm_param_en && (word_cnt == 4) && rx_axis_udp_tvalid_d1) pwm_en_ff <= rx_axis_udp_tdata_d1[0];
-// 计算单周期计数时间
-  always @ (posedge clk)
-    if (pwm_param_en && rx_axis_udp_tvalid_d1 && rx_axis_udp_tlast_d1)
-      cal_period_en <= 1'b1;
-    else if (m_axis_dout_tvalid)
-      cal_period_en <= 1'b0;
-  always @ (posedge clk) cal_period_en_d1 <= cal_period_en;
-
-  always @ (posedge clk)
-    if ((!cal_period_en_d1) && cal_period_en)
-      begin
-        s_axis_divisor_tvalid <= 1'b1;
-        s_axis_divisor_tdata  <= {4'b0,pwm_frequency};
-        s_axis_dividend_tvalid <= 1'b1;
-        s_axis_dividend_tdata <= (CLK_FREQ[31:0] + {5'b0,pwm_frequency[27:1]}); // 四舍五入
-      end
-    else if (m_axis_dout_tvalid && cal_period_en)
-      begin
-        s_axis_divisor_tvalid <= 1'b1;
-        s_axis_divisor_tdata  <= {4'b0,pwm_frequency};
-        s_axis_dividend_tvalid <= 1'b1;
-        s_axis_dividend_tdata <= ({5'b0,pwm_mul_p} + {6'b0,pwm_mul_p[26:1]}); // 四舍五入
-      end
+// 计算计数时间
+  // 计算单周期计数时间使能
+    always @ (posedge clk)
+      if (pwm_param_en && rx_axis_udp_tvalid_d1 && rx_axis_udp_tlast_d1)
+        cal_period_en <= 1'b1;
+      else if (m_axis_dout_tvalid)
+        cal_period_en <= 1'b0;
+    always @ (posedge clk) cal_period_en_d1 <= cal_period_en;
+  // 除法器输入
+    always @ (posedge clk)
+      if ((!cal_period_en_d1) && cal_period_en) // 计算单周期计数时间
+        begin
+          s_axis_divisor_tvalid <= 1'b1;
+          s_axis_divisor_tdata  <= {4'b0,pwm_frequency};
+          s_axis_dividend_tvalid <= 1'b1;
+          s_axis_dividend_tdata <= (CLK_FREQ[31:0] + {5'b0,pwm_frequency[27:1]}); // 四舍五入
+        end
+      else if (m_axis_dout_tvalid && cal_period_en) // 计算高电平持续计数时间
+        begin
+          s_axis_divisor_tvalid <= 1'b1;
+          s_axis_divisor_tdata  <= {4'b0,pwm_frequency};
+          s_axis_dividend_tvalid <= 1'b1;
+          s_axis_dividend_tdata <= ({4'b0,pwm_mul_p} + {5'b0,pwm_mul_p[27:1]}); // 四舍五入
+        end
+      else
+        begin
+          s_axis_divisor_tvalid <= 1'b0;
+          s_axis_dividend_tvalid <= 1'b0;
+        end
+  // 乘法器输入
+    assign pwm_mul_a = pwm_duty;
+    assign pwm_mul_b = (CLK_FREQ/100);
+  // 单周期计数时间 赋值
+    always @ (posedge clk or posedge rst)
+      if (rst)
+        pwm_period_ff <= 0;
+      else if (cal_period_en && m_axis_dout_tvalid)
+        pwm_period_ff <= m_axis_dout_tdata[32 +: 28];
+  // 高电平持续计数时间 赋值
+    always @ (posedge clk or posedge rst)
+      if (rst)
+        pwm_hlevel_ff <= 0;
+      else if ((!cal_period_en) && m_axis_dout_tvalid)
+        begin
+          if (pwm_duty == 0)
+            pwm_hlevel_ff <= 0;
+          else if (pwm_duty == 7'd100)
+            pwm_hlevel_ff <= pwm_period_ff;
+          else
+            pwm_hlevel_ff <= m_axis_dout_tdata[32 +: 28];
+        end
+// 参数配置使能
+  always @ (posedge clk or posedge rst)
+    if (rst)
+      pwm_config_vld_ff <= 1'b0;
+    else if ((!cal_period_en) && m_axis_dout_tvalid)
+      pwm_config_vld_ff <= 1'b1;
     else
-      begin
-        s_axis_divisor_tvalid <= 1'b0;
-        s_axis_divisor_tdata  <= 32'b0;
-        s_axis_dividend_tvalid <= 1'b0;
-        s_axis_dividend_tdata <= 32'b0;
-      end
-  assign pwm_mul_a = pwm_duty;
+      pwm_config_vld_ff <= 1'b0;
 
 //------------------------------------
 //             Output Port
 //------------------------------------
-  assign pwm_config_vld     = pwm_config_vld;
-  assign pwm_config_channel = pwm_config_channel;
-  assign pwm_en             = pwm_en;
-  assign pwm_period         = pwm_period;
-  assign pwm_hlevel         = pwm_hlevel;
+  assign pwm_config_vld     = pwm_config_vld_ff;
+  assign pwm_config_channel = pwm_config_channel_ff;
+  assign pwm_en             = pwm_en_ff;
+  assign pwm_period         = pwm_period_ff;
+  assign pwm_hlevel         = pwm_hlevel_ff;
 
 //------------------------------------
 //             Instance
 //------------------------------------
-reg          s_axis_divisor_tvalid = 0;
-reg  [31:0]  s_axis_divisor_tdata = 0;
-reg          s_axis_dividend_tvalid = 0;
-reg  [31:0]  s_axis_dividend_tdata = 0;
-wire         m_axis_dout_tvalid;
-wire [63:0]  m_axis_dout_tdata;
-wire [6:0]   pwm_mul_a = 0;
-wire [26:0]  pwm_mul_p = 0;
 // Xilinx Divider Generate IP
   // Radix2, Unsigned 28bits / Unsigned 28bits, Remainder, Latency = 30 clocks
   div_gen_u28_u28 pwm_div(
-    .aclk,
+    .aclk                  (clk),
     // 除数
-    .s_axis_divisor_tvalid,
-    .s_axis_divisor_tdata,
+    .s_axis_divisor_tvalid (s_axis_divisor_tvalid),
+    .s_axis_divisor_tdata  (s_axis_divisor_tdata),
     // 被除数
-    .s_axis_dividend_tvalid,
-    .s_axis_dividend_tdata,
+    .s_axis_dividend_tvalid(s_axis_dividend_tvalid),
+    .s_axis_dividend_tdata (s_axis_dividend_tdata),
     // 商+余数
-    .m_axis_dout_tvalid,
-    .m_axis_dout_tdata
+    .m_axis_dout_tvalid    (m_axis_dout_tvalid),
+    .m_axis_dout_tdata     (m_axis_dout_tdata)
   )
 // Xilinx Multiplier IP
-  mult_gen_x1000000 pwm_mul(
+  mult_gen_u7_u21 pwm_mul(
     .CLK(clk),
     .A  (pwm_mul_a),
+    .B  (pwm_mul_b),
     .P  (pwm_mul_p)
   )
   endmodule
