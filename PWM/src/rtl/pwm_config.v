@@ -46,11 +46,11 @@ module pwm_config #(
   reg          s_axis_dividend_tvalid = 0;
   reg  [31:0]  s_axis_dividend_tdata = 0;
   wire         m_axis_dout_tvalid;
-  wire [63:0]  m_axis_dout_tdata;
+  wire [63:0]  m_axis_dout_tdata; // [63:32] quotient, [31:0] remainder
 // 乘法器 IP 信号
-  wire [6:0]   pwm_mul_a = 0;
-  wire [20:0]  pwm_mul_b = 0;
-  wire [27:0]  pwm_mul_p = 0;
+  wire [6:0]   pwm_mul_a;
+  wire [20:0]  pwm_mul_b;
+  wire [27:0]  pwm_mul_p;
 // 输出寄存器
   reg          pwm_config_vld_ff = 0; // 参数配置使能
   reg  [7:0]   pwm_config_channel_ff = 0; // 通道索引
@@ -112,7 +112,7 @@ module pwm_config #(
           s_axis_divisor_tvalid <= 1'b1;
           s_axis_divisor_tdata  <= {4'b0,pwm_frequency};
           s_axis_dividend_tvalid <= 1'b1;
-          s_axis_dividend_tdata <= ({4'b0,pwm_mul_p} + {5'b0,pwm_mul_p[27:1]}); // 四舍五入
+          s_axis_dividend_tdata <= ({4'b0,pwm_mul_p} + {5'b0,pwm_frequency[27:1]}); // 四舍五入
         end
       else
         begin
@@ -175,12 +175,12 @@ module pwm_config #(
     // 商+余数
     .m_axis_dout_tvalid    (m_axis_dout_tvalid),
     .m_axis_dout_tdata     (m_axis_dout_tdata)
-  )
+  );
 // Xilinx Multiplier IP
   mult_gen_u7_u21 pwm_mul(
     .CLK(clk),
     .A  (pwm_mul_a),
     .B  (pwm_mul_b),
     .P  (pwm_mul_p)
-  )
+  );
   endmodule

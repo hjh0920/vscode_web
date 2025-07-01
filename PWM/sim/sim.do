@@ -32,19 +32,21 @@ vmap xil_defaultlib ./xil_defaultlib
 vmap work ./work
 
 # 5. 编译库文件
+# vcom -2008: 编译VHDL(支持2008标准)
+# vlog : 编译 Verilog/SystemVerilog
   # 编译 glbl 模块
   vlog -work xil_defaultlib "$VIVADO_DIR/verilog/src/glbl.v"
   # 编译 xpm 模块
   vlog -work xpm_lib "$VIVADO_DIR/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv"
   # 编译 Xilinx IP
-  # vlog -work xil_defaultlib "$IP_DIR/fifo_generator_0/simulation/fifo_generator_0.v"
-  # vlog -work xil_defaultlib "$IP_DIR/fifo_generator_0/simulation/fifo_generator_0_sim_netlist.v"
+  vlog -work xil_defaultlib "$IP_DIR/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v"
+  vlog -work xil_defaultlib "$IP_DIR/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v"
   # 编译设计文件
   vlog -work work "$RTL_DIR/*.v"
   vlog -work work "$TB_DIR/*.v"
 
 # 6. 启动仿真
-vsim -voptargs="+acc" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm
+vsim -t 1ns -voptargs="+acc" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm
 
 # 7. 添加波形
 do wave.do

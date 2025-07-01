@@ -1,0 +1,113 @@
+m255
+K4
+z2
+!s11f MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/arlen/Desktop/Github/vscode_web/PWM/sim
+T_opt
+!s110 1751385944
+V:obF@d9`YfD_4Oc6BW6Qg2
+014 4 4 xil_defaultlib glbl fast 0
+04 6 4 work tb_pwm fast 0
+=1-2c3b70b554cb-68640755-267-409c
+o-quiet -auto_acc_if_foreign -work work -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work +acc
+Z1 tCvgOpt 0
+n@_opt
+OL;O;2020.4;71
+vpwm_config
+Z2 !s110 1751385940
+!i10b 1
+!s100 Lm?09QP[K2Y8XSZ<1fA[N0
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+If4fe>Zb9LBbBb;j0QBWiM0
+R0
+w1751383499
+8../src/rtl/pwm_config.v
+F../src/rtl/pwm_config.v
+!i122 23
+L0 11 176
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2020.4;71
+r1
+!s85 0
+31
+Z6 !s108 1751385940.000000
+Z7 !s107 ../src/rtl/pwm_top.v|../src/rtl/pwm_ctrl.v|../src/rtl/pwm_config.v|
+Z8 !s90 -reportprogress|300|-work|work|../src/rtl/pwm_config.v|../src/rtl/pwm_ctrl.v|../src/rtl/pwm_top.v|
+!i113 0
+Z9 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vpwm_ctrl
+R2
+!i10b 1
+!s100 K>9DJAZUQFN`EX7`UGN_T1
+R3
+I9nN5JkF`SWNZhz;B;0a[O1
+R0
+w1751385914
+8../src/rtl/pwm_ctrl.v
+F../src/rtl/pwm_ctrl.v
+!i122 23
+L0 3 84
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R1
+vpwm_top
+R2
+!i10b 1
+!s100 D4Z;a2kH^g;SgYAd^lUNc2
+R3
+IH@2RPY<nLdZERDe4@XGiY0
+R0
+w1751378189
+8../src/rtl/pwm_top.v
+F../src/rtl/pwm_top.v
+!i122 23
+L0 3 71
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R1
+vtb_pwm
+R2
+!i10b 1
+!s100 6kK8H0dP_jQVJ>h[T15Jc3
+R3
+IPhbbFTaQKSF<cUm=7T;GV0
+R0
+w1751380925
+8../src/tb/tb_pwm.v
+F../src/tb/tb_pwm.v
+!i122 24
+L0 4 97
+R4
+R5
+r1
+!s85 0
+31
+R6
+!s107 ../src/tb/tb_pwm.v|
+!s90 -reportprogress|300|-work|work|../src/tb/tb_pwm.v|
+!i113 0
+R9
+R1

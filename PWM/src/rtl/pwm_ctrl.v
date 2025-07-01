@@ -45,7 +45,7 @@ module pwm_ctrl #(
       pwm_config_vld_reg <= 0;
     else if (pwm_config_vld && (pwm_config_channel == CHANNEL_INDEX[7:0]))
       pwm_config_vld_reg <= 1;
-    else if (period_cnt == pwm_period_local)
+    else if ((pwm_period_local == 0) || (period_cnt == pwm_period_local - 1))
       pwm_config_vld_reg <= 0;
 // 更新 本地参数
   always @ (posedge clk or posedge rst)
@@ -55,7 +55,7 @@ module pwm_ctrl #(
         pwm_period_local <= 0;
         pwm_hlevel_local <= 0;
       end
-    else if (pwm_config_vld_reg && (period_cnt == pwm_period_local))
+    else if (pwm_config_vld_reg && ((pwm_period_local == 0) || (period_cnt == pwm_period_local - 1)))
       begin
         pwm_en_local <= pwm_en_reg;
         pwm_period_local <= pwm_period_reg;
@@ -65,7 +65,7 @@ module pwm_ctrl #(
   always @ (posedge clk or posedge rst)
     if (rst)
       period_cnt <= 0;
-    else if (period_cnt == pwm_period_local)
+    else if ((pwm_period_local == 0) || (period_cnt == pwm_period_local - 1))
       period_cnt <= 0;
     else
       period_cnt <= period_cnt + 1;
@@ -73,15 +73,11 @@ module pwm_ctrl #(
   always @ (posedge clk or posedge rst)
     if (rst)
       pwm_ff <= 0;
-    else if (!pwm_en_local)
+    else if ((!pwm_en_local) || ((pwm_hlevel_local == 0) && (pwm_period_local != 0)) || (period_cnt == (pwm_hlevel_local-1)))
       pwm_ff <= 0;
-    else if (period_cnt == pwm_period_local)
-      begin
-        if (pwm_hlevel_local == 0)
-          pwm_ff <= 0;
-        else if (period_cnt < pwm_hlevel_local)
-          pwm_ff <= 1;
-      end
+    else if ((pwm_period_local == 0) || (period_cnt == pwm_period_local - 1))
+      pwm_ff <= 1;
+
 //------------------------------------
 //             Output Port
 //------------------------------------

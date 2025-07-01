@@ -1,0 +1,2368 @@
+# //  ModelSim SE-64 2020.4 Oct 13 2020
+# //
+# //  Copyright 1991-2020 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim SE-64 and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# do sim.do
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Copying C:/modeltech64_2020.4/win64/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:18:34 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:18:34 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:18:35 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:18:35 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:18:36 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28.vhd 
+# ** Error: (vlog-13036) ../src/ip/div_gen_u28_u28/div_gen_u28_u28.vhd(1): near "--": Operator only allowed in SystemVerilog.
+# ** Error: (vlog-13069) ../src/ip/div_gen_u28_u28/div_gen_u28_u28.vhd(1): near "--": syntax error, unexpected --, expecting class.
+# End time: 22:18:36 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: C:/modeltech64_2020.4/win64/vlog failed.
+# Error in macro ./sim.do line 40
+# C:/modeltech64_2020.4/win64/vlog failed.
+#     while executing
+# "vlog -work xil_defaultlib "$IP_DIR/div_gen_u28_u28/div_gen_u28_u28.vhd""
+do sim.do
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:26:08 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:26:08 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:26:08 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:26:09 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:26:09 on Jul 01,2025
+# vcom -reportprogress 300 -2008 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# ** Error: ../src/ip/div_gen_u28_u28/div_gen_u28_u28.vhd(56): (vcom-1598) Library "div_gen_v5_1_16" not found.
+# ** Error: ../src/ip/div_gen_u28_u28/div_gen_u28_u28.vhd(57): (vcom-1136) Unknown identifier "div_gen_v5_1_16".
+# ** Note: ../src/ip/div_gen_u28_u28/div_gen_u28_u28.vhd(59): VHDL Compiler exiting
+# End time: 22:26:09 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: C:/modeltech64_2020.4/win64/vcom failed.
+# Error in macro ./sim.do line 42
+# C:/modeltech64_2020.4/win64/vcom failed.
+#     while executing
+# "vcom -2008 -work xil_defaultlib "$IP_DIR/div_gen_u28_u28/div_gen_u28_u28.vhd""
+do sim.do
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:26:38 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:26:38 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:26:38 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:26:39 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:26:39 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 22:26:40 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:26:40 on Jul 01,2025
+# vcom -reportprogress 300 -2008 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# ** Error: ../src/ip/div_gen_u28_u28/div_gen_u28_u28.vhd(56): (vcom-1598) Library "div_gen_v5_1_16" not found.
+# ** Error: ../src/ip/div_gen_u28_u28/div_gen_u28_u28.vhd(57): (vcom-1136) Unknown identifier "div_gen_v5_1_16".
+# ** Note: ../src/ip/div_gen_u28_u28/div_gen_u28_u28.vhd(59): VHDL Compiler exiting
+# End time: 22:26:40 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: C:/modeltech64_2020.4/win64/vcom failed.
+# Error in macro ./sim.do line 43
+# C:/modeltech64_2020.4/win64/vcom failed.
+#     while executing
+# "vcom -2008 -work xil_defaultlib "$IP_DIR/div_gen_u28_u28/div_gen_u28_u28.vhd""
+do sim.do
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:31:25 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:31:25 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:31:25 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:31:25 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:31:25 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 22:31:26 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:31:27 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 22:31:27 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:31:27 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# ** Error: (vlog-13069) ../src/rtl/pwm_config.v(180): near "mult_gen_u7_u21": syntax error, unexpected IDENTIFIER, expecting ';' or ','.
+# ** Error: ../src/rtl/pwm_ctrl.v(36): (vlog-2730) Undefined variable: 'CHANNEL_INDEX'.
+# -- Compiling module pwm_top
+# End time: 22:31:27 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: C:/modeltech64_2020.4/win64/vlog failed.
+# Error in macro ./sim.do line 45
+# C:/modeltech64_2020.4/win64/vlog failed.
+#     while executing
+# "vlog -work work "$RTL_DIR/*.v""
+do sim.do
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:32:12 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:32:12 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:32:13 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:32:13 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:32:13 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 22:32:14 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:32:15 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 22:32:15 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:32:15 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# ** Error: (vlog-13069) ../src/rtl/pwm_config.v(180): near "mult_gen_u7_u21": syntax error, unexpected IDENTIFIER, expecting ';' or ','.
+# -- Compiling module pwm_ctrl
+# -- Compiling module pwm_top
+# End time: 22:32:15 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/modeltech64_2020.4/win64/vlog failed.
+# Error in macro ./sim.do line 45
+# C:/modeltech64_2020.4/win64/vlog failed.
+#     while executing
+# "vlog -work work "$RTL_DIR/*.v""
+do sim.do
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:32:53 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:32:53 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:32:53 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:32:53 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:32:54 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 22:32:55 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:32:55 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 22:32:55 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:32:56 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# -- Compiling module pwm_ctrl
+# -- Compiling module pwm_top
+# 
+# Top level modules:
+# 	pwm_top
+# End time: 22:32:56 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:32:56 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/tb/tb_pwm.v 
+# -- Compiling module tb_pwm
+# 
+# Top level modules:
+# 	tb_pwm
+# End time: 22:32:56 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm 
+# Start time: 22:32:56 on Jul 01,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.gnd(gnd_v)#1
+# Loading unisim.vcc(vcc_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# Loading ieee.numeric_std(body)
+# Loading unisim.lut2(lut2_v)#1
+# Loading unisim.fdre(fdre_v)#1
+# Loading unisim.srlc32e(srlc32e_v)#1
+# Loading unisim.lut1(lut1_v)#1
+# Loading unisim.lut2(lut2_v)#2
+# Loading unisim.fdre(fdre_v)#2
+# Loading unisim.lut2(lut2_v)#3
+# Loading unisim.carry4(carry4_v)#1
+# Loading unisim.lut3(lut3_v)#1
+# Loading unisim.lut3(lut3_v)#2
+# Loading unisim.lut4(lut4_v)#1
+# Loading unisim.lut3(lut3_v)#3
+# ** UI-Msg: (vish-4014) No objects found matching '/u_pwm_top/u_pwm_top/clk'.
+# Error in macro ./wave.do line 3
+# ** UI-Msg: (vish-4014) No objects found matching '/u_pwm_top/u_pwm_top/clk'.
+#     while executing
+# "add wave -noupdate /u_pwm_top/u_pwm_top/clk"
+do sim.do
+# End time: 22:34:16 on Jul 01,2025, Elapsed time: 0:01:20
+# Errors: 0, Warnings: 0
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:34:19 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:34:19 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:34:20 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:34:20 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:34:20 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 22:34:21 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:34:21 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 22:34:22 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:34:22 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# -- Compiling module pwm_ctrl
+# -- Compiling module pwm_top
+# 
+# Top level modules:
+# 	pwm_top
+# End time: 22:34:22 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:34:22 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/tb/tb_pwm.v 
+# -- Compiling module tb_pwm
+# 
+# Top level modules:
+# 	tb_pwm
+# End time: 22:34:22 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm 
+# Start time: 22:34:22 on Jul 01,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.gnd(gnd_v)#1
+# Loading unisim.vcc(vcc_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# Loading ieee.numeric_std(body)
+# Loading unisim.lut2(lut2_v)#1
+# Loading unisim.fdre(fdre_v)#1
+# Loading unisim.srlc32e(srlc32e_v)#1
+# Loading unisim.lut1(lut1_v)#1
+# Loading unisim.lut2(lut2_v)#2
+# Loading unisim.fdre(fdre_v)#2
+# Loading unisim.lut2(lut2_v)#3
+# Loading unisim.carry4(carry4_v)#1
+# Loading unisim.lut3(lut3_v)#1
+# Loading unisim.lut3(lut3_v)#2
+# Loading unisim.lut4(lut4_v)#1
+# Loading unisim.lut3(lut3_v)#3
+# ** UI-Msg: (vish-4014) No objects found matching '/u_pwm_top/clk'.
+# Error in macro ./wave.do line 3
+# ** UI-Msg: (vish-4014) No objects found matching '/u_pwm_top/clk'.
+#     while executing
+# "add wave -noupdate /u_pwm_top/clk"
+do sim.do
+# End time: 22:36:38 on Jul 01,2025, Elapsed time: 0:02:16
+# Errors: 0, Warnings: 0
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:36:42 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:36:42 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:36:42 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:36:42 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:36:42 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 22:36:44 on Jul 01,2025, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:36:44 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 22:36:44 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:36:44 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# -- Compiling module pwm_ctrl
+# -- Compiling module pwm_top
+# 
+# Top level modules:
+# 	pwm_top
+# End time: 22:36:44 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:36:45 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/tb/tb_pwm.v 
+# -- Compiling module tb_pwm
+# 
+# Top level modules:
+# 	tb_pwm
+# End time: 22:36:45 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm 
+# Start time: 22:36:45 on Jul 01,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.gnd(gnd_v)#1
+# Loading unisim.vcc(vcc_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# Loading ieee.numeric_std(body)
+# Loading unisim.lut2(lut2_v)#1
+# Loading unisim.fdre(fdre_v)#1
+# Loading unisim.srlc32e(srlc32e_v)#1
+# Loading unisim.lut1(lut1_v)#1
+# Loading unisim.lut2(lut2_v)#2
+# Loading unisim.fdre(fdre_v)#2
+# Loading unisim.lut2(lut2_v)#3
+# Loading unisim.carry4(carry4_v)#1
+# Loading unisim.lut3(lut3_v)#1
+# Loading unisim.lut3(lut3_v)#2
+# Loading unisim.lut4(lut4_v)#1
+# Loading unisim.lut3(lut3_v)#3
+# ** UI-Msg: (vish-4014) No objects found matching '/u_pwm_top/u_pwm_top/pwm'.
+# Error in macro ./wave.do line 18
+# ** UI-Msg: (vish-4014) No objects found matching '/u_pwm_top/u_pwm_top/pwm'.
+#     while executing
+# "add wave -noupdate -expand -group PWM_OUT \
+#     /u_pwm_top/u_pwm_top/pwm"
+do sim.do
+# End time: 22:37:48 on Jul 01,2025, Elapsed time: 0:01:03
+# Errors: 0, Warnings: 0
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:37:51 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:37:52 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:37:52 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:37:52 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:37:52 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 22:37:54 on Jul 01,2025, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:37:54 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 22:37:54 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:37:54 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# -- Compiling module pwm_ctrl
+# -- Compiling module pwm_top
+# 
+# Top level modules:
+# 	pwm_top
+# End time: 22:37:54 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:37:55 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/tb/tb_pwm.v 
+# -- Compiling module tb_pwm
+# 
+# Top level modules:
+# 	tb_pwm
+# End time: 22:37:55 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm 
+# Start time: 22:37:55 on Jul 01,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.gnd(gnd_v)#1
+# Loading unisim.vcc(vcc_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# Loading ieee.numeric_std(body)
+# Loading unisim.lut2(lut2_v)#1
+# Loading unisim.fdre(fdre_v)#1
+# Loading unisim.srlc32e(srlc32e_v)#1
+# Loading unisim.lut1(lut1_v)#1
+# Loading unisim.lut2(lut2_v)#2
+# Loading unisim.fdre(fdre_v)#2
+# Loading unisim.lut2(lut2_v)#3
+# Loading unisim.carry4(carry4_v)#1
+# Loading unisim.lut3(lut3_v)#1
+# Loading unisim.lut3(lut3_v)#2
+# Loading unisim.lut4(lut4_v)#1
+# Loading unisim.lut3(lut3_v)#3
+# 0 ps
+# 1016436750 ps
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/arlen/Desktop/Github/vscode_web/PWM/sim/wave1.do
+do sim.do
+# End time: 22:42:16 on Jul 01,2025, Elapsed time: 0:04:21
+# Errors: 0, Warnings: 0
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:42:20 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:42:20 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:42:20 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:42:20 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:42:20 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 22:42:21 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:42:22 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 22:42:22 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:42:22 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# -- Compiling module pwm_ctrl
+# -- Compiling module pwm_top
+# 
+# Top level modules:
+# 	pwm_top
+# End time: 22:42:22 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:42:22 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/tb/tb_pwm.v 
+# -- Compiling module tb_pwm
+# 
+# Top level modules:
+# 	tb_pwm
+# End time: 22:42:22 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm 
+# Start time: 22:42:23 on Jul 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.gnd(gnd_v)#1
+# Loading unisim.vcc(vcc_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# Loading ieee.numeric_std(body)
+# Loading unisim.lut2(lut2_v)#1
+# Loading unisim.fdre(fdre_v)#1
+# Loading unisim.srlc32e(srlc32e_v)#1
+# Loading unisim.lut1(lut1_v)#1
+# Loading unisim.lut2(lut2_v)#2
+# Loading unisim.fdre(fdre_v)#2
+# Loading unisim.lut2(lut2_v)#3
+# Loading unisim.carry4(carry4_v)#1
+# Loading unisim.lut3(lut3_v)#1
+# Loading unisim.lut3(lut3_v)#2
+# Loading unisim.lut4(lut4_v)#1
+# Loading unisim.lut3(lut3_v)#3
+# 0 ps
+# 4730 ps
+# 0 ps
+# 331269750 ps
+add wave -position insertpoint  \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/ID_PWM_PARAM \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/CLK_FREQ \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/clk \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/rst \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tdata \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tvalid \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tlast \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tuser \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_config_vld \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_config_channel \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_en \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_period \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_hlevel \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tdata_d1 \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tvalid_d1 \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tlast_d1 \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/word_cnt \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_param_en \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_frequency \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_duty \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/cal_period_en \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/cal_period_en_d1 \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/s_axis_divisor_tvalid \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/s_axis_divisor_tdata \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/s_axis_dividend_tvalid \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/s_axis_dividend_tdata \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/m_axis_dout_tvalid \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/m_axis_dout_tdata \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_mul_a \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_mul_b \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_mul_p \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_config_vld_ff \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_config_channel_ff \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_en_ff \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_period_ff \
+sim:/tb_pwm/u_pwm_top/u_pwm_config/pwm_hlevel_ff
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+run -all
+vlog -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact C:/Users/arlen/Desktop/Github/vscode_web/PWM/src/rtl/pwm_config.v
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:49:14 on Jul 01,2025
+# vlog -reportprogress 300 -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact C:/Users/arlen/Desktop/Github/vscode_web/PWM/src/rtl/pwm_config.v 
+# -- Compiling module pwm_config
+# 
+# Top level modules:
+# 	pwm_config
+# End time: 22:49:14 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.gnd(gnd_v)#1
+# Loading unisim.vcc(vcc_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# Loading ieee.numeric_std(body)
+# Loading unisim.lut2(lut2_v)#1
+# Loading unisim.fdre(fdre_v)#1
+# Loading unisim.srlc32e(srlc32e_v)#1
+# Loading unisim.lut1(lut1_v)#1
+# Loading unisim.lut2(lut2_v)#2
+# Loading unisim.fdre(fdre_v)#2
+# Loading unisim.lut2(lut2_v)#3
+# Loading unisim.carry4(carry4_v)#1
+# Loading unisim.lut3(lut3_v)#1
+# Loading unisim.lut3(lut3_v)#2
+# Loading unisim.lut4(lut4_v)#1
+# Loading unisim.lut3(lut3_v)#3
+run -all
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/arlen/Desktop/Github/vscode_web/PWM/sim/wave1.do
+do sim.do
+# End time: 22:58:20 on Jul 01,2025, Elapsed time: 0:15:57
+# Errors: 0, Warnings: 0
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:58:23 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 22:58:23 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:58:24 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 22:58:24 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:58:24 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 22:58:25 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:58:25 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 22:58:26 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:58:26 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# -- Compiling module pwm_ctrl
+# -- Compiling module pwm_top
+# 
+# Top level modules:
+# 	pwm_top
+# End time: 22:58:26 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:58:26 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/tb/tb_pwm.v 
+# -- Compiling module tb_pwm
+# 
+# Top level modules:
+# 	tb_pwm
+# End time: 22:58:26 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm 
+# Start time: 22:58:27 on Jul 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.gnd(gnd_v)#1
+# Loading unisim.vcc(vcc_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# Loading ieee.numeric_std(body)
+# Loading unisim.lut2(lut2_v)#1
+# Loading unisim.fdre(fdre_v)#1
+# Loading unisim.srlc32e(srlc32e_v)#1
+# Loading unisim.lut1(lut1_v)#1
+# Loading unisim.lut2(lut2_v)#2
+# Loading unisim.fdre(fdre_v)#2
+# Loading unisim.lut2(lut2_v)#3
+# Loading unisim.carry4(carry4_v)#1
+# Loading unisim.lut3(lut3_v)#1
+# Loading unisim.lut3(lut3_v)#2
+# Loading unisim.lut4(lut4_v)#1
+# Loading unisim.lut3(lut3_v)#3
+# ** UI-Msg: (vish-4014) No objects found matching '/tb_pwm/u_pwm_top/u_pwm_config/quotient'.
+# Error in macro ./wave.do line 19
+# ** UI-Msg: (vish-4014) No objects found matching '/tb_pwm/u_pwm_top/u_pwm_config/quotient'.
+#     while executing
+# "add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tdata"
+do sim.do
+# End time: 23:01:51 on Jul 01,2025, Elapsed time: 0:03:24
+# Errors: 0, Warnings: 0
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:01:53 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 23:01:53 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:01:54 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 23:01:54 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:01:54 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 23:01:55 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:01:55 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 23:01:56 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:01:56 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# -- Compiling module pwm_ctrl
+# -- Compiling module pwm_top
+# 
+# Top level modules:
+# 	pwm_top
+# End time: 23:01:56 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:01:56 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/tb/tb_pwm.v 
+# -- Compiling module tb_pwm
+# 
+# Top level modules:
+# 	tb_pwm
+# End time: 23:01:56 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm 
+# Start time: 23:01:56 on Jul 01,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.gnd(gnd_v)#1
+# Loading unisim.vcc(vcc_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# Loading ieee.numeric_std(body)
+# Loading unisim.lut2(lut2_v)#1
+# Loading unisim.fdre(fdre_v)#1
+# Loading unisim.srlc32e(srlc32e_v)#1
+# Loading unisim.lut1(lut1_v)#1
+# Loading unisim.lut2(lut2_v)#2
+# Loading unisim.fdre(fdre_v)#2
+# Loading unisim.lut2(lut2_v)#3
+# Loading unisim.carry4(carry4_v)#1
+# Loading unisim.lut3(lut3_v)#1
+# Loading unisim.lut3(lut3_v)#2
+# Loading unisim.lut4(lut4_v)#1
+# Loading unisim.lut3(lut3_v)#3
+# 0 ps
+# 4730 ps
+# 0 ps
+# 330419250 ps
+do sim.do
+# End time: 23:09:12 on Jul 01,2025, Elapsed time: 0:07:16
+# Errors: 0, Warnings: 0
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:09:15 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 23:09:15 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:09:15 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 23:09:16 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:09:16 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 23:09:17 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:09:17 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 23:09:17 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:09:18 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# -- Compiling module pwm_ctrl
+# -- Compiling module pwm_top
+# 
+# Top level modules:
+# 	pwm_top
+# End time: 23:09:18 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:09:18 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/tb/tb_pwm.v 
+# -- Compiling module tb_pwm
+# 
+# Top level modules:
+# 	tb_pwm
+# End time: 23:09:18 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm 
+# Start time: 23:09:18 on Jul 01,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.gnd(gnd_v)#1
+# Loading unisim.vcc(vcc_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# Loading ieee.numeric_std(body)
+# Loading unisim.lut2(lut2_v)#1
+# Loading unisim.fdre(fdre_v)#1
+# Loading unisim.srlc32e(srlc32e_v)#1
+# Loading unisim.lut1(lut1_v)#1
+# Loading unisim.lut2(lut2_v)#2
+# Loading unisim.fdre(fdre_v)#2
+# Loading unisim.lut2(lut2_v)#3
+# Loading unisim.carry4(carry4_v)#1
+# Loading unisim.lut3(lut3_v)#1
+# Loading unisim.lut3(lut3_v)#2
+# Loading unisim.lut4(lut4_v)#1
+# Loading unisim.lut3(lut3_v)#3
+# 0 ps
+# 4730 ps
+# 0 ps
+# 367904250 ps
+echo [get_default_time_unit]
+# invalid command name "get_default_time_unit"
+do sim.do
+# ** Error: can't set "resolution": Variable resolution is Read-Only
+# Error in macro ./sim.do line 2
+# Variable resolution is Read-Only
+#     (write trace on "resolution")
+#     invoked from within
+# "set resolution 1ns"
+do sim.do
+# End time: 23:16:56 on Jul 01,2025, Elapsed time: 0:07:38
+# Errors: 1, Warnings: 0
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:16:59 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 23:16:59 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:16:59 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 23:16:59 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:16:59 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 23:17:01 on Jul 01,2025, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:17:01 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 23:17:01 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:17:01 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# -- Compiling module pwm_ctrl
+# -- Compiling module pwm_top
+# 
+# Top level modules:
+# 	pwm_top
+# End time: 23:17:01 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:17:01 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/tb/tb_pwm.v 
+# -- Compiling module tb_pwm
+# 
+# Top level modules:
+# 	tb_pwm
+# End time: 23:17:02 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim -t 1ns -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm 
+# Start time: 23:17:02 on Jul 01,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.gnd(gnd_v)#1
+# Loading unisim.vcc(vcc_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# ** Warning: (vsim-3479) Time unit '<protected>' is less than the simulator resolution (<protected>).
+#    Time: 0 ns  Iteration: 0  Protected: /tb_pwm/u_pwm_top/u_pwm_config/pwm_div/U0/i_synth/<protected>/<protected>
+# Loading ieee.numeric_std(body)
+# Loading unisim.lut2(lut2_v)#1
+# Loading unisim.fdre(fdre_v)#1
+# Loading unisim.srlc32e(srlc32e_v)#1
+# Loading unisim.lut1(lut1_v)#1
+# Loading unisim.lut2(lut2_v)#2
+# Loading unisim.fdre(fdre_v)#2
+# Loading unisim.lut2(lut2_v)#3
+# Loading unisim.carry4(carry4_v)#1
+# Loading unisim.lut3(lut3_v)#1
+# Loading unisim.lut3(lut3_v)#2
+# Loading unisim.lut4(lut4_v)#1
+# Loading unisim.lut3(lut3_v)#3
+# 0 ns
+# 4730 ns
+# ** Note: $stop    : ../src/tb/tb_pwm.v(52)
+#    Time: 2001355 ns  Iteration: 0  Instance: /tb_pwm
+# Break in Module tb_pwm at ../src/tb/tb_pwm.v line 52
+# 0 ns
+# 2101423 ns
+do sim.do
+# End time: 23:25:11 on Jul 01,2025, Elapsed time: 0:08:09
+# Errors: 0, Warnings: 1
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:25:14 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 23:25:14 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:25:14 on Jul 01,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 23:25:15 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:25:15 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 23:25:16 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:25:16 on Jul 01,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 23:25:17 on Jul 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:25:17 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# -- Compiling module pwm_ctrl
+# -- Compiling module pwm_top
+# 
+# Top level modules:
+# 	pwm_top
+# End time: 23:25:17 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:25:17 on Jul 01,2025
+# vlog -reportprogress 300 -work work ../src/tb/tb_pwm.v 
+# -- Compiling module tb_pwm
+# 
+# Top level modules:
+# 	tb_pwm
+# End time: 23:25:17 on Jul 01,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -t 1ns -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm 
+# Start time: 23:25:17 on Jul 01,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.gnd(gnd_v)#1
+# Loading unisim.vcc(vcc_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# ** Warning: (vsim-3479) Time unit '<protected>' is less than the simulator resolution (<protected>).
+#    Time: 0 ns  Iteration: 0  Protected: /tb_pwm/u_pwm_top/u_pwm_config/pwm_div/U0/i_synth/<protected>/<protected>
+# Loading ieee.numeric_std(body)
+# Loading unisim.lut2(lut2_v)#1
+# Loading unisim.fdre(fdre_v)#1
+# Loading unisim.srlc32e(srlc32e_v)#1
+# Loading unisim.lut1(lut1_v)#1
+# Loading unisim.lut2(lut2_v)#2
+# Loading unisim.fdre(fdre_v)#2
+# Loading unisim.lut2(lut2_v)#3
+# Loading unisim.carry4(carry4_v)#1
+# Loading unisim.lut3(lut3_v)#1
+# Loading unisim.lut3(lut3_v)#2
+# Loading unisim.lut4(lut4_v)#1
+# Loading unisim.lut3(lut3_v)#3
+# 0 ns
+# 4730 ns
+# ** Note: $stop    : ../src/tb/tb_pwm.v(52)
+#    Time: 2001355 ns  Iteration: 0  Instance: /tb_pwm
+# Break in Module tb_pwm at ../src/tb/tb_pwm.v line 52
+# 0 ns
+# 2101423 ns
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/arlen/Desktop/Github/vscode_web/PWM/sim/wave1.do
+add wave -position insertpoint  \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/CHANNEL_INDEX} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/clk} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/rst} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_config_vld} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_config_channel} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_en} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_period} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_hlevel} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/period_cnt} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_config_vld_reg} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_en_reg} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_period_reg} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_hlevel_reg} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_en_local} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_period_local} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_hlevel_local} \
+{sim:/tb_pwm/u_pwm_top/genblk1[1]/u_pwm_ctrl/pwm_ff}
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+run -all
+# ** Note: $stop    : ../src/tb/tb_pwm.v(52)
+#    Time: 2001355 ns  Iteration: 0  Instance: /tb_pwm
+# Break in Module tb_pwm at ../src/tb/tb_pwm.v line 52
+run -all
+
+do sim.do
+# End time: 00:05:35 on Jul 02,2025, Elapsed time: 0:40:18
+# Errors: 0, Warnings: 0
+# C:/Software/Xilinx/Vivado/2020.1/data
+# C:/modeltech64_2020.4/vivado2020_lib
+# ../src/ip
+# ../src/rtl
+# ../src/tb
+# ** Warning: (vlib-34) Library already exists at "unisim".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "unimacro".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "secureip".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xpm_lib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "xil_defaultlib".
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unisim C:/modeltech64_2020.4/vivado2020_lib/unisim 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap unimacro C:/modeltech64_2020.4/vivado2020_lib/unimacro 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap secureip C:/modeltech64_2020.4/vivado2020_lib/secureip 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xpm_lib C:/modeltech64_2020.4/vivado2020_lib/xpm 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap xil_defaultlib ./xil_defaultlib 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vmap 2020.4 Lib Mapping Utility 2020.10 Oct 13 2020
+# vmap work ./work 
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 00:05:37 on Jul 02,2025
+# vlog -reportprogress 300 -work xil_defaultlib C:/Software/Xilinx/Vivado/2020.1/data/verilog/src/glbl.v 
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# End time: 00:05:37 on Jul 02,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 00:05:38 on Jul 02,2025
+# vlog -reportprogress 300 -work xpm_lib C:/Software/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv 
+# -- Compiling module xpm_fifo_base
+# -- Compiling module xpm_fifo_rst
+# -- Compiling module xpm_counter_updn
+# -- Compiling module xpm_fifo_reg_vec
+# -- Compiling module xpm_fifo_reg_bit
+# -- Compiling module xpm_reg_pipe_bit
+# -- Compiling module xpm_fifo_sync
+# -- Compiling module xpm_fifo_async
+# -- Compiling module xpm_fifo_axis
+# -- Compiling module xpm_fifo_axif
+# -- Compiling module xpm_fifo_axil
+# -- Compiling module xpm_fifo_axi_reg_slice
+# 
+# Top level modules:
+# 	xpm_fifo_sync
+# 	xpm_fifo_async
+# 	xpm_fifo_axis
+# 	xpm_fifo_axif
+# 	xpm_fifo_axil
+# End time: 00:05:38 on Jul 02,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 00:05:38 on Jul 02,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/div_gen_u28_u28/div_gen_u28_u28_sim_netlist.v 
+# -- Compiling module div_gen_u28_u28
+# -- Compiling module div_gen_u28_u28_div_gen_v5_1_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	div_gen_u28_u28
+# 	glbl
+# End time: 00:05:39 on Jul 02,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 00:05:39 on Jul 02,2025
+# vlog -reportprogress 300 -work xil_defaultlib ../src/ip/mult_gen_u7_u21/mult_gen_u7_u21_sim_netlist.v 
+# -- Compiling module mult_gen_u7_u21
+# -- Compiling module mult_gen_u7_u21_mult_gen_v12_0_16
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	mult_gen_u7_u21
+# 	glbl
+# End time: 00:05:40 on Jul 02,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 00:05:40 on Jul 02,2025
+# vlog -reportprogress 300 -work work ../src/rtl/pwm_config.v ../src/rtl/pwm_ctrl.v ../src/rtl/pwm_top.v 
+# -- Compiling module pwm_config
+# -- Compiling module pwm_ctrl
+# -- Compiling module pwm_top
+# 
+# Top level modules:
+# 	pwm_top
+# End time: 00:05:40 on Jul 02,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 00:05:40 on Jul 02,2025
+# vlog -reportprogress 300 -work work ../src/tb/tb_pwm.v 
+# -- Compiling module tb_pwm
+# 
+# Top level modules:
+# 	tb_pwm
+# End time: 00:05:40 on Jul 02,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -t 1ns -voptargs=""+acc"" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_pwm 
+# Start time: 00:05:40 on Jul 02,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading xil_defaultlib.glbl(fast)
+# Loading work.tb_pwm(fast)
+# Loading work.pwm_top(fast)
+# Loading work.pwm_config(fast)
+# Loading xil_defaultlib.div_gen_u28_u28(fast)
+# Loading xil_defaultlib.div_gen_u28_u28_div_gen_v5_1_16(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21(fast)
+# Loading xil_defaultlib.mult_gen_u7_u21_mult_gen_v12_0_16(fast)
+# Loading work.pwm_ctrl(fast)
+# Loading work.pwm_ctrl(fast__1)
+# Loading work.pwm_ctrl(fast__2)
+# Loading work.pwm_ctrl(fast__3)
+# Loading work.pwm_ctrl(fast__4)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading unisim.gnd(gnd_v)#1
+# Loading unisim.vcc(vcc_v)#1
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading unisim.vpkg(body)
+# ** Warning: (vsim-3479) Time unit '<protected>' is less than the simulator resolution (<protected>).
+#    Time: 0 ns  Iteration: 0  Protected: /tb_pwm/u_pwm_top/u_pwm_config/pwm_div/U0/i_synth/<protected>/<protected>
+# Loading ieee.numeric_std(body)
+# Loading unisim.lut2(lut2_v)#1
+# Loading unisim.fdre(fdre_v)#1
+# Loading unisim.srlc32e(srlc32e_v)#1
+# Loading unisim.lut1(lut1_v)#1
+# Loading unisim.lut2(lut2_v)#2
+# Loading unisim.fdre(fdre_v)#2
+# Loading unisim.lut2(lut2_v)#3
+# Loading unisim.carry4(carry4_v)#1
+# Loading unisim.lut3(lut3_v)#1
+# Loading unisim.lut3(lut3_v)#2
+# Loading unisim.lut4(lut4_v)#1
+# Loading unisim.lut3(lut3_v)#3
+# 0 ns
+# 4730 ns
+# ** Note: $stop    : ../src/tb/tb_pwm.v(52)
+#    Time: 2001355 ns  Iteration: 0  Instance: /tb_pwm
+# Break in Module tb_pwm at ../src/tb/tb_pwm.v line 52
+# 0 ns
+# 2101423 ns
+# End time: 00:07:33 on Jul 02,2025, Elapsed time: 0:01:53
+# Errors: 0, Warnings: 1
