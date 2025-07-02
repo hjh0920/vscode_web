@@ -1,7 +1,7 @@
 // PWM 参数配置模块, 解析参数并分发至相应通道
 //   word 0: bit[ 7: 0] 通道索引
 //           bit[31: 8] 保留
-//   word 1: bit[31: 0] PWM输出频率, 单位Hz
+//   word 1: bit[31: 0] PWM输出频率(>=1Hz), 单位Hz
 //   word 2: bit[ 6: 0] PWM输出占空比, 0-100%
 //           bit[31: 7] 保留
 //   word 3: 保留
@@ -24,8 +24,8 @@ module pwm_config #(
   output        pwm_config_vld, // 参数配置使能
   output [7:0]  pwm_config_channel, // 通道索引
   output        pwm_en, // PWM输出使能
-  output [27:0] pwm_period, // 单周期计数时间
-  output [27:0] pwm_hlevel // 高电平持续计数时间
+  output [27:0] pwm_period, // 周期计数阈值
+  output [27:0] pwm_hlevel // 高电平计数阈值
 );
 
 //------------------------------------
@@ -38,7 +38,7 @@ module pwm_config #(
   reg          pwm_param_en = 0; // PWM参数帧使能
   reg  [27:0]  pwm_frequency = 0; // PWM输出频率
   reg  [6:0]   pwm_duty = 0; // PWM输出占空比
-  reg          cal_period_en = 0; // 计算单周期计数时间使能
+  reg          cal_period_en = 0; // 计算周期计数阈值使能
   reg          cal_period_en_d1 = 0; // 延迟一拍
 // 除法器 IP 信号
   reg          s_axis_divisor_tvalid = 0;
@@ -55,8 +55,8 @@ module pwm_config #(
   reg          pwm_config_vld_ff = 0; // 参数配置使能
   reg  [7:0]   pwm_config_channel_ff = 0; // 通道索引
   reg          pwm_en_ff = 0; // PWM输出使能
-  reg  [27:0]  pwm_period_ff = 0; // 单周期计数时间
-  reg  [27:0]  pwm_hlevel_ff = 0; // 高电平持续计数时间
+  reg  [27:0]  pwm_period_ff = 0; // 周期计数阈值
+  reg  [27:0]  pwm_hlevel_ff = 0; // 高电平计数阈值
 //------------------------------------
 //             User Logic
 //------------------------------------
@@ -91,7 +91,7 @@ module pwm_config #(
   // PWM输出使能
     always @ (posedge clk) if (pwm_param_en && (word_cnt == 4) && rx_axis_udp_tvalid_d1) pwm_en_ff <= rx_axis_udp_tdata_d1[0];
 // 计算计数时间
-  // 计算单周期计数时间使能
+  // 计算周期计数阈值使能
     always @ (posedge clk)
       if (pwm_param_en && rx_axis_udp_tvalid_d1 && rx_axis_udp_tlast_d1)
         cal_period_en <= 1'b1;
@@ -100,14 +100,14 @@ module pwm_config #(
     always @ (posedge clk) cal_period_en_d1 <= cal_period_en;
   // 除法器输入
     always @ (posedge clk)
-      if ((!cal_period_en_d1) && cal_period_en) // 计算单周期计数时间
+      if ((!cal_period_en_d1) && cal_period_en) // 计算周期计数阈值
         begin
           s_axis_divisor_tvalid <= 1'b1;
           s_axis_divisor_tdata  <= {4'b0,pwm_frequency};
           s_axis_dividend_tvalid <= 1'b1;
           s_axis_dividend_tdata <= (CLK_FREQ[31:0] + {5'b0,pwm_frequency[27:1]}); // 四舍五入
         end
-      else if (m_axis_dout_tvalid && cal_period_en) // 计算高电平持续计数时间
+      else if (m_axis_dout_tvalid && cal_period_en) // 计算高电平计数阈值
         begin
           s_axis_divisor_tvalid <= 1'b1;
           s_axis_divisor_tdata  <= {4'b0,pwm_frequency};
@@ -122,13 +122,13 @@ module pwm_config #(
   // 乘法器输入
     assign pwm_mul_a = pwm_duty;
     assign pwm_mul_b = (CLK_FREQ/100);
-  // 单周期计数时间 赋值
+  // 周期计数阈值 赋值
     always @ (posedge clk or posedge rst)
       if (rst)
         pwm_period_ff <= 0;
       else if (cal_period_en && m_axis_dout_tvalid)
         pwm_period_ff <= m_axis_dout_tdata[32 +: 28];
-  // 高电平持续计数时间 赋值
+  // 高电平计数阈值 赋值
     always @ (posedge clk or posedge rst)
       if (rst)
         pwm_hlevel_ff <= 0;

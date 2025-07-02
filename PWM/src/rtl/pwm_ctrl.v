@@ -9,8 +9,8 @@ module pwm_ctrl #(
   input        pwm_config_vld, // 参数配置使能
   input [7:0]  pwm_config_channel, // 通道索引
   input        pwm_en, // PWM输出使能
-  input [27:0] pwm_period, // 单周期计数时间
-  input [27:0] pwm_hlevel, // 高电平持续计数时间
+  input [27:0] pwm_period, // 周期计数阈值
+  input [27:0] pwm_hlevel, // 高电平计数阈值
   output       pwm // PWM输出
 );
 
@@ -23,7 +23,7 @@ module pwm_ctrl #(
   reg  [27:0] pwm_period_reg = 0; // 周期计数阈值-参数寄存
   reg  [27:0] pwm_hlevel_reg = 0; // 高电平计数阈值-参数寄存
   reg         pwm_en_local = 0; // 本地PWM输出使能
-  reg  [27:0] pwm_period_local = 0; // 本地周期计数阈值
+  reg  [27:0] pwm_period_local = 1; // 本地周期计数阈值
   reg  [27:0] pwm_hlevel_local = 0; // 本地高电平计数阈值
 
   reg         pwm_ff = 0; // PWM输出寄存器
@@ -45,17 +45,17 @@ module pwm_ctrl #(
       pwm_config_vld_reg <= 0;
     else if (pwm_config_vld && (pwm_config_channel == CHANNEL_INDEX[7:0]))
       pwm_config_vld_reg <= 1;
-    else if ((pwm_period_local == 0) || (period_cnt == pwm_period_local - 1))
+    else if (period_cnt == pwm_period_local - 1)
       pwm_config_vld_reg <= 0;
 // 更新 本地参数
   always @ (posedge clk or posedge rst)
     if (rst)
       begin
         pwm_en_local <= 0;
-        pwm_period_local <= 0;
+        pwm_period_local <= 1;
         pwm_hlevel_local <= 0;
       end
-    else if (pwm_config_vld_reg && ((pwm_period_local == 0) || (period_cnt == pwm_period_local - 1)))
+    else if (pwm_config_vld_reg && (period_cnt == pwm_period_local - 1))
       begin
         pwm_en_local <= pwm_en_reg;
         pwm_period_local <= pwm_period_reg;
@@ -65,17 +65,24 @@ module pwm_ctrl #(
   always @ (posedge clk or posedge rst)
     if (rst)
       period_cnt <= 0;
-    else if ((pwm_period_local == 0) || (period_cnt == pwm_period_local - 1))
+    else if (period_cnt == pwm_period_local - 1)
       period_cnt <= 0;
     else
       period_cnt <= period_cnt + 1;
 // PWM输出寄存器
+  // 输出低电平条件:
+    // 1. PWM输出使能为低电平
+    // 2. 高电平持续计数时间等于0(即占空比为0)
+    // 3. (高电平计数阈值 != 周期计数阈值) && 周期计数器等于高电平计数阈值-1
+  // 输出高电平条件:
+    // 1. PWM输出使能 && 占空比为100%(即单周期计数阈值=高电平持续计数时间)
+    // 2. PWM输出使能 && 周期计数器等于周期计数阈值-1
   always @ (posedge clk or posedge rst)
     if (rst)
       pwm_ff <= 0;
-    else if ((!pwm_en_local) || ((pwm_hlevel_local == 0) && (pwm_period_local != 0)) || (period_cnt == (pwm_hlevel_local-1)))
+    else if (((!pwm_en_reg) && (period_cnt == pwm_period_local - 1)) || (!pwm_en_local) || (pwm_hlevel_local == 0) || ((pwm_hlevel_local != pwm_period_local) && (period_cnt == (pwm_hlevel_local-1))))
       pwm_ff <= 0;
-    else if ((pwm_period_local == 0) || (period_cnt == pwm_period_local - 1))
+    else if ((pwm_hlevel_local == pwm_period_local) || (period_cnt == pwm_period_local - 1))
       pwm_ff <= 1;
 
 //------------------------------------

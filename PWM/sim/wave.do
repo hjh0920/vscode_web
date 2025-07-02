@@ -28,7 +28,7 @@ add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_
 add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_mul_b
 add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_mul_p
 
-add wave -noupdate -expand -group PWM_OUT /tb_pwm/u_pwm_top/pwm
+add wave -noupdate -expand -group PWM_OUT -expand /tb_pwm/u_pwm_top/pwm
 
 
 configure wave -namecolwidth 177

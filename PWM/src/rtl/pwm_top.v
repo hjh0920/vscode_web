@@ -1,4 +1,5 @@
 // PWM 控制器顶层模块, 支持通道数配置, PWM默认输出低电平, 只有在单周期结束才会更新PWM参数
+// PWM输出频率大于等于1Hz, PWM输出占空比0-100%
 
 module pwm_top #(
   parameter     PWM_NUM = 1, // PWM通道数
@@ -23,8 +24,8 @@ module pwm_top #(
   wire        pwm_config_vld; // 参数配置使能
   wire [7:0]  pwm_config_channel; // 通道索引
   wire        pwm_en; // PWM输出使能
-  wire [27:0] pwm_period; // 单周期计数时间
-  wire [27:0] pwm_hlevel; // 高电平持续计数时间
+  wire [27:0] pwm_period; // 周期计数阈值
+  wire [27:0] pwm_hlevel; // 高电平计数阈值
 
 //------------------------------------
 //             Instance
@@ -46,8 +47,8 @@ module pwm_top #(
     .pwm_config_vld     (pwm_config_vld    ), // 参数配置使能
     .pwm_config_channel (pwm_config_channel), // 通道索引
     .pwm_en             (pwm_en            ), // PWM输出使能
-    .pwm_period         (pwm_period        ), // 单周期计数时间
-    .pwm_hlevel         (pwm_hlevel        )  // 高电平持续计数时间
+    .pwm_period         (pwm_period        ), // 周期计数阈值
+    .pwm_hlevel         (pwm_hlevel        )  // 高电平计数阈值
   );
 // PWM 控制器
   genvar pwm_ch;
@@ -63,8 +64,8 @@ module pwm_top #(
             .pwm_config_vld      (pwm_config_vld    ), // 参数配置使能
             .pwm_config_channel  (pwm_config_channel), // 通道索引
             .pwm_en              (pwm_en            ), // PWM输出使能
-            .pwm_period          (pwm_period        ), // 单周期计数时间
-            .pwm_hlevel          (pwm_hlevel        ), // 高电平持续计数时间
+            .pwm_period          (pwm_period        ), // 周期计数阈值
+            .pwm_hlevel          (pwm_hlevel        ), // 高电平计数阈值
             .pwm                 (pwm[pwm_ch]       )  // PWM输出
           );
       end
