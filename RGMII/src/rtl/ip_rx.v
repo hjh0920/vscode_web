@@ -34,6 +34,7 @@ module ip_rx(
   reg  [31:0] rx_ip_src_ff = 0; // 接收 IP 报文源地址
   reg  [31:0] rx_ip_dst_ff = 0; // 接收 IP 报文目的地址
   reg  [19:0] rx_ip_csum_calc = 0; // 计算 IP 报文校验和
+  reg  [19:0] rx_ip_csum_calc_1 = 0;
   reg  [15:0] rx_ip_csum_result = 0; // 计算得到的 IP 报文校验和
   reg  [7:0]  rx_axis_ip_tdata_ff = 0;
   reg         rx_axis_ip_tvalid_ff = 0;
@@ -81,16 +82,18 @@ module ip_rx(
       rx_ip_csum_calc <= 20'b0;
     else if (rx_axis_mac_tvalid && rx_axis_mac_tlast)
       rx_ip_csum_calc <= 20'b0;
-    else if (rx_axis_mac_tvalid && (rx_byte_cnt >= 11'd12) && (rx_byte_cnt < 11'd32) && (rx_byte_cnt != 11'd25))
+    else if (rx_axis_mac_tvalid && (rx_byte_cnt >= 11'd14) && (rx_byte_cnt < 11'd34) && (rx_byte_cnt[10:1] != 10'd12))
       begin
         if (rx_byte_cnt[0])
           rx_ip_csum_calc <= rx_ip_csum_calc + {12'b0,rx_axis_mac_tdata};
         else
           rx_ip_csum_calc <= rx_ip_csum_calc + {4'b0,rx_axis_mac_tdata,8'b0};
       end
+  always @ (posedge rx_mac_aclk)
+    if (rx_byte_cnt == 11'd34) rx_ip_csum_calc_1 <= {4'b0,rx_ip_csum_calc[15:0]} + {16'b0,rx_ip_csum_calc[19:16]};
 // 计算得到的 IP 报文校验和
   always @ (posedge rx_mac_aclk)
-    if (rx_byte_cnt == 11'd32) rx_ip_csum_result <= ~(rx_ip_csum_calc[15:0] + {12'b0,rx_ip_csum_calc[19:16]});
+    rx_ip_csum_result <= ~(rx_ip_csum_calc_1[15:0] + {12'b0,rx_ip_csum_calc_1[19:16]});
 // 接收 IP 数据
   always @ (posedge rx_mac_aclk or posedge rx_mac_reset)
     if (rx_mac_reset)
