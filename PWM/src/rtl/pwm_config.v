@@ -1,12 +1,11 @@
 // PWM 参数配置模块, 解析参数并分发至相应通道
-//   word 0: bit[ 7: 0] 通道索引
-//           bit[31: 8] 保留
+//   word 0: bit[31:16] 帧ID. 0: 表示当前帧为PWM参数帧
+//           bit[15: 8] 通道索引
+//           bit[ 7: 0] 保留为0
 //   word 1: bit[31: 0] PWM输出频率(>=1Hz), 单位Hz
-//   word 2: bit[ 6: 0] PWM输出占空比, 0-100%
-//           bit[31: 7] 保留
-//   word 3: 保留
-//   word 4: bit[ 0: 0] PWM输出使能
-//           bit[31: 1] 保留
+//   word 2: bit[31:24] PWM输出占空比, 0-100%
+//           bit[23: 0] 保留为0
+//   word 3: bit[24:24] PWM输出使能, 高有效
 
 module pwm_config #(
   parameter     ID_PWM_PARAM = 0, // PWM参数帧ID
@@ -19,7 +18,6 @@ module pwm_config #(
   input  [31:0] rx_axis_udp_tdata,
   input         rx_axis_udp_tvalid,
   input         rx_axis_udp_tlast,
-  input  [7:0]  rx_axis_udp_tuser, // 帧ID
   //输出参数
   output        pwm_config_vld, // 参数配置使能
   output [7:0]  pwm_config_channel, // 通道索引
@@ -34,6 +32,9 @@ module pwm_config #(
   reg  [31:0]  rx_axis_udp_tdata_d1 = 0; // 打拍, 减小扇出
   reg          rx_axis_udp_tvalid_d1 = 0;
   reg          rx_axis_udp_tlast_d1 = 0;
+  reg  [31:0]  rx_axis_udp_tdata_d2 = 0; // 打拍, 减小扇出
+  reg          rx_axis_udp_tvalid_d2 = 0;
+  reg          rx_axis_udp_tlast_d2 = 0;
   reg  [7:0]   word_cnt = 0; // word计数器
   reg          pwm_param_en = 0; // PWM参数帧使能
   reg  [27:0]  pwm_frequency = 0; // PWM输出频率
@@ -64,36 +65,39 @@ module pwm_config #(
   always @ (posedge clk) rx_axis_udp_tdata_d1 <= rx_axis_udp_tdata;
   always @ (posedge clk) rx_axis_udp_tvalid_d1 <= rx_axis_udp_tvalid;
   always @ (posedge clk) rx_axis_udp_tlast_d1 <= rx_axis_udp_tlast;
+  always @ (posedge clk) rx_axis_udp_tdata_d2 <= rx_axis_udp_tdata_d1;
+  always @ (posedge clk) rx_axis_udp_tvalid_d2 <= rx_axis_udp_tvalid_d1;
+  always @ (posedge clk) rx_axis_udp_tlast_d2 <= rx_axis_udp_tlast_d1;
 
 // 接收word计数器
   always @ (posedge clk)
     if (rst)
       word_cnt <= 0;
-    else if (rx_axis_udp_tvalid_d1 && rx_axis_udp_tlast_d1)
+    else if (rx_axis_udp_tvalid_d2 && rx_axis_udp_tlast_d2)
       word_cnt <= 0;
-    else if (rx_axis_udp_tvalid_d1)
+    else if (rx_axis_udp_tvalid_d2)
       word_cnt <= word_cnt + 1; 
 // 帧识别
   always @(posedge clk or posedge rst)
     if (rst)
       pwm_param_en <= 1'b0;
-    else if (rx_axis_udp_tuser == ID_PWM_PARAM[7:0])
+    else if ((word_cnt == 0) && rx_axis_udp_tvalid_d1 && (rx_axis_udp_tdata_d1[23:16] == ID_PWM_PARAM[7:0]))
       pwm_param_en <= 1'b1;
-    else
+    else if (rx_axis_udp_tvalid_d2 && rx_axis_udp_tlast_d2)
       pwm_param_en <= 1'b0;
 // 参数解析
   // 通道索引
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 0) && rx_axis_udp_tvalid_d1) pwm_config_channel_ff <= rx_axis_udp_tdata_d1[7:0];
+    always @ (posedge clk) if (pwm_param_en && (word_cnt == 0) && rx_axis_udp_tvalid_d2) pwm_config_channel_ff <= rx_axis_udp_tdata_d2[15:8];
   // PWM输出频率
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d1) pwm_frequency <= rx_axis_udp_tdata_d1[27:0];
+    always @ (posedge clk) if (pwm_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) pwm_frequency <= rx_axis_udp_tdata_d2[27:0];
   // PWM输出占空比
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 2) && rx_axis_udp_tvalid_d1) pwm_duty <= rx_axis_udp_tdata_d1[6:0];
+    always @ (posedge clk) if (pwm_param_en && (word_cnt == 2) && rx_axis_udp_tvalid_d2) pwm_duty <= rx_axis_udp_tdata_d2[30:24];
   // PWM输出使能
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 4) && rx_axis_udp_tvalid_d1) pwm_en_ff <= rx_axis_udp_tdata_d1[0];
+    always @ (posedge clk) if (pwm_param_en && (word_cnt == 3) && rx_axis_udp_tvalid_d2) pwm_en_ff <= rx_axis_udp_tdata_d2[24];
 // 计算计数时间
   // 计算周期计数阈值使能
     always @ (posedge clk)
-      if (pwm_param_en && rx_axis_udp_tvalid_d1 && rx_axis_udp_tlast_d1)
+      if (pwm_param_en && rx_axis_udp_tvalid_d2 && rx_axis_udp_tlast_d2)
         cal_period_en <= 1'b1;
       else if (m_axis_dout_tvalid)
         cal_period_en <= 1'b0;

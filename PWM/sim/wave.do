@@ -8,7 +8,6 @@ add wave -noupdate /tb_pwm/u_pwm_top/rst
 add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tdata
 add wave -noupdate -expand -group PWM_PARAM /tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tvalid
 add wave -noupdate -expand -group PWM_PARAM /tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tlast
-add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tuser
 add wave -noupdate -expand -group PWM_PARAM /tb_pwm/u_pwm_top/u_pwm_config/pwm_config_vld
 add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_config_channel
 add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_en

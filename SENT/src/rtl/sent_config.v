@@ -1,15 +1,23 @@
-// PWM 参数配置模块, 解析参数并分发至相应通道
+// SENT 参数配置模块, 解析参数并分发至相应通道
 //   word 0: bit[ 7: 0] 通道索引
 //           bit[31: 8] 保留
-//   word 1: bit[31: 0] PWM输出频率(>=1Hz), 单位Hz
-//   word 2: bit[ 6: 0] PWM输出占空比, 0-100%
-//           bit[31: 7] 保留
-//   word 3: 保留
-//   word 4: bit[ 0: 0] PWM输出使能
-//           bit[31: 1] 保留
+//   word 1: bit[31:24] Tick长度, 支持3~90us, 单位 us
+//           bit[23:16] 低脉冲 Tick 个数, 至少 4 Ticks
+//           bit[15: 8] Pause Mode
+//              0x0: 不选用Pause
+//              0x1: 固定长度Pause
+//              0x2: 自适应长度Pause
+//           bit[ 7: 0] 暂停脉冲长度[15:8]
+//   word 2: bit[31:24] 暂停脉冲长度[7:0], 12~768Ticks. 当 Pause Mode 为 0x2 时, 按照(270[最大SENT帧长]+Pause Length)Ticks自适应调整
+//           bit[23:16] CRC Mode
+//              0x0: Legacy Mode
+//              0x1: Recommend Mode
+//           bit[11: 8] 状态和通信nibble
+//           bit[ 7: 0] 数据长度, 支持1~6 Nibbles, 单位 Nibble
+//   word 3: bit[31: 8] 发送数据内容, 数据组成{nibble1, nibble2, ..., nibble6}
 
-module pwm_config #(
-  parameter     ID_PWM_PARAM = 0, // PWM参数帧ID
+module sent_config #(
+  parameter     ID_SENT_PARAM = 2, // SENT参数帧ID
   parameter     CLK_FREQ = 100000000 // 模块时钟频率, Unit: Hz
 )(
   // 模块时钟及复位
@@ -34,6 +42,7 @@ module pwm_config #(
   reg  [31:0]  rx_axis_udp_tdata_d1 = 0; // 打拍, 减小扇出
   reg          rx_axis_udp_tvalid_d1 = 0;
   reg          rx_axis_udp_tlast_d1 = 0;
+  reg          rx_axis_udp_tuser_d1 = 0;
   reg  [7:0]   word_cnt = 0; // word计数器
   reg          pwm_param_en = 0; // PWM参数帧使能
   reg  [27:0]  pwm_frequency = 0; // PWM输出频率

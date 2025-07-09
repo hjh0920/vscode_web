@@ -13,7 +13,6 @@ module pwm_top #(
   input  [31:0] rx_axis_udp_tdata,
   input         rx_axis_udp_tvalid,
   input         rx_axis_udp_tlast,
-  input  [7:0]  rx_axis_udp_tuser, // 帧ID
   // PWM输出
   output [PWM_NUM-1:0] pwm
 );
@@ -42,7 +41,6 @@ module pwm_top #(
     .rx_axis_udp_tdata  (rx_axis_udp_tdata ),
     .rx_axis_udp_tvalid (rx_axis_udp_tvalid),
     .rx_axis_udp_tlast  (rx_axis_udp_tlast ),
-    .rx_axis_udp_tuser  (rx_axis_udp_tuser ), // 帧ID
     //输出参数
     .pwm_config_vld     (pwm_config_vld    ), // 参数配置使能
     .pwm_config_channel (pwm_config_channel), // 通道索引

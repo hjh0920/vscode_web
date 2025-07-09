@@ -16,7 +16,6 @@ module tb_pwm;
     reg [31:0] rx_axis_udp_tdata = 0;
     reg        rx_axis_udp_tvalid = 0;
     reg        rx_axis_udp_tlast = 0;
-    reg [7:0]  rx_axis_udp_tuser = 0; // 帧ID
 
 //*************************** Test Logic ***************************
   always # (PERIOD_CLK/2) clk = ~clk;
@@ -50,28 +49,24 @@ module tb_pwm;
   task pwm_config;
     input [7:0]  pwm_config_channel; // 通道索引
     input [31:0] pwm_frequency; // PWM输出频率
-    input [6:0]  pwm_duty; // PWM输出占空比
+    input [7:0]  pwm_duty; // PWM输出占空比
     input        pwm_en; // PWM输出使能
     begin
       @(posedge clk);
-        rx_axis_udp_tdata = {24'b0, pwm_config_channel};
+        rx_axis_udp_tdata = {ID_PWM_PARAM[15:0], pwm_config_channel, 8'b0};
         rx_axis_udp_tvalid = 1;
         rx_axis_udp_tlast = 0;
-        rx_axis_udp_tuser = ID_PWM_PARAM;
       @(posedge clk);
         rx_axis_udp_tdata = pwm_frequency;
       @(posedge clk);
-        rx_axis_udp_tdata = {25'b0, pwm_duty};
+        rx_axis_udp_tdata = {pwm_duty,24'b0};
       @(posedge clk);
-        rx_axis_udp_tdata = 32'b0;
-      @(posedge clk);
-        rx_axis_udp_tdata = {31'b0, pwm_en};
+        rx_axis_udp_tdata = {7'b0, pwm_en, 24'b0};
         rx_axis_udp_tlast = 1;
       @(posedge clk);
         rx_axis_udp_tdata = 32'b0;
         rx_axis_udp_tvalid = 0;
         rx_axis_udp_tlast = 0;
-        rx_axis_udp_tuser = 0;
     end
     endtask
 //***************************  Instance  ***************************
@@ -87,7 +82,6 @@ module tb_pwm;
     .rx_axis_udp_tdata  (rx_axis_udp_tdata ),
     .rx_axis_udp_tvalid (rx_axis_udp_tvalid),
     .rx_axis_udp_tlast  (rx_axis_udp_tlast ),
-    .rx_axis_udp_tuser  (rx_axis_udp_tuser ), // 帧ID
     // PWM输出
     .pwm()
   );
