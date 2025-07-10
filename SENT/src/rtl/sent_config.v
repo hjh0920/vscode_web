@@ -1,4 +1,5 @@
 // SENT 参数配置模块, 解析参数并分发至相应通道
+// ------------------ 0x2 参数帧 ------------------
 //   word 0: bit[31:16] 帧ID. 0: 表示当前帧为PWM参数帧
 //           bit[15: 8] 通道索引
 //           bit[ 7: 0] 保留为0
@@ -13,12 +14,33 @@
 //           bit[16:16] CRC Mode
 //              0x0: Legacy Mode
 //              0x1: Recommend Mode
-//           bit[11: 8] 状态和通信nibble
-//           bit[ 2: 0] 数据长度, 支持1~6 Nibbles, 单位 Nibble
-//   word 3: bit[31: 8] 发送数据内容, 数据组成{nibble1, nibble2, ..., nibble6}
+// ------------------ 0x3 数据帧 ------------------
+//   word 0: bit[31:16] 帧ID. 0: 表示当前帧为PWM参数帧
+//           bit[15: 8] 通道索引
+//           bit[ 7: 0] 保留为0
+//   word 1: Frame-0
+//           bit[30:28] 数据长度, 支持1~6 Nibbles, 单位 Nibble
+//           bit[27:24] 状态和通信nibble
+//           bit[23:20] 数据nibble1
+//           bit[19:16] 数据nibble2
+//           bit[15:12] 数据nibble3
+//           bit[11: 8] 数据nibble4
+//           bit[ 7: 4] 数据nibble5
+//           bit[ 3: 0] 数据nibble6
+//   ......
+//   word n: Frame-[n-1]
+//           bit[30:28] 数据长度, 支持1~6 Nibbles, 单位 Nibble
+//           bit[27:24] 状态和通信nibble
+//           bit[23:20] 数据nibble1
+//           bit[19:16] 数据nibble2
+//           bit[15:12] 数据nibble3
+//           bit[11: 8] 数据nibble4
+//           bit[ 7: 4] 数据nibble5
+//           bit[ 3: 0] 数据nibble6
 
 module sent_config #(
-  parameter     ID_SENT_PARAM = 2 // SENT参数帧ID
+  parameter     ID_SENT_PARAM = 2, // SENT参数帧ID
+  parameter     ID_SENT_DATA = 3 // SENT数据帧ID
 )(
   // 模块时钟及复位
   input         clk,
@@ -35,9 +57,8 @@ module sent_config #(
   output [1:0]  sent_pause_mode, // Pause Mode
   output [15:0] sent_pause_len, // 暂停脉冲长度, 12~768Ticks
   output        sent_crc_mode, // CRC Mode
-  output [3:0]  sent_status_nibble, // 状态和通信nibble
-  output [2:0]  sent_data_len, // 数据长度, 支持1~6 Nibbles, 单位 Nibble
-  output [23:0] sent_data_nibble // 发送数据内容, 数据组成{nibble1, nibble2, ..., nibble6}
+  output        sent_frame_vld, // 待发送帧有效指示, 高有效
+  output [31:0] sent_frame_data // 待发送帧数据信息
 );
 
 //------------------------------------
@@ -51,6 +72,7 @@ module sent_config #(
   reg          rx_axis_udp_tlast_d2 = 0;
   reg  [7:0]   word_cnt = 0; // word计数器
   reg          sent_param_en = 0; // SENT参数帧使能
+  reg          sent_data_en = 0; // SENT数据帧使能
 
 // 输出寄存器
   reg          sent_config_vld_ff = 0; // 参数配置使能
@@ -60,9 +82,8 @@ module sent_config #(
   reg  [1:0]   sent_pause_mode_ff = 0; // Pause Mode
   reg  [15:0]  sent_pause_len_ff = 0; // 暂停脉冲长度, 12~768Ticks
   reg          sent_crc_mode_ff = 0; // CRC Mode
-  reg  [3:0]   sent_status_nibble_ff = 0; // 状态和通信nibble
-  reg  [2:0]   sent_data_len_ff = 0; // 数据长度, 支持1~6 Nibbles, 单位 Nibble
-  reg  [23:0]  sent_data_nibble_ff = 0; // 发送数据内容, 数据组成{nibble1, nibble2, ..., nibble6}
+  reg          sent_frame_vld_ff = 0; // 待发送帧有效指示, 高有效
+  reg  [31:0]  sent_frame_data_ff = 0; // 待发送帧数据信息
 //------------------------------------
 //             User Logic
 //------------------------------------
@@ -90,6 +111,13 @@ module sent_config #(
       sent_param_en <= 1'b1;
     else if (rx_axis_udp_tvalid_d2 && rx_axis_udp_tlast_d2)
       sent_param_en <= 1'b0;
+  always @(posedge clk or posedge rst)
+    if (rst)
+      sent_data_en <= 1'b0;
+    else if ((word_cnt == 0) && rx_axis_udp_tvalid_d1 && (rx_axis_udp_tdata_d1[23:16] == ID_SENT_DATA[7:0]))
+      sent_data_en <= 1'b1;
+    else if (rx_axis_udp_tvalid_d2 && rx_axis_udp_tlast_d2)
+      sent_data_en <= 1'b0;
 // 参数解析
   // 通道索引
     always @ (posedge clk) if (pwm_param_en && (word_cnt == 0) && rx_axis_udp_tvalid_d2) sent_config_channel_ff <= rx_axis_udp_tdata_d2[15:8];
@@ -129,8 +157,7 @@ module sent_config #(
   assign sent_pause_mode = sent_pause_mode_ff;
   assign sent_pause_len = sent_pause_len_ff;
   assign sent_crc_mode = sent_crc_mode_ff;
-  assign sent_status_nibble = sent_status_nibble_ff;
-  assign sent_data_len = sent_data_len_ff;
-  assign sent_data_nibble = sent_data_nibble_ff;
+  assign sent_frame_vld = sent_frame_vld_ff;
+  assign sent_frame_data = sent_frame_data_ff;
 
 endmodule
