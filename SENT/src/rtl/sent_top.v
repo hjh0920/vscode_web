@@ -26,9 +26,8 @@ module sent_top #(
   wire [1:0]  sent_pause_mode; // Pause Mode
   wire [15:0] sent_pause_len; // 暂停脉冲长度, 12~768Ticks
   wire        sent_crc_mode; // CRC Mode
-  wire [3:0]  sent_status_nibble; // 状态和通信nibble
-  wire [2:0]  sent_data_len; // 数据长度, 支持1~6 Nibbles, 单位 Nibble
-  wire [23:0] sent_data_nibble; // 发送数据内容, 数据组成{nibble1, nibble2, ..., nibble6}
+  wire        sent_frame_vld; // 待发送帧有效指示, 高有效
+  wire [31:0] sent_frame_data; // 待发送帧数据信息
 
 //------------------------------------
 //             Instance
@@ -53,9 +52,8 @@ module sent_top #(
     .sent_pause_mode    (sent_pause_mode    ), // Pause Mode
     .sent_pause_len     (sent_pause_len     ), // 暂停脉冲长度, 12~768Ticks
     .sent_crc_mode      (sent_crc_mode      ), // CRC Mode
-    .sent_status_nibble (sent_status_nibble ), // 状态和通信nibble
-    .sent_data_len      (sent_data_len      ), // 数据长度, 支持1~6 Nibbles, 单位 Nibble
-    .sent_data_nibble   (sent_data_nibble   )  // 发送数据内容, 数据组成{nibble1, nibble2, ..., nibble6}
+    .sent_frame_vld     (sent_frame_vld     ), // 待发送帧有效指示, 高有效
+    .sent_frame_data    (sent_frame_data    )  // 待发送帧数据信息
   );
 // SENT 帧生成模块
   genvar sent_ch;
@@ -75,9 +73,8 @@ module sent_top #(
             .sent_pause_mode     (sent_pause_mode    ), // Pause Mode
             .sent_pause_len      (sent_pause_len     ), // 暂停脉冲长度, 12~768Ticks
             .sent_crc_mode       (sent_crc_mode      ), // CRC Mode
-            .sent_status_nibble  (sent_status_nibble ), // 状态和通信nibble
-            .sent_data_len       (sent_data_len      ), // 数据长度, 支持1~6 Nibbles, 单位 Nibble
-            .sent_data_nibble    (sent_data_nibble   ), // 发送数据内容, 数据组成{nibble1, nibble2, ..., nibble6}
+            .sent_frame_vld      (sent_frame_vld     ), // 待发送帧有效指示, 高有效
+            .sent_frame_data     (sent_frame_data    ), // 待发送帧数据信息
             .sent                (sent[sent_ch]      )  // SENT输出
           );
       end

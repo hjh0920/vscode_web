@@ -120,7 +120,7 @@ module sent_config #(
       sent_data_en <= 1'b0;
 // 参数解析
   // 通道索引
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 0) && rx_axis_udp_tvalid_d2) sent_config_channel_ff <= rx_axis_udp_tdata_d2[15:8];
+    always @ (posedge clk) if ((pwm_param_en || sent_data_en) && (word_cnt == 0) && rx_axis_udp_tvalid_d2) sent_config_channel_ff <= rx_axis_udp_tdata_d2[15:8];
   // Tick长度
     always @ (posedge clk) if (pwm_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) sent_ctick_len_ff <= rx_axis_udp_tdata_d2[31:24];
   // 低脉冲 Tick 个数
@@ -132,12 +132,8 @@ module sent_config #(
     always @ (posedge clk) if (pwm_param_en && (word_cnt == 2) && rx_axis_udp_tvalid_d2) sent_pause_len_ff[7:0] <= rx_axis_udp_tdata_d2[31:24];
   // CRC Mode
     always @ (posedge clk) if (pwm_param_en && (word_cnt == 2) && rx_axis_udp_tvalid_d2) sent_crc_mode_ff <= rx_axis_udp_tdata_d2[16];
-  // 状态和通信nibble
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 2) && rx_axis_udp_tvalid_d2) sent_status_nibble_ff <= rx_axis_udp_tdata_d2[11:8];
-  // 数据长度
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 2) && rx_axis_udp_tvalid_d2) sent_data_len_ff <= rx_axis_udp_tdata_d2[2:0];
-  // 发送数据内容
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 3) && rx_axis_udp_tvalid_d2) sent_data_nibble_ff <= rx_axis_udp_tdata_d2[31:8];
+  // 待发送帧数据信息
+    always @ (posedge clk) if (sent_data_en && (word_cnt > 0) && rx_axis_udp_tvalid_d2) sent_frame_data_ff <= rx_axis_udp_tdata_d2[31:0];
 // 参数配置使能
   always @ (posedge clk or posedge rst)
     if (rst)
@@ -146,6 +142,14 @@ module sent_config #(
       sent_config_vld_ff <= 1'b1;
     else
       sent_config_vld_ff <= 1'b0;
+// 待发送帧有效指示
+  always @ (posedge clk or posedge rst)
+    if (rst)
+      sent_frame_vld_ff <= 1'b0;
+    else if (sent_data_en && (word_cnt > 0) && rx_axis_udp_tvalid_d2)
+      sent_frame_vld_ff <= 1'b1;
+    else
+      sent_frame_vld_ff <= 1'b0;
 
 //------------------------------------
 //             Output Port
