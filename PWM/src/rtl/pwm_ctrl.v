@@ -1,8 +1,7 @@
 // PWM 控制器, 默认输出为低电平, 只有在单周期结束才会更新PWM参数
 
 module pwm_ctrl #(
-  // 通道索引
-  parameter CHANNEL_INDEX = 0
+  parameter CHANNEL_INDEX = 0 // 通道索引
 )(
   input        clk,
   input        rst,

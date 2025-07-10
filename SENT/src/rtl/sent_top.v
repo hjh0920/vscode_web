@@ -1,9 +1,8 @@
-// PWM 控制器顶层模块, 支持通道数配置, PWM默认输出低电平, 只有在单周期结束才会更新PWM参数
-// PWM输出频率大于等于1Hz, PWM输出占空比0-100%
+// SENT 帧生成顶层模块, 支持通道数配置, 默认输出为高电平
 
 module sent_top #(
-  parameter     PWM_NUM = 1, // PWM通道数
-  parameter     ID_PWM_PARAM = 0, // PWM参数帧ID
+  parameter     SENT_NUM = 1, // SENT通道数
+  parameter     ID_SENT_PARAM = 2, // SENT参数帧ID
   parameter     CLK_FREQ = 100000000 // 模块时钟频率, Unit: Hz
 )(
   // 模块时钟及复位
@@ -13,28 +12,32 @@ module sent_top #(
   input  [31:0] rx_axis_udp_tdata,
   input         rx_axis_udp_tvalid,
   input         rx_axis_udp_tlast,
-  input  [7:0]  rx_axis_udp_tuser, // 帧ID
-  // PWM输出
-  output [PWM_NUM-1:0] pwm
+  // SENT输出
+  output [SENT_NUM-1:0] sent
 );
 
 //------------------------------------
 //             Local Signal
 //------------------------------------
-  wire        pwm_config_vld; // 参数配置使能
-  wire [7:0]  pwm_config_channel; // 通道索引
-  wire        pwm_en; // PWM输出使能
-  wire [27:0] pwm_period; // 周期计数阈值
-  wire [27:0] pwm_hlevel; // 高电平计数阈值
+  wire        sent_config_vld; // 参数配置使能
+  wire [7:0]  sent_config_channel; // 通道索引
+  wire [7:0]  sent_ctick_len; // Tick长度, 支持3~90us, 单位 us
+  wire [7:0]  sent_ltick_len; // 低脉冲 Tick 个数, 至少 4 Ticks
+  wire [1:0]  sent_pause_mode; // Pause Mode
+  wire [15:0] sent_pause_len; // 暂停脉冲长度, 12~768Ticks
+  wire        sent_crc_mode; // CRC Mode
+  wire [3:0]  sent_status_nibble; // 状态和通信nibble
+  wire [2:0]  sent_data_len; // 数据长度, 支持1~6 Nibbles, 单位 Nibble
+  wire [23:0] sent_data_nibble; // 发送数据内容, 数据组成{nibble1, nibble2, ..., nibble6}
 
 //------------------------------------
 //             Instance
 //------------------------------------
-// PWM 参数配置模块
-  pwm_config #(
-    .ID_PWM_PARAM       (ID_PWM_PARAM      ), // PWM参数帧ID
+// SENT 参数配置模块
+  sent_config #(
+    .ID_SENT_PARAM      (ID_SENT_PARAM      ), // SENT参数帧ID
     .CLK_FREQ           (CLK_FREQ          )  // 模块时钟频率, Unit: Hz
-  )u_pwm_config(
+  )u_sent_config(
     // 模块时钟及复位
     .clk                (clk               ),
     .rst                (rst               ),
@@ -42,31 +45,40 @@ module sent_top #(
     .rx_axis_udp_tdata  (rx_axis_udp_tdata ),
     .rx_axis_udp_tvalid (rx_axis_udp_tvalid),
     .rx_axis_udp_tlast  (rx_axis_udp_tlast ),
-    .rx_axis_udp_tuser  (rx_axis_udp_tuser ), // 帧ID
     //输出参数
-    .pwm_config_vld     (pwm_config_vld    ), // 参数配置使能
-    .pwm_config_channel (pwm_config_channel), // 通道索引
-    .pwm_en             (pwm_en            ), // PWM输出使能
-    .pwm_period         (pwm_period        ), // 周期计数阈值
-    .pwm_hlevel         (pwm_hlevel        )  // 高电平计数阈值
+    .sent_config_vld    (sent_config_vld    ), // 参数配置使能
+    .sent_config_channel(sent_config_channel), // 通道索引
+    .sent_ctick_len     (sent_ctick_len     ), // Tick长度, 支持3~90us, 单位 us
+    .sent_ltick_len     (sent_ltick_len     ), // 低脉冲 Tick 个数, 至少 4 Ticks
+    .sent_pause_mode    (sent_pause_mode    ), // Pause Mode
+    .sent_pause_len     (sent_pause_len     ), // 暂停脉冲长度, 12~768Ticks
+    .sent_crc_mode      (sent_crc_mode      ), // CRC Mode
+    .sent_status_nibble (sent_status_nibble ), // 状态和通信nibble
+    .sent_data_len      (sent_data_len      ), // 数据长度, 支持1~6 Nibbles, 单位 Nibble
+    .sent_data_nibble   (sent_data_nibble   )  // 发送数据内容, 数据组成{nibble1, nibble2, ..., nibble6}
   );
-// PWM 控制器
-  genvar pwm_ch;
+// SENT 帧生成模块
+  genvar sent_ch;
   generate
-    for (pwm_ch = 0; pwm_ch < PWM_NUM; pwm_ch = pwm_ch + 1)
+    for (sent_ch = 0; sent_ch < SENT_NUM; sent_ch = sent_ch + 1)
       begin
-        pwm_ctrl #(
-            // 通道索引
-            .CHANNEL_INDEX  (pwm_ch)
-          )u_pwm_ctrl(
-            .clk                 (clk               ),
-            .rst                 (rst               ),
-            .pwm_config_vld      (pwm_config_vld    ), // 参数配置使能
-            .pwm_config_channel  (pwm_config_channel), // 通道索引
-            .pwm_en              (pwm_en            ), // PWM输出使能
-            .pwm_period          (pwm_period        ), // 周期计数阈值
-            .pwm_hlevel          (pwm_hlevel        ), // 高电平计数阈值
-            .pwm                 (pwm[pwm_ch]       )  // PWM输出
+        sent_ctrl #(
+            .CHANNEL_INDEX  (sent_ch), // 通道索引
+            .CLK_FREQ       (CLK_FREQ), // 模块时钟频率, Unit: Hz
+          )u_sent_ctrl(
+            .clk                 (clk                ),
+            .rst                 (rst                ),
+            .sent_config_vld     (sent_config_vld    ), // 参数配置使能
+            .sent_config_channel (sent_config_channel), // 通道索引
+            .sent_ctick_len      (sent_ctick_len     ), // Tick长度, 支持3~90us, 单位 us
+            .sent_ltick_len      (sent_ltick_len     ), // 低脉冲 Tick 个数, 至少 4 Ticks
+            .sent_pause_mode     (sent_pause_mode    ), // Pause Mode
+            .sent_pause_len      (sent_pause_len     ), // 暂停脉冲长度, 12~768Ticks
+            .sent_crc_mode       (sent_crc_mode      ), // CRC Mode
+            .sent_status_nibble  (sent_status_nibble ), // 状态和通信nibble
+            .sent_data_len       (sent_data_len      ), // 数据长度, 支持1~6 Nibbles, 单位 Nibble
+            .sent_data_nibble    (sent_data_nibble   ), // 发送数据内容, 数据组成{nibble1, nibble2, ..., nibble6}
+            .sent                (sent[sent_ch]      )  // SENT输出
           );
       end
   endgenerate

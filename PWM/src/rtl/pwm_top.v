@@ -54,8 +54,7 @@ module pwm_top #(
     for (pwm_ch = 0; pwm_ch < PWM_NUM; pwm_ch = pwm_ch + 1)
       begin
         pwm_ctrl #(
-            // 通道索引
-            .CHANNEL_INDEX  (pwm_ch)
+            .CHANNEL_INDEX       (pwm_ch) // 通道索引
           )u_pwm_ctrl(
             .clk                 (clk               ),
             .rst                 (rst               ),
