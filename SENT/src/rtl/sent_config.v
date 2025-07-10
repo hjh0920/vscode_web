@@ -5,9 +5,9 @@
 //   word 1: bit[31:24] Tick长度, 支持3~90us, 单位 us
 //           bit[23:16] 低脉冲 Tick 个数, 至少 4 Ticks
 //           bit[ 9: 8] Pause Mode
-//              0x0: 不选用Pause
-//              0x1: 固定长度Pause
-//              0x2: 自适应长度Pause
+//              0x0: No Pause
+//              0x1: Fixed Pause
+//              0x2: Variable Pause
 //           bit[ 7: 0] 暂停脉冲长度[15:8]
 //   word 2: bit[31:24] 暂停脉冲长度[7:0], 12~768Ticks. 当 Pause Mode 为 0x2 时, 按照(270[最大SENT帧长]+Pause Length)Ticks自适应调整
 //           bit[16:16] CRC Mode

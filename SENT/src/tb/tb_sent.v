@@ -5,9 +5,18 @@ module tb_sent;
 
 //*************************** Parameters ***************************
   parameter  PERIOD_CLK = 10;
-  parameter  PWM_NUM = 5; // PWM通道数
-  parameter  ID_PWM_PARAM = 0; // PWM参数帧ID
+  parameter  SENT_NUM = 5; // SENT通道数
+  parameter  ID_SENT_PARAM = 2; // SENT参数帧ID
   parameter  CLK_FREQ = 100000000; // 模块时钟频率, Unit: Hz
+
+  localparam Legacy_CRC = 0;
+  localparam Recommend_CRC = 1;
+  localparam NO_Pause = 0;
+  localparam Fixed_Pause = 1;
+  localparam Variable_Pause = 2;
+
+
+ 
 //***************************   Signals  ***************************
     // 模块时钟及复位
     reg        clk = 0;
@@ -16,7 +25,6 @@ module tb_sent;
     reg [31:0] rx_axis_udp_tdata = 0;
     reg        rx_axis_udp_tvalid = 0;
     reg        rx_axis_udp_tlast = 0;
-    reg [7:0]  rx_axis_udp_tuser = 0; // 帧ID
 
 //*************************** Test Logic ***************************
   always # (PERIOD_CLK/2) clk = ~clk;
@@ -26,60 +34,45 @@ module tb_sent;
       #100
       rst = 0;
       #1000;
-        pwm_config(0, 100000, 100, 1); #10000;
-        pwm_config(1, 100000, 80,  1); #10000;
-        pwm_config(2, 100000, 50,  1); #10000;
-        pwm_config(3, 100000, 20,  1); #10000;
-        pwm_config(4, 100000, 0,   1); #10000;
-        
-        pwm_config(0, 55000, 100, 1); #100000
-        pwm_config(1, 55000, 80,  1); #100000
-        pwm_config(2, 55000, 50,  1); #100000
-        pwm_config(3, 55000, 20,  1); #100000
-        pwm_config(4, 55000, 0,   1); #100000
-        
-        pwm_config(0, 55000, 100, 0); #100000
-        pwm_config(1, 55000, 80,  0); #100000
-        pwm_config(2, 55000, 50,  0); #100000
-        pwm_config(3, 55000, 20,  0); #100000
-        pwm_config(4, 55000, 0,   0); #100000
+        sent_config(0, 3, 4, NO_Pause, 10, Legacy_CRC, 4'b1010, 6, 24'h123456); #10000;
       
       $stop;
     end
 //***************************    Task    ***************************
-  task pwm_config;
-    input [7:0]  pwm_config_channel; // 通道索引
-    input [31:0] pwm_frequency; // PWM输出频率
-    input [6:0]  pwm_duty; // PWM输出占空比
-    input        pwm_en; // PWM输出使能
+  task sent_config;
+    input [7:0]  sent_config_channel; // 通道索引
+    input [7:0]  sent_ctick_len; // Tick长度, 支持3~90us, 单位 us
+    input [7:0]  sent_ltick_len; // 低脉冲 Tick 个数, 至少 4 Ticks
+    input [1:0]  sent_pause_mode; // Pause Mode
+    input [15:0] sent_pause_len; // 暂停脉冲长度, 12~768Ticks
+    input        sent_crc_mode; // CRC Mode
+    input [3:0]  sent_status_nibble; // 状态和通信nibble
+    input [2:0]  sent_data_len; // 数据长度, 支持1~6 Nibbles, 单位 Nibble
+    input [23:0] sent_data_nibble; // 发送数据内容, 数据组成{nibble1, nibble2, ..., nibble6}
     begin
       @(posedge clk);
-        rx_axis_udp_tdata = {24'b0, pwm_config_channel};
+        rx_axis_udp_tdata = {16'h2, sent_config_channel, 8'h0};
         rx_axis_udp_tvalid = 1;
         rx_axis_udp_tlast = 0;
-        rx_axis_udp_tuser = ID_PWM_PARAM;
       @(posedge clk);
-        rx_axis_udp_tdata = pwm_frequency;
+        rx_axis_udp_tdata = {sent_ctick_len,sent_ltick_len, 6'h0,sent_pause_mode, sent_pause_len[15:8]};
       @(posedge clk);
-        rx_axis_udp_tdata = {25'b0, pwm_duty};
+        rx_axis_udp_tdata = {sent_pause_len[7:0], 7'h0,sent_crc_mode, 4'h0,sent_status_nibble, 5'h0,sent_data_len};
       @(posedge clk);
-        rx_axis_udp_tdata = 32'b0;
-      @(posedge clk);
-        rx_axis_udp_tdata = {31'b0, pwm_en};
+        rx_axis_udp_tdata = {sent_data_nibble,8'h0};
         rx_axis_udp_tlast = 1;
       @(posedge clk);
         rx_axis_udp_tdata = 32'b0;
         rx_axis_udp_tvalid = 0;
         rx_axis_udp_tlast = 0;
-        rx_axis_udp_tuser = 0;
     end
     endtask
 //***************************  Instance  ***************************
-  pwm_top #(
-    .PWM_NUM     (PWM_NUM     ), // PWM通道数
-    .ID_PWM_PARAM(ID_PWM_PARAM), // PWM参数帧ID
-    .CLK_FREQ    (CLK_FREQ    )  // 模块时钟频率, Unit: Hz
-  )u_pwm_top(
+  sent_top #(
+    .SENT_NUM     (SENT_NUM     ), // SENT通道数
+    .ID_SENT_PARAM(ID_SENT_PARAM), // SENT参数帧ID
+    .CLK_FREQ     (CLK_FREQ    )  // 模块时钟频率, Unit: Hz
+  )u_sent_top(
     // 模块时钟及复位
     .clk                (clk               ),
     .rst                (rst               ),
@@ -87,9 +80,8 @@ module tb_sent;
     .rx_axis_udp_tdata  (rx_axis_udp_tdata ),
     .rx_axis_udp_tvalid (rx_axis_udp_tvalid),
     .rx_axis_udp_tlast  (rx_axis_udp_tlast ),
-    .rx_axis_udp_tuser  (rx_axis_udp_tuser ), // 帧ID
-    // PWM输出
-    .pwm()
+    // SENT输出
+    .sent()
   );
 
 endmodule
