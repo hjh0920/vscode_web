@@ -54,17 +54,20 @@ module sent_ctrl #(
   reg  [10:0] frame_tick_cnt = 0; // 1 frame Tick计数器, sent_pause_mode = 2 时使用
   reg  [9:0]  nibble_tick_cnt = 0; // 1 nibble Tick计数器
   reg         sync_en = 0; // 发送同步脉冲使能
+  reg         sync_en_d1 = 0;
   reg         data_en = 0; // 发送数据nibble使能
   reg         crc_en = 0; // 发送CRC使能
   reg         pause_en = 0; // 发送暂停脉冲使能
   reg         pause_en_d1 = 0;
   wire        sent_busy; // SENT忙标志
-  reg  [2:0]  sent_frame_len_reg = 0; // 发送帧长度寄存器
-  reg  [27:0] sent_frame_data_srl = 0; // 发送帧数据移位寄存器
-  reg  [3:0]  sent_frame_crc = 0; // 发送帧CRC寄存器
   reg  [9:0]  nibble_tick = 0; // 当前 nibble 对应 Tick 数
   reg  [2:0]  nibble_cnt = 0; // 发送 nibble 计数器
-
+  reg  [2:0]  sent_frame_len_reg = 0; // 发送帧长度寄存器
+  reg  [27:0] sent_frame_data_srl = 0; // 发送帧数据移位寄存器
+  reg         sent_crc_req = 0; // CRC校验请求, 高有效
+  wire        sent_crc_ack; // CRC校验完成标志, 高有效
+  wire [3:0]  sent_crc; // CRC校验结果
+  reg  [3:0]  sent_frame_crc = 0; // 发送帧CRC寄存器
 // FIFO信号
   wire [FIFO_COUNT_WIDTH-1:0] sent_fifo_count;
 // sent_data_fifo
@@ -175,6 +178,7 @@ module sent_ctrl #(
       sync_en <= 1'b0;
     else if (!(sent_busy | sent_fifo_empty_temp))
       sync_en <= 1'b1;
+  always @ (posedge clk) sync_en_d1 <= sync_en;
 // 发送数据使能
   always @ (posedge clk or posedge rst)
     if (rst)
@@ -210,6 +214,10 @@ module sent_ctrl #(
       sent_frame_data_srl <= sent_fifo_full_temp;
     else if (data_en && (nibble_tick == nibble_tick_cnt))
       sent_frame_data_srl <= sent_frame_data_srl << 4;
+// CRC校验请求, 高有效
+  always @ (posedge clk) sent_crc_req <= (!sync_en_d1 && sync_en);
+// 发送帧CRC寄存器
+  always @ (posedge clk) if (sent_crc_ack) sent_frame_crc <= sent_crc;
 // 当前 nibble 对应 Tick 数
   always @ (posedge clk)
     case ({sync_en,data_en,crc_en,pause_en})
@@ -247,6 +255,17 @@ module sent_ctrl #(
 //------------------------------------
 //             Instance
 //------------------------------------
+// SENT CRC计算模块
+  sent_crc u_sent_crc(
+    .clk             (clk),
+    .rst             (rst),
+    .sent_crc_mode   (sent_crc_mode_local), // CRC Mode
+    .sent_crc_req    (sent_crc_req), // CRC校验请求, 高有效
+    .sent_frame_len  (sent_fifo_dout[30:28]), // 待发送帧nibble长度
+    .sent_frame_data (sent_fifo_dout[27:0]), // 待发送帧数据信息
+    .sent_crc_ack    (sent_crc_ack), // CRC校验完成标志, 高有效
+    .sent_crc        (sent_crc) // CRC校验结果
+  );
 // xpm_fifo_sync: Synchronous FIFO
 // Xilinx Parameterized Macro, version 2020.1
   xpm_fifo_sync #(
