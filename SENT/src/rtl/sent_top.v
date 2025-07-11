@@ -13,6 +13,8 @@ module sent_top #(
   input         rx_axis_udp_tvalid,
   input         rx_axis_udp_tlast,
   // SENT输出
+  output [SENT_NUM-1:0] sent_fifo_empty, // SENT FIFO空标志
+  output [SENT_NUM-1:0] sent_fifo_full, // SENT FIFO满标志
   output [SENT_NUM-1:0] sent
 );
 
@@ -75,7 +77,9 @@ module sent_top #(
             .sent_crc_mode       (sent_crc_mode      ), // CRC Mode
             .sent_frame_vld      (sent_frame_vld     ), // 待发送帧有效指示, 高有效
             .sent_frame_data     (sent_frame_data    ), // 待发送帧数据信息
-            .sent                (sent[sent_ch]      )  // SENT输出
+            .sent_fifo_empty     (sent_fifo_empty[sent_ch]), // SENT FIFO空标志
+            .sent_fifo_full      (sent_fifo_full[sent_ch] ), // SENT FIFO满标志
+            .sent                (sent[sent_ch]           )  // SENT输出
           );
       end
   endgenerate

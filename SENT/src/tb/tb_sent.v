@@ -34,7 +34,7 @@ module tb_sent;
       #100
       rst = 0;
       #1000;
-        sent_config(0, 3, 4, NO_Pause, 10, Legacy_CRC, 4'b1010, 6, 24'h123456); #10000;
+        sent_config(0, 3, 4, NO_Pause, 10, Legacy_CRC); #10000;
       
       $stop;
     end
@@ -46,9 +46,6 @@ module tb_sent;
     input [1:0]  sent_pause_mode; // Pause Mode
     input [15:0] sent_pause_len; // 暂停脉冲长度, 12~768Ticks
     input        sent_crc_mode; // CRC Mode
-    input [3:0]  sent_status_nibble; // 状态和通信nibble
-    input [2:0]  sent_data_len; // 数据长度, 支持1~6 Nibbles, 单位 Nibble
-    input [23:0] sent_data_nibble; // 发送数据内容, 数据组成{nibble1, nibble2, ..., nibble6}
     begin
       @(posedge clk);
         rx_axis_udp_tdata = {16'h2, sent_config_channel, 8'h0};
@@ -57,9 +54,26 @@ module tb_sent;
       @(posedge clk);
         rx_axis_udp_tdata = {sent_ctick_len,sent_ltick_len, 6'h0,sent_pause_mode, sent_pause_len[15:8]};
       @(posedge clk);
-        rx_axis_udp_tdata = {sent_pause_len[7:0], 7'h0,sent_crc_mode, 4'h0,sent_status_nibble, 5'h0,sent_data_len};
+        rx_axis_udp_tdata = {sent_pause_len[7:0], 7'h0,sent_crc_mode, 16'h0};
+        rx_axis_udp_tlast = 1;
       @(posedge clk);
-        rx_axis_udp_tdata = {sent_data_nibble,8'h0};
+        rx_axis_udp_tdata = 32'b0;
+        rx_axis_udp_tvalid = 0;
+        rx_axis_udp_tlast = 0;
+    end
+    endtask
+
+  task sent_data;
+    input [7:0]  sent_config_channel; // 通道索引
+    begin
+      @(posedge clk);
+        rx_axis_udp_tdata = {16'h2, sent_config_channel, 8'h0};
+        rx_axis_udp_tvalid = 1;
+        rx_axis_udp_tlast = 0;
+      @(posedge clk);
+        rx_axis_udp_tdata = {sent_ctick_len,sent_ltick_len, 6'h0,sent_pause_mode, sent_pause_len[15:8]};
+      @(posedge clk);
+        rx_axis_udp_tdata = {sent_pause_len[7:0], 7'h0,sent_crc_mode, 16'h0};
         rx_axis_udp_tlast = 1;
       @(posedge clk);
         rx_axis_udp_tdata = 32'b0;

@@ -94,7 +94,6 @@ module sent_config #(
   always @ (posedge clk) rx_axis_udp_tdata_d2 <= rx_axis_udp_tdata_d1;
   always @ (posedge clk) rx_axis_udp_tvalid_d2 <= rx_axis_udp_tvalid_d1;
   always @ (posedge clk) rx_axis_udp_tlast_d2 <= rx_axis_udp_tlast_d1;
-
 // 接收word计数器
   always @ (posedge clk)
     if (rst)

@@ -15,6 +15,16 @@ module sent_ctrl #(
   input         sent_crc_mode, // CRC Mode
   input         sent_frame_vld, // 待发送帧有效指示, 高有效
   input  [31:0] sent_frame_data, // 待发送帧数据信息
+                                 // bit[30:28] 数据长度, 支持1~6 Nibbles, 单位 Nibble
+                                 // bit[27:24] 状态和通信nibble
+                                 // bit[23:20] 数据nibble1
+                                 // bit[19:16] 数据nibble2
+                                 // bit[15:12] 数据nibble3
+                                 // bit[11: 8] 数据nibble4
+                                 // bit[ 7: 4] 数据nibble5
+                                 // bit[ 3: 0] 数据nibble6
+  output        sent_fifo_empty, // SENT FIFO空标志
+  output        sent_fifo_full, // SENT FIFO满标志
   output        sent // SENT输出
 );
 //------------------------------------
@@ -23,91 +33,217 @@ module sent_ctrl #(
   localparam FIFO_DEPTH = 32; // FIFO深度
   localparam FIFO_WIDTH = 32; // FIFO宽度
   localparam FIFO_COUNT_WIDTH = $clog2(FIFO_DEPTH) + 1; // log2(FIFO_DEPTH)+1
+  localparam TIME_1US = (CLK_FREQ/1000000)-1; // 1US 对应计数器值
 //------------------------------------
 //             Local Signal
 //------------------------------------
+// 参数配置使能寄存
+  reg         sent_config_vld_reg = 0;
+// 本地参数更新
+  reg  [7:0]  sent_ctick_len_local = 3; // Tick长度, 支持3~90us, 单位 us
+  reg  [7:0]  sent_ltick_len_local = 4; // 低脉冲 Tick 个数, 至少 4 Ticks
+  reg  [1:0]  sent_pause_mode_local = 0; // Pause Mode
+  reg  [15:0] sent_pause_len_local = 12; // 暂停脉冲长度, 12~768Ticks
+  reg         sent_crc_mode_local = 0; // CRC Mode
+// 其他信号
+  reg  [10:0] sent_frame_ticks = 0; // 最大帧Ticks长度, sent_pause_mode = 2 时使用
+  reg  [7:0]  tcnt_1us = 0; // 1us计数器
+  wire        tcnt_1us_flag; // 1us计数器标志
+  reg  [7:0]  tcnt_1tick = 0; // 1tick计数器
+  wire        tcnt_1tick_flag; // 1tick计数器标志
+  reg  [10:0] frame_tick_cnt = 0; // 1 frame Tick计数器, sent_pause_mode = 2 时使用
+  reg  [9:0]  nibble_tick_cnt = 0; // 1 nibble Tick计数器
+  reg         sync_en = 0; // 发送同步脉冲使能
+  reg         data_en = 0; // 发送数据nibble使能
+  reg         crc_en = 0; // 发送CRC使能
+  reg         pause_en = 0; // 发送暂停脉冲使能
+  reg         pause_en_d1 = 0;
+  wire        sent_busy; // SENT忙标志
+  reg  [2:0]  sent_frame_len_reg = 0; // 发送帧长度寄存器
+  reg  [27:0] sent_frame_data_srl = 0; // 发送帧数据移位寄存器
+  reg  [3:0]  sent_frame_crc = 0; // 发送帧CRC寄存器
+  reg  [9:0]  nibble_tick = 0; // 当前 nibble 对应 Tick 数
+  reg  [2:0]  nibble_cnt = 0; // 发送 nibble 计数器
+
+// FIFO信号
+  wire [FIFO_COUNT_WIDTH-1:0] sent_fifo_count;
 // sent_data_fifo
-  wire                  sent_fifo_wren;
-  wire [FIFO_WIDTH-1:0] sent_fifo_din;
-  wire                  sent_fifo_empty;
-  wire                  sent_fifo_rden
+  reg                   sent_fifo_wren = 0;
+  reg  [FIFO_WIDTH-1:0] sent_fifo_din = 0;
+  wire                  sent_fifo_empty_temp;
+  wire                  sent_fifo_rden;
   wire [FIFO_WIDTH-1:0] sent_fifo_dout;
-  wire                  sent_fifo_full;
-
-
-
-  reg  [27:0] period_cnt = 0; // 周期计数器
-  reg         sent_config_vld_reg = 0; // 参数配置使能寄存器
-  reg         sent_en_reg = 0; // PWM输出使能-参数寄存
-  reg  [27:0] sent_period_reg = 0; // 周期计数阈值-参数寄存
-  reg  [27:0] sent_hlevel_reg = 0; // 高电平计数阈值-参数寄存
-  reg         sent_en_local = 0; // 本地PWM输出使能
-  reg  [27:0] sent_period_local = 1; // 本地周期计数阈值
-  reg  [27:0] sent_hlevel_local = 0; // 本地高电平计数阈值
-
-  reg         sent_ff = 0; // PWM输出寄存器
-
+  wire                  sent_fifo_full_temp;
+// PWM输出寄存器
+  reg         sent_fifo_empty_ff = 1;
+  reg         sent_fifo_full_ff  = 0;
+  reg         sent_ff = 1;
 //------------------------------------
 //             User Logic
 //------------------------------------
-// 参数寄存
-  always @ (posedge clk or posedge rst)
-    if (sent_config_vld && (sent_config_channel == CHANNEL_INDEX[7:0]))
-      begin
-        sent_en_reg <= sent_en;
-        sent_period_reg <= sent_period;
-        sent_hlevel_reg <= sent_hlevel;
-      end
 // 参数配置使能寄存器
   always @ (posedge clk or posedge rst)
     if (rst)
       sent_config_vld_reg <= 0;
     else if (sent_config_vld && (sent_config_channel == CHANNEL_INDEX[7:0]))
       sent_config_vld_reg <= 1;
-    else if (period_cnt == sent_period_local - 1)
+    else if (!sent_busy && sent_fifo_empty_temp)
       sent_config_vld_reg <= 0;
 // 更新 本地参数
   always @ (posedge clk or posedge rst)
     if (rst)
       begin
-        sent_en_local <= 0;
-        sent_period_local <= 1;
-        sent_hlevel_local <= 0;
+        sent_ctick_len_local  <= 8'd3;
+        sent_ltick_len_local  <= 8'd4;
+        sent_pause_mode_local <= 2'd0;
+        sent_pause_len_local  <= 16'd0;
+        sent_crc_mode_local   <= 1'b0;
       end
-    else if (sent_config_vld_reg && (period_cnt == sent_period_local - 1))
+    else if (sent_config_vld_reg && (!sent_busy) && sent_fifo_empty_temp)
       begin
-        sent_en_local <= sent_en_reg;
-        sent_period_local <= sent_period_reg;
-        sent_hlevel_local <= sent_hlevel_reg;
+        sent_ctick_len_local  <= sent_ctick_len;
+        sent_ltick_len_local  <= sent_ltick_len;
+        sent_pause_mode_local <= sent_pause_mode;
+        sent_pause_len_local  <= sent_pause_len;
+        sent_crc_mode_local   <= sent_crc_mode;
       end
-// 周期计数器
+  // 最大帧Ticks长度, sent_pause_mode = 2 时使用
+    always @ (posedge clk) if (sent_pause_mode == 2'd2) sent_frame_ticks <= (sent_pause_len_local[10:0] + 11'd269);
+// 计数器
+  // 1us计数器
+    always @ (posedge clk or posedge rst)
+      if (rst)
+        tcnt_1us <= 8'd0;
+      else if (tcnt_1us == TIME_1US)
+        tcnt_1us <= 8'd0;
+      else
+        tcnt_1us <= tcnt_1us + 8'd1;
+    assign tcnt_1us_flag = (tcnt_1us == TIME_1US);
+  // 1tick计数器
+    always @ (posedge clk or posedge rst)
+      if (rst)
+        tcnt_1tick <= 8'd0;
+      else if (!sent_busy && sent_fifo_empty_temp)
+        tcnt_1tick <= 8'd0;
+      else if (tcnt_1us_flag)
+        begin
+          if (tcnt_1tick == (sent_ctick_len_local-1))
+            tcnt_1tick <= 8'd0;
+          else
+            tcnt_1tick <= tcnt_1tick + 8'd1;
+        end
+    assign tcnt_1tick_flag = (tcnt_1us_flag && tcnt_1tick == (sent_ctick_len_local-1));
+  // 1 frame Tick计数器, sent_pause_mode = 2 时有效
+    always @ (posedge clk or posedge rst)
+      if (rst)
+        frame_tick_cnt <= 11'd0;
+      else if (!sent_busy && sent_fifo_empty_temp)
+        frame_tick_cnt <= 11'd0;
+      else if (tcnt_1tick_flag)
+        begin
+          if (frame_tick_cnt == sent_frame_ticks)
+            frame_tick_cnt <= 11'd0;
+          else
+            frame_tick_cnt <= frame_tick_cnt + 11'd1;
+        end
+  // 1 nibble Tick计数器
+    always @ (posedge clk or posedge rst)
+      if (rst)
+        nibble_tick_cnt <= 10'd0;
+      else if (!sent_busy && sent_fifo_empty_temp)
+        nibble_tick_cnt <= 10'd0;
+      else if (tcnt_1tick_flag)
+        begin
+          if (nibble_tick_cnt == nibble_tick)
+            nibble_tick_cnt <= 10'd0;
+          else
+            nibble_tick_cnt <= nibble_tick_cnt + 10'd1;
+        end
+  // 发送 nibble 计数器
+    always @ (posedge clk or posedge rst)
+      if (rst)
+        nibble_cnt <= 3'd0;
+      else if (!data_en)
+        nibble_cnt <= 3'd0;
+      else if (tcnt_1tick_flag && (nibble_tick_cnt == nibble_tick))
+        nibble_cnt <= nibble_cnt + 3'd1;
+// 发送同步脉冲使能
   always @ (posedge clk or posedge rst)
     if (rst)
-      period_cnt <= 0;
-    else if (period_cnt == sent_period_local - 1)
-      period_cnt <= 0;
+      sync_en <= 1'b0;
+    else if (sync_en && tcnt_1tick_flag && (nibble_tick_cnt == 10'd55))
+      sync_en <= 1'b0;
+    else if (!(sent_busy | sent_fifo_empty_temp))
+      sync_en <= 1'b1;
+// 发送数据使能
+  always @ (posedge clk or posedge rst)
+    if (rst)
+      data_en <= 1'b0;
+    else if (tcnt_1tick_flag && (nibble_tick_cnt == nibble_tick) && (nibble_cnt == (sent_frame_len_reg-1)))
+      data_en <= 1'b0;
+    else if (sync_en && tcnt_1tick_flag && (nibble_tick_cnt == 10'd55))
+      data_en <= 1'b1;
+// 发送CRC使能
+  always @ (posedge clk or posedge rst)
+    if (rst)
+      crc_en <= 1'b0;
+    else if (tcnt_1tick_flag && (nibble_tick_cnt == nibble_tick))
+      crc_en <= 1'b0;
+    else if (data_en && tcnt_1tick_flag && (nibble_tick_cnt == nibble_tick) && (nibble_cnt == (sent_frame_len_reg-1)))
+      crc_en <= 1'b1;
+// 发送暂停脉冲使能
+  always @ (posedge clk or posedge rst)
+    if (rst)
+      pause_en <= 1'b0;
+    else if (tcnt_1tick_flag && ((~sent_pause_mode[1] && (nibble_tick_cnt == nibble_tick)) || (sent_pause_mode[1] && (frame_tick_cnt == sent_frame_ticks))))
+      pause_en <= 1'b0;
+    else if (crc_en && tcnt_1tick_flag && (nibble_tick_cnt == nibble_tick))
+      pause_en <= 1'b1;
+  always @ (posedge clk) pause_en_d1 <= pause_en;
+// SENT忙标志
+  assign sent_busy = (sync_en | data_en | crc_en | pause_en);
+// 发送帧长度寄存器
+  always @ (posedge clk) sent_frame_len_reg <= sent_fifo_dout[30:28];
+// 发送帧数据移位寄存器
+  always @ (posedge clk)
+    if (sync_en)
+      sent_frame_data_srl <= sent_fifo_full_temp;
+    else if (data_en && (nibble_tick == nibble_tick_cnt))
+      sent_frame_data_srl <= sent_frame_data_srl << 4;
+// 当前 nibble 对应 Tick 数
+  always @ (posedge clk)
+    case ({sync_en,data_en,crc_en,pause_en})
+      4'b1000: nibble_tick <= 10'd55;
+      4'b0100: nibble_tick <= {6'b0,sent_frame_data_srl[27:24]} + 10'd11;
+      4'b0010: nibble_tick <= {6'b0,sent_frame_crc[3:0]} + 10'd11;
+      4'b0001: begin if (sent_pause_mode_local[0]) nibble_tick <= (sent_pause_len_local[9:0]-1); else nibble_tick <= 10'd11; end
+      default: nibble_tick <= 10'd11;
+    endcase
+// sent_data_fifo
+  always @ (posedge clk)
+    if (sent_frame_vld && (sent_config_channel == CHANNEL_INDEX[7:0]))
+      sent_fifo_wren <= 1'b1;
     else
-      period_cnt <= period_cnt + 1;
-// PWM输出寄存器
-  // 输出低电平条件:
-    // 1. PWM输出使能为低电平
-    // 2. 高电平持续计数时间等于0(即占空比为0)
-    // 3. (高电平计数阈值 != 周期计数阈值) && 周期计数器等于高电平计数阈值-1
-  // 输出高电平条件:
-    // 1. PWM输出使能 && 占空比为100%(即单周期计数阈值=高电平持续计数时间)
-    // 2. PWM输出使能 && 周期计数器等于周期计数阈值-1
+      sent_fifo_wren <= 1'b0;
+  always @ (posedge clk) sent_fifo_din <= sent_frame_data;
+  assign sent_fifo_rden = (!pause_en_d1 && pause_en);
+
+// 输出寄存器
+  always @ (posedge clk) sent_fifo_empty_ff <= sent_fifo_empty_temp;
+  always @ (posedge clk) sent_fifo_full_ff <= sent_fifo_full_temp;
   always @ (posedge clk or posedge rst)
     if (rst)
-      sent_ff <= 0;
-    else if (((!sent_en_reg) && (period_cnt == sent_period_local - 1)) || (!sent_en_local) || (sent_hlevel_local == 0) || ((sent_hlevel_local != sent_period_local) && (period_cnt == (sent_hlevel_local-1))))
-      sent_ff <= 0;
-    else if ((sent_hlevel_local == sent_period_local) || (period_cnt == sent_period_local - 1))
-      sent_ff <= 1;
-
+      sent_ff <= 1'b1;
+    else if (sent_busy && (nibble_tick_cnt < sent_ltick_len_local))
+      sent_ff <= 1'b0;
+    else
+      sent_ff <= 1'b1;
 //------------------------------------
 //             Output Port
 //------------------------------------
-  assign pwm = sent_ff;
+  assign sent_fifo_empty = sent_fifo_empty_ff;
+  assign sent_fifo_full = sent_fifo_full_ff;
+  assign sent = sent_ff;
 //------------------------------------
 //             Instance
 //------------------------------------
@@ -117,14 +253,14 @@ module sent_ctrl #(
     .DOUT_RESET_VALUE("0"),    // String
     .ECC_MODE("no_ecc"),       // String
     .FIFO_MEMORY_TYPE("auto"), // String
-    .FIFO_READ_LATENCY(1),     // DECIMAL
+    .FIFO_READ_LATENCY(0),     // DECIMAL
     .FIFO_WRITE_DEPTH(FIFO_DEPTH),   // DECIMAL
     .FULL_RESET_VALUE(0),      // DECIMAL
     .PROG_EMPTY_THRESH(10),    // DECIMAL
     .PROG_FULL_THRESH(10),     // DECIMAL
     .RD_DATA_COUNT_WIDTH(FIFO_COUNT_WIDTH),   // DECIMAL
     .READ_DATA_WIDTH(FIFO_WIDTH),      // DECIMAL
-    .READ_MODE("std"),         // String
+    .READ_MODE("fwft"),         // String
     .SIM_ASSERT_CHK(0),        // DECIMAL; 0=disable simulation messages, 1=enable simulation messages
     .USE_ADV_FEATURES("0707"), // String
     .WAKEUP_TIME(0),           // DECIMAL
@@ -146,11 +282,11 @@ module sent_ctrl #(
     .dout(sent_fifo_dout),                   // READ_DATA_WIDTH-bit output: Read Data: The output data bus is driven
                                     // when reading the FIFO.
 
-    .empty(sent_fifo_empty),                 // 1-bit output: Empty Flag: When asserted, this signal indicates that the
+    .empty(sent_fifo_empty_temp),                 // 1-bit output: Empty Flag: When asserted, this signal indicates that the
                                     // FIFO is empty. Read requests are ignored when the FIFO is empty,
                                     // initiating a read while empty is not destructive to the FIFO.
 
-    .full(sent_fifo_full),                   // 1-bit output: Full Flag: When asserted, this signal indicates that the
+    .full(sent_fifo_full_temp),                   // 1-bit output: Full Flag: When asserted, this signal indicates that the
                                     // FIFO is full. Write requests are ignored when the FIFO is full,
                                     // initiating a write when the FIFO is full is not destructive to the
                                     // contents of the FIFO.
