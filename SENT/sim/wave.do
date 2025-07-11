@@ -16,6 +16,7 @@ add wave -noupdate -expand -group SENT_PARAM /tb_sent/u_sent_top/u_sent_config/s
 add wave -noupdate -expand -group SENT_PARAM /tb_sent/u_sent_top/u_sent_config/sent_frame_vld
 add wave -noupdate -expand -group SENT_PARAM /tb_sent/u_sent_top/u_sent_config/sent_frame_data
 
+add wave -noupdate -expand -group SENT-0 -radix unsigned {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_config_vld_reg}
 add wave -noupdate -expand -group SENT-0 -radix unsigned {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_ctick_len_local}
 add wave -noupdate -expand -group SENT-0 -radix unsigned {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_ltick_len_local}
 add wave -noupdate -expand -group SENT-0 -radix unsigned {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_pause_mode_local}
@@ -32,12 +33,13 @@ add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_
 add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_crc_ack}
 add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_crc}
 add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_frame_crc}
-add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_fifo_empty_temp}
-add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_fifo_pfull}
-add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_ready}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_fifo_empty_temp}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_fifo_pfull}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_ready}
 
 add wave -noupdate -expand -group SENT_OUT -expand /tb_sent/u_sent_top/sent
 
+add wave -noupdate -expand -group SENT-1 -radix unsigned {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_config_vld_reg}
 add wave -noupdate -expand -group SENT-1 -radix unsigned {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_ctick_len_local}
 add wave -noupdate -expand -group SENT-1 -radix unsigned {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_ltick_len_local}
 add wave -noupdate -expand -group SENT-1 -radix unsigned {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_pause_mode_local}
