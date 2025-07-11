@@ -23,14 +23,15 @@ module sent_ctrl #(
                                  // bit[11: 8] 数据nibble4
                                  // bit[ 7: 4] 数据nibble5
                                  // bit[ 3: 0] 数据nibble6
-  output        sent_fifo_empty, // SENT FIFO空标志
-  output        sent_fifo_full, // SENT FIFO满标志
+  output        sent_ready, // SENT 准备好标志, 置位时才可以改变参数
+  output        sent_fifo_pfull, // SENT FIFO满标志, 置位时不能在下发数据
   output        sent // SENT输出
 );
 //------------------------------------
 //             Local Parameter
 //------------------------------------
-  localparam FIFO_DEPTH = 32; // FIFO深度
+  localparam FIFO_DEPTH = 64; // FIFO深度
+  localparam FIFO_PFULL_THESHOLD = FIFO_DEPTH-18; // 预留18帧的数据空间
   localparam FIFO_WIDTH = 32; // FIFO宽度
   localparam FIFO_COUNT_WIDTH = $clog2(FIFO_DEPTH) + 1; // log2(FIFO_DEPTH)+1
   localparam TIME_1US = (CLK_FREQ/1000000)-1; // 1US 对应计数器值
@@ -74,10 +75,10 @@ module sent_ctrl #(
   wire                  sent_fifo_empty_temp;
   wire                  sent_fifo_rden;
   wire [FIFO_WIDTH-1:0] sent_fifo_dout;
-  wire                  sent_fifo_full_temp;
+  wire                  sent_fifo_pfull_temp;
 // PWM输出寄存器
-  reg         sent_fifo_empty_ff = 1;
-  reg         sent_fifo_full_ff  = 0;
+  reg         sent_ready_ff = 1;
+  reg         sent_fifo_pfull_ff  = 0;
   reg         sent_ff = 1;
 //------------------------------------
 //             User Logic
@@ -115,7 +116,7 @@ module sent_ctrl #(
     always @ (posedge clk or posedge rst)
       if (rst)
         tcnt_1us <= 8'd0;
-      else if ((!sent_busy && sent_fifo_empty_ff) || tcnt_1us == TIME_1US)
+      else if (sent_ready_ff || tcnt_1us == TIME_1US)
         tcnt_1us <= 8'd0;
       else
         tcnt_1us <= tcnt_1us + 8'd1;
@@ -236,8 +237,8 @@ module sent_ctrl #(
   assign sent_fifo_rden = (!pause_en_d1 && pause_en);
 
 // 输出寄存器
-  always @ (posedge clk) sent_fifo_empty_ff <= sent_fifo_empty_temp;
-  always @ (posedge clk) sent_fifo_full_ff <= sent_fifo_full_temp;
+  always @ (posedge clk) sent_ready_ff <= (!sent_busy && sent_fifo_empty_temp);
+  always @ (posedge clk) sent_fifo_pfull_ff <= sent_fifo_pfull_temp;
   always @ (posedge clk or posedge rst)
     if (rst)
       sent_ff <= 1'b1;
@@ -248,8 +249,8 @@ module sent_ctrl #(
 //------------------------------------
 //             Output Port
 //------------------------------------
-  assign sent_fifo_empty = sent_fifo_empty_ff;
-  assign sent_fifo_full = sent_fifo_full_ff;
+  assign sent_ready = sent_ready_ff;
+  assign sent_fifo_pfull = sent_fifo_pfull_ff;
   assign sent = sent_ff;
 //------------------------------------
 //             Instance
@@ -275,7 +276,7 @@ module sent_ctrl #(
     .FIFO_WRITE_DEPTH(FIFO_DEPTH),   // DECIMAL
     .FULL_RESET_VALUE(0),      // DECIMAL
     .PROG_EMPTY_THRESH(10),    // DECIMAL
-    .PROG_FULL_THRESH(10),     // DECIMAL
+    .PROG_FULL_THRESH(FIFO_PFULL_THESHOLD),     // DECIMAL
     .RD_DATA_COUNT_WIDTH(FIFO_COUNT_WIDTH),   // DECIMAL
     .READ_DATA_WIDTH(FIFO_WIDTH),      // DECIMAL
     .READ_MODE("fwft"),         // String
@@ -304,7 +305,7 @@ module sent_ctrl #(
                                     // FIFO is empty. Read requests are ignored when the FIFO is empty,
                                     // initiating a read while empty is not destructive to the FIFO.
 
-    .full(sent_fifo_full_temp),                   // 1-bit output: Full Flag: When asserted, this signal indicates that the
+    .full(),                   // 1-bit output: Full Flag: When asserted, this signal indicates that the
                                     // FIFO is full. Write requests are ignored when the FIFO is full,
                                     // initiating a write when the FIFO is full is not destructive to the
                                     // contents of the FIFO.
@@ -319,7 +320,7 @@ module sent_ctrl #(
                                     // empty threshold value. It is de-asserted when the number of words in
                                     // the FIFO exceeds the programmable empty threshold value.
 
-    .prog_full(),         // 1-bit output: Programmable Full: This signal is asserted when the
+    .prog_full(sent_fifo_pfull_temp),         // 1-bit output: Programmable Full: This signal is asserted when the
                                     // number of words in the FIFO is greater than or equal to the
                                     // programmable full threshold value. It is de-asserted when the number of
                                     // words in the FIFO is less than the programmable full threshold value.

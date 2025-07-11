@@ -36,21 +36,21 @@ module tb_sent;
       rst = 0;
       #1000;
         sent_data(0); #100;
+        wait(u_sent_top.sent_ready[0]);
         sent_config(0, 10, 5, Fixed_Pause, 20, Legacy_CRC); #100;
-        wait(u_sent_top.sent_fifo_empty[0]);
         sent_data(0);
-        wait(u_sent_top.sent_fifo_empty[0]);
+        wait(u_sent_top.sent_ready[0]);
         sent_config(0, 5, 5, Variable_Pause, 30, Recommend_CRC); #100;
         sent_data(0); #100;
 
         sent_data(1); #100;
+        wait(u_sent_top.sent_ready[1]);
         sent_config(1, 10, 5, Fixed_Pause, 20, Legacy_CRC); #100;
-        wait(u_sent_top.sent_fifo_empty[1]);
         sent_data(1);
-        wait(u_sent_top.sent_fifo_empty[1]);
+        wait(u_sent_top.sent_ready[1]);
         sent_config(1, 5, 5, Variable_Pause, 30, Recommend_CRC); #100;
         sent_data(1); #10000;
-        wait(u_sent_top.sent_fifo_empty[1]);
+        wait(u_sent_top.sent_ready[1]);
         #1000;
       $stop;
     end
@@ -120,8 +120,8 @@ module tb_sent;
     .rx_axis_udp_tvalid (rx_axis_udp_tvalid),
     .rx_axis_udp_tlast  (rx_axis_udp_tlast ),
     // SENT输出
-    .sent_fifo_empty   (), // SENT FIFO空标志
-    .sent_fifo_full    (), // SENT FIFO满标志
+    .sent_ready        (), // SENT 准备好标志, 置位时才可以改变参数
+    .sent_fifo_pfull   (), // SENT FIFO满标志, 置位时不能在下发数据
     .sent()
   );
 

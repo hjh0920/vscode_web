@@ -32,8 +32,9 @@ add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_
 add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_crc_ack}
 add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_crc}
 add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_frame_crc}
-add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_fifo_empty_temp}
-add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_fifo_full_temp}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_fifo_empty_temp}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_fifo_pfull}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_ready}
 
 add wave -noupdate -expand -group SENT_OUT -expand /tb_sent/u_sent_top/sent
 
@@ -54,7 +55,8 @@ add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_
 add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_crc}
 add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_frame_crc}
 add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_fifo_empty_temp}
-add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_fifo_full_temp}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_fifo_pfull}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_ready}
 
 configure wave -namecolwidth 177
 configure wave -valuecolwidth 100
