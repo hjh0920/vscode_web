@@ -156,7 +156,7 @@ module sent_ctrl #(
         nibble_tick_cnt <= 10'd0;
       else if (tcnt_1tick_flag)
         begin
-          if (nibble_tick_cnt == nibble_tick)
+          if ((nibble_tick_cnt == nibble_tick) || (sent_pause_mode_local[1] && (frame_tick_cnt == sent_frame_ticks)))
             nibble_tick_cnt <= 10'd0;
           else
             nibble_tick_cnt <= nibble_tick_cnt + 10'd1;
@@ -224,7 +224,14 @@ module sent_ctrl #(
       4'b1000: nibble_tick <= 10'd55;
       4'b0100: nibble_tick <= {6'b0,sent_frame_data_srl[27:24]} + 10'd11;
       4'b0010: nibble_tick <= {6'b0,sent_frame_crc[3:0]} + 10'd11;
-      4'b0001: begin if (sent_pause_mode_local[0]) nibble_tick <= (sent_pause_len_local[9:0]-1); else nibble_tick <= 10'd11; end
+      4'b0001: 
+        begin
+          case(sent_pause_mode_local)
+            2'd1: nibble_tick <= (sent_pause_len_local[9:0]-1);
+            2'd2: nibble_tick <= 10'd1023;
+            default: nibble_tick <= 10'd11;
+          endcase
+        end
       default: nibble_tick <= 10'd11;
     endcase
 // sent_data_fifo

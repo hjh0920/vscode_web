@@ -35,18 +35,18 @@ module tb_sent;
       #100
       rst = 0;
       #1000;
-        sent_data(0); #100;
+        sent_data(0); #1000;
         wait(u_sent_top.sent_ready[0]);
         sent_config(0, 10, 5, Fixed_Pause, 20, Legacy_CRC); #100;
-        sent_data(0);
+        sent_data(0); #1000;
         wait(u_sent_top.sent_ready[0]);
         sent_config(0, 5, 5, Variable_Pause, 30, Recommend_CRC); #100;
         sent_data(0); #100;
 
-        sent_data(1); #100;
+        sent_data(1); #1000;
         wait(u_sent_top.sent_ready[1]);
         sent_config(1, 10, 5, Fixed_Pause, 20, Legacy_CRC); #100;
-        sent_data(1);
+        sent_data(1); #1000;
         wait(u_sent_top.sent_ready[1]);
         sent_config(1, 5, 5, Variable_Pause, 30, Recommend_CRC); #100;
         sent_data(1); #10000;
