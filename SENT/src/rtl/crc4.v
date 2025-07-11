@@ -13,16 +13,17 @@ module crc4 (
 //------------------------------------
   wire [3:0] data;
   reg  [3:0] crc4 = 0;
+  wire [3:0] crc4_next;
 
 //------------------------------------
 //             User Logic
 //------------------------------------
 assign data = {din[0],din[1],din[2],din[3]};
 
-assign crc4_next[0]  = 1'b0;
-assign crc4_next[1]  = 1'b0;
-assign crc4_next[2]  = 1'b0;
-assign crc4_next[3]  = 1'b0;
+assign crc4_next[0]  = 1'b1;
+assign crc4_next[1]  = 1'b1;
+assign crc4_next[2]  = 1'b1;
+assign crc4_next[3]  = 1'b1;
 
 always @ (posedge clk or posedge reset)
   if (reset)

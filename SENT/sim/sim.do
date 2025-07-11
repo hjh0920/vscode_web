@@ -45,7 +45,7 @@ vmap work ./work
   vlog -work work "$TB_DIR/*.v"
 
 # 6. 启动仿真
-vsim -t 1ns -voptargs="+acc" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_sent
+vsim -t 10ns -voptargs="+acc" -L unisim -L unimacro -L secureip -L xpm_lib -L xil_defaultlib -L work xil_defaultlib.glbl work.tb_sent
 
 # 7. 添加波形
 do wave.do

@@ -49,7 +49,7 @@ module sent_crc (
       crc4_enable <= 1'b0;
     else if (sent_crc_req_d1)
       crc4_enable <= 1'b1;
-    else (sent_crc_ack_ff)
+    else if (sent_crc_ack_ff)
       crc4_enable <= 1'b0;
 // CRC4输入
   always @ (posedge clk)

@@ -3,6 +3,7 @@
 module sent_top #(
   parameter     SENT_NUM = 1, // SENT通道数
   parameter     ID_SENT_PARAM = 2, // SENT参数帧ID
+  parameter     ID_SENT_DATA = 3, // SENT数据帧ID
   parameter     CLK_FREQ = 100000000 // 模块时钟频率, Unit: Hz
 )(
   // 模块时钟及复位
@@ -37,7 +38,7 @@ module sent_top #(
 // SENT 参数配置模块
   sent_config #(
     .ID_SENT_PARAM      (ID_SENT_PARAM      ), // SENT参数帧ID
-    .CLK_FREQ           (CLK_FREQ          )  // 模块时钟频率, Unit: Hz
+    .ID_SENT_DATA       (ID_SENT_DATA       )  // SENT数据帧ID
   )u_sent_config(
     // 模块时钟及复位
     .clk                (clk               ),
@@ -64,7 +65,7 @@ module sent_top #(
       begin
         sent_ctrl #(
             .CHANNEL_INDEX  (sent_ch), // 通道索引
-            .CLK_FREQ       (CLK_FREQ), // 模块时钟频率, Unit: Hz
+            .CLK_FREQ       (CLK_FREQ) // 模块时钟频率, Unit: Hz
           )u_sent_ctrl(
             .clk                 (clk                ),
             .rst                 (rst                ),

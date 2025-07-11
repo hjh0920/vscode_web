@@ -69,8 +69,6 @@ module sent_ctrl #(
   wire [3:0]  sent_crc; // CRC校验结果
   reg  [3:0]  sent_frame_crc = 0; // 发送帧CRC寄存器
 // FIFO信号
-  wire [FIFO_COUNT_WIDTH-1:0] sent_fifo_count;
-// sent_data_fifo
   reg                   sent_fifo_wren = 0;
   reg  [FIFO_WIDTH-1:0] sent_fifo_din = 0;
   wire                  sent_fifo_empty_temp;
@@ -111,13 +109,13 @@ module sent_ctrl #(
         sent_crc_mode_local   <= sent_crc_mode;
       end
   // 最大帧Ticks长度, sent_pause_mode = 2 时使用
-    always @ (posedge clk) if (sent_pause_mode == 2'd2) sent_frame_ticks <= (sent_pause_len_local[10:0] + 11'd269);
+    always @ (posedge clk) if (sent_pause_mode_local == 2'd2) sent_frame_ticks <= (sent_pause_len_local[10:0] + 11'd269);
 // 计数器
   // 1us计数器
     always @ (posedge clk or posedge rst)
       if (rst)
         tcnt_1us <= 8'd0;
-      else if (tcnt_1us == TIME_1US)
+      else if ((!sent_busy && sent_fifo_empty_ff) || tcnt_1us == TIME_1US)
         tcnt_1us <= 8'd0;
       else
         tcnt_1us <= tcnt_1us + 8'd1;
@@ -136,7 +134,7 @@ module sent_ctrl #(
             tcnt_1tick <= tcnt_1tick + 8'd1;
         end
     assign tcnt_1tick_flag = (tcnt_1us_flag && tcnt_1tick == (sent_ctick_len_local-1));
-  // 1 frame Tick计数器, sent_pause_mode = 2 时有效
+  // 1 frame Tick计数器, sent_pause_mode_local = 2 时有效
     always @ (posedge clk or posedge rst)
       if (rst)
         frame_tick_cnt <= 11'd0;
@@ -176,14 +174,15 @@ module sent_ctrl #(
       sync_en <= 1'b0;
     else if (sync_en && tcnt_1tick_flag && (nibble_tick_cnt == 10'd55))
       sync_en <= 1'b0;
-    else if (!(sent_busy | sent_fifo_empty_temp))
+    else if (!sent_fifo_empty_temp && ((!sent_busy) || 
+      ((pause_en && tcnt_1tick_flag && ((!sent_pause_mode_local[1] && (nibble_tick_cnt == nibble_tick)) || (sent_pause_mode_local[1] && (frame_tick_cnt == sent_frame_ticks)))))))
       sync_en <= 1'b1;
   always @ (posedge clk) sync_en_d1 <= sync_en;
 // 发送数据使能
   always @ (posedge clk or posedge rst)
     if (rst)
       data_en <= 1'b0;
-    else if (tcnt_1tick_flag && (nibble_tick_cnt == nibble_tick) && (nibble_cnt == (sent_frame_len_reg-1)))
+    else if (tcnt_1tick_flag && (nibble_tick_cnt == nibble_tick) && (nibble_cnt == sent_frame_len_reg))
       data_en <= 1'b0;
     else if (sync_en && tcnt_1tick_flag && (nibble_tick_cnt == 10'd55))
       data_en <= 1'b1;
@@ -191,18 +190,18 @@ module sent_ctrl #(
   always @ (posedge clk or posedge rst)
     if (rst)
       crc_en <= 1'b0;
+    else if (data_en && tcnt_1tick_flag && (nibble_tick_cnt == nibble_tick) && (nibble_cnt == sent_frame_len_reg))
+      crc_en <= 1'b1;
     else if (tcnt_1tick_flag && (nibble_tick_cnt == nibble_tick))
       crc_en <= 1'b0;
-    else if (data_en && tcnt_1tick_flag && (nibble_tick_cnt == nibble_tick) && (nibble_cnt == (sent_frame_len_reg-1)))
-      crc_en <= 1'b1;
 // 发送暂停脉冲使能
   always @ (posedge clk or posedge rst)
     if (rst)
       pause_en <= 1'b0;
-    else if (tcnt_1tick_flag && ((~sent_pause_mode[1] && (nibble_tick_cnt == nibble_tick)) || (sent_pause_mode[1] && (frame_tick_cnt == sent_frame_ticks))))
-      pause_en <= 1'b0;
     else if (crc_en && tcnt_1tick_flag && (nibble_tick_cnt == nibble_tick))
       pause_en <= 1'b1;
+    else if (tcnt_1tick_flag && ((!sent_pause_mode_local[1] && (nibble_tick_cnt == nibble_tick)) || (sent_pause_mode_local[1] && (frame_tick_cnt == sent_frame_ticks))))
+      pause_en <= 1'b0;
   always @ (posedge clk) pause_en_d1 <= pause_en;
 // SENT忙标志
   assign sent_busy = (sync_en | data_en | crc_en | pause_en);
@@ -211,8 +210,8 @@ module sent_ctrl #(
 // 发送帧数据移位寄存器
   always @ (posedge clk)
     if (sync_en)
-      sent_frame_data_srl <= sent_fifo_full_temp;
-    else if (data_en && (nibble_tick == nibble_tick_cnt))
+      sent_frame_data_srl <= sent_fifo_dout[27:0];
+    else if (data_en && tcnt_1tick_flag && (nibble_tick == nibble_tick_cnt))
       sent_frame_data_srl <= sent_frame_data_srl << 4;
 // CRC校验请求, 高有效
   always @ (posedge clk) sent_crc_req <= (!sync_en_d1 && sync_en);

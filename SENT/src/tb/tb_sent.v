@@ -4,10 +4,11 @@
 module tb_sent;
 
 //*************************** Parameters ***************************
-  parameter  PERIOD_CLK = 10;
-  parameter  SENT_NUM = 5; // SENT通道数
+  parameter  PERIOD_CLK = 100;
+  parameter  SENT_NUM = 2; // SENT通道数
   parameter  ID_SENT_PARAM = 2; // SENT参数帧ID
-  parameter  CLK_FREQ = 100000000; // 模块时钟频率, Unit: Hz
+  parameter  ID_SENT_DATA = 3; // SENT数据帧ID
+  parameter  CLK_FREQ = 10000000; // 模块时钟频率, Unit: Hz
 
   localparam Legacy_CRC = 0;
   localparam Recommend_CRC = 1;
@@ -34,8 +35,23 @@ module tb_sent;
       #100
       rst = 0;
       #1000;
-        sent_config(0, 3, 4, NO_Pause, 10, Legacy_CRC); #10000;
-      
+        sent_data(0); #100;
+        sent_config(0, 10, 5, Fixed_Pause, 20, Legacy_CRC); #100;
+        wait(u_sent_top.sent_fifo_empty[0]);
+        sent_data(0);
+        wait(u_sent_top.sent_fifo_empty[0]);
+        sent_config(0, 5, 5, Variable_Pause, 30, Recommend_CRC); #100;
+        sent_data(0); #100;
+
+        sent_data(1); #100;
+        sent_config(1, 10, 5, Fixed_Pause, 20, Legacy_CRC); #100;
+        wait(u_sent_top.sent_fifo_empty[1]);
+        sent_data(1);
+        wait(u_sent_top.sent_fifo_empty[1]);
+        sent_config(1, 5, 5, Variable_Pause, 30, Recommend_CRC); #100;
+        sent_data(1); #10000;
+        wait(u_sent_top.sent_fifo_empty[1]);
+        #1000;
       $stop;
     end
 //***************************    Task    ***************************
@@ -48,7 +64,7 @@ module tb_sent;
     input        sent_crc_mode; // CRC Mode
     begin
       @(posedge clk);
-        rx_axis_udp_tdata = {16'h2, sent_config_channel, 8'h0};
+        rx_axis_udp_tdata = {ID_SENT_PARAM[15:0], sent_config_channel, 8'h0};
         rx_axis_udp_tvalid = 1;
         rx_axis_udp_tlast = 0;
       @(posedge clk);
@@ -67,13 +83,21 @@ module tb_sent;
     input [7:0]  sent_config_channel; // 通道索引
     begin
       @(posedge clk);
-        rx_axis_udp_tdata = {16'h2, sent_config_channel, 8'h0};
+        rx_axis_udp_tdata = {ID_SENT_DATA[15:0], sent_config_channel, 8'h0};
         rx_axis_udp_tvalid = 1;
         rx_axis_udp_tlast = 0;
       @(posedge clk);
-        rx_axis_udp_tdata = {sent_ctick_len,sent_ltick_len, 6'h0,sent_pause_mode, sent_pause_len[15:8]};
+        rx_axis_udp_tdata = 32'h6A654321;
       @(posedge clk);
-        rx_axis_udp_tdata = {sent_pause_len[7:0], 7'h0,sent_crc_mode, 16'h0};
+        rx_axis_udp_tdata = 32'h5A543210;
+      @(posedge clk);
+        rx_axis_udp_tdata = 32'h4A432100;
+      @(posedge clk);
+        rx_axis_udp_tdata = 32'h3A321000;
+      @(posedge clk);
+        rx_axis_udp_tdata = 32'h2A210000;
+      @(posedge clk);
+        rx_axis_udp_tdata = 32'h1A100000;
         rx_axis_udp_tlast = 1;
       @(posedge clk);
         rx_axis_udp_tdata = 32'b0;
@@ -85,7 +109,8 @@ module tb_sent;
   sent_top #(
     .SENT_NUM     (SENT_NUM     ), // SENT通道数
     .ID_SENT_PARAM(ID_SENT_PARAM), // SENT参数帧ID
-    .CLK_FREQ     (CLK_FREQ    )  // 模块时钟频率, Unit: Hz
+    .ID_SENT_DATA (ID_SENT_DATA ), // SENT数据帧ID
+    .CLK_FREQ     (CLK_FREQ     )  // 模块时钟频率, Unit: Hz
   )u_sent_top(
     // 模块时钟及复位
     .clk                (clk               ),
@@ -95,6 +120,8 @@ module tb_sent;
     .rx_axis_udp_tvalid (rx_axis_udp_tvalid),
     .rx_axis_udp_tlast  (rx_axis_udp_tlast ),
     // SENT输出
+    .sent_fifo_empty   (), // SENT FIFO空标志
+    .sent_fifo_full    (), // SENT FIFO满标志
     .sent()
   );
 

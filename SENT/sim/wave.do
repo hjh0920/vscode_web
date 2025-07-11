@@ -1,40 +1,64 @@
-# quietly virtual signal -install /tb_pwm/u_pwm_top/u_pwm_config { /tb_pwm/u_pwm_top/u_pwm_config/m_axis_dout_tdata[63:32]} quotient
-# quietly virtual signal -install /tb_pwm/u_pwm_top/u_pwm_config { /tb_pwm/u_pwm_top/u_pwm_config/m_axis_dout_tdata[31:0]} remainder
-
 # 添加信号
-add wave *
-# add wave -noupdate /tb_pwm/u_pwm_top/clk
-# add wave -noupdate /tb_pwm/u_pwm_top/rst
+add wave -noupdate /tb_sent/u_sent_top/clk
+add wave -noupdate /tb_sent/u_sent_top/rst
 
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tdata
-# add wave -noupdate -expand -group PWM_PARAM /tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tvalid
-# add wave -noupdate -expand -group PWM_PARAM /tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tlast
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/rx_axis_udp_tuser
-# add wave -noupdate -expand -group PWM_PARAM /tb_pwm/u_pwm_top/u_pwm_config/pwm_config_vld
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_config_channel
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_en
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_period
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_hlevel
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_config_channel_ff
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_frequency
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_duty
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_en_ff
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/s_axis_divisor_tdata
-# add wave -noupdate -expand -group PWM_PARAM /tb_pwm/u_pwm_top/u_pwm_config/s_axis_dividend_tvalid
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/s_axis_dividend_tdata
-# add wave -noupdate -expand -group PWM_PARAM /tb_pwm/u_pwm_top/u_pwm_config/m_axis_dout_tvalid
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/quotient
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/remainder
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_mul_a
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_mul_b
-# add wave -noupdate -expand -group PWM_PARAM -radix unsigned /tb_pwm/u_pwm_top/u_pwm_config/pwm_mul_p
+add wave -noupdate -expand -group SENT_PARAM /tb_sent/u_sent_top/u_sent_config/rx_axis_udp_tdata
+add wave -noupdate -expand -group SENT_PARAM /tb_sent/u_sent_top/u_sent_config/rx_axis_udp_tvalid
+add wave -noupdate -expand -group SENT_PARAM /tb_sent/u_sent_top/u_sent_config/rx_axis_udp_tlast
 
-# add wave -noupdate -expand -group PWM_OUT -expand /tb_pwm/u_pwm_top/pwm
+add wave -noupdate -expand -group SENT_PARAM /tb_sent/u_sent_top/u_sent_config/sent_config_vld
+add wave -noupdate -expand -group SENT_PARAM -radix unsigned /tb_sent/u_sent_top/u_sent_config/sent_config_channel
+add wave -noupdate -expand -group SENT_PARAM -radix unsigned /tb_sent/u_sent_top/u_sent_config/sent_ctick_len
+add wave -noupdate -expand -group SENT_PARAM -radix unsigned /tb_sent/u_sent_top/u_sent_config/sent_ltick_len
+add wave -noupdate -expand -group SENT_PARAM -radix unsigned /tb_sent/u_sent_top/u_sent_config/sent_pause_mode
+add wave -noupdate -expand -group SENT_PARAM -radix unsigned /tb_sent/u_sent_top/u_sent_config/sent_pause_len
+add wave -noupdate -expand -group SENT_PARAM /tb_sent/u_sent_top/u_sent_config/sent_crc_mode
+add wave -noupdate -expand -group SENT_PARAM /tb_sent/u_sent_top/u_sent_config/sent_frame_vld
+add wave -noupdate -expand -group SENT_PARAM /tb_sent/u_sent_top/u_sent_config/sent_frame_data
 
+add wave -noupdate -expand -group SENT-0 -radix unsigned {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_ctick_len_local}
+add wave -noupdate -expand -group SENT-0 -radix unsigned {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_ltick_len_local}
+add wave -noupdate -expand -group SENT-0 -radix unsigned {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_pause_mode_local}
+add wave -noupdate -expand -group SENT-0 -radix unsigned {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_pause_len_local}
+add wave -noupdate -expand -group SENT-0 -radix unsigned {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_crc_mode_local}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_busy}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sync_en}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/data_en}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/crc_en}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/pause_en}
+add wave -noupdate -expand -group SENT-0 -radix unsigned {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_frame_len_reg}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_frame_data_srl}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_crc_req}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_crc_ack}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_crc}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_frame_crc}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_fifo_empty_temp}
+add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_fifo_full_temp}
+
+add wave -noupdate -expand -group SENT_OUT -expand /tb_sent/u_sent_top/sent
+
+add wave -noupdate -expand -group SENT-1 -radix unsigned {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_ctick_len_local}
+add wave -noupdate -expand -group SENT-1 -radix unsigned {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_ltick_len_local}
+add wave -noupdate -expand -group SENT-1 -radix unsigned {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_pause_mode_local}
+add wave -noupdate -expand -group SENT-1 -radix unsigned {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_pause_len_local}
+add wave -noupdate -expand -group SENT-1 -radix unsigned {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_crc_mode_local}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_busy}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sync_en}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/data_en}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/crc_en}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/pause_en}
+add wave -noupdate -expand -group SENT-1 -radix unsigned {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_frame_len_reg}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_frame_data_srl}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_crc_req}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_crc_ack}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_crc}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_frame_crc}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_fifo_empty_temp}
+add wave -noupdate -expand -group SENT-1 {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_fifo_full_temp}
 
 configure wave -namecolwidth 177
 configure wave -valuecolwidth 100
-configure wave -timelineunits ns
+configure wave -timelineunits us
 # 显示信号名称简称
 configure wave -signalnamewidth 1
 wave zoom full

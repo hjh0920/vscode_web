@@ -119,18 +119,18 @@ module sent_config #(
       sent_data_en <= 1'b0;
 // 参数解析
   // 通道索引
-    always @ (posedge clk) if ((pwm_param_en || sent_data_en) && (word_cnt == 0) && rx_axis_udp_tvalid_d2) sent_config_channel_ff <= rx_axis_udp_tdata_d2[15:8];
+    always @ (posedge clk) if ((sent_param_en || sent_data_en) && (word_cnt == 0) && rx_axis_udp_tvalid_d2) sent_config_channel_ff <= rx_axis_udp_tdata_d2[15:8];
   // Tick长度
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) sent_ctick_len_ff <= rx_axis_udp_tdata_d2[31:24];
+    always @ (posedge clk) if (sent_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) sent_ctick_len_ff <= rx_axis_udp_tdata_d2[31:24];
   // 低脉冲 Tick 个数
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) sent_ltick_len_ff <= rx_axis_udp_tdata_d2[23:16];
+    always @ (posedge clk) if (sent_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) sent_ltick_len_ff <= rx_axis_udp_tdata_d2[23:16];
   // Pause Mode
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) sent_pause_mode_ff <= rx_axis_udp_tdata_d2[9:8];
+    always @ (posedge clk) if (sent_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) sent_pause_mode_ff <= rx_axis_udp_tdata_d2[9:8];
   // 暂停脉冲长度
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) sent_pause_len_ff[15:8] <= rx_axis_udp_tdata_d2[7:0];
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 2) && rx_axis_udp_tvalid_d2) sent_pause_len_ff[7:0] <= rx_axis_udp_tdata_d2[31:24];
+    always @ (posedge clk) if (sent_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) sent_pause_len_ff[15:8] <= rx_axis_udp_tdata_d2[7:0];
+    always @ (posedge clk) if (sent_param_en && (word_cnt == 2) && rx_axis_udp_tvalid_d2) sent_pause_len_ff[7:0] <= rx_axis_udp_tdata_d2[31:24];
   // CRC Mode
-    always @ (posedge clk) if (pwm_param_en && (word_cnt == 2) && rx_axis_udp_tvalid_d2) sent_crc_mode_ff <= rx_axis_udp_tdata_d2[16];
+    always @ (posedge clk) if (sent_param_en && (word_cnt == 2) && rx_axis_udp_tvalid_d2) sent_crc_mode_ff <= rx_axis_udp_tdata_d2[16];
   // 待发送帧数据信息
     always @ (posedge clk) if (sent_data_en && (word_cnt > 0) && rx_axis_udp_tvalid_d2) sent_frame_data_ff <= rx_axis_udp_tdata_d2[31:0];
 // 参数配置使能
