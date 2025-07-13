@@ -38,6 +38,17 @@ add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_
 add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_fifo_pfull}
 add wave -noupdate -expand -group SENT-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/sent_ready}
 
+add wave -noupdate -expand -group CRC-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/u_sent_crc/sent_crc_req_d1}
+add wave -noupdate -expand -group CRC-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/u_sent_crc/sent_frame_len_reg}
+add wave -noupdate -expand -group CRC-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/u_sent_crc/sent_frame_len_srl}
+add wave -noupdate -expand -group CRC-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/u_sent_crc/crc_cal_cnt}
+add wave -noupdate -expand -group CRC-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/u_sent_crc/crc4_rst}
+add wave -noupdate -expand -group CRC-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/u_sent_crc/crc4_enable}
+add wave -noupdate -expand -group CRC-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/u_sent_crc/crc4_din}
+add wave -noupdate -expand -group CRC-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/u_sent_crc/crc4_dout}
+add wave -noupdate -expand -group CRC-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/u_sent_crc/sent_crc_ack_ff}
+add wave -noupdate -expand -group CRC-0 {/tb_sent/u_sent_top/genblk1[0]/u_sent_ctrl/u_sent_crc/sent_crc_ff}
+
 add wave -noupdate -expand -group SENT_OUT -expand /tb_sent/u_sent_top/sent
 
 add wave -noupdate -expand -group SENT-1 -radix unsigned {/tb_sent/u_sent_top/genblk1[1]/u_sent_ctrl/sent_config_vld_reg}

@@ -269,7 +269,7 @@ module sent_ctrl #(
     .sent_crc_mode   (sent_crc_mode_local), // CRC Mode
     .sent_crc_req    (sent_crc_req), // CRC校验请求, 高有效
     .sent_frame_len  (sent_fifo_dout[30:28]), // 待发送帧nibble长度
-    .sent_frame_data (sent_fifo_dout[27:0]), // 待发送帧数据信息
+    .sent_frame_data (sent_fifo_dout[23:0]), // 待发送帧数据信息
     .sent_crc_ack    (sent_crc_ack), // CRC校验完成标志, 高有效
     .sent_crc        (sent_crc) // CRC校验结果
   );

@@ -1,5 +1,5 @@
 `timescale 1ns/1ns
-
+`define CRC_TEST
 
 module tb_sent;
 
@@ -86,6 +86,21 @@ module tb_sent;
         rx_axis_udp_tdata = {ID_SENT_DATA[15:0], sent_config_channel, 8'h0};
         rx_axis_udp_tvalid = 1;
         rx_axis_udp_tlast = 0;
+  `ifdef CRC_TEST
+      @(posedge clk);
+        rx_axis_udp_tdata = 32'h6A53E53E;
+      @(posedge clk);
+        rx_axis_udp_tdata = 32'h6A748748;
+      @(posedge clk);
+        rx_axis_udp_tdata = 32'h6A4AC4AC;
+      @(posedge clk);
+        rx_axis_udp_tdata = 32'h6A78F78F;
+      @(posedge clk);
+        rx_axis_udp_tdata = 32'h6A91D91D;
+      @(posedge clk);
+        rx_axis_udp_tdata = 32'h6A000000;
+        rx_axis_udp_tlast = 1;
+  `else
       @(posedge clk);
         rx_axis_udp_tdata = 32'h6A654321;
       @(posedge clk);
@@ -99,6 +114,7 @@ module tb_sent;
       @(posedge clk);
         rx_axis_udp_tdata = 32'h1A100000;
         rx_axis_udp_tlast = 1;
+  `endif
       @(posedge clk);
         rx_axis_udp_tdata = 32'b0;
         rx_axis_udp_tvalid = 0;
