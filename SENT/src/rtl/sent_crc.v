@@ -52,14 +52,10 @@ module sent_crc (
     else if (sent_crc_ack_ff)
       crc4_enable <= 1'b0;
 // CRC4输入
-  always @ (posedge clk)
-    if (sent_crc_mode && (crc_cal_cnt == sent_frame_len_reg))
-      crc4_din <= 4'h0;
-    else
-      crc4_din <= sent_frame_len_srl[23:20];
+  always @ (posedge clk) crc4_din <= sent_frame_len_srl[23:20];
 // CRC计算计数器
   always @ (posedge clk)
-    if (sent_crc_req)
+    if (sent_crc_req_d1)
       crc_cal_cnt <= 4'd0;
     else if (crc_cal_cnt < (sent_frame_len_reg + 1))
       crc_cal_cnt <= crc_cal_cnt + 1;
@@ -67,7 +63,7 @@ module sent_crc (
   always @ (posedge clk or posedge rst)
     if (rst)
       sent_crc_ack_ff <= 1'b0;
-    else if ((sent_crc_mode && crc_cal_cnt == (sent_frame_len_reg + 1)) || (!sent_crc_mode && crc_cal_cnt == sent_frame_len_reg))
+    else if (crc_cal_cnt == sent_frame_len_reg)
       sent_crc_ack_ff <= 1'b1;
     else
       sent_crc_ack_ff <= 1'b0;

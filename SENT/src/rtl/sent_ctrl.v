@@ -45,7 +45,7 @@ module sent_ctrl #(
   reg  [7:0]  sent_ltick_len_local = 4; // 低脉冲 Tick 个数, 至少 4 Ticks
   reg  [1:0]  sent_pause_mode_local = 0; // Pause Mode
   reg  [15:0] sent_pause_len_local = 12; // 暂停脉冲长度, 12~768Ticks
-  reg         sent_crc_mode_local = 0; // CRC Mode
+  reg         sent_crc_mode_local = 1; // CRC Mode
 // 其他信号
   reg  [10:0] sent_frame_ticks = 0; // 最大帧Ticks长度, sent_pause_mode = 2 时使用
   reg  [7:0]  tcnt_1us = 0; // 1us计数器
@@ -99,7 +99,7 @@ module sent_ctrl #(
         sent_ltick_len_local  <= 8'd4;
         sent_pause_mode_local <= 2'd0;
         sent_pause_len_local  <= 16'd0;
-        sent_crc_mode_local   <= 1'b0;
+        sent_crc_mode_local   <= 1'b1;
       end
     else if (sent_config_vld_reg && (!sent_busy) && sent_fifo_empty_temp)
       begin

@@ -11,27 +11,20 @@ module crc4 (
 //------------------------------------
 //             Local Signal
 //------------------------------------
-  wire [3:0] data;
   reg  [3:0] crc4 = 0;
   wire [3:0] crc4_next;
 
 //------------------------------------
 //             User Logic
 //------------------------------------
-// assign data = {din[0],din[1],din[2],din[3]};
-assign data = din;
+assign crc4_next[0] = crc4[0] ^ crc4[1] ^ crc4[3] ^ din[0] ^ din[1] ^ din[3];
+assign crc4_next[1] = crc4[1] ^ crc4[2] ^ din[1] ^ din[2];
+assign crc4_next[2] = crc4[0] ^ crc4[1] ^ crc4[2] ^ din[0] ^ din[1] ^ din[2];
+assign crc4_next[3] = crc4[0] ^ crc4[2] ^ din[0] ^ din[2];
 
-// assign crc4_next[0]  = crc4[1] ^ crc4[3] ^ data[1] ^ data[3];
-// assign crc4_next[1]  = crc4[1] ^ crc4[2] ^ crc4[3] ^ data[1] ^ data[2] ^ data[3];
-// assign crc4_next[2]  = crc4[1] ^ crc4[2] ^ data[1] ^ data[2];
-// assign crc4_next[3]  = crc4[0] ^ crc4[2] ^ crc4[3] ^ data[0] ^ data[2] ^ data[3];
-    assign crc4_next[0] = crc4[0] ^ crc4[1] ^ crc4[3] ^ data[0] ^ data[1] ^ data[3];
-    assign crc4_next[1] = crc4[1] ^ crc4[2] ^ data[1] ^ data[2];
-    assign crc4_next[2] = crc4[0] ^ crc4[1] ^ crc4[2] ^ data[0] ^ data[1] ^ data[2];
-    assign crc4_next[3] = crc4[0] ^ crc4[2] ^ data[0] ^ data[2];
 always @ (posedge clk or posedge reset)
   if (reset)
-    crc4 <= 4'b0101;
+    crc4 <= 4'b0011;
   else if (enable)
     crc4 <= crc4_next;
 
