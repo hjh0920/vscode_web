@@ -6,78 +6,51 @@ module lin_rx (
   // LIN收发物理接口
   input         lin_rx_rtl,
   // 控制信号
-  input         bypass, // 用于控制发送同步间隔段
-  input         bypass_data,
-  input         updata_point, // 更新bit标志
-  // 发送数据
-  input         rx_data_req, // 发送数据请求信号
-  input  [7:0]  rx_data, // 发送数据
-  output        rx_data_ack, // 发送数据应答信号
-  output        rx_data_err // 发送数据错误信号
+  input         sample_point, // 采样bit标志
+  // 接收数据
+  output        rx_data_vld, // 接收数据有效信号
+  output [7:0]  rx_data, // 接收数据
+  output        rx_data_err // 接收数据错误信号(停止位错误)
 );
 //------------------------------------
 //             Local Signal
 //------------------------------------
-  reg  [3:0]   tx_bit_cnt = 0; // 发送bit计数器
-  reg  [7:0]   tx_data_srl = 0; // 发送数据移位寄存器
-  reg          tx_data_ack_ff = 0; // 发送数据应答信号
-  reg          tx_data_err_ff = 0; // 发送数据错误信号
-  reg          lin_tx_ff = 1; // 发送数据寄存器
-  reg          lin_tx_reg = 1; // 寄存上一位发送数据, 用于回读错误检测
-  reg          lin_rx_d1 = 1; // 接收数据寄存器
-  
+  reg  [3:0]   rx_bit_cnt = 0; // 接收bit计数器
+  reg  [8:0]   rx_data_srl = 0; // 接收数据移位寄存器
+  reg          rx_data_vld_ff = 0; // 接收数据有效信号
+  reg          rx_data_err_ff = 0; // 接收数据错误信号(停止位错误)  
 //------------------------------------
 //             User Logic
 //------------------------------------
-// 发送bit计数器
+// 接收bit计数器
   always @ (posedge clk or posedge rst)
     if (rst)
-      tx_bit_cnt <= 4'd0;
-    else if (tx_data_req)
-      tx_bit_cnt <= 4'd0;
-    else if (updata_point && tx_bit_cnt < 9)
-      tx_bit_cnt <= tx_bit_cnt + 1;
-// 发送数据移位寄存器
-  always @ (posedge clk)
-    if (tx_data_req)
-      tx_data_srl <= tx_data;
-    else if (updata_point)
-      tx_data_srl <= {1'b1,tx_data_srl[7:1]};
-// 发送数据应答信号
+      rx_bit_cnt <= 4'd0;
+    else if (sample_point && rx_bit_cnt < 10)
+      rx_bit_cnt <= rx_bit_cnt + 1;
+// 接收数据移位寄存器
+  always @ (posedge clk) if (sample_point) rx_data_srl <= {lin_rx_rtl, rx_data_srl[8:1]};
+// 接收数据有效信号
   always @ (posedge clk or posedge rst)
     if (rst)
-      tx_data_ack_ff <= 0;
-    else if (tx_data_req)
-      tx_data_ack_ff <= 0;
-    else if (updata_point && tx_bit_cnt == 9)
-      tx_data_ack_ff <= 1;
-// 发送数据错误信号
-  always @ (posedge clk or posedge rst)
-    if (rst)
-      tx_data_err_ff <= 0;
-    else if (updata_point && (lin_tx_reg ^ lin_rx_d1))
-      tx_data_err_ff <= 1;
+      rx_data_vld_ff <= 0;
+    else if (sample_point && rx_bit_cnt == 9)
+      rx_data_vld_ff <= 1;
     else
-      tx_data_err_ff <= 0;
-// 发送数据寄存器
+      rx_data_vld_ff <= 0;
+// 接收数据错误信号(停止位错误)
   always @ (posedge clk or posedge rst)
     if (rst)
-      lin_tx_ff <= 1;
-    else if (bypass)
-      lin_tx_ff <= bypass_data;
-    else if (tx_data_req)
-      lin_tx_ff <= 0;
-    else if (updata_point)
-      lin_tx_ff <= tx_data_srl[0];
-// 接收数据寄存器
-  always @ (posedge clk) lin_rx_d1 <= lin_rx_rtl;
-// 寄存上一位发送数据, 用于回读错误检测
-  always @ (posedge clk) if (updata_point) lin_tx_reg <= lin_tx_ff;
+      rx_data_err_ff <= 0;
+    else if (sample_point && (rx_bit_cnt == 9) && (!lin_rx_rtl))
+      rx_data_err_ff <= 1;
+    else
+      rx_data_err_ff <= 0;
 
 //------------------------------------
 //             Output Port
 //------------------------------------
-  assign lin_tx_rtl  = lin_tx_ff;
-  assign tx_data_ack = tx_data_ack_ff;
-  assign tx_data_err = tx_data_err_ff;
+  assign rx_data_vld = rx_data_vld_ff;
+  assign rx_data     = rx_data_srl[7:0];
+  assign rx_data_err = rx_data_err_ff;
 endmodule
