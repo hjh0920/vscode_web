@@ -2,7 +2,7 @@
 
 module sent_ctrl #(
   parameter CHANNEL_INDEX = 0, // 通道索引
-  parameter CLK_FREQ = 100000000 // 
+  parameter CLK_FREQ = 100000000 // 模块时钟频率, Unit: Hz
 )(
   input         clk,
   input         rst,
