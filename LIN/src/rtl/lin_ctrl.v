@@ -79,7 +79,45 @@ module lin_ctrl #(
   reg  [4:0]   c_state = IDLE; // 现态
   reg  [4:0]   n_state = IDLE; // 次态
 // 状态机跳转信号
-  
+  wire         m_tx_req; // 主站模式发送请求
+  wire         s_det_break1; // 从站模式检测到同步间隔段
+  wire         s_det_break2; // 从站模式检测到同步间隔符
+  wire         det_start_bit; // 检测到起始位
+  wire         s_sync_done; // 从站模式同步段接收完成
+  wire         m_tx_req; // 主站模式发送请求
+  wire         m_break_done; // 主站模式同步间隔段发送完成
+  wire         wait_rcv_resp; // 等待接收响应数据
+  wire         tx_byte_done; // 发送字节数据完成
+  wire         tx_all_done; // 发送所有数据完成
+  wire         rx_byte_done; // 接收字节数据完成
+  wire         rx_all_done; // 接收所有数据完成
+// 错误状态标志
+  wire         timeout_err; // 从机响应超时
+  wire         send_err; // 发送错误(发送和接收数据不一致)
+  wire         stop_err; // 停止位错误
+  wire         parity_err; // 奇偶校验错误
+  wire         cks_err; // 校验和错误
+  reg  [4:0]   error_status = 0; // 错误状态寄存器
+// LIN 发送模块
+  reg          bypass = 0; // 用于控制发送同步间隔段
+  reg          bypass_data = 0;
+  reg          updata_point = 0; // 更新bit标志
+  reg          tx_data_req = 0; // 发送数据请求信号
+  reg  [7:0]   tx_data = 0; // 发送数据
+// LIN 接收模块
+  reg          rx_rst = 1; // 接收模块复位
+  reg          sample_point = 0; // 采样bit标志
+  reg  [7:0]   rx_byte_data = 0; // 接收字节数据
+// LIN 校验和计算模块
+  reg          cks_rst = 0; // 校验和模块复位
+  reg          cks_enable = 0; // 校验和使能
+  reg  [7:0]   cks_din = 0; // 校验和计算数据
+  reg  [7:0]   cks_dout = 0; // 校验和计算结果
+
+
+
+
+
 //------------------------------------
 //             User Logic
 //------------------------------------
