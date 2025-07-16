@@ -71,7 +71,6 @@ module lin_ctrl #(
   reg  [23:0]  lin_baudrate_local = 24'd32; // 波特率, 单位us, 默认20Kbps（对应50us）
   reg          lin_parity_type_local = 0; // 校验类型
   reg          lin_int_termin_local = 0; // 内部终端电阻使能, 高有效
-  reg          lin_frame_vld_local = 0; // 数据帧配置使能, 高有效
   reg  [1:0]   lin_op_type_local = 0; // 操作类型
   reg  [5:0]   lin_frame_id_local = 0; // 帧ID
   reg  [63:0]  lin_frame_data_local = 0; // 帧数据
@@ -113,15 +112,127 @@ module lin_ctrl #(
   reg          cks_enable = 0; // 校验和使能
   reg  [7:0]   cks_din = 0; // 校验和计算数据
   reg  [7:0]   cks_dout = 0; // 校验和计算结果
-
-
-
-
+// 其他信号
+  reg  [31:0]  tcnt = 0; // 波特率计数器
+  reg  [3:0]   tx_break_bit_cnt = 0; // 发送同步间隔段bit计数器
+  reg  [63:0]  tx_lin_data = 0; // 发送数据寄存器, LSB
+  reg  [63:0]  tx_data_srl = 0; // 发送数据移位寄存器, LSB
+  reg  [3:0]   data_length= 0; // 发送/接收数据长度, 单位 Byte
+  reg  [7:0]   s_rev_pid = 0; // 从站接收PID
+  reg  [7:0]   rev_cks = 0; // 接收校验和
+  reg  [2:0]   tx_byte_cnt = 0; // 发送字节计数器
+  reg  [2:0]   rx_byte_cnt = 0; // 接收字节计数器
+  reg  [63:0]  rx_data_srl = 0; // 接收数据移位寄存器, LSB
+  reg          lin_rx_rtl_d1 = 1; // 接收数据延迟一拍
+  reg          lin_rx_rtl_d2 = 1; // 接收数据延迟一拍
+  reg  [3:0]   rx_dominant_bit_cnt = 0; // 连续接收显性电平bit计数器
+  reg  [7:0]   timeout_cnt = 0; // 响应超时计数器
+// LIN 从站响应帧路由表
+  reg  [0:0]   lin_slave_wea = 0;
+  reg  [5:0]   lin_slave_addra = 0;
+  reg  [64:0]  lin_slave_dina = 0;
+  wire [5:0]   lin_slave_addrb;
+  wire [64:0]  lin_slave_doutb;
+// LIN数据上传接口
+  reg          lin_ready_ff = 0; // 总线准备好标志, 高有效
+  reg  [7:0]   upload_lin_pid_ff = 0;
+  reg  [3:0]   upload_lin_data_length_ff = 0;
+  reg  [63:0]  upload_lin_data_ff = 0;
+  reg  [7:0]   upload_lin_cks_ff = 0;
+  
+  reg  [31:0]  upload_lin_tdata_ff = 0;
+  reg          upload_lin_tvalid_ff = 0;
+  reg          upload_lin_tlast_ff = 0;
+  reg  [1:0]   upload_lin_cnt = 0;
 
 //------------------------------------
 //             User Logic
 //------------------------------------
+// 参数配置使能寄存器
+  always @ (posedge clk or posedge rst)
+    if (rst)
+      lin_config_vld_reg <= 0;
+    else if (lin_config_vld && (lin_config_channel == CHANNEL_INDEX[7:0]))
+      lin_config_vld_reg <= 1;
+    else if (c_state == IDLE)
+      lin_config_vld_reg <= 0;
+// 数据帧配置使能寄存
+  always @ (posedge clk or posedge rst)
+    if (rst)
+      lin_frame_vld_reg <= 0;
+    else if (lin_frame_vld && (lin_frame_channel == CHANNEL_INDEX[7:0]))
+      lin_frame_vld_reg <= 1;
+    else if (c_state == IDLE)
+      lin_frame_vld_reg <= 0;
+// 更新 本地参数
+  always @ (posedge clk or posedge rst)
+    if (rst)
+      begin
+        lin_mode_local        <= 0;
+        lin_baudrate_local    <= 24'd32;
+        lin_parity_type_local <= 0;
+        lin_int_termin_local  <= 0;
+      end
+    else if (lin_config_vld_reg && (c_state == IDLE))
+      begin
+        lin_mode_local        <= lin_mode;
+        lin_baudrate_local    <= lin_baudrate;
+        lin_parity_type_local <= lin_parity_type;
+        lin_int_termin_local  <= lin_int_termin;
+      end
+  always @ (posedge clk or posedge rst)
+    if (rst)
+      begin
+        lin_op_type_local    <= 0;
+        lin_frame_id_local   <= 0;
+        lin_frame_data_local <= 0;
+      end
+    else if (lin_frame_vld_reg && (c_state == IDLE))
+      begin
+        lin_op_type_local    <= lin_op_type;
+        lin_frame_id_local   <= lin_frame_id;
+        lin_frame_data_local <= lin_frame_data;
+      end
+// 状态机
+  always @ (posedge clk or posedge rst)
+    if (rst)
+      c_state <= IDLE;
+    else
+      c_state <= n_state;
+  always @ (*)
+    case (c_state)
+      IDLE: // 空闲状态
+        if (m_tx_req) // 主站模式发送请求
+          n_state <= M_BREAK;
+        else if (s_det_break1) // 从站模式检测到同步间隔段
+          n_state <= S_BREAK;
+      M_BREAK: // 主站模式发送同步间隔段
+        if (send_err) // 发送错误
+          n_state <= ERROR;
+        else if (m_break_done) // 发送同步间隔段完成
+          n_state <= M_SEND_SYNC;
+      M_SEND_SYNC: // 主站模式发送同步段
+        n_state <= M_SYNC_DONE;
+      M_SYNC_DONE: // 主站模式发送同步段完成
+        if (send_err) // 发送错误
+          n_state <= ERROR;
+        else if (tx_byte_done) // 发送同步段完成
+          n_state <= M_SEND_PID;
+      M_SEND_PID: // 主站模式发送PID
+        n_state <= M_PID_DONE;
+      M_PID_DONE: // 主站模式发送PID完成
+        if (send_err) // 发送错误
+          n_state <= ERROR;
+        else if (tx_byte_done) // 发送PID完成
+          n_state <= PID_CHECK;
+      S_BREAK: // 从站模式检测到同步间隔段
+        
 
+
+
+        
+        
+        
 //------------------------------------
 //             Output Port
 //------------------------------------
