@@ -6,7 +6,7 @@
 //   word 1: bit[24:24] 工作模式
 //              0x0: 从站模式
 //              0x1: 主站模式
-//           bit[23:0] 波特率, 单位us, 默认20Kbps（对应50us）
+//           bit[ 9: 0] 波特率, 单位us, 默认20Kbps（对应50us）
 //   word 2: bit[24:24] 校验类型
 //              0x0: 标准型校验(只校验数据段)
 //              0x1: 增强型校验(校验数据段和PID段)
@@ -46,7 +46,7 @@ module lin_config #(
   output        lin_config_vld, // 参数配置使能, 高有效
   output [7:0]  lin_config_channel, // 通道索引
   output        lin_mode, // 工作模式
-  output [23:0] lin_baudrate, // 波特率, 单位us, 默认20Kbps（对应50us）
+  output [9:0]  lin_baudrate, // 波特率, 单位us, 默认20Kbps（对应50us）
   output        lin_parity_type, // 校验类型
   output        lin_int_termin, // 内部终端电阻使能, 高有效
   output        lin_frame_vld, // 数据帧配置使能, 高有效
@@ -71,7 +71,7 @@ module lin_config #(
   reg          lin_config_vld_ff = 0; // 参数配置使能, 高有效
   reg  [7:0]   lin_config_channel_ff = 0; // 通道索引
   reg          lin_mode_ff = 0; // 工作模式
-  reg  [23:0]  lin_baudrate_ff = 0; // 波特率, 单位us, 默认20Kbps（对应50us）
+  reg  [8:0]   lin_baudrate_ff = 0; // 波特率, 单位us, 默认20Kbps（对应50us）
   reg          lin_parity_type_ff = 0; // 校验类型
   reg          lin_int_termin_ff = 0; // 内部终端电阻使能, 高有效
   reg          lin_frame_vld_ff = 0; // 数据帧配置使能, 高有效
@@ -117,7 +117,7 @@ module lin_config #(
   // 工作模式
     always @ (posedge clk) if (lin_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) lin_mode_ff <= rx_axis_udp_tdata_d2[24];
   // 波特率, 单位us, 默认20Kbps（对应50us）
-    always @ (posedge clk) if (lin_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) lin_baudrate_ff <= rx_axis_udp_tdata_d2[23:0];
+    always @ (posedge clk) if (lin_param_en && (word_cnt == 1) && rx_axis_udp_tvalid_d2) lin_baudrate_ff <= rx_axis_udp_tdata_d2[9:0];
   // 校验类型
     always @ (posedge clk) if (lin_param_en && (word_cnt == 2) && rx_axis_udp_tvalid_d2) lin_parity_type_ff <= rx_axis_udp_tdata_d2[24];
   // 内部终端电阻使能
